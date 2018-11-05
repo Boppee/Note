@@ -9,6 +9,6 @@
 
   $connection = $connect->newConnectionPre("CreateAdminAccount");
 
-  
+  echo "test";
 
 ?>
