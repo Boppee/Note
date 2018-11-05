@@ -1,0 +1,14 @@
+@font-face { font-family: CaviarDreams; src: url('../font/CaviarDreams.ttf'); }
+html,input{
+  font-family: CaviarDreams;
+}
+body{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.inner{
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}

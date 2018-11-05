@@ -1,0 +1,18 @@
+footer{
+  height: 50px;
+  width: 100%;
+  margin: auto;
+}
+#copyright{
+  line-height: 50px;
+  float: left;
+}
+#socials{
+  height: 100%;
+  float: right;
+}
+#socials img{
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
