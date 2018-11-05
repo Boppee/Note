@@ -22,7 +22,6 @@
   </head>
   <body>
     <?php
-      echo bin2hex(openssl_random_pseudo_bytes(32));
       require_once 'pages/page/'.$loader->page.'.php';
       require_once 'pages/pageparts/footer.php';
 
