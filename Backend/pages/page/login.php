@@ -12,7 +12,7 @@
       <p>Sign in</p>
       <div id="centerlogin">
         <form id="capatcha">
-          <div class="g-recaptcha" data-sitekey="6LcxQXIUAAAAACS9Hl7VWt1OoR2LZ2XmG3b1uJBR" data-callback="sendRecaptcha"></div>
+          <div class="g-recaptcha" data-sitekey="<?php echo $loader->reCaptchaSiteKey; ?>" data-callback="sendRecaptcha"></div>
         </form>
         <form id="login">
           <input type="text" id="uid" class="borderinput" placeholder="Username">
@@ -23,7 +23,12 @@
           <input type="text" name="" value="" placeholder="Email verification">
           <input type="submit" name="" value="Sign in">
         </form>
-        <input type="password" id="salt" value="<?php echo $loader->salt(); ?>" hidden>
+        <input type="password" id="salt" value="
+          <?php
+            $loader->salt();
+            echo $_SESSION["salt"]["salt"];
+          ?>"
+        hidden>
       </div>
       </div>
     <div id="imgdiv">

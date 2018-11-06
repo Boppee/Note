@@ -1,8 +1,10 @@
 <?php
+require 'encode.php';
 class pageLoader {
 
   public $page;
   public $companyName;
+  public $reCaptchaSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   function __construct(){
 
@@ -43,11 +45,12 @@ class pageLoader {
   }
 
   public function salt(){
-    return "test";
+    $enc = new encoder("public");
+    $iv = $enc->generatIv();
+    $_SESSION["salt"] = array('salt' => $enc->encode(uniqid(mt_rand(), true), $iv), 'iv' => $iv);
   }
   public function setCompanyName($name){
     $this->companyName = $name;
   }
 }
-
 ?>

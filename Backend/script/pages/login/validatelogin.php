@@ -1,10 +1,11 @@
 <?php
 
   require_once '../../php/load.php';
+  require_once '../../php/login.php';
 
   $connect = new connect(/* FIXME: add users)*/;
-  $databasEncoder = new encoder("databas");
-  $sessionEncoder = new encoder("session");
+  $privateEncoder = new encoder("private");
+  $publicEncoder = new encoder("public");
 
   $connection = $connect->newConnectionPre();
 
@@ -16,7 +17,11 @@
 
   if (isset($pwd) && isset($salt) && isset($uid)) {
     if ($_SESSION["logincaptcha"]["pass"]) {
-
+      if ($publicEncoder->decode($salt, $_SESSION["salt"]["iv"] == $publicEncoder->decode($_SESSION["salt"]["salt"], $_SESSION["salt"]["iv"])) {
+        $login = new login($pwd, $uid);
+      }else {
+        echo "Salt error";
+      }
     }else {
       echo "captcha error";
     }

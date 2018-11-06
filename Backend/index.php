@@ -3,6 +3,7 @@
   session_start();
 
   include 'php/load.php';
+  include 'script/load.php';
   $loader = new pageLoader();
   $loader->setCompanyName("Notes Clothing")
 
@@ -24,7 +25,6 @@
     <?php
       require_once 'pages/page/'.$loader->page.'.php';
       require_once 'pages/pageparts/footer.php';
-
     ?>
   </body>
 </html>
