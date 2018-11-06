@@ -23,6 +23,13 @@ class pageLoader {
       if (isset($_SESSION["signedIn"])) {
         array_push($_SESSION["pages"], "dashboard");
         $this->goToPage("?page=dashboard");
+        $verify = new verifySession();
+        if ($verify) {
+            // code...
+        }else {
+          session_destroy();
+          $this->goToPage("?page=login");
+        }
       }else {
         array_push($_SESSION["pages"], "login");
         $this->goToPage("?page=login");

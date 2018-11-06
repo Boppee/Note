@@ -29,7 +29,7 @@ class login {
       $this->setEmail($email);
 
       $this->sendVerifyEmail();
-      $_SESSION["loginAttempt"] = array('userdata' => $userData, $emailCode);
+      $_SESSION["loginAttempt"] = array('username' => $uid, 'pwd' => $pwd, 'time' => date());
 
     }
   }
