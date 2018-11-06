@@ -45,9 +45,7 @@ class pageLoader {
   }
 
   public function salt(){
-    $enc = new encoder("public");
-    $iv = $enc->generatIv();
-    $_SESSION["salt"] = array('salt' => $enc->encode(uniqid(mt_rand(), true), $iv), 'iv' => $iv);
+    $_SESSION["salt"] = uniqid(mt_rand(), true);
   }
   public function setCompanyName($name){
     $this->companyName = $name;

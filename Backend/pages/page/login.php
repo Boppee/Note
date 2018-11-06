@@ -26,7 +26,7 @@
         <input type="password" id="salt" value="
           <?php
             $loader->salt();
-            echo $_SESSION["salt"]["salt"];
+            echo $_SESSION["salt"];
           ?>"
         hidden>
       </div>

@@ -17,7 +17,7 @@
 
   if (isset($pwd) && isset($salt) && isset($uid)) {
     if ($_SESSION["logincaptcha"]["pass"]) {
-      if ($publicEncoder->decode($salt, $_SESSION["salt"]["iv"] == $publicEncoder->decode($_SESSION["salt"]["salt"], $_SESSION["salt"]["iv"])) {
+      if ($salt == $_SESSION["salt"]) {
         $login = new login($pwd, $uid);
       }else {
         echo "Salt error";
