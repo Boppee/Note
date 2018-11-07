@@ -15,7 +15,7 @@ $(document).ready(function () {
   $("#login").submit(function (e) {
 
     var salt = $("#salt").val();
-    var uid = $("#salt").val();
+    var uid = $("#uid").val();
     var pwd = $("#pwd").val();
 
     $.ajax({
@@ -23,7 +23,7 @@ $(document).ready(function () {
         url: "script/pages/login/validatelogin.php",
         data: {uid: uid, pwd: pwd, salt: salt},
         success: function(result) {
-          
+
         }
     });
 

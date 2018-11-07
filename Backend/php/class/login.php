@@ -41,6 +41,10 @@ class login {
         'salt' => uniqid(mt_rand(), true)
       );
 
+      echo "pass";
+
+    }else {
+      echo "fail";
     }
   }
 
