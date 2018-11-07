@@ -20,10 +20,11 @@ $(document).ready(function () {
 
     $.ajax({
         type: "POST",
+        dataType: "json",
         url: "script/pages/login/validatelogin.php",
         data: {uid: uid, pwd: pwd, salt: salt},
         success: function(result) {
-
+          
         }
     });
 

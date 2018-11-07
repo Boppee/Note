@@ -23,12 +23,7 @@
           <input type="text" name="" value="" placeholder="Email verification">
           <input type="submit" name="" value="Sign in">
         </form>
-        <input type="password" id="salt" value="
-          <?php
-            $loader->salt();
-            echo $_SESSION["salt"];
-          ?>"
-        hidden>
+        <input type="password" id="salt" value="<?php $loader->salt();echo $_SESSION["salt"];?>" hidden>
       </div>
       </div>
     <div id="imgdiv">
