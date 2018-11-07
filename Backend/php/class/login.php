@@ -23,12 +23,14 @@ class login {
 
     $userData = $this->grabUserData();
 
+    //validateing password
     if ($this->Username == $userData["uid"] && password_verify($this->password, $userData["pwd"])) {
       $this->setIV($userData["iv"]);
       $email = $this->enc-decode($userData["email"], $this->iv);
       $this->setEmail($email);
 
       $this->sendVerifyEmail();
+      //seting session vars so i can use the when validating email
       $_SESSION["loginAttempt"] = array(
         'username' => $uid,
         'password' => $pwd,
@@ -52,6 +54,7 @@ class login {
     $this->iv = $iv;
   }
   public function grabuserData(){
+    
     $this->connection->newConnectionPre("FetchFromAccounts");
 
     $sth = $this->connection->prepare("SELECT * FROM `accounts` WHERE `uid` = :uid");

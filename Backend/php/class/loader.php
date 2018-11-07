@@ -20,20 +20,18 @@ class pageLoader {
 
     //check if user have prems to this page
     if (!in_array($this->page, $_SESSION["pages"])) {
+      //if user are signed in verify session or die
       if (isset($_SESSION["signedIn"])) {
         array_push($_SESSION["pages"], "dashboard");
         $this->goToPage("?page=dashboard");
-        $verify = new verifySession();
-        if ($verify) {
-            // code...
-        }else {
-          session_destroy();
-          $this->goToPage("?page=login");
-        }
       }else {
         array_push($_SESSION["pages"], "login");
         $this->goToPage("?page=login");
       }
+    }
+    //verify session
+    if (isset($_SESSION["signedIn"])) {
+
     }
 
     if (isset($_SESSION["errors"])) {
