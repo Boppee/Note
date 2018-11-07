@@ -7,11 +7,7 @@
   $pwd = $_POST["pwd"];
   //check if value are set
 
-  require_once '../../../php/class/encode.php';
-  require_once '../../../php/class/connect.php';
-  require_once '../../../php/class/email.php';
-  require_once '../../../php/class/vars.php';
-  require_once '../../../php/functions.php';
+  require_once '../../../php/load.php';
 
   if (!isset($_SESSION["signedIn"])) {
     if (isset($pwd) && isset($salt) && isset($uid)) {
@@ -20,7 +16,7 @@
 
           $enc = new encoder("private");
 
-          //$userData = grabUserData($uid);
+          $userData = grabUserData($uid);
 
           if (password_verify($pwd, $userData["pwd"])) {
             $email = $enc-decode($userData["email"], $userData["iv"]);
@@ -46,6 +42,6 @@
       echo "missing inputs";
     }
   }else {
-    echo "signed in";
+    goToPage("?page=dashboard")
   }
 ?>

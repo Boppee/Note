@@ -49,8 +49,5 @@ class pageLoader {
   public function salt(){
     $_SESSION["salt"] = uniqid(mt_rand(), true);
   }
-  public function setCompanyName($name){
-    $this->companyName = $name;
-  }
 }
 ?>
