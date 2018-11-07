@@ -19,5 +19,4 @@ $mail->Username = "webutvecklingemail@gmail.com";
 $mail->Password = "Emil7670";
 $mail->SetFrom("webutvecklingemail@gmail.com");
 
-
  ?>
