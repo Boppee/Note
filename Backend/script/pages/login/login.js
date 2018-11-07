@@ -3,10 +3,12 @@ function sendRecaptcha(recap) {
     $.ajax({
         type: "POST",
         url: "script/pages/login/confirmrecaptcha.php",
-        data: {key: recap},
+        data: {
+          key: recap
+        },
         success: function(result) {
           $("#capatcha").toggle();
-          $("#login").css("display", "grid")
+          $("#login").css("display", "grid");
         }
     });
   });
@@ -22,13 +24,41 @@ $(document).ready(function () {
         type: "POST",
         dataType: "json",
         url: "script/pages/login/validatelogin.php",
-        data: {uid: uid, pwd: pwd, salt: salt},
+        data: {
+          uid: uid,
+          pwd: pwd,
+          salt: salt
+        },
         success: function(result) {
-          
+
+          if (result.status == "pass") {
+
+            $("#login").hide();
+            $("#email").css("display", "grid");
+
+            $("#email").submit(function (e) {
+
+              var code = $("code").val();
+
+              $.ajax({
+                type: "POST",
+                url: "script/pages/login/validateemail.php",
+                data: {
+                  salt: result.salt,
+                  code: code
+                },
+                succes: function(result ){
+
+                }
+              });
+
+              e.preventDefault();
+            });
+          }
+
         }
     });
 
     e.preventDefault();
-
   });
 });

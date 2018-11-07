@@ -47,7 +47,7 @@
   display: table-cell;
   vertical-align: middle;
 }
-#login input {
+#login input, #email input {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -59,7 +59,7 @@
     padding: 10px 0px;
 }
 
-#sumbitlogin{
+#sumbitlogin, #sumbitcode{
   font-size: 1.2em !important;
   width: 40% !important;
   margin: 10px auto !important;

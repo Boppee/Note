@@ -30,15 +30,15 @@
       }
     }
 
-    public function encode($data, $iv){
+    public function encode($name, $iv){
       $encryption_key = hex2bin($this->currentKey);
       $iv_size = 16;
       $length = $iv_size - strlen($name) % $iv_size;
       $name = $name . str_repeat(chr($length), $length);
       return openssl_encrypt($name, 'AES-256-CBC', $encryption_key, 0, hex2bin($iv));
     }
-    public function decode($data, $iv){
-      $encryption_key = hex2bin($$this->urrentKey);
+    public function decode($enc_name, $iv){
+      $encryption_key = hex2bin($this->currentKey);
       $enc_name = openssl_decrypt($enc_name, 'AES-256-CBC', $encryption_key, 0, hex2bin($iv));
       return substr($enc_name, 0, -ord($enc_name[strlen($enc_name) - 1]));
     }

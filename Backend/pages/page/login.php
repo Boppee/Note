@@ -20,8 +20,8 @@
           <input type="submit" id="sumbitlogin" value="Sign in">
         </form>
         <form id="email">
-          <input type="text" name="" value="" placeholder="Email verification">
-          <input type="submit" name="" value="Sign in">
+          <input type="password" id="code" value="" placeholder="Email verification">
+          <input type="submit" name="" value="Sign in" id="sumbitcode">
         </form>
         <input type="password" id="salt" value="<?php $loader->salt();echo $_SESSION["salt"];?>" hidden>
       </div>

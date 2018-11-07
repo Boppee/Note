@@ -11,6 +11,8 @@ class pageLoader {
       $this->goToPage("?page=home");
     }
 
+    unset($_SESSION["loginAttempt"]);
+
     if (!isset($_SESSION["pages"])) {
       $_SESSION["pages"] = array("errors");
     }

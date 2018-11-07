@@ -9,7 +9,6 @@
     private $defaultHost = "localhost";
 
     public function newConnectionPre($uid) {
-      echo $this->users[$uid]["databas"];
       return $this->newConnectionCred($this->users[$uid]["username"], $this->users[$uid]["password"], $this->users[$uid]["databas"], $this->users[$uid]["host"]);
     }
 

@@ -6,26 +6,25 @@
 
   require 'php/load.php';
 
-  $enc = new encoder("databas");
+  $enc = new encoder("private");
   $connect =  new connect();
 
   $connection = $connect->newConnectionPre("CreateAdminAccount");
 
-  $username = "test";
-  $password = "test";
+  $uid = "boppe";
+  $pwd = "test";
   $email = "emil00.sandberg@gmail.com";
 
+  $uid = $enc->revEncode($uid, "");
   $iv = $enc->generatIv();
-
+  $email = $enc->encode($email, $iv);
   $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-  $enc->encode($pwd, $iv);
-  $uid = $enc->revEncode($username, "");
 
-  /*$sth = $c->prepare("INSERT INTO `accounts`(`uid`, `pwd`, `email`, `iv`) VALUES (:u,:p,:e,:i)");
+  $sth = $connection->prepare("INSERT INTO `accounts`(`username`, `password`, `iv`,`email`) VALUES (:u,:p,:i,:e)");
   $sth->bindParam(':u', $uid);
   $sth->bindParam(':p', $pwd);
-  $sth->bindParam(':e', $email);
   $sth->bindParam(':i', $iv);
-  $sth->execute();*/
+  $sth->bindParam(':e', $email);
+  $sth->execute();
 
 ?>
