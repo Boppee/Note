@@ -7,7 +7,7 @@
 
   require_once '../../../php/class/encode.php';
   require_once '../../../php/class/connect.php';
-  //require_once '../../../php/class/email.php'; // FIXME:
+  require_once '../../../php/class/email.php'; 
   require_once '../../../php/class/vars.php';
 
   $login = new login($pwd, $uid, $salt);
