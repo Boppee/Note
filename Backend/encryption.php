@@ -1,4 +1,7 @@
 <?php
+//NOT IN USE!!!! USING PHP/CLASS/ENCODE.php
+
+//generats a IV as a hex
 function gIv($size){
   $iv_size = $size;
   return bin2hex(openssl_random_pseudo_bytes($iv_size, $strong));

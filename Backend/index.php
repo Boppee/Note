@@ -4,6 +4,7 @@
 
   include 'php/load.php';
   include 'script/load.php';
+  //loading and controlling page
   $loader = new pageLoader();
   $loader->setCompanyName("Notes Clothing")
 
@@ -23,6 +24,7 @@
   </head>
   <body>
     <?php
+    //include the ?page
       require_once 'pages/page/'.$loader->page.'.php';
       require_once 'pages/pageparts/footer.php';
     ?>

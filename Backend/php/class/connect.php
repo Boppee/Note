@@ -7,10 +7,6 @@
     );
     private $defaultHost = "localhost";
 
-    function __construct(){
-
-    }
-
     public function newConnectionPre($uid) {
       return $this->newConnectionCred($this->users[$uid]["username"], $this->users[$uid]["password"], $this->users[$uid]["databas"], $this->users[$uid]["host"]);
     }

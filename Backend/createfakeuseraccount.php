@@ -1,5 +1,7 @@
 <?php
 
+  //JUST FOR TESTING
+
   session_start();
 
   require 'php/load.php';
