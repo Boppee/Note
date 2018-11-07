@@ -3,6 +3,7 @@
     //template => 'User1' => array('username' => 'test', 'password' => 'test', 'databas ' => 'test', 'host' => 'localhost')// This is a test user for (databas)->(table)
     private $users = array(
       'CreateAdminAccount' => array('username' => 'CreateAdminAccount', 'password' => 'bJKgBYXF5UUzKFIf', 'databas ' => 'admin', 'host' => 'localhost'), //can only insert to admin->accounts
+      'FetchFromAccounts' => array('username' => 'FetchFromAccounts', 'password' => 'M3P3e2MGmDpMTl3S', 'databas ' => 'admin', 'host' => 'localhost'),
     );
     private $defaultHost = "localhost";
 
