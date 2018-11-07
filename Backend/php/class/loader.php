@@ -3,11 +3,8 @@ require 'encode.php';
 class pageLoader {
 
   public $page;
-  public $companyName;
-  public $reCaptchaSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   function __construct(){
-
     //check so you are on a page
     $this->page = $_REQUEST["page"];
     if (!isset($this->page)) {

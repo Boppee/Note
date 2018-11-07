@@ -1,6 +1,9 @@
 <?php
-require 'encode.php';
-require 'connect.php';
+require_once 'encode.php';
+require_once 'connect.php';
+require_once 'email.php';
+require_once 'vars.php';
+
 class login {
 
   private $password;
@@ -54,7 +57,7 @@ class login {
     $this->iv = $iv;
   }
   public function grabuserData(){
-    
+
     $this->connection->newConnectionPre("FetchFromAccounts");
 
     $sth = $this->connection->prepare("SELECT * FROM `accounts` WHERE `uid` = :uid");
@@ -63,7 +66,17 @@ class login {
     return $sth->fetch(PDO::FETCH_LAZY);
   }
   public function sendVerifyEmail(){
+    $company = new company();
+    $mail->Subject = "Email verification from ".$company->companyName;
+    $mail->AddAddress($this->email);
 
+    $this->emailCode = uniqid(mt_rand(), true);
+
+    $_SESSION["emailCode"] = $this->enc->encode($this->emailCode, $this->iv);
+
+    $mail->Body = $this->emailCode;
+
+    $mail->Send();
   }
 }
 ?>

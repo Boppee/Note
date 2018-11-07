@@ -4,8 +4,9 @@
     private $users = array(
       'CreateAdminAccount' => array('username' => 'CreateAdminAccount', 'password' => 'bJKgBYXF5UUzKFIf', 'databas ' => 'admin', 'host' => 'localhost'), //can only insert to admin->accounts
       'FetchFromAccounts' => array('username' => 'FetchFromAccounts', 'password' => 'M3P3e2MGmDpMTl3S', 'databas ' => 'admin', 'host' => 'localhost'),
+      'CompanyDataBas' => array('username' => 'CompanyDataBas', 'password' => 'M3P3e2MGmDpMTl3S', 'databas ' => 'company', 'host' => 'localhost'),
     );
-    
+
     private $defaultHost = "localhost";
 
     public function newConnectionPre($uid) {

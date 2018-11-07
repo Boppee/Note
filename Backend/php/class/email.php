@@ -18,8 +18,6 @@ $mail->IsHTML(true);
 $mail->Username = "webutvecklingemail@gmail.com";
 $mail->Password = "Emil7670";
 $mail->SetFrom("webutvecklingemail@gmail.com");
-$mail->Subject = "test";
-$mail->AddAddress("emil00.sandberg@gmail.com");
-$mail->Body = "test";
-$mail->Send();
+
+
  ?>

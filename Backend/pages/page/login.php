@@ -12,7 +12,7 @@
       <p>Sign in</p>
       <div id="centerlogin">
         <form id="capatcha">
-          <div class="g-recaptcha" data-sitekey="<?php echo $loader->reCaptchaSiteKey; ?>" data-callback="sendRecaptcha"></div>
+          <div class="g-recaptcha" data-sitekey="<?php echo $company->reCaptchaSiteKey; ?>" data-callback="sendRecaptcha"></div>
         </form>
         <form id="login">
           <input type="text" id="uid" class="borderinput" placeholder="Username">
@@ -33,7 +33,7 @@
       </div>
     <div id="imgdiv">
       <h1>
-        Welcome to <?php echo $loader->companyName; ?>
+        Welcome to <?php echo $company->companyName; ?>
       </h1>
     </div>
   </div>

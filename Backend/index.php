@@ -6,7 +6,7 @@
   include 'script/load.php';
   //loading and controlling page
   $loader = new pageLoader();
-  $loader->setCompanyName("Notes Clothing")
+  $company = new company();
 
 ?>
 <!DOCTYPE html>
