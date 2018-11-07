@@ -29,7 +29,12 @@ class login {
       $this->setEmail($email);
 
       $this->sendVerifyEmail();
-      $_SESSION["loginAttempt"] = array('username' => $uid, 'password' => $pwd, 'time' => date(), 'salt' => uniqid(mt_rand(), true));
+      $_SESSION["loginAttempt"] = array(
+        'username' => $uid,
+        'password' => $pwd,
+        'time' => date(),
+        'salt' => uniqid(mt_rand(), true)
+      );
 
     }
   }
