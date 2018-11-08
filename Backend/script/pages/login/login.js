@@ -38,7 +38,7 @@ $(document).ready(function () {
 
             $("#email").submit(function (e) {
 
-              var code = $("code").val();
+              var code = $("#code").val();
 
               $.ajax({
                 type: "POST",

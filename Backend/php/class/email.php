@@ -9,6 +9,8 @@ require 'PHPMailer/src/SMTP.php';
 
 class vEmail extends company{
 
+  private $send;
+
   function __construct($email){
     $mail = new PHPMailer();
     $mail->IsSMTP(); // enable SMTP
@@ -26,11 +28,15 @@ class vEmail extends company{
 
     $mail->Subject  = 'Email verification from '.$this->companyName;
 
-    $send = generateRandomString(10);
+    $this->send = generateRandomString(10);
 
-    $mail->Body = $send;
+    $mail->Body = $this->send;
 
     $mail->send();
+  }
+
+  public function getCode() {
+    return $this->send;
   }
 
 }

@@ -27,12 +27,17 @@
             $email = $enc->decode($userData["email"], $userData["iv"]);
             $vEmail = new vEmail($email);
 
+            $sEmail = $enc->encode($vEmail->getCode(), $_SESSION["iv"]);
+
             $echosalt = uniqid(mt_rand(), true);
+
+            $sessionSalt = $enc->encode($echosalt, $_SESSION["iv"]);
 
             $_SESSION["loginAttempt"] = array(
               'username' => $uid,
               'password' => $pwd,
-              'salt' => $echosalt
+              'salt' => $sessionSalt,
+              'sessionCode' => $sEmail
             );
 
             $echoArray = array('salt' => $echosalt, 'status' => 'pass');
