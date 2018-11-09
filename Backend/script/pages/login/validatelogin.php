@@ -14,7 +14,7 @@
   $salt = strip_tags($salt);
   $pwd = strip_tags($pwd);
 
-  if (in_array($_SESSION["perms"]["perms"], "login")) {
+  if (in_array("login", $_SESSION["perms"]["perms"])) {
     if (!isset($_SESSION["signedIn"])) {
       if (isset($pwd) && isset($salt) && isset($uid)) {
         if ($_SESSION["logincaptcha"]) {
@@ -32,18 +32,16 @@
 
                 $sEmail = $enc->encode($vEmail->getCode(), $_SESSION["iv"]);
 
-                $echosalt = uniqid(mt_rand(), true);
-
-                $sessionSalt = $enc->encode($echosalt, $_SESSION["iv"]);
+                $Ssalt = uniqid(mt_rand(), true);
 
                 $_SESSION["loginAttempt"] = array(
                   'username' => $uid,
                   'password' => $pwd,
-                  'salt' => $sessionSalt,
+                  'salt' => $Ssalt,
                   'sessionCode' => $sEmail
                 );
 
-                $echoArray = array('salt' => $echosalt, 'status' => 'pass');
+                $echoArray = array('salt' => $Ssalt, 'status' => 'pass');
                 unset($_SESSION["logincaptcha"]);
                 echo json_encode($echoArray);
 
@@ -65,5 +63,7 @@
     }else {
       goToPage("?page=dashboard");
     }
+  }else {
+    echo "fuck off bot fgt";
   }
 ?>

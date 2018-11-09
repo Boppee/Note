@@ -7,7 +7,7 @@
 
   $userData = grabUserData($_SESSION["loginAttempt"]["username"]);
 
-  $sessionSalt = $enc->decode($_SESSION["loginAttempt"]["salt"], $_SESSION["iv"]);
+  $sessionSalt = $_SESSION["loginAttempt"]["salt"];
   $postSalt = $_POST["salt"];
 
   $sessionCode = $enc->decode($_SESSION["loginAttempt"]["sessionCode"], $_SESSION["iv"]);
