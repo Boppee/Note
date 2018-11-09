@@ -32,16 +32,14 @@ class pageLoader {
 
     unset($_SESSION["loginAttempt"]);
     unset($_SESSION["logincaptcha"]);
+    
+    print_r($_SESSION);
 
   }
   //http_redirect
   public function goToPage($url){
     header('Location: '.$url);
     exit;
-  }
-
-  public function salt(){
-    $_SESSION["salt"] = uniqid(mt_rand(), true);
   }
 }
 ?>

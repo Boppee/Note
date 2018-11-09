@@ -4,16 +4,16 @@
   require_once '../../../php/load.php';
 
   $enc = new encoder("private");
+  $salt = new salt();
 
   $userData = grabUserData($_SESSION["loginAttempt"]["username"]);
 
-  $sessionSalt = $_SESSION["loginAttempt"]["salt"];
   $postSalt = $_POST["salt"];
 
   $sessionCode = $enc->decode($_SESSION["loginAttempt"]["sessionCode"], $_SESSION["iv"]);
   $postCode = strip_tags($_POST["code"]);
 
-  if ($sessionSalt == $postSalt) {
+  if ($salt->verifySalt("returnLoginSalt", $postSalt)) {
     if ($sessionCode == $postCode) {
 
       $enc->setKey("public");
