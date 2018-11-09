@@ -16,11 +16,24 @@
   if ($sessionSalt == $postSalt) {
     if ($sessionCode == $postCode) {
 
+      $enc->setKey("public");
+
       $credArray = array(
-        'uid' => $_SESSION["loginAttempt"]["username"],
-        'pwd' => $_SESSION["loginAttempt"]["password"],
+        'uid' => $enc->encode($_SESSION["loginAttempt"]["username"], $_SESSION["iv"]),
+        'pwd' => $enc->encode($_SESSION["loginAttempt"]["password"], $_SESSION["iv"])
       );
-      // FIXME: need to add pages and perms
+
+      $perms = array(
+        'pages' => json_decode($userData["pages"]),
+        'perms' => json_decode($userData["perms"])
+      );
+
+      unset($_SESSION["loginAttempt"]);
+      unset($_SESSION["perms"]);
+
+      $_SESSION["signedIn"] = true;
+      $_SESSION["cred"] = $credArray;
+      $_SESSION["perms"] = $perms;
 
     }else {
       echo "wrong code";

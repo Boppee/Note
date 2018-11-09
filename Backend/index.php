@@ -24,7 +24,6 @@
   </head>
   <body>
     <?php
-    print_r($_SESSION);
     //include the ?page
       require_once 'pages/page/'.$loader->page.'.php';
       require_once 'pages/pageparts/footer.php';

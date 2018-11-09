@@ -6,11 +6,11 @@ class pageLoader {
   private $enc;
 
   function __construct(){
-    //session_destroy();
+    session_destroy();
 
      $this->enc = new encoder("public");
      if (!isset($_SESSION["iv"])) {
-       $this->enc->generatIv();
+       //$_SESSION["iv"] = $this->enc->generatIv();
      }
 
     //check so you are on a page
@@ -19,7 +19,21 @@ class pageLoader {
       $this->goToPage("?page=login");
     }
 
+    if (!isset($_SESSION["signedIn"])) {
+      $_SESSION["perms"]["pages"] = array("login", "cookies", "errors");
+      $_SESSION["perms"]["perms"] = array("login");
+      if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
+        $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
+      }
+    }else if (isset($_SESSION["signedIn"])){
+      if (!in_array($this->page, $_SESSION)) {
+        $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
+      }
+    }
+
     unset($_SESSION["loginAttempt"]);
+
+    print_r($_SESSION);
 
   }
   //http_redirect
