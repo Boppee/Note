@@ -21,7 +21,7 @@ class pageLoader {
     }
 
     if (!isset($_SESSION["signedIn"])) {
-      $_SESSION["perms"]["pages"] = array("login", "cookies", "errors");
+      $_SESSION["perms"]["pages"] = array("login", "cookies");
       $_SESSION["perms"]["perms"] = array("login");
       if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
         $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);

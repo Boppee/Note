@@ -25,8 +25,8 @@
   <body>
     <?php
     //include the ?page
-      require_once 'pages/page/'.$loader->page.'.php';
-      require_once 'pages/pageparts/footer.php';
+    require_once 'pages/page/'.$loader->page.'.php';
+    require_once 'pages/pageparts/footer.php';
     ?>
   </body>
 </html>
