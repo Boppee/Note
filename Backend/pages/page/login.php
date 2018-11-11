@@ -26,7 +26,7 @@ $salt = new salt();
           <input type="password" id="code" value="" placeholder="Email verification">
           <input type="submit" name="" value="Sign in" id="sumbitcode">
         </form>
-        <input type="password" id="salt" value="<?php $saltName = "login"; echo $salt->generatSalt($saltName);?>" hidden>
+        <input type="hidden" id="salt" value="<?php $saltName = "login"; echo $salt->generatSalt($saltName);?>">
       </div>
       </div>
     <div id="imgdiv">

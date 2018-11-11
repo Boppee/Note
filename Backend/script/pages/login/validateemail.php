@@ -13,7 +13,7 @@
   $sessionCode = $enc->decode($_SESSION["loginAttempt"]["sessionCode"], $_SESSION["iv"]);
   $postCode = strip_tags($_POST["code"]);
 
-  if ($salt->verifySalt("returnLoginSalt", $postSalt)) {
+  if ($salt->verifySalts("returnLoginSalt", $postSalt)) {
     if ($sessionCode == $postCode) {
 
       $enc->setKey("public");

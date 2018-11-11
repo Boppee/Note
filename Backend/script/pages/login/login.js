@@ -54,6 +54,8 @@ $(document).ready(function () {
 
               e.preventDefault();
             });
+          }else if (result.errors == 1){
+            changeSalt(result.salt);
           }
 
         }
@@ -62,3 +64,6 @@ $(document).ready(function () {
     e.preventDefault();
   });
 });
+function changeSalt(salt) {
+  $("#salt").val(salt);
+}
