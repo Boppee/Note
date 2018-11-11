@@ -1,9 +1,8 @@
 <?php
-
-$credArray = array('test' => 1, 'test'=>'appa');
-$_SESSION["signedIn"] = true;
-
-$_SESSION["cred"] = $credArray;
-
-print_r($_SESSION);
+session_start();
+echo json_encode($_SESSION["perms"]["pages"]);
 ?>
+<script type="text/javascript">
+  
+  console.log(test);
+</script>

@@ -5,5 +5,6 @@ require_once 'class/connect.php';
 require_once 'class/encode.php';
 require_once 'class/vars.php';
 require_once 'class/email.php';
+require_once 'class/salt.php';
 require 'functions.php';
 ?>

@@ -1,3 +1,6 @@
+<?php
+$salt = new salt();
+?>
 <script type="text/javascript">
   $(document).ready(function () {
     $("footer").css("position", "fixed");
@@ -23,7 +26,7 @@
           <input type="password" id="code" value="" placeholder="Email verification">
           <input type="submit" name="" value="Sign in" id="sumbitcode">
         </form>
-        <input type="password" id="salt" value="<?php $loader->salt();echo $_SESSION["salt"];?>" hidden>
+        <input type="password" id="salt" value="<?php $saltName = "login"; echo $salt->generatSalt($saltName);?>" hidden>
       </div>
       </div>
     <div id="imgdiv">

@@ -4,6 +4,7 @@
 
   session_start();
   require_once '../../../php/load.php';
+  $salt = new salt();
 
   //grabing userinputs
   $uid = $_POST["uid"];
@@ -18,7 +19,7 @@
     if (!isset($_SESSION["signedIn"])) {
       if (isset($pwd) && isset($salt) && isset($uid)) {
         if ($_SESSION["logincaptcha"]) {
-          if ($salt == $_SESSION["salt"]) {
+          if ($salt->verifySalt("login", $salt)) {
 
             $enc = new encoder("private");
 
@@ -32,16 +33,13 @@
 
                 $sEmail = $enc->encode($vEmail->getCode(), $_SESSION["iv"]);
 
-                $Ssalt = uniqid(mt_rand(), true);
-
                 $_SESSION["loginAttempt"] = array(
                   'username' => $uid,
                   'password' => $pwd,
-                  'salt' => $Ssalt,
                   'sessionCode' => $sEmail
                 );
 
-                $echoArray = array('salt' => $Ssalt, 'status' => 'pass');
+                $echoArray = array('salt' => $salt->generatSalt("returnLoginSalt"), 'status' => 'pass');
                 unset($_SESSION["logincaptcha"]);
                 echo json_encode($echoArray);
 
