@@ -27,7 +27,7 @@
 
       $mail->Subject  = 'Email verification from '.$this->companyName;
 
-      $this->send = generateRandomString(10);
+      $this->send = "test";//generateRandomString(10);
 
       $mail->Body = $this->send;
 

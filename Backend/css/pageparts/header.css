@@ -10,7 +10,6 @@ header{
   margin: auto;
 }
 #headLogo{
-  line-height: 50px;
   width: 140px;
 }
 header nav{
@@ -21,7 +20,6 @@ header nav ul{
   padding: 0;
   list-style: none;
   display: flex;
-  line-height: 50px;
 }
 header nav ul li{
   list-style: none;
@@ -32,4 +30,13 @@ header a{
 }
 .active{
   text-decoration: underline;
+}
+#settings i, #headLogo, header nav ul{
+  line-height: 50px;
+}
+#settings{
+  display: flex;
+}
+#settings a{
+  padding: 0px 5px;
 }

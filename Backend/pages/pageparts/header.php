@@ -1,18 +1,12 @@
 <script type="text/javascript">
   var pageArray = <?php echo json_encode($_SESSION["perms"]["pages"]); ?>;
-  var navListLenght = 100/pageArray.length;
+  var dontShowArray = ["logout","account","settings"];
+  var navListLenght = 100/(pageArray.length-dontShowArray.length);
 
   pageArray.forEach(function (value, index) {
     $(document).ready(function () {
-      if (value == "logout") {
-        var text = "log out";
+      if (dontShowArray.indexOf(value) == -1) {
         $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+ capitalizeFirstLetter(value) +"</a></li>");
-      }else {
-        if (value == "<?php echo $loader->page; ?>") {
-          $("#navItems").append("<li id='nav"+value+"' class='navItem active'><a href='?page="+value+"'>"+ capitalizeFirstLetter(value) +"</a></li>");
-        }else {
-          $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+ capitalizeFirstLetter(value) +"</a></li>");
-        }
       }
       var temp = "nav"+value;
       $("#"+temp).width(navListLenght+"%");
@@ -38,6 +32,11 @@
 
       </ul>
     </nav>
+    <div id="settings">
+      <a href="?page=settings"><i class="fas fa-cog"></i></a>
+      <a href="?page=account"><i class="fas fa-user-alt"></i></a>
+      <a href="?page=logout"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
 
   </div>
 </header>
