@@ -20,17 +20,7 @@ class pageLoader {
       $this->goToPage("?page=login");
     }
 
-    if (!isset($_SESSION["signedIn"])) {
-      $_SESSION["perms"]["pages"] = array("login", "cookies");
-      $_SESSION["perms"]["perms"] = array("login");
-      if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
-        $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
-      }
-    }else if (isset($_SESSION["signedIn"])){
-      if (!in_array($this->page, $_SESSION)) {
-        $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
-      }
-    }
+    //$this->pageControll();
 
     unset($_SESSION["loginAttempt"]);
     unset($_SESSION["logincaptcha"]);
@@ -42,6 +32,19 @@ class pageLoader {
   public function goToPage($url){
     header('Location: '.$url);
     exit;
+  }
+  public function pageControll(){
+    if (!isset($_SESSION["signedIn"])) {
+      $_SESSION["perms"]["pages"] = array("login", "cookies", "test", "bajs", "kuk", "whaapz");
+      $_SESSION["perms"]["perms"] = array("login");
+      if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
+        $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
+      }
+    }else if (isset($_SESSION["signedIn"])){
+      if (!in_array($this->page, $_SESSION)) {
+        $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
+      }
+    }
   }
 }
 ?>

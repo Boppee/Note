@@ -1,0 +1,27 @@
+header{
+  height: 50px;
+}
+#headContainer{
+  height: 100%;
+  display: flex;
+  width: 95%;
+  margin: auto;
+}
+#headLogo{
+  line-height: 50px;
+  width: 140px;
+}
+header nav{
+  width: calc(100% - 140px);
+}
+header nav ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  line-height: 50px;
+}
+header nav ul li{
+  list-style: none;
+  text-align: center;
+}
