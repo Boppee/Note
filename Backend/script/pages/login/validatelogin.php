@@ -7,16 +7,10 @@
 
   $salt = new salt();
 
-  //grabing userinputs
-  $uid = $_POST["uid"];
-  $postSalt = $_POST["salt"];
-  $pwd = $_POST["pwd"];
   //check if value are set
-  $uid = strip_tags($uid);
-  $postSalt = strip_tags($postSalt);
-  $pwd = strip_tags($pwd);
-
-  $errorArray = array("errors" => 1);
+  $uid = strip_tags($_POST["uid"]);
+  $postSalt = strip_tags($_POST["salt"]);
+  $pwd = strip_tags($_POST["pwd"]);
 
   if (in_array("login", $_SESSION["perms"]["perms"])) {
     if (!isset($_SESSION["signedIn"])) {
@@ -46,32 +40,29 @@
                   unset($_SESSION["logincaptcha"]);
                   echo json_encode($echoArray);
                 }else {
-                  $errorArray["error"] = "inactive user";
+                  $errors = array("inactive user");
                 }
               }else {
-                $errorArray["error"] = "password or username";
+                $errors = array("password or username");
               }
             }else {
-              $errorArray["error"] = "password or username";
+              $errors = array("password or username");
             }
           }else {
-            $errorArray["error"] = "salt error";
+            $errors = array("salt error");
           }
         }else {
-          $errorArray["error"] = "captcha error";
+          $errors = array("captcha error");
         }
       }else {
-        $errorArray["error"] = "missing inputs";
+        $errors = array("missing inputs");
       }
     }else {
       goToPage("?page=dashboard");
     }
-  }else {
-    echo "fuck off bot fgt";
   }
-  if (count($errorArray) > 1) {
-    $returnSalt = $salt->generatSalt("login");
-    $errorArray["salt"] = $returnSalt;
+  if (isset($errors)) {
+    $errorArray["salt"] = $salt->generatSalt("login");
     echo json_encode($errorArray);
   }
 ?>
