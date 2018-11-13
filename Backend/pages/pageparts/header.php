@@ -6,9 +6,13 @@
     $(document).ready(function () {
       if (value == "logout") {
         var text = "log out";
-        $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+text+"</a></li>");
+        $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+ capitalizeFirstLetter(value) +"</a></li>");
       }else {
-        $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+value+"</a></li>");
+        if (value == "<?php echo $loader->page; ?>") {
+          $("#navItems").append("<li id='nav"+value+"' class='navItem active'><a href='?page="+value+"'>"+ capitalizeFirstLetter(value) +"</a></li>");
+        }else {
+          $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+ capitalizeFirstLetter(value) +"</a></li>");
+        }
       }
       var temp = "nav"+value;
       $("#"+temp).width(navListLenght+"%");
@@ -17,6 +21,10 @@
 
   var link = "?page="+pageArray[0];
   $("#logoLink").attr("href", link);
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 </script>
 <header>
   <div id="headContainer">

@@ -51,7 +51,6 @@ $(document).ready(function () {
                   code: code
                 },
                 success: function(result){
-                  console.log(result);
                   if (result.status == "pass") {
                     window.location.href = "?page="+result.page;
                   }else if (result[0] == "error") {
