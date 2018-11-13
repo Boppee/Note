@@ -33,22 +33,30 @@ $(document).ready(function () {
 
           if (result.status == "pass") {
 
+            changeSalt(result.salt);
+
             $("#login").hide();
             $("#email").css("display", "grid");
 
             $("#email").submit(function (e) {
 
               var code = $("#code").val();
+              var salt = $("#salt").val();
 
               $.ajax({
                 type: "POST",
                 url: "script/pages/login/validateemail.php",
                 data: {
-                  salt: result.salt,
+                  salt: salt,
                   code: code
                 },
-                succes: function(result ){
-
+                success: function(result){
+                  console.log(result);
+                  if (result.status == "pass") {
+                    window.location.href = "?page="+result.page;
+                  }else if (result[0] == "error") {
+                    changeSalt(result[2]);
+                  }
                 }
               });
 

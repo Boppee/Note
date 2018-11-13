@@ -4,7 +4,12 @@
 
   pageArray.forEach(function (value, index) {
     $(document).ready(function () {
-      $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+value+"</a></li>");
+      if (value == "logout") {
+        var text = "log out";
+        $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+text+"</a></li>");
+      }else {
+        $("#navItems").append("<li id='nav"+value+"' class='navItem'><a href='?page="+value+"'>"+value+"</a></li>");
+      }
       var temp = "nav"+value;
       $("#"+temp).width(navListLenght+"%");
     });

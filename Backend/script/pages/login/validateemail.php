@@ -1,4 +1,7 @@
 <?php
+
+  header('Content-type: application/json');
+
   session_start();
 
   require_once '../../../php/load.php';
@@ -24,8 +27,8 @@
       );
 
       $perms = array(
-        'pages' => json_decode($userData["pages"]),
-        'perms' => json_decode($userData["perms"])
+        'pages' => json_decode($userData["json_page"]),
+        'perms' => json_decode($userData["json_perms"])
       );
 
       unset($_SESSION["loginAttempt"]);
@@ -35,10 +38,18 @@
       $_SESSION["cred"] = $credArray;
       $_SESSION["perms"] = $perms;
 
+      $echoArray = array('status' => "pass", 'page' => $perms["pages"][0]);
+
+      echo json_encode($echoArray);
+
     }else {
-      echo "wrong code";
+      $errors = array("wrong code");
     }
   }else {
-    echo "salt";
+    $errors = array("salt");
+  }
+  if (isset($errors)) {
+    $echoArray = array("error",$errors, $salt->generatSalt("returnLoginSalt"));
+    echo json_encode($echoArray);
   }
 ?>

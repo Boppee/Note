@@ -20,7 +20,7 @@ class pageLoader {
       $this->goToPage("?page=login");
     }
 
-    //$this->pageControll();
+    $this->pageControll();
 
     unset($_SESSION["loginAttempt"]);
     unset($_SESSION["logincaptcha"]);
@@ -35,13 +35,14 @@ class pageLoader {
   }
   public function pageControll(){
     if (!isset($_SESSION["signedIn"])) {
-      $_SESSION["perms"]["pages"] = array("login", "cookies", "test", "bajs", "kuk", "whaapz");
+      $_SESSION["perms"]["pages"] = array("login", "cookies");
       $_SESSION["perms"]["perms"] = array("login");
       if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
         $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
       }
     }else if (isset($_SESSION["signedIn"])){
-      if (!in_array($this->page, $_SESSION)) {
+      if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
+        echo "test";
         $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
       }
     }
