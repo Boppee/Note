@@ -4,10 +4,12 @@ class pageLoader {
 
   public $page;
   private $enc;
+  private $session;
 
   function __construct(){
 
     //session_destroy();
+    print_r($_SESSION);
 
      $this->enc = new encoder("public");
      if (!isset($_SESSION["iv"])) {
@@ -47,7 +49,14 @@ class pageLoader {
       if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
         $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
       }
-
+    }
+  }
+  public function controllSession(){
+    if (isset($_SESSION["signedIn"])) {
+      $session = new session();
+      if (!$session->verify()) {
+        $this->goToPage("?page=logout");
+      }
     }
   }
 

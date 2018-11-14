@@ -53,15 +53,15 @@ $(document).ready(function () {
                 success: function(result){
                   if (result.status == "pass") {
                     window.location.href = "?page="+result.page;
-                  }else if (result[0] == "error") {
-                    changeSalt(result[2]);
+                  }else if (result.error) {
+                    changeSalt(result.salt);
                   }
                 }
               });
 
               e.preventDefault();
             });
-          }else if (result.errors == 1){
+          }else if (result.error){
             changeSalt(result.salt);
           }
 

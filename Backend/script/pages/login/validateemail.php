@@ -43,13 +43,13 @@
       echo json_encode($echoArray);
 
     }else {
-      $errors = array("wrong code");
+      $errors["error"] = "wrong code";
     }
   }else {
     $errors = array("salt");
   }
   if (isset($errors)) {
-    $echoArray = array("error",$errors, $salt->generatSalt("returnLoginSalt"));
-    echo json_encode($echoArray);
+    $errors["salt"] = $salt->generatSalt("returnLoginSalt");
+    echo json_encode($errors);
   }
 ?>

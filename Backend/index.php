@@ -25,9 +25,18 @@
   </head>
   <body>
     <?php
-    //include the ?page
-    require_once 'pages/page/'.$loader->page.'.php';
-    require_once 'pages/pageparts/footer.php';
+
+      if ($loader->page == "logout") {
+        require_once 'pages/inc/logout.php';
+      }elseif (!isset($_SESSION["signedIn"])) {
+          require_once 'pages/page/'.$loader->page.'.php';
+      }else {
+        require 'pages/controllpanel/'.$loader->page.'.php';
+      }
+
+      require_once 'pages/pageparts/footer.php';
+
+      $loader->controllSession();
     ?>
   </body>
 </html>

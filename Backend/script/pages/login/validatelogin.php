@@ -40,29 +40,29 @@
                   unset($_SESSION["logincaptcha"]);
                   echo json_encode($echoArray);
                 }else {
-                  $errors = array("inactive user");
+                  $errors["error"] = "inactive user";
                 }
               }else {
-                $errors = array("password or username");
+                $errors["error"] = "password or username";
               }
             }else {
-              $errors = array("password or username");
+              $errors["error"] = "password or username";
             }
           }else {
-            $errors = array("salt error");
+            $errors["error"] = "salt error";
           }
         }else {
-          $errors = array("captcha error");
+          $errors["error"] = "captcha error";
         }
       }else {
-        $errors = array("missing inputs");
+        $errors["error"] = "missing inputs";
       }
     }else {
       goToPage("?page=dashboard");
     }
   }
   if (isset($errors)) {
-    $errorArray["salt"] = $salt->generatSalt("login");
-    echo json_encode($errorArray);
+    $errors["salt"] = $salt->generatSalt("login");
+    echo json_encode($errors);
   }
 ?>

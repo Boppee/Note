@@ -11,8 +11,8 @@
 
   $connection = $connect->newConnectionPre("CreateAdminAccount");
 
-  $uid = "boppe";
-  $pwd = "test";
+  $uid = "sa";
+  $pwd = "sa";
   $email = "emil00.sandberg@gmail.com";
 
   $uid = $enc->revEncode($uid, "");
