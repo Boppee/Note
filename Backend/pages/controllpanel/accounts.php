@@ -1,4 +1,3 @@
-<script src="../../jquery.js" charset="utf-8"></script>
 <script src="script/pages/accounts/displayaccounts.js" charset="utf-8"></script>
 <main>
   <form id="accountFilter">
@@ -15,7 +14,6 @@
   </form>
   <table>
     <thead>
-      <th>ID</th>
       <th>Active</th>
       <th>Username</th>
       <th>Last Logon</th>
