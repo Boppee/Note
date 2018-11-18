@@ -18,16 +18,29 @@ $(document).ready(function () {
         result.forEach(function (value, index) {
           $("#accountab").append("<tr class='accountRow' id='"+value.username+"'>");
           if (value.active == 1) {
-            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input class='"+value.username+" activeInput' value="+value.username+" type='checkbox' checked></td>");
+            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input id='"+value.username+"Input' class='"+value.username+" activeInput' value="+value.username+" type='checkbox' checked></td>");
           }else {
-            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input class='"+value.username+" activeInput' value="+value.username+" type='checkbox'></td>");
+            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input id='"+value.username+"Input' class='"+value.username+" activeInput' value="+value.username+" type='checkbox'></td>");
           }
           $("#"+value.username).append("<td class='"+value.username+" username'>"+value.username+"</td>");
 
         });
 
         $(".activeInput").change(function (event) {
-          console.log(event.target.value);
+          var index = "active";
+          var user = "";
+          $.ajax({
+              type: "POST",
+              url: "script/pages/accounts/updateaccount.php",
+              data: {
+                value: value,
+                index: index,
+                user: user
+              },
+              success: function(result) {
+
+              }
+          });
         });
       }
   });

@@ -49,6 +49,8 @@ class pageLoader {
       if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
         $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
       }
+
+      updateLogon($this->enc->decode($_SESSION["cred"]["uid"],$_SESSION["iv"]));
     }
   }
   public function controllSession(){
