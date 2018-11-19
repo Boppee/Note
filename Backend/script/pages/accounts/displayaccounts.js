@@ -9,38 +9,28 @@ $(document).ready(function () {
     }
   }
 
-  var test = $("#numberofAcoounts").val();
+  var limit = $("#numberofAcoounts").val();
+  var offset = "test";
   $.ajax({
-      type: "GET",
+      type: "POST",
       url: "script/pages/accounts/fetchAccounts.php",
-      data: test,
+      data: {limit: limit, offset: offset},
       success: function(result) {
-        result.forEach(function (value, index) {
+        result.accounts.forEach(function (value, index) {
           $("#accountab").append("<tr class='accountRow' id='"+value.username+"'>");
           if (value.active == 1) {
-            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input id='"+value.username+"Input' class='"+value.username+" activeInput' value="+value.username+" type='checkbox' checked></td>");
+            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input class='"+value.username+" activeInput' value="+value.username+" type='checkbox' checked></td>");
           }else {
-            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input id='"+value.username+"Input' class='"+value.username+" activeInput' value="+value.username+" type='checkbox'></td>");
+            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input class='"+value.username+" activeInput' value="+value.username+" type='checkbox'></td>");
           }
           $("#"+value.username).append("<td class='"+value.username+" username'>"+value.username+"</td>");
+          $("#"+value.username).append("<td class='"+value.username+" lastlogon'>"+value.lastlogon+"</td>");
+          $("#"+value.username).append("<td class='"+value.username+" pages'>"+value.json_page+"</td>");
+          $("#"+value.username).append("<td class='"+value.username+" permission'>"+value.json_perms+"</td>");
 
         });
-
-        $(".activeInput").change(function (event) {
-          var index = "active";
-          var user = "";
-          $.ajax({
-              type: "POST",
-              url: "script/pages/accounts/updateaccount.php",
-              data: {
-                value: value,
-                index: index,
-                user: user
-              },
-              success: function(result) {
-
-              }
-          });
+        $('tr').click(function (event) {
+             window.location.replace("?page=accounts&id="+$(this).attr('id'));
         });
       }
   });
