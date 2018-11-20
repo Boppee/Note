@@ -31,6 +31,7 @@
       }elseif (!isset($_SESSION["signedIn"])) {
           require_once 'pages/page/'.$loader->page.'.php';
       }else {
+        require_once 'pages/pageparts/header.php';
         require 'pages/controllpanel/'.$loader->page.'.php';
       }
 

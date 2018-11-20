@@ -6,8 +6,8 @@
 
   if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
-    $limit = $_POST["limit"];
-    $offset = $_POST["offset"];
+    $limit = "10";//$_POST["limit"];
+    $offset = "0";//$_POST["offset"];
 
     $session = new session();
 
@@ -20,8 +20,8 @@
         $connect = new connect();
         $connection = $connect->newConnectionPre("FetchFromAccounts");
 
-        $sth = $connection->prepare("SELECT `active`, `username`, `img`, `lastlogon`, `json_page`, `json_perms` FROM `accounts` LIMIT :accountlimit");
-        $sth->bindParam(':accountlimit', $limit, PDO::PARAM_INT);
+        $sth = $connection->prepare("SELECT `active`, `username`, `lastlogon`, `json_page`, `json_perms` FROM `accounts`");
+        //$sth->bindParam(':accountlimit', $limit, PDO::PARAM_INT);
         $sth->execute();
 
         $test["accounts"] = $sth->fetchAll(PDO::FETCH_ASSOC);

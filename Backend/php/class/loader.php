@@ -9,7 +9,7 @@ class pageLoader {
   function __construct(){
 
     //session_destroy();
-    print_r($_SESSION);
+    //print_r($_SESSION);
 
      $this->enc = new encoder("public");
      if (!isset($_SESSION["iv"])) {
