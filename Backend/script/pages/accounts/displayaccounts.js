@@ -15,8 +15,7 @@ $(document).ready(function () {
       success: function(result) {
         result.forEach(function (value, index) {
           $(document).ready(function () {
-            $("#accountab").append("<tr class='accountRow' id='"+value.username+"'>");
-            $("#"+value.id).append("<td class='accountId'>"+value.id+"</td>");
+            
           });
         });
       }
