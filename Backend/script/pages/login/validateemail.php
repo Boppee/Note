@@ -31,6 +31,8 @@
         'perms' => json_decode($userData["json_perms"])
       );
 
+      updateLogon($_SESSION["loginAttempt"]["username"]);
+
       unset($_SESSION["loginAttempt"]);
       unset($_SESSION["perms"]);
 
