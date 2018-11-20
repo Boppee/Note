@@ -16,6 +16,10 @@
       if (!isset($host)) {
         $host = $this->defaultHost;
       }
+      $uid = "root";
+      $pwd = "root";
+      $databas = "admin";
+      $host = "localhost";
       if (isset($uid) && isset($pwd) && isset($databas)) {
         try {
           $dbh = new PDO('mysql:host='.$host.';dbname='.$databas,$uid,$pwd);
