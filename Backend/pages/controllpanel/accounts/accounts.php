@@ -15,7 +15,6 @@
     </form>
     <table>
       <thead>
-        "dashboard", "settings", "logout", "myaccount", "accounts","orders","statistics","products","categories"
         <th>Active</th>
         <th>Username</th>
         <th>Last Logon</th>

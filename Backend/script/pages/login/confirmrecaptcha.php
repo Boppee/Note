@@ -4,7 +4,7 @@
 
   $privateKey = "6LcxQXIUAAAAAFyS69TQkWljRnY2myS-26Y7fjIZ";
 
-  $captcha = $_POST["key"];
+  $captcha = strip_tags($_POST["key"]);
   //send request to google
   $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$privateKey."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']), true);
   //check response

@@ -6,8 +6,8 @@
 
   if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
-    $limit = "10";//$_POST["limit"];
-    $offset = "0";//$_POST["offset"];
+    $limit = "10";//strip_tags($_POST["limit"]);
+    $offset = "0";//strip_tags($_POST["offset"]);
 
     $session = new session();
 

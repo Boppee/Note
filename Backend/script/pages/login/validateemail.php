@@ -11,7 +11,7 @@
 
   $userData = grabUserData($_SESSION["loginAttempt"]["username"]);
 
-  $postSalt = $_POST["salt"];
+  $postSalt = strip_tags($_POST["salt"]);
 
   $sessionCode = $enc->decode($_SESSION["loginAttempt"]["sessionCode"], $_SESSION["iv"]);
   $postCode = strip_tags($_POST["code"]);
