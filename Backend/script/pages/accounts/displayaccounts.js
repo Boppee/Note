@@ -44,7 +44,9 @@ $(document).ready(function () {
           }
 
           $('tr').click(function (event) {
-              window.location.replace("?page=accounts&id="+$(this).attr('id'));
+            if (typeof $(this).attr('id') !== 'undefined') {
+              window.location.href = "?page=accounts&id="+$(this).attr('id');
+            }
           });
         });
       }

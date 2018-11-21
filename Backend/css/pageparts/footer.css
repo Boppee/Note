@@ -10,6 +10,7 @@ footer{
 #socials{
   height: 100%;
   float: right;
+  width: 50px !important;
 }
 #socials img{
   height: 100%;
