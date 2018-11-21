@@ -19,15 +19,13 @@
         <th>Active</th>
         <th>Username</th>
         <th>Last Logon</th>
+
         <th>dashboard</th>
-        <th>settings</th>
-        <th>logout</th>
-        <th>myaccount</th>
         <th>accounts</th>
         <th>orders</th>
-        <th>statistics</th>
         <th>products</th>
         <th>categories</th>
+        <th>statistics</th>
       </thead>
       <tbody id="accountab">
 

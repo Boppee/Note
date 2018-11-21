@@ -16,26 +16,32 @@ $(document).ready(function () {
       data: test,
       success: function(result) {
         $(document).ready(function () {
-          result.accounts.forEach(function (value, index) {
+          console.log(result);
+          for (var i = 0; i < result.accounts.length; i++) {
+            var value = result.accounts[i];
 
             $("#accountab").append("<tr class='accountRow' id='"+value.username+"'>");
-            if (value.active == 1) {
-              $("#"+value.username).append("<td class='"+value.username+" activeTd'><input class='"+value.username+" activeInput' value="+value.username+" type='checkbox' checked></td>");
-            }else {
-              $("#"+value.username).append("<td class='"+value.username+" activeTd'><input class='"+value.username+" activeInput' value="+value.username+" type='checkbox'></td>");
+
+            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input id='test' class='"+value.username+" activeInput' type='checkbox'></td>");
+
+            if (value.active == "1") {
+              $("."+value.username+" input").attr("checked", "true");
             }
+
             $("#"+value.username).append("<td class='"+value.username+" username'>"+value.username+"</td>");
             $("#"+value.username).append("<td class='"+value.username+" lastlogon'>"+value.lastlogon+"</td>");
+          }
+          var orderArray = ["dashboard", "accounts", "orders", "products", "categories", "statistics"];
 
-            var pages = ["dashboard", "settings", "logout", "myaccount", "accounts","orders","statistics","products","categories"];
-            for (var i = 0; i < pages.length; i++) {
-              if (pages.indexOf(value.json_page[i]) < 0) {
-                $("#"+value.username).append("<td class='"+value.username+" pages'><input type='checkbox'></td>");
-              }else {
-                $("#"+value.username).append("<td class='"+value.username+" pages'><input type='checkbox' checked></td>");
-              }
+          for (var i = 0; i < orderArray.length; i++) {
+            $("#"+value.username).append("<td class='"+value.username+" pages'><input class='"+value.username+" pageinput' value='"+value.username+orderArray[i]+"' type='checkbox'></td>");
+          }
+
+          for (var t = 0; t < value.json_page.length; t++) {
+            if (orderArray.indexOf(value.json_page[t]) >= 0) {
+              $("input[value='"+value.username+orderArray[orderArray.indexOf(value.json_page[t])]+"']").attr("checked", "true");
             }
-          });
+          }
 
           $('tr').click(function (event) {
               window.location.replace("?page=accounts&id="+$(this).attr('id'));

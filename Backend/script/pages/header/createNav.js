@@ -4,7 +4,8 @@ $(document).ready(function () {
       url: "script/pages/header/echoArray.php",
       success: function(result) {
 
-        var pageArray = result;
+        var pageArray = result.pages;
+        var page = result.page;
         var dontShowArray = ["","settings","logout","myaccount"];
         var navListLenght = (pageArray.length-dontShowArray.length);
 
@@ -23,6 +24,9 @@ $(document).ready(function () {
           }
           var temp = "nav"+pageArray[i];
           $("#"+temp).width(navListLenght+"%");
+          if (pageArray[i] == page) {
+            $("#nav"+pageArray[i]).addClass("active");
+          }
         }
 
 

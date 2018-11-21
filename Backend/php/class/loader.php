@@ -52,6 +52,7 @@ class pageLoader {
 
       updateLogon($this->enc->decode($_SESSION["cred"]["uid"],$_SESSION["iv"]));
     }
+    $_SESSION["page"] = $this->page;
   }
   public function controllSession(){
     if (isset($_SESSION["signedIn"])) {
