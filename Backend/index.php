@@ -3,10 +3,10 @@
   session_start();
 
   include 'php/load.php';
-  include 'script/load.php';
   //loading and controlling page
   $loader = new pageLoader();
   $company = new company();
+  include 'script/load.php';
 
 ?>
 <!DOCTYPE html>

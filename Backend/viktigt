@@ -1,0 +1,12 @@
+PAGE ordningen är viktig!
+0: "dashboard",
+1: "settings",
+2: "logout",
+3: "myaccount"
+
+Ordning sen
+4: "accounts"
+5: "orders"
+6: "statistics"
+7: "products"
+8: "categories"
