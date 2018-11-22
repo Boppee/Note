@@ -6,8 +6,8 @@
 
   if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
-    $limit = "10";//strip_tags($_POST["limit"]);
-    $offset = "0";//strip_tags($_POST["offset"]);
+    $limit = "1";//strip_tags($_POST["limit"]);
+    $offset = strip_tags($_POST["offset"]);
 
     $session = new session();
 
@@ -20,8 +20,9 @@
         $connect = new connect();
         $connection = $connect->newConnectionPre("FetchFromAccounts");
 
-        $sth = $connection->prepare("SELECT `active`, `username`, `lastlogon`, `json_page`, `json_perms` FROM `accounts`");
-        //$sth->bindParam(':accountlimit', $limit, PDO::PARAM_INT);
+        $sth = $connection->prepare("SELECT `active`, `username`, `lastlogon`, `json_page`, `json_perms` FROM `accounts` LIMIT :accountlimit OFFSET :offsetInt");
+        $sth->bindParam(':accountlimit', $limit, PDO::PARAM_INT);
+        $sth->bindParam(':offsetInt', $offset, PDO::PARAM_INT);
         $sth->execute();
 
         $test["accounts"] = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -31,11 +32,7 @@
           $test["accounts"][$key]["json_page"] = json_decode($value["json_page"]);
           $test["accounts"][$key]["json_perms"] = json_decode($value["json_perms"]);
         }
-        $sth = $connection->prepare("SELECT COUNT(1) as total FROM accounts");
-        $sth->execute();
 
-        $test["rows"] = $sth->fetchAll(PDO::FETCH_ASSOC);
-        $test["rows"] = $test["rows"][0];
         echo json_encode($test);
 
       }

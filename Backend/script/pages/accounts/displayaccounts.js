@@ -8,47 +8,57 @@ $(document).ready(function () {
       $("#numberofAcoounts").append("<option value='"+number+"'>"+number+"</option>");
     }
   }
-
-  var test = $("#numberofAcoounts").val();
   $.ajax({
-      type: "GET",
-      url: "script/pages/accounts/fetchAccounts.php",
-      data: test,
-      success: function(result) {
-        $(document).ready(function () {
-          console.log(result);
-          for (var i = 0; i < result.accounts.length; i++) {
-            var value = result.accounts[i];
+    type: "GET",
+    url: "script/pages/accounts/numberofAcoounts.php",
+    success: function (number) {
+      var perPage = $("#numberofAcoounts").val();
+      var accounts = number.total;
+      var pages = Math.ceil(account/perPage);
 
-            $("#accountab").append("<tr class='accountRow' id='"+value.username+"'>");
+      $("#accountTF").append("")
+    }
+  })
 
-            $("#"+value.username).append("<td class='"+value.username+" activeTd'><input id='test' class='"+value.username+" activeInput' type='checkbox'></td>");
+  for (var i = 0; i < 1; i++) {
+    $.ajax({
+        type: "POST",
+        url: "script/pages/accounts/fetchAccounts.php",
+        success: function(result) {
+          $(document).ready(function () {
+            for (var i = 0; i < result.accounts.length; i++) {
+              var value = result.accounts[i];
 
-            if (value.active == "1") {
-              $("."+value.username+" input").attr("checked", "true");
+              $("#accountab").append("<tr class='accountRow' id='"+value.username+"'>");
+
+              $("#"+value.username).append("<td class='"+value.username+" activeTd'><input id='test' class='"+value.username+" activeInput' type='checkbox'></td>");
+
+              if (value.active == "1") {
+                $("."+value.username+" input").attr("checked", "true");
+              }
+
+              $("#"+value.username).append("<td class='"+value.username+" username'>"+value.username+"</td>");
+              $("#"+value.username).append("<td class='"+value.username+" lastlogon'>"+value.lastlogon+"</td>");
+            }
+            var orderArray = ["dashboard", "accounts", "orders", "products", "categories", "statistics"];
+
+            for (var i = 0; i < orderArray.length; i++) {
+              $("#"+value.username).append("<td class='"+value.username+" pages'><input class='"+value.username+" pageinput' value='"+value.username+orderArray[i]+"' type='checkbox'></td>");
             }
 
-            $("#"+value.username).append("<td class='"+value.username+" username'>"+value.username+"</td>");
-            $("#"+value.username).append("<td class='"+value.username+" lastlogon'>"+value.lastlogon+"</td>");
-          }
-          var orderArray = ["dashboard", "accounts", "orders", "products", "categories", "statistics"];
-
-          for (var i = 0; i < orderArray.length; i++) {
-            $("#"+value.username).append("<td class='"+value.username+" pages'><input class='"+value.username+" pageinput' value='"+value.username+orderArray[i]+"' type='checkbox'></td>");
-          }
-
-          for (var t = 0; t < value.json_page.length; t++) {
-            if (orderArray.indexOf(value.json_page[t]) >= 0) {
-              $("input[value='"+value.username+orderArray[orderArray.indexOf(value.json_page[t])]+"']").attr("checked", "true");
+            for (var t = 0; t < value.json_page.length; t++) {
+              if (orderArray.indexOf(value.json_page[t]) >= 0) {
+                $("input[value='"+value.username+orderArray[orderArray.indexOf(value.json_page[t])]+"']").attr("checked", "true");
+              }
             }
-          }
 
-          $('tr').click(function (event) {
-            if (typeof $(this).attr('id') !== 'undefined') {
-              window.location.href = "?page=accounts&id="+$(this).attr('id');
-            }
+            $('tr').click(function (event) {
+              if (typeof $(this).attr('id') !== 'undefined') {
+                window.location.href = "?page=accounts&id="+$(this).attr('id');
+              }
+            });
           });
-        });
-      }
-  });
+        }
+    });
+  }
 });
