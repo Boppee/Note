@@ -24,6 +24,21 @@ class session {
       return true;
     }
   }
+  public function setTimeOut($function){
+    $_SESSION["allow"][$function]["time"] = date('Y-m-d H:i:s', strtotime($stop_date . ' +5 minutes'));
+    $_SESSION["allow"][$function] = $function;
+  }
+  public function validateTimeOut($function){
+    if (isset($_SESSION["allow"][$function])) {
+      if ($_SESSION["allow"][$function]["time"] > date('Y-m-d H:i:s')) {
+        return true;
+      }else {
+        return false;
+      }
+    }else {
+      return false;
+    }
+  }
 }
 
 ?>

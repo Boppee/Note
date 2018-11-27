@@ -29,9 +29,10 @@
       <tbody id="accountab">
 
       </tbody>
-      <tfoot id="accountTF">
-        <td id="prevpage">Prev Page</td>
-        <td id="nextpage">Next page</td>
+      <tfoot>
+        <tr id="accountTF">
+
+        </tr>
       </tfoot>
     </table>
   </div>
