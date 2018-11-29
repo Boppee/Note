@@ -1,0 +1,25 @@
+#footeraccount{
+  position: relative;
+  height: 35px;
+}
+#centertext{
+  position: absolute;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+#footeraccount p{
+  padding: 0;
+  margin: 0;
+  line-height: 35px;
+}
+#rightbutton{
+  float: right;
+}
+#leftbutton{
+  float: left;
+}
+.buttonaccounts{
+  z-index: 1;
+}

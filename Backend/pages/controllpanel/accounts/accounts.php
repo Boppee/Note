@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/page/accounts.css">
 <script src="script/pages/accounts/displayaccounts.js" charset="utf-8"></script>
 <main>
   <div class="inner">
@@ -25,15 +26,22 @@
         <th>products</th>
         <th>categories</th>
         <th>statistics</th>
+        <th>Go to Profile</th>
       </thead>
       <tbody id="accountab">
-
+        
       </tbody>
-      <tfoot>
-        <tr id="accountTF">
-
-        </tr>
-      </tfoot>
     </table>
+    <div id="footeraccount">
+      <div id="leftbutton" class="buttonaccounts">
+        <p id="prevpage"><i class="fas fa-angle-left"></i> Previous page</p>
+      </div>
+      <div id="centertext">
+
+      </div>
+      <div id="rightbutton" class="buttonaccounts">
+        <p id="nextpage">Next Page <i class="fas fa-angle-right"></i></p>
+      </div>
+    </div>
   </div>
 </main>

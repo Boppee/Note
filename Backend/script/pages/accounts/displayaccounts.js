@@ -10,7 +10,7 @@ $.ajax({
     var pages;
 
     // generats selector
-    for (var i = 1; i <= 8; i++) {
+    for (var i = 1; i <= 10; i++) {
       var number = i*5;
       if (number == 20) {
         $("#numberofAcoounts").append("<option selected value='"+number+"'>"+number+"</option>");
@@ -21,15 +21,28 @@ $.ajax({
 
     $("#numberofAcoounts").change(function (e) {
       accountsPerPage = $("#numberofAcoounts").val();
-      pages = Math.ceil(this.accounts/this.perPage);
+      pages = Math.ceil(accounts/accountsPerPage);
+      generatTable(accountsPerPage, page, accounts, pages);
     });
 
     accountsPerPage = $("#numberofAcoounts").val();
-    pages = Math.ceil(this.accounts/this.perPage);
+    pages = Math.ceil(accounts/accountsPerPage);
 
-    generatTable(accountsPerPage, page, accounts);
+    $(".buttonaccounts").click(function (event) {
+      if (event.target.id == "nextpage") {
+        page++;
+      }else {
+        page--;
+      }
+      generatTable(accountsPerPage, page, accounts, pages);
+    });
 
-    function generatTable(accountsPerPage, page, accounts) {
+    generatTable(accountsPerPage, page, accounts, pages);
+
+
+
+    function generatTable(accountsPerPage, page, accounts, pages) {
+      destroyTable();
       var startingPoint = (page-1)*accountsPerPage;
       var endPoint =  ((page-1)*accountsPerPage)+accountsPerPage;
       for (var i = startingPoint; i < endPoint; i++) {
@@ -43,20 +56,20 @@ $.ajax({
                 var value = accountData.accounts[0];
                 console.log(value);
 
-                $("#accountab").append("<tr class='accountRow' id='"+value.username+"'>");
-                $("#"+value.username).append("<td class='"+value.username+" activeTd'><input id='test' class='"+value.username+" activeInput' type='checkbox'></td>");
+                $("#accountab").append("<tr class='accountRow' id='account"+value.username+"'>");
+                $("#account"+value.username).append("<td class='"+value.username+" activeTd'><input id='test' class='"+value.username+" activeInput' type='checkbox'></td>");
 
                 if (value.active == "1") {
                   $("."+value.username+" input").attr("checked", "true");
                 }
 
-                $("#"+value.username).append("<td class='"+value.username+" username'>"+value.username+"</td>");
-                $("#"+value.username).append("<td class='"+value.username+" lastlogon'>"+value.lastlogon+"</td>");
+                $("#account"+value.username).append("<td class='"+value.username+" username'>"+value.username+"</td>");
+                $("#account"+value.username).append("<td class='"+value.username+" lastlogon'>"+value.lastlogon+"</td>");
 
                 var orderArray = ["dashboard", "accounts", "orders", "products", "categories", "statistics"];
 
                 for (var i = 0; i < orderArray.length; i++) {
-                  $("#"+value.username).append("<td class='"+value.username+" pages'><input class='"+value.username+" pageinput' value='"+value.username+orderArray[i]+"' type='checkbox'></td>");
+                  $("#account"+value.username).append("<td class='"+value.username+" pages'><input class='"+value.username+" pageinput' value='"+value.username+orderArray[i]+"' type='checkbox'></td>");
                 }
 
                 for (var t = 0; t < value.json_page.length; t++) {
@@ -64,20 +77,42 @@ $.ajax({
                     $("input[value='"+value.username+orderArray[orderArray.indexOf(value.json_page[t])]+"']").attr("checked", "true");
                   }
                 }
+                $("input").prop("disabled", true);
 
-                $('#accountab tr').click(function (event) {
-                  if (typeof $(this).attr('id') !== 'undefined') {
-                    window.location.href = "?page=accounts&id="+$(this).attr('id');
-                  }
-                });
+                $("#account"+value.username).append("<td class='"+value.username+" gotoprofile'><a href='?page=accounts&id="+value.username+"'>Profile</a></td>");
+
               });
             }
           });
+          pagearrows(page, pages);
         }
       }
     }
+
     function destroyTable() {
       $(".accountRow").remove();
+    }
+
+    function pagearrows(page, pages) {
+      $("#pages").remove();
+      $("#centertext").append("<p id='pages'>Page: "+page+" out of "+pages);
+      if (pages == 1) {
+        $(".buttonaccounts").hide();
+      }else {
+        $(".buttonaccounts").show();
+      }
+
+      if (page == 1) {
+        $("#leftbutton").hide();
+      }else {
+        $("#leftbutton").show();
+      }
+
+      if (pages == page) {
+        $("#rightbutton").hide();
+      }else {
+        $("#rightbutton").show();
+      }
     }
 
   }

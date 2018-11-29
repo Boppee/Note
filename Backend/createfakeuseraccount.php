@@ -11,7 +11,7 @@
 
   $connection = $connect->newConnectionPre("CreateAdminAccount");
 
-  $uid = "ITS SPACE?";
+  $uid = "noob";
   $pwd = "kuk";
   $email = "emil00.sandberg@gmail.com";
 
