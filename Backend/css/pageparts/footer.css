@@ -2,6 +2,7 @@ footer{
   height: 50px;
   width: 100%;
   margin: auto;
+  bottom: 0;
 }
 #copyright{
   line-height: 50px;

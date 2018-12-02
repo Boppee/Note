@@ -39,8 +39,6 @@ $.ajax({
 
     generatTable(accountsPerPage, page, accounts, pages);
 
-
-
     function generatTable(accountsPerPage, page, accounts, pages) {
       destroyTable();
       var startingPoint = (page-1)*accountsPerPage;
@@ -54,7 +52,6 @@ $.ajax({
             success: function (accountData) {
               $(document).ready(function () {
                 var value = accountData.accounts[0];
-                console.log(value);
 
                 $("#accountab").append("<tr class='accountRow' id='account"+value.username+"'>");
                 $("#account"+value.username).append("<td class='"+value.username+" activeTd'><input id='test' class='"+value.username+" activeInput' type='checkbox'></td>");
@@ -77,7 +74,7 @@ $.ajax({
                     $("input[value='"+value.username+orderArray[orderArray.indexOf(value.json_page[t])]+"']").attr("checked", "true");
                   }
                 }
-                $("input").prop("disabled", true);
+                $("#accountab input").prop("disabled", true);
 
                 $("#account"+value.username).append("<td class='"+value.username+" gotoprofile'><a href='?page=accounts&id="+value.username+"'>Profile</a></td>");
 

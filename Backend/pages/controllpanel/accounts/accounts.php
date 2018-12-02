@@ -3,13 +3,6 @@
 <main>
   <div class="inner">
     <form id="accountFilter">
-      <input type="text" id="searchbar" placeholder="Search">
-      <input type="checkbox" name="" value="">
-      <div id="permissions">
-        <input type="checkbox" name="" value="">
-        <input type="checkbox" name="" value="">
-        <input type="checkbox" name="" value="">
-      </div>
       <select id="numberofAcoounts">
 
       </select>
@@ -29,7 +22,7 @@
         <th>Go to Profile</th>
       </thead>
       <tbody id="accountab">
-        
+
       </tbody>
     </table>
     <div id="footeraccount">

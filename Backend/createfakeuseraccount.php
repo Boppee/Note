@@ -1,47 +1,47 @@
 <?php
+session_start();
 
-  //JUST FOR TESTING
+require 'php/load.php';
 
-  session_start();
+$enc = new encoder("private");
+$connect =  new connect();
 
-  require 'php/load.php';
+$connection = $connect->newConnectionPre("CreateAdminAccount");
+  for ($i=0; $i < 100; $i++) {
 
-  $enc = new encoder("private");
-  $connect =  new connect();
+      $uid = $i;
+      $pwd = "kuk";
+      $email = "emil00.sandberg@gmail.com";
 
-  $connection = $connect->newConnectionPre("CreateAdminAccount");
+      $uid = $enc->revEncode($uid, "");
+      $iv = $enc->generatIv();
+      $email = $enc->encode($email, $iv);
+      $pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-  $uid = "noob";
-  $pwd = "kuk";
-  $email = "emil00.sandberg@gmail.com";
+      $pages = array("dashboard", "settings", "logout", "myaccount","accounts","products","statistics", "order");
+      $perms = array("logout");
 
-  $uid = $enc->revEncode($uid, "");
-  $iv = $enc->generatIv();
-  $email = $enc->encode($email, $iv);
-  $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+      $pages = json_encode($pages);
+      $perms = json_encode($perms);
 
-  $pages = array("dashboard", "settings", "logout", "myaccount","accounts","products","statistics", "order");
-  $perms = array("logout");
+      echo $uid;
+      echo "<br>";
+      echo $pwd;
+      echo "<br>";
+      echo $iv;
+      echo "<br>";
+      echo $email;
+      echo "<br>";
 
-  $pages = json_encode($pages);
-  $perms = json_encode($perms);
-
-  echo $uid;
-  echo "<br>";
-  echo $pwd;
-  echo "<br>";
-  echo $iv;
-  echo "<br>";
-  echo $email;
-  echo "<br>";
-
-  $sth = $connection->prepare("INSERT INTO `accounts` (`username`, `password`, `iv`,`email`, `json_page`, `json_perms`) VALUES (:u,:p,:i,:e,:page,:perms)");
-  $sth->bindParam(':u', $uid);
-  $sth->bindParam(':p', $pwd);
-  $sth->bindParam(':i', $iv);
-  $sth->bindParam(':e', $email);
-  $sth->bindParam(':page', $pages);
-  $sth->bindParam(':perms', $perms);
-  $sth->execute();
+      $sth = $connection->prepare("INSERT INTO `accounts` (`username`, `password`, `iv`,`email`, `json_page`, `json_perms`) VALUES (:u,:p,:i,:e,:page,:perms)");
+      $sth->bindParam(':u', $uid);
+      $sth->bindParam(':p', $pwd);
+      $sth->bindParam(':i', $iv);
+      $sth->bindParam(':e', $email);
+      $sth->bindParam(':page', $pages);
+      $sth->bindParam(':perms', $perms);
+      $sth->execute();
+  }
+  //JUST FOR TESTIN
 
 ?>

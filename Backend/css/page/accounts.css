@@ -23,3 +23,9 @@
 .buttonaccounts{
   z-index: 1;
 }
+main{
+  margin-top: 20px;
+}
+main .inner{
+  padding: 20px;
+}

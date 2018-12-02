@@ -13,8 +13,6 @@
 <html lang="en" dir="ltr">
   <head>
 
-    <script src="jquery.js" charset="utf-8"></script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,21 +21,24 @@
 
     <title><?php echo $company->companyName." - ".ucfirst($loader->page); ?></title>
   </head>
+  <?php require 'script/load.php'; ?>
   <body>
-    <?php
+    <div class="totalhight">
+      <?php
+        if ($loader->page == "logout") {
+          require_once 'pages/inc/logout.php';
+        }elseif (!isset($_SESSION["signedIn"])) {
+            require_once 'pages/page/'.$loader->page.'.php';
+        }else {
+          require_once 'pages/pageparts/header.php';
+          require 'pages/controllpanel/'.$loader->page.'.php';
+        }
+      ?>
+    </div>
+      <?php
+        require_once 'pages/pageparts/footer.php';
 
-      if ($loader->page == "logout") {
-        require_once 'pages/inc/logout.php';
-      }elseif (!isset($_SESSION["signedIn"])) {
-          require_once 'pages/page/'.$loader->page.'.php';
-      }else {
-        require_once 'pages/pageparts/header.php';
-        require 'pages/controllpanel/'.$loader->page.'.php';
-      }
-
-      require_once 'pages/pageparts/footer.php';
-
-      $loader->controllSession();
-    ?>
+        $loader->controllSession();
+      ?>
   </body>
 </html>
