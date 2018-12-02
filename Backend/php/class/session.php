@@ -26,7 +26,7 @@ class session {
   }
   public function setTimeOut($function){
     $_SESSION["allow"][$function]["time"] = date('Y-m-d H:i:s', strtotime($stop_date . ' +5 minutes'));
-    $_SESSION["allow"][$function] = $function;
+    $_SESSION["allow"][$function];
   }
   public function validateTimeOut($function){
     if (isset($_SESSION["allow"][$function])) {

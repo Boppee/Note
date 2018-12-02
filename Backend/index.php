@@ -37,7 +37,6 @@
     </div>
       <?php
         require_once 'pages/pageparts/footer.php';
-
         $loader->controllSession();
       ?>
   </body>

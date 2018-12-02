@@ -10,6 +10,5 @@ $(document).ready(function () {
     }else {
       $("footer").css("position", "fixed");
     }
-    console.log("test");
   }
 });

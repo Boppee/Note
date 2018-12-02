@@ -27,13 +27,13 @@
     </table>
     <div id="footeraccount">
       <div id="leftbutton" class="buttonaccounts">
-        <p id="prevpage"><i class="fas fa-angle-left"></i> Previous page</p>
+        <button id="prevpage"><i class="fas fa-angle-left"></i> Previous page</button>
       </div>
       <div id="centertext">
 
       </div>
       <div id="rightbutton" class="buttonaccounts">
-        <p id="nextpage">Next Page <i class="fas fa-angle-right"></i></p>
+        <button id="nextpage">Next Page <i class="fas fa-angle-right"></i></button>
       </div>
     </div>
   </div>
