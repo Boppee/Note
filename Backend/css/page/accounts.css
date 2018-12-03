@@ -33,3 +33,6 @@ main .inner{
 .buttonaccounts button{
   height: 100%;
 }
+.accountRow{
+  display: none;
+}

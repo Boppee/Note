@@ -6,29 +6,27 @@
 
   if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
-    $offset = strip_tags($_POST["offset"]);
+    $limit = strip_tags($_POST["limit"]);
 
     $session = new session();
     if ($session->validateTimeOut("manageAccounts")) {
-      echoAccount($offset);
+      echoAccount($limit);
     }elseif ($session->verify()) {
       if ($session->checkPrem("manageAccounts")) {
-        echoAccount($offset);
+        echoAccount($offset, $limit);
         $session->setTimeOut("manageAccounts");
       }
     }
   }
-  function echoAccount($offset){
-    $limit = "1";
+  function echoAccount($limit){
     $salt = new salt();
     $enc = new encoder("rev");
 
     $connect = new connect();
     $connection = $connect->newConnectionPre("FetchFromAccounts");
 
-    $sth = $connection->prepare("SELECT `active`, `username`, `lastlogon`, `json_page`, `json_perms` FROM `accounts` LIMIT :accountlimit OFFSET :offsetInt");
+    $sth = $connection->prepare("SELECT `active`, `username`, `lastlogon`, `json_page`, `json_perms` FROM `accounts` LIMIT :accountlimit");
     $sth->bindParam(':accountlimit', $limit, PDO::PARAM_INT);
-    $sth->bindParam(':offsetInt', $offset, PDO::PARAM_INT);
     $sth->execute();
 
     $test["accounts"] = $sth->fetchAll(PDO::FETCH_ASSOC);
