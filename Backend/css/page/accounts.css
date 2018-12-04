@@ -2,7 +2,7 @@
   display: none;
 }
 .accountRow td{
-  padding: 5px 0px;
+  padding: 5px;
 }
 #accountab tr:nth-child(odd){
   background-color: #ffa500;
@@ -63,7 +63,7 @@ main .inner{
   border: 1px solid #f6a613;
   border-radius: 5px;
 }
-.buttonaccounts button, #accountab td, #accounthead th, #centertext p, #accountab a{
+.buttonaccounts button, #accountab td, #accounthead th, #centertext p, #accountab a, #searchTable{
   color: white;
 }
 #tablepadder{
@@ -92,4 +92,12 @@ main .inner{
   background: #6c6c6c;
   box-shadow: 0px -6px 5px;
   padding-bottom: 5px !important;
+}
+#searchTable::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+#deleteuser, #edituser{
+  float: right;
+  margin-top: -10;
 }

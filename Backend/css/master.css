@@ -31,3 +31,6 @@ p{
 .overflowscroll{
   overflow-x: scroll;
 }
+.overflowscroll::-webkit-scrollbar {
+display: none;
+}
