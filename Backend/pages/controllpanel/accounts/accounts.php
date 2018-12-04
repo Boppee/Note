@@ -20,18 +20,20 @@
       </div>
     </div>
     <table id="accountTable">
-      <thead>
-        <th>Active</th>
-        <th>Username</th>
-        <th>Last Logon</th>
+      <thead id="accounthead">
+        <tr>
+          <th>Active</th>
+          <th>Username</th>
+          <th>Last Logon</th>
 
-        <th>dashboard</th>
-        <th>accounts</th>
-        <th>orders</th>
-        <th>products</th>
-        <th>categories</th>
-        <th>statistics</th>
-        <th>Go to Profile</th>
+          <th>dashboard</th>
+          <th>accounts</th>
+          <th>orders</th>
+          <th>products</th>
+          <th>categories</th>
+          <th>statistics</th>
+          <th>Go to Profile</th>
+        </tr>
       </thead>
       <tbody id="accountab">
 

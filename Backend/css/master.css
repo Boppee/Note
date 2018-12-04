@@ -16,3 +16,6 @@ a{
 .totalhight{
   margin-bottom: 50px;
 }
+table{
+  border-collapse: collapse;
+}
