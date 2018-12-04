@@ -6,8 +6,20 @@
       <select id="numberofAcoounts">
 
       </select>
+      <input type="text" id="searchTable" placeholder="Serach by username">
     </form>
-    <table>
+    <div id="footeraccount">
+      <div id="leftbutton" class="buttonaccounts">
+        <button id="prevpage"><i class="fas fa-angle-left"></i> Previous page</button>
+      </div>
+      <div id="centertext">
+
+      </div>
+      <div id="rightbutton" class="buttonaccounts">
+        <button id="nextpage">Next Page <i class="fas fa-angle-right"></i></button>
+      </div>
+    </div>
+    <table id="accountTable">
       <thead>
         <th>Active</th>
         <th>Username</th>
@@ -25,16 +37,5 @@
 
       </tbody>
     </table>
-    <div id="footeraccount">
-      <div id="leftbutton" class="buttonaccounts">
-        <button id="prevpage"><i class="fas fa-angle-left"></i> Previous page</button>
-      </div>
-      <div id="centertext">
-
-      </div>
-      <div id="rightbutton" class="buttonaccounts">
-        <button id="nextpage">Next Page <i class="fas fa-angle-right"></i></button>
-      </div>
-    </div>
   </div>
 </main>

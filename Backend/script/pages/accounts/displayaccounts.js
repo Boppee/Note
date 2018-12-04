@@ -58,6 +58,7 @@ $.ajax({
     function pageArrows(page, pages) {
       $("#pages").remove();
       $("#centertext").append("<p id='pages'>Page: "+page+" out of "+pages);
+      $("#centertexttop").append("<p id='pages'>Page: "+page+" out of "+pages);
       if (pages == 1) {
         $(".buttonaccounts").hide();
       }else {
@@ -112,6 +113,18 @@ $.ajax({
       pages = parseInt(Math.ceil(accounts/accountPerPage));
       page = 1;
       showPage(page, accountPerPage, accounts, pages);
+    });
+
+    $(document).ready(function(){
+      $("#searchTable").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#accountTable tbody tr").filter(function() {
+          $(this).toggle($(this).find('.username').text().toLowerCase().indexOf(value) > -1);
+        });
+        if ($("#searchTable").val().length == 0) {
+          showPage(page, accountPerPage, accounts, pages);
+        }
+      });
     });
 
   }

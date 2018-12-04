@@ -1,6 +1,8 @@
 #footeraccount{
+  margin: 25px 0px;
   position: relative;
   height: 35px;
+  z-index: 1;
 }
 #centertext{
   position: absolute;
@@ -29,10 +31,17 @@ main{
 }
 main .inner{
   padding: 20px;
+  background: #f5f5f5;
 }
 .buttonaccounts button{
   height: 100%;
+  background: transparent;
+  border: none;
 }
 .accountRow{
   display: none;
+}
+#accountTable{
+  width: 100%;
+  text-align: center;
 }

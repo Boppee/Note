@@ -5,7 +5,7 @@ $(document).ready(function () {
     getFooterPos();
   });
 
-  /*var element = $(".totalhight");
+  var element = $(".totalhight");
   var lastHeight = $(".totalhight").css('height');
 
   checkForChanges();
@@ -18,7 +18,7 @@ $(document).ready(function () {
           lastHeight = element.css('height');
       }
       setTimeout(checkForChanges, 100);
-  }*/
+  }
 
   function getFooterPos() {
     if (document.body.scrollHeight > document.body.clientHeight) {

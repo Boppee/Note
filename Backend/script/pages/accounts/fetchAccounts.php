@@ -9,17 +9,11 @@
     $limit = strip_tags($_POST["limit"]);
 
     $session = new session();
-    if ($session->validateTimeOut("manageAccounts")) {
+    if ($session->checkPrem("manageAccounts")) {
       echoAccount($limit);
-    }elseif ($session->verify()) {
-      if ($session->checkPrem("manageAccounts")) {
-        echoAccount($offset, $limit);
-        $session->setTimeOut("manageAccounts");
-      }
     }
   }
   function echoAccount($limit){
-    $salt = new salt();
     $enc = new encoder("rev");
 
     $connect = new connect();
