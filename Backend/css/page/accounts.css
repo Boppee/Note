@@ -1,16 +1,29 @@
 .accountRow{
   display: none;
 }
+.accountRow td{
+  padding: 5px 0px;
+}
+#accountab tr:nth-child(odd){
+  background-color: #ffa500;
+}
+#accountab tr:nth-child(odd) td, #accountab tr:nth-child(odd) a{
+  color: black;
+}
+#accounthead th{
+  padding: 10px 0;
+}
 table{
   width: 100%;
   text-align: center;
+  border-collapse: collapse;
 }
 main .inner{
   padding-bottom: 15px;
   background: #6c6c6c;
   box-shadow: 0px 5px 10px #aaa
 }
-#accountFilter{
+#headerspace{
   margin: 0;
   padding: 20px 10px;
 }
@@ -62,7 +75,7 @@ main .inner{
 .accpp{
   margin-top: 10px;
 }
-.accpp, #tablepadder{
+.accpp, .search{
   padding: 0 10px;
 }
 #searchTable{
@@ -70,4 +83,8 @@ main .inner{
   font-size: 1.1em;
   background: transparent;
   border: none;
+}
+.headerbutton{
+  padding: 10px;
+  color: #ffa500;
 }

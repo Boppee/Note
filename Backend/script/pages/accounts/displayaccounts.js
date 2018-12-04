@@ -98,14 +98,24 @@ $.ajax({
       });
       pageArrows(page, pages);
     }
+    function oddEven() {
+      $(document).ready(function () {
+        $("#accountab tr:visible:odd").css("background-color", "#ffa500");
+        $("#accountab tr:visible:odd td, #accountab tr:visible:odd a").css("color", "black");
+        $("#accountab tr:visible:even td, #accountab tr:visible:even a").css("color", "white");
+        $("#accountab tr:visible:even").css("background-color", "transparent");
+      });
+    }
 
     $("#rightbutton").click(function () {
       page++;
       showPage(page, accountPerPage, accounts, pages);
+      oddEven();
     });
     $("#leftbutton").click(function () {
       page--;
       showPage(page, accountPerPage, accounts, pages);
+      oddEven();
     });
 
     $("#numberofAcoounts").change(function (e) {
@@ -113,19 +123,22 @@ $.ajax({
       pages = parseInt(Math.ceil(accounts/accountPerPage));
       page = 1;
       showPage(page, accountPerPage, accounts, pages);
+      oddEven();
     });
 
     $(document).ready(function(){
       $("#searchTable").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#accountTable tbody tr").filter(function() {
-          $(this).toggle($(this).find('.username').text().toLowerCase().indexOf(value) > -1);
-        });
         if ($("#searchTable").val().length == 0) {
           showPage(page, accountPerPage, accounts, pages);
+          oddEven();
+        }else {
+          var value = $(this).val().toLowerCase();
+          $("#accountTable tbody tr").filter(function() {
+            $(this).toggle($(this).find('.username').text().toLowerCase().indexOf(value) > -1);
+            oddEven();
+          });
         }
       });
     });
-
   }
 });

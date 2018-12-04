@@ -28,3 +28,6 @@ button{
 p{
   margin: 0;
 }
+.overflowscroll{
+  overflow-x: scroll;
+}

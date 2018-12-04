@@ -11,7 +11,6 @@ $(document).ready(function () {
   checkForChanges();
 
   function checkForChanges() {
-    console.log("test");
       if (element.css('height') != lastHeight)
       {
           getFooterPos();
