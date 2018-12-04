@@ -1,54 +1,73 @@
+.accountRow{
+  display: none;
+}
+table{
+  width: 100%;
+  text-align: center;
+}
+main .inner{
+  padding-bottom: 15px;
+  background: #6c6c6c;
+  box-shadow: 0px 5px 10px #aaa
+}
+#accountFilter{
+  margin: 0;
+  padding: 20px 10px;
+}
 #footeraccount{
   padding: 10px;
-  margin: 25px 0px;
+  background: #333333;
+}
+#footeraccount, #spacer{
+  height: 40px;
+}
+#spacer{
   position: relative;
-  height: 35px;
-  z-index: 1;
+  z-index: 2;
 }
 #centertext{
-  position: absolute;
   text-align: center;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
   z-index: -1;
-}
-#footeraccount p{
-  padding: 0;
-  margin: 0;
-  line-height: 35px;
-}
-#rightbutton{
-  float: right;
 }
 #leftbutton{
   float: left;
 }
-.buttonaccounts{
-  z-index: 1;
-  height: 100%;
+#rightbutton{
+  float: right;
 }
-main{
-  margin-top: 20px;
-}
-main .inner{
-  padding: 20px 0px;
-  background: #f5f5f5;
+#centertext p{
+  margin: 0;
+  line-height: 40px;
 }
 .buttonaccounts button{
   height: 100%;
+  padding: 0px 15px;
+  z-index: 1;
+  box-shadow: 0px 0px 5px black;
+  border: 1px solid #f6a613;
+  border-radius: 5px;
+}
+.buttonaccounts button, #accountab td, #accounthead th, #centertext p, #accountab a{
+  color: white;
+}
+#tablepadder{
+  padding: 10px 0;
+}
+.search{
+  margin-bottom: 10px;
+}
+.accpp{
+  margin-top: 10px;
+}
+.accpp, #tablepadder{
+  padding: 0 10px;
+}
+#searchTable{
+  padding: 5px;
+  font-size: 1.1em;
   background: transparent;
   border: none;
-}
-.accountRow{
-  display: none;
-}
-#accountTable{
-  width: 100%;
-  text-align: center;
-}
-#accounthead th {
-  padding: 10px 0px;
-}
-#accountFilter{
-  padding: 10px;
 }
