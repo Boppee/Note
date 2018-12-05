@@ -63,7 +63,7 @@ main .inner{
   border: 1px solid #f6a613;
   border-radius: 5px;
 }
-.buttonaccounts button, #accountab td, #accounthead th, #centertext p, #accountab a, #searchTable{
+.buttonaccounts button, #accountab td, #accounthead th, #centertext p, #accountab a, #searchTable, .accpp{
   color: white;
 }
 #tablepadder{

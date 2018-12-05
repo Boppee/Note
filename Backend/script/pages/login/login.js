@@ -30,17 +30,17 @@ $(document).ready(function () {
           salt: salt
         },
         beforeSend: function(){
-            $('#loadImg, #login').toggle();
+            $('#loadImg, #login, .loadImg').toggle();
         },
         complete: function(){
-            $('#loadImg').hide();
+            $('#loadImg, .loadImg').hide();
         },
         success: function(result) {
 
           if (result.status == "pass") {
 
             changeSalt(result.salt);
-            
+
             $("#email").css("display", "grid");
 
             $("#email").submit(function (e) {
