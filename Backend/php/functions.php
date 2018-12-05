@@ -2,7 +2,7 @@
   function grabUserData($uid){
     $connect = new connect();
 
-    $enc = new encoder("private");
+    $enc = new encoder("rev");
 
     $uid = $enc->revEncode($uid, "");
 

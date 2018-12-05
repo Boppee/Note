@@ -23,3 +23,4 @@ $(document).ready(function () {
   <input type='file' id="imgInput">
   <img id="accountImg" src="#" alt="your image">
 </form>
+<title><?php echo $company->companyName." - Create Account"; ?></title>

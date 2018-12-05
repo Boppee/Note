@@ -102,7 +102,7 @@ $.ajax({
       $(document).ready(function () {
         $("#accountab tr:visible:odd").css("background-color", "#ffa500");
         $("#accountab tr:visible:odd td, #accountab tr:visible:odd a").css("color", "black");
-        $("#accountab tr:visible:even td, #accountab tr:visible:even a").css("color", "white");
+        $("#accountab tr:visible:even td, #accountab tr:visible:even a").css("color", "#f5f5f5");
         $("#accountab tr:visible:even").css("background-color", "transparent");
       });
     }

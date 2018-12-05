@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="css/page/accounts.css">
 <main>
-  <div class="inner">
+  <div id="accountsInner">
     <div id="headerspace">
       <a class="headerbutton" href="?page=accounts&createuser"><i class="fas fa-plus"></i> Create Account</a>
       <a class="headerbutton" href="?page=accounts"><i class="fas fa-list-ol"></i> Account list</a>

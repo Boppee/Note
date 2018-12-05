@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <title><?php echo $company->companyName." - ".ucfirst($loader->page); ?></title>
   </head>
   <?php require 'script/load.php'; ?>
   <body>
@@ -40,4 +39,5 @@
         $loader->controllSession();
       ?>
   </body>
+  <title><?php echo $company->companyName." - ".ucfirst($loader->page); ?></title>
 </html>

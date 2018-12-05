@@ -11,7 +11,7 @@
 
       </ul>
     </nav>
-    <div id="settings">
+    <div id="setting">
       <a href="?page=settings" title="Settings"><i class="fas fa-cog"></i></a>
       <a href="?page=myaccount" title="Account"><i class="fas fa-user-alt"></i></a>
       <a href="?page=logout" title="Log out"><i class="fas fa-sign-out-alt"></i></a>

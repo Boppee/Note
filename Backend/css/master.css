@@ -2,6 +2,9 @@
 html,input{
   font-family: CaviarDreams;
 }
+* {
+  transition-duration: 1s;
+}
 body{
   padding: 0;
   margin: 0;
@@ -33,4 +36,10 @@ p{
 }
 .overflowscroll::-webkit-scrollbar {
 display: none;
+}
+.flip{
+  transform: rotate(-180deg);
+}
+.Ypadding{
+  padding: 10px 0;
 }
