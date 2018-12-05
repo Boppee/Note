@@ -1,12 +1,12 @@
 <script type="text/javascript">
   var uid = "<?php echo $_REQUEST["id"]; ?>";
+  //Grab Userdata add appends to page
   $.ajax({
     type: "POST",
     url: "script/pages/accounts/fetchAccountUID.php",
     data: {uid: uid},
     success: function (info) {
       $("#accountName").append("<h1>"+info.username+"</h1>");
-      $()
     }
   });
 </script>

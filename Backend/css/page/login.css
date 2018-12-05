@@ -66,3 +66,8 @@
   border: 1px solid #777777 !important;
   border-radius: 10px;
 }
+#loadImg{
+  display: none;
+  max-width: 250px;
+  max-height: 250px;
+}

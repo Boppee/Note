@@ -1,5 +1,6 @@
 <script type="text/javascript">
 $(document).ready(function () {
+  //take inputs and shows before upload //NOT MY CODE!
   function readURL(input) {
 
     if (input.files && input.files[0]) {

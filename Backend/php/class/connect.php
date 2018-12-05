@@ -1,5 +1,6 @@
 <?php
   class connect {
+    //users that are used often
     //template => 'User1' => array('username' => 'test', 'password' => 'test', 'databas ' => 'test', 'host' => 'localhost')// This is a test user for (databas)->(table)
     private $users = array(
       'CreateAdminAccount' => array('username' => 'CreateAdminAccount', 'password' => 'bJKgBYXF5UUzKFIf', 'host' => 'localhost', 'databas' => 'admin'), //can only insert to admin->accounts
@@ -17,7 +18,7 @@
         $host = $this->defaultHost;
       }
       $uid = "root";
-      $pwd = "";
+      $pwd = "root";
       $databas = "admin";
       $host = "localhost";
       if (isset($uid) && isset($pwd) && isset($databas)) {

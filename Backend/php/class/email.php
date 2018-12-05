@@ -5,7 +5,7 @@
   require 'PHPMailer/src/Exception.php';
   require 'PHPMailer/src/PHPMailer.php';
   require 'PHPMailer/src/SMTP.php';
-
+  //class to send a verification Email
   class vEmail extends company{
 
     private $send;

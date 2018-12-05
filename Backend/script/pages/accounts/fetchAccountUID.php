@@ -14,14 +14,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $encPr = new encoder("private");
 
-    $connect = new connect();
-    $connection = $connect->newConnectionPre("FetchFromAccounts");
-
-    $sth = $connection->prepare("SELECT `active`, `username`, `email`, `iv`, `img`, `lastlogon`, `json_page`, `json_perms` FROM `accounts` WHERE `username` = :uid");
-    $sth->bindParam(':uid', $uid);
-    $sth->execute();
-
-    $account = $sth->fetch(PDO::FETCH_LAZY);
+    $account = grabUserData();
     $echo["username"] = $enc->revDecode($account["username"]);
     $echo["email"] = $encPr->decode($account["email"], $account["iv"]);
     $echo["img"] = $account["img"];

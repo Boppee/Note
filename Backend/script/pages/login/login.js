@@ -29,13 +29,18 @@ $(document).ready(function () {
           pwd: pwd,
           salt: salt
         },
+        beforeSend: function(){
+            $('#loadImg, #login').toggle();
+        },
+        complete: function(){
+            $('#loadImg').hide();
+        },
         success: function(result) {
 
           if (result.status == "pass") {
 
             changeSalt(result.salt);
-
-            $("#login").hide();
+            
             $("#email").css("display", "grid");
 
             $("#email").submit(function (e) {

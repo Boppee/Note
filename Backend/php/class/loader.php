@@ -8,10 +8,8 @@ class pageLoader {
 
   function __construct(){
 
-    //session_destroy();
-    //print_r($_SESSION);
-
      $this->enc = new encoder("public");
+     //gets a session iv for encoding session vars
      if (!isset($_SESSION["iv"])) {
        $_SESSION["iv"] = $this->enc->generatIv();
      }
@@ -24,6 +22,7 @@ class pageLoader {
 
     $this->pageControll();
 
+    //destroy attempts
     unset($_SESSION["loginAttempt"]);
     unset($_SESSION["logincaptcha"]);
 

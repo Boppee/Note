@@ -22,6 +22,7 @@ $salt = new salt();
           <input type="password" id="pwd" class="borderinput" placeholder="Password">
           <input type="submit" id="sumbitlogin" value="Sign in">
         </form>
+        <img src="img/load.gif" id="loadImg">
         <form id="email">
           <input type="password" id="code" value="" placeholder="Email verification">
           <input type="submit" name="" value="Sign in" id="sumbitcode">
