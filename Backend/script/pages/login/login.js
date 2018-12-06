@@ -8,7 +8,11 @@ function sendRecaptcha(recap) {
         },
         success: function(result) {
           $("#capatcha").toggle();
-          $("#login").css("display", "grid");
+          if (!isIE) {
+            $("#login").css("display", "grid");
+          }else {
+            $("#login").css("display", "inline");
+          }
         }
     });
   });
@@ -40,8 +44,12 @@ $(document).ready(function () {
           if (result.status == "pass") {
 
             changeSalt(result.salt);
+            if (!isIE) {
+              $("#email").css("display", "grid");
+            }else {
+              $("#email").css("display", "inline");  
+            }
 
-            $("#email").css("display", "grid");
 
             $("#email").submit(function (e) {
 
