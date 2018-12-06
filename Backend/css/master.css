@@ -1,4 +1,11 @@
 @font-face { font-family: CaviarDreams; src: url('../font/CaviarDreams.ttf'); }
+:root{
+  --white: #f5f5f5;
+  --lightgray: #6c6c6c;
+  --darkgray: #333333;
+  --orange: #ffa500;
+  --shadow: #aaa;
+}
 html,input{
   font-family: CaviarDreams;
 }

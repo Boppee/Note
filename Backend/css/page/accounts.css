@@ -5,16 +5,16 @@
   padding: 5px;
 }
 #accountab tr:nth-child(even){
-  background-color: #ffa500;
+  background-color: var(--orange);
 }
 #accountab tr:nth-child(even) td, #accountab tr:nth-child(even) a{
   color: black;
 }
 #accountab tr:nth-child(odd){
-  background-color: #6c6c6c;
+  background-color: var(--lightgray);
 }
 #accountab tr:nth-child(odd) td, #accountab tr:nth-child(odd) a{
-  color: #f5f5f5;
+  color: var(--white);
 }
 #accounthead th{
   padding: 10px;
@@ -27,8 +27,8 @@ table{
 }
 #accountsInner{
   padding-bottom: 15px;
-  background: #6c6c6c;
-  box-shadow: 0px 5px 10px #aaa
+  background: var(--lightgray);
+  box-shadow: 0px 5px 10px var(--shadow)
 }
 #headerspace{
   margin: 0;
@@ -36,7 +36,7 @@ table{
 }
 #footeraccount{
   padding: 10px;
-  background: #333333;
+  background: var(--darkgray);
 }
 #footeraccount, #spacer{
   height: 40px;
@@ -66,12 +66,12 @@ table{
   height: 100%;
   padding: 0px 15px;
   z-index: 1;
-  box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 5px var(--shadow);
   border: 1px solid #f6a613;
   border-radius: 5px;
 }
 .buttonaccounts button, #accountab td, #accounthead th, #centertext p, #accountab a, #searchTable, .accpp{
-  color: #f5f5f5;
+  color: var(--white);
 }
 #tablepadder{
   padding: 10px 0;
@@ -93,15 +93,15 @@ table{
 }
 .headerbutton{
   padding: 10px;
-  color: #ffa500;
+  color: var(--orange);
 }
 .active{
-  background: #6c6c6c;
+  background: var(--lightgray);
   box-shadow: 0px -6px 5px !important;
   padding-bottom: 2px !important;
 }
 #searchTable::placeholder {
-    color: #f5f5f5;
+    color: var(--white);
     opacity: 0.5;
 }
 #deleteuser, #edituser{
@@ -110,7 +110,4 @@ table{
 }
 .buttonaccounts{
   display: none;
-}
-#accountab {
-  transition-duration: none;
 }

@@ -61,7 +61,7 @@
               <th class="thPadd" id="dashboard">Dashboard</th>
               <th class="thPadd" id="settings">Settings</th>
               <th class="thPadd" id="logout">Logout</th>
-              <th class="thPadd" id="myaccount">Myaccount</th>
+              <th class="thPadd" id="myaccount">My account</th>
             </thead>
           </table>
         </div>
