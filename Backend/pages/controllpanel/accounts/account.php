@@ -20,7 +20,6 @@
           }
           leng = $(".dropCont").length;
           for (var i = 0; i < leng; i++) {
-            console.log(i);
             curTable = $(".dropCont table thead")[i].id;
             for (var o = 0+1; o < $("#"+curTable+" th").length+1; o++) {
               temp = $("#"+curTable+" th:nth-child("+o+")");
