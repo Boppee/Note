@@ -7,23 +7,24 @@ $(document).ready(function () {
         var pageArray = result.pages;
         var page = result.page;
         var dontShowArray = ["","settings","logout","myaccount"];
-        var navListLenght = (pageArray.length-dontShowArray.length);
+        var pages = ["dashboard", "accounts", "orders", "products", "statistics"];
+        var navListLenght = (pages.length-dontShowArray.length);
+        var navItems = 0;
 
         for (var i = 0; i < pageArray.length; i++) {
-          if (pageArray[i] === "") {
-            navListLenght - 1;
+          if (pages.indexOf(pageArray[i]) != -1) {
+            navItems++;
           }
         }
-        navListLenght = (100/navListLenght);
+
+        navItems = (100/navListLenght);
 
         for (var i = 0; i < pageArray.length; i++) {
-          if (dontShowArray.indexOf(pageArray[i]) <= 0) {
-            if (pageArray[i] !== "") {
-              $("#navItems").append("<li id='nav"+pageArray[i]+"' class='navItem'><a href='?page="+pageArray[i]+"'>"+ capitalizeFirstLetter(pageArray[i]) +"</a></li>");
-            }
+          if (pages.indexOf(pageArray[i]) != -1) {
+          $("#navItems").append("<li id='nav"+pageArray[i]+"' class='navItem'><a href='?page="+pageArray[i]+"'>"+ capitalizeFirstLetter(pageArray[i]) +"</a></li>");
           }
           var temp = "nav"+pageArray[i];
-          $("#"+temp).width(navListLenght+"%");
+          $("#"+temp).width(navItems+"%");
           if (pageArray[i] == page) {
             $("#nav"+pageArray[i]).addClass("active");
           }
