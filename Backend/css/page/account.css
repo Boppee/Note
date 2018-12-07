@@ -20,3 +20,16 @@ section{
 #defth th {
   width: 25%;
 }
+#accountName i, #accountName input{
+  color: var(--white);
+}
+#accountName input, #accountName button{
+  font-size: 1.5em;
+}
+#accountName input{
+  background: transparent;
+  border: 0;
+}
+.accountpage{
+  display: none;
+}

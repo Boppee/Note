@@ -8,34 +8,47 @@
     data: {uid: uid},
     success: function (info) {
       $(document).ready(function () {
-        $("#accountName").append("<h1>"+info.username+"</h1>");
-        if (info.img.length > 0) {
-          $("#accountimg").attr("src", info.img);
-        }
-        leng = $(".dropCont").length;
-        for (var i = 0; i < leng; i++) {
-          console.log(i);
-          curTable = $(".dropCont table thead")[i].id;
-          for (var o = 0+1; o < $("#"+curTable+" th").length+1; o++) {
-            temp = $("#"+curTable+" th:nth-child("+o+")");
-            tempId = temp[0].id;
-            if (info.pages.indexOf(tempId) != -1) {
-              $("#"+tempId).css("background", "green");
-            }else {
-              $("#"+tempId).css("background", "red");
+        if (info.username == "") {
+          window.location.href = "?page=accounts";
+        }else {
+          $(".accountpage").show();
+          $("#username").val(info.username);
+          console.log($("#username")[0]);
+          inputW($("#username")[0]);
+          if (info.img.length > 0) {
+            $("#accountimg").attr("src", info.img);
+          }
+          leng = $(".dropCont").length;
+          for (var i = 0; i < leng; i++) {
+            curTable = $(".dropCont table thead")[i].id;
+            for (var o = 0+1; o < $("#"+curTable+" th").length+1; o++) {
+              temp = $("#"+curTable+" th:nth-child("+o+")");
+              tempId = temp[0].id;
+              if (info.pages.indexOf(tempId) != -1) {
+                $("#"+tempId).css("background", "green");
+              }else {
+                $("#"+tempId).css("background", "red");
+              }
             }
           }
         }
       });
     }
   });
+  function inputW(element) {
+    element.style.width = ((element.value.length + 1) * 14) + 'px';
+  }
+  function redir() {
+    window.location.href = "?page=accounts&id="+$("#username").val();
+  }
 </script>
 <link rel="stylesheet" href="css/page/account.css">
-<section class="Ypadding" class="accountpage">
+<section class="Ypadding accountpage">
   <div class="inner">
     <div id="accountHeader">
       <div id="accountName">
-
+        <input type="text" id="username" onkeyup="inputW(this)">
+        <button type="button" name="button" onclick="redir()"><i class="fas fa-arrow-circle-right"></i></button>
       </div>
     </div>
     <div id="accountInfo">
