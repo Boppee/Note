@@ -27,9 +27,17 @@ section{
   font-size: 1.5em;
 }
 #accountName input{
+  width: 3ch;
   background: transparent;
   border: 0;
 }
+#accountName{
+  display: flex;
+}
 .accountpage{
   display: none;
+}
+#usernameP{
+  line-height: 31px;
+  font-size: 1.5em;
 }

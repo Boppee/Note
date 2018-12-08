@@ -12,9 +12,9 @@
           window.location.href = "?page=accounts";
         }else {
           $(".accountpage").show();
-          $("#username").val(info.username);
-          console.log($("#username")[0]);
-          inputW($("#username")[0]);
+          $("#usernameP").text(info.username);
+          $("#username").val(" ");
+          username();
           if (info.img.length > 0) {
             $("#accountimg").attr("src", info.img);
           }
@@ -35,11 +35,21 @@
       });
     }
   });
-  function inputW(element) {
-    element.style.width = ((element.value.length + 1) * 14) + 'px';
+  function username() {
+    var length = $("#username").val().length;
+    if (length < 1) {
+      $('#usernameP').text(function (_,txt) {
+          return txt.slice(0, -1);
+      });
+    }else {
+      $('#usernameP').text(function (_,txt) {
+          return txt+$("#username").val().charAt(1);
+      });
+    }
+    $("#username").val(" ");
   }
   function redir() {
-    window.location.href = "?page=accounts&id="+$("#username").val();
+    window.location.href = "?page=accounts&id="+$("#usernameP").text();
   }
 </script>
 <link rel="stylesheet" href="css/page/account.css">
@@ -47,7 +57,8 @@
   <div class="inner">
     <div id="accountHeader">
       <div id="accountName">
-        <input type="text" id="username" onkeyup="inputW(this)">
+        <p id="usernameP"></p>
+        <input type="text" id="username" onkeyup="username()">
         <button type="button" name="button" onclick="redir()"><i class="fas fa-arrow-circle-right"></i></button>
       </div>
     </div>

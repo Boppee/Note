@@ -21,7 +21,7 @@ $(document).ready(function () {
 
         for (var i = 0; i < pageArray.length; i++) {
           if (pages.indexOf(pageArray[i]) != -1) {
-          $("#navItems").append("<li id='nav"+pageArray[i]+"' class='navItem'><a href='?page="+pageArray[i]+"'>"+ capitalizeFirstLetter(pageArray[i]) +"</a></li>");
+            $("#navItems").append("<li id='nav"+pageArray[i]+"' class='navItem'><a href='?page="+pageArray[i]+"'>"+ capitalizeFirstLetter(pageArray[i]) +"</a></li>");
           }
           var temp = "nav"+pageArray[i];
           $("#"+temp).width(navItems+"%");
