@@ -8,6 +8,7 @@
     data: {uid: uid},
     success: function (info) {
       $(document).ready(function () {
+        console.log(info);
         if (info.username == "") {
           window.location.href = "?page=accounts";
         }else {
@@ -15,6 +16,9 @@
           $("#usernameP").text(info.username);
           $("#username").val(" ");
           username();
+
+          $("#accountEmail .data").val(info.email);
+
           if (info.img.length > 0) {
             $("#accountimg").attr("src", info.img);
           }
@@ -43,7 +47,7 @@
       });
     }else {
       $('#usernameP').text(function (_,txt) {
-          return txt+$("#username").val().charAt(1);
+          return txt+$("#username").val().substring(1);
       });
     }
     $("#username").val(" ");
@@ -63,11 +67,21 @@
       </div>
     </div>
     <div id="accountInfo">
-      <div id="accountImg">
-        <img id="accountimg" src="img/account.png">
+      <div id="imgpadder">
+        <div id="accountImg">
+        </div>
       </div>
       <div id="accountBasic">
-
+        <table>
+          <tr id="accountEmail">
+            <td>Email:</td>
+            <td><input type="email" class="data" value=""></td>
+          </tr>
+          <tr id="lastlogon">
+            <td>Last logon:</td>
+            <td><input type="datetime-local" class="data" value=""></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

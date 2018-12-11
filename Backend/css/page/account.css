@@ -41,3 +41,25 @@ section{
   line-height: 31px;
   font-size: 1.5em;
 }
+#accountInfo{
+  overflow: hidden;
+  display: flex;
+}
+#accountImg{
+  background-image: url(../../img/account.png);
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  width: 300px;
+}
+#imgpadder{
+
+  padding: 10px;
+  background: var(--white);
+  border: 2px solid var(--orange);
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px #222;
+}
+#accountInfo{
+  margin: 20px 0px;
+}
