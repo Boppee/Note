@@ -12,16 +12,24 @@
         if (info.username == "") {
           window.location.href = "?page=accounts";
         }else {
+
+          info.lastlogon = info.lastlogon.split(' ').join('T').slice(0, -3);
+
           $(".accountpage").show();
           $("#usernameP").text(info.username);
           $("#username").val(" ");
           username();
 
           $("#accountEmail .data").val(info.email);
+          $("#lastlogon .data").val(info.lastlogon);
 
           if (info.img.length > 0) {
             $("#accountimg").attr("src", info.img);
           }
+          if (info.active == 1) {
+            $("#accountActive .data").attr("checked", "true");
+          }
+
           leng = $(".dropCont").length;
           for (var i = 0; i < leng; i++) {
             curTable = $(".dropCont table thead")[i].id;
@@ -35,6 +43,15 @@
               }
             }
           }
+
+          $(".data").attr("disabled", "true");
+
+          $("#edituser").click(function (event) {
+            $(".data").prop("disabled", false);
+            $("#save").show();
+            event.preventDefault();
+            $("#lastlogon .data").attr("disabled", "true");
+          });
         }
       });
     }
@@ -73,6 +90,10 @@
       </div>
       <div id="accountBasic">
         <table>
+          <tr id="accountActive">
+            <td>Actice:</td>
+            <td><input type="checkbox" class="data" value=""></td>
+          </tr>
           <tr id="accountEmail">
             <td>Email:</td>
             <td><input type="email" class="data" value=""></td>
@@ -82,6 +103,10 @@
             <td><input type="datetime-local" class="data" value=""></td>
           </tr>
         </table>
+      </div>
+      <div id="lowerbuttons">
+        <a id="pwdr" class="button">Reset password</a>
+        <a id="save" class="button">Save</a>
       </div>
     </div>
   </div>
