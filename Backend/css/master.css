@@ -56,3 +56,40 @@ h1{
 .button:hover{
   cursor: pointer;
 }
+.center{
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+.shadow{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: #333333b3;
+}
+.rel{
+  position: relative;
+  height: 100%;
+}
+.close{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: var(--darkgray);
+}
+.close:hover{
+  cursor: pointer;
+}
+.vtext{
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.vitext{
+  display: table-cell;
+  vertical-align: middle;
+}

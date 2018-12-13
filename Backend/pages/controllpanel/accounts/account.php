@@ -1,86 +1,56 @@
-<script src="script/pages/accounts/accountShow.js" charset="utf-8"></script>
 <script type="text/javascript">
   var uid = "<?php echo $_REQUEST["id"]; ?>";
-  //Grab Userdata add appends to page
-  $.ajax({
-    type: "POST",
-    url: "script/pages/accounts/fetchAccountUID.php",
-    data: {uid: uid},
-    success: function (info) {
-      $(document).ready(function () {
-        console.log(info);
-        if (info.username == "") {
-          window.location.href = "?page=accounts";
-        }else {
-
-          info.lastlogon = info.lastlogon.split(' ').join('T').slice(0, -3);
-
-          $(".accountpage").show();
-          $("#usernameP").text(info.username);
-          $("#username").val(" ");
-          username();
-
-          $("#accountEmail .data").val(info.email);
-          $("#lastlogon .data").val(info.lastlogon);
-
-          if (info.img.length > 0) {
-            $("#accountimg").attr("src", info.img);
-          }
-          if (info.active == 1) {
-            $("#accountActive .data").attr("checked", "true");
-          }
-
-          leng = $(".dropCont").length;
-          for (var i = 0; i < leng; i++) {
-            curTable = $(".dropCont table thead")[i].id;
-            for (var o = 0+1; o < $("#"+curTable+" th").length+1; o++) {
-              temp = $("#"+curTable+" th:nth-child("+o+")");
-              tempId = temp[0].id;
-              if (info.pages.indexOf(tempId) != -1) {
-                $("#"+tempId).css("background", "green");
-              }else {
-                $("#"+tempId).css("background", "red");
-              }
-            }
-          }
-
-          $(".data").attr("disabled", "true");
-
-          $("#edituser").click(function (event) {
-            $(".data").prop("disabled", false);
-            $("#save").show();
-            event.preventDefault();
-            $("#lastlogon .data").attr("disabled", "true");
-          });
-        }
-      });
-    }
-  });
-  function username() {
-    var length = $("#username").val().length;
-    if (length < 1) {
-      $('#usernameP').text(function (_,txt) {
-          return txt.slice(0, -1);
-      });
-    }else {
-      $('#usernameP').text(function (_,txt) {
-          return txt+$("#username").val().substring(1);
-      });
-    }
-    $("#username").val(" ");
-  }
-  function redir() {
-    window.location.href = "?page=accounts&id="+$("#usernameP").text();
-  }
 </script>
+<script src="script/pages/accounts/accountShow.js" charset="utf-8"></script>
 <link rel="stylesheet" href="css/page/account.css">
+<div class="shadow" id="saveshadow">
+
+</div>
+<div class="center" id="nochange">
+  <div class="rel">
+    <div class="close">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="vtext">
+      <div class="vitext">
+        <h1>No changes</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="changeDiv" class="center">
+  <div class="rel">
+    <div class="close">
+      <i class="fas fa-times"></i>
+    </div>
+    <div id="headerchange">
+      <h1>Changes</h1>
+    </div>
+    <div id="changes">
+      <table>
+        <thead>
+          <th></th>
+          <th>New</th>
+          <th>Old</th>
+        </thead>
+        <tbody id="changebody">
+
+        </tbody>
+      </table>
+    </div>
+    <div id="changebuttons">
+      <a id="changec" >Cancel</a>
+      <a id="changeok" >Change</a>
+    </div>
+  </div>
+</div>
 <section class="Ypadding accountpage">
   <div class="inner">
     <div id="accountHeader">
       <div id="accountName">
         <p id="usernameP"></p>
         <input type="text" id="username" onkeyup="username()">
-        <button type="button" name="button" onclick="redir()"><i class="fas fa-arrow-circle-right"></i></button>
+        <button type="button" id="gotouser" onclick="redir()"><i class="fas fa-arrow-circle-right"></i></button>
       </div>
     </div>
     <div id="accountInfo">
@@ -91,8 +61,8 @@
       <div id="accountBasic">
         <table>
           <tr id="accountActive">
-            <td>Actice:</td>
-            <td><input type="checkbox" class="data" value=""></td>
+            <td>Active:</td>
+            <td><input type="checkbox" id="activeinput" class="data" value=""></td>
           </tr>
           <tr id="accountEmail">
             <td>Email:</td>
