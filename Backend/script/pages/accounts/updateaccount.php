@@ -7,7 +7,7 @@ require_once '../../../php/load.php';
 if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
   $session = new session();
-  if ($session->checkPrem("manageAccounts")) {
+  if ($session->checkPrem("mod", "accounts")) {
 
     $connect = new connect();
 
@@ -26,7 +26,14 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       $val = $encPr->encode($val, $iv);
     }
     if ($index == "username") {
-      $val = $encPr->revEncode($val, "");
+      $uidtest = grabUserData($val);
+      if (!isset($uidtest["username"])) {
+        $val = $encPr->revEncode($val, "");
+      }else {
+        $errors = array('status' => "errors", 'errors' => "Username taken!", );
+        echo json_encode($errors);
+        exit();
+      }
     }
 
     $connection = $connect->newConnectionPre("UpdateAccount");
@@ -37,6 +44,8 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $sth->bindParam(':uid', $uid);
 
     $sth->execute();
+
+    echo "done";
 
   }
 }

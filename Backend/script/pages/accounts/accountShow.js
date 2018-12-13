@@ -38,19 +38,6 @@ $.ajax({
             $("#accountActive .data").prop("checked", true);
           }
 
-          leng = $(".dropCont").length;
-          for (var i = 0; i < leng; i++) {
-            curTable = $(".dropCont table thead")[i].id;
-            for (var o = 0+1; o < $("#"+curTable+" th").length+1; o++) {
-              temp = $("#"+curTable+" th:nth-child("+o+")");
-              tempId = temp[0].id;
-              if (info.pages.indexOf(tempId) != -1) {
-                $("#"+tempId).css("background", "green");
-              }else {
-                $("#"+tempId).css("background", "red");
-              }
-            }
-          }
           $(".data").attr("disabled", "true");
         }
 
@@ -58,6 +45,7 @@ $.ajax({
 
         $("#edituser").click(function (event) {
           if (edit == 0) {
+            loaddefult(info);
             $("#gotouser").hide();
             $(".data").prop("disabled", false);
             $("#save").show();
@@ -172,6 +160,7 @@ function close() {
   $(".shadow, #changeDiv, #nochange").hide();
 }
 function updateAccount(sendUID) {
+  var errors;
   for (var i = 0; i < $("#changebody tr").length; i++) {
     var temp = $("#changebody").children();
     var tempid = temp[i].id.replace('change','');
@@ -181,11 +170,20 @@ function updateAccount(sendUID) {
       url: "script/pages/accounts/updateaccount.php",
       data: {uid: sendUID, index: tempid, val: tempval},
       success: function (info) {
-
+        console.log(info);
+        if (info.status == "errors") {
+          alert(info.errors);
+          errors++;
+        }
       }
     });
     if (tempid == "username") {
         sendUID = tempval;
     }
+  }
+  if (errors > 0) {
+    location.reload();
+  }else {
+    window.location.href = "?page=accounts&id="+sendUID;
   }
 }

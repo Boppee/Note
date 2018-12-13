@@ -26,11 +26,6 @@
         'pwd' => $enc->encode($_SESSION["loginAttempt"]["password"], $_SESSION["iv"])
       );
 
-      /*$perms = array(
-        'pages' => json_decode($userData["json_page"]),
-        'perms' => json_decode($userData["json_perms"])
-      );*/
-
       $_SESSION["new_permsys"] = json_decode($userData["new_permsys"], true);
 
       updateLogon($_SESSION["loginAttempt"]["username"]);
@@ -43,8 +38,7 @@
       $_SESSION["cred"] = $credArray;
 
       $echoArray = array('status' => "pass", 'page' => "dashboard");
-      print_r($_SESSION["new_permsys"]);
-      //echo json_encode($echoArray);
+      echo json_encode($echoArray);
 
     }else {
       $errors["error"] = "wrong code";

@@ -17,8 +17,9 @@ $.ajax({
       url: "script/pages/accounts/fetchAccounts.php",
       data: {limit: accounts},
       success: function (accountData) {
-        for (var i = 0; i < accountData.accounts.length; i++) {
-          addRow(accountData.accounts[i], i);
+        console.log(accountData);
+        for (var i = 0; i < accountData.length; i++) {
+          addRow(accountData[i], i);
         }
 
         function addRow(data, number) {
@@ -34,15 +35,14 @@ $.ajax({
             $("#account"+data.username).append("<td class='"+data.username+" username'>"+data.username+"</td>");
             $("#account"+data.username).append("<td class='"+data.username+" lastlogon'>"+data.lastlogon+"</td>");
 
-            var orderArray = ["dashboard", "accounts", "orders", "products", "categories", "statistics"];
+            var orderArray = ["accounts", "orders", "products", "categories", "statistics"];
 
             for (var i = 0; i < orderArray.length; i++) {
               $("#account"+data.username).append("<td class='"+data.username+" pages'><input class='"+data.username+" pageinput' value='"+data.username+orderArray[i]+"' type='checkbox'></td>");
             }
-
-            for (var t = 0; t < data.json_page.length; t++) {
-              if (orderArray.indexOf(data.json_page[t]) >= 0) {
-                $("input[value='"+data.username+orderArray[orderArray.indexOf(data.json_page[t])]+"']").attr("checked", "true");
+            for (var t = 4; t < data.new_permsys.length; t++) {
+              if (orderArray.indexOf(data.new_permsys[t][0]) >= 0) {
+                $("input[value='"+data.username+orderArray[orderArray.indexOf(data.new_permsys[t][0])]+"']").attr("checked", "true");
               }
             }
             $("#accountab input").prop("disabled", true);

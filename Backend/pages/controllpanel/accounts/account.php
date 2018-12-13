@@ -80,46 +80,6 @@
       </div>
     </div>
   </div>
-  <div id="accountPriv">
-
-    <div id="accounPage">
-
-      <div class="dropDown">
-        <div id="default" class="userexbutton">
-          <i class="fas fa-angle-up" id="rotatedefault"></i> Default pages
-        </div>
-        <div class="defaultEx dropCont">
-          <table>
-            <thead id="defth">
-              <th class="thPadd" id="dashboard">Dashboard</th>
-              <th class="thPadd" id="settings">Settings</th>
-              <th class="thPadd" id="logout">Logout</th>
-              <th class="thPadd" id="myaccount">My account</th>
-            </thead>
-          </table>
-        </div>
-      </div>
-      <div class="dropDown">
-        <div id="pages" class="userexbutton">
-          <i class="fas fa-angle-up" id="rotatepages"></i> Pages
-        </div>
-        <div class="pagesEx dropCont">
-          <table>
-            <thead id="path">
-              <th class="thPadd" id="accounts">Accounts</th>
-              <th class="thPadd" id="orders">Orders</th>
-              <th class="thPadd" id="products">Products</th>
-              <th class="thPadd" id="myaccount">Myaccount</th>
-            </thead>
-          </table>
-        </div>
-      </div>
-
-    </div>
-
-    <div id="accounperms">
-
-    </div>
   </div>
 </section>
 <title><?php echo $company->companyName." - ".ucfirst($loader->page)." - ".$_REQUEST["id"]; ?></title>

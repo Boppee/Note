@@ -18,8 +18,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $echo["active"] = $account["active"];
     $echo["email"] = $encPr->decode($account["email"], $account["iv"]);
     $echo["img"] = $account["img"];
-    $echo["pages"] = json_decode($account["json_page"]);
-    $echo["perms"] = json_decode($account["json_perms"]);
+    $echo["new_permsys"] = json_decode($account["new_permsys"]);
     $echo["lastlogon"] = $account["lastlogon"];
 
     unset($account);
