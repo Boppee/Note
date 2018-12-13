@@ -19,9 +19,13 @@ class session {
       return true;
     }
   }
-  public function checkPrem($function){
-    if (in_array($function, $_SESSION["perms"]["perms"])) {
-      return true;
+  public function checkPrem($function, $page){
+    for ($i=4; $i < count($_SESSION["new_permsys"]); $i++) {
+      if ($_SESSION["new_permsys"][$i][0] == $page) {
+        if (in_array($function, $_SESSION["new_permsys"][$i])) {
+          return true;
+        }
+      }
     }
   }
   public function setTimeOut($function){

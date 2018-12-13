@@ -1,5 +1,4 @@
 <?php
-
   header('Content-type: application/json');
 
   session_start();
@@ -12,54 +11,52 @@
   $postSalt = strip_tags($_POST["salt"]);
   $pwd = strip_tags($_POST["pwd"]);
 
-  if (in_array("login", $_SESSION["perms"]["perms"])) {
-    if (!isset($_SESSION["signedIn"])) {
-      if (isset($pwd) && isset($salt) && isset($uid)) {
-        if ($_SESSION["logincaptcha"]) {
+  if (!isset($_SESSION["signedIn"])) {
+    if (isset($pwd) && isset($salt) && isset($uid)) {
+      if ($_SESSION["logincaptcha"]) {
         if ($salt->verifySalts("login", $postSalt)) {
 
-            $enc = new encoder("private");
+          $enc = new encoder("private");
 
-            $userData = grabUserData($uid);
+          $userData = grabUserData($uid);
 
-            if (isset($userData["username"])) {
-              if (password_verify($pwd, $userData["password"])) {
-                if ($userData["active"]) {
-                  $email = $enc->decode($userData["email"], $userData["iv"]);
-                  $vEmail = new vEmail($email);
+          if (isset($userData["username"])) {
+            if (password_verify($pwd, $userData["password"])) {
+              if ($userData["active"]) {
+                $email = $enc->decode($userData["email"], $userData["iv"]);
+                $vEmail = new vEmail($email);
 
-                  $sEmail = $enc->encode($vEmail->getCode(), $_SESSION["iv"]);
+                $sEmail = $enc->encode($vEmail->getCode(), $_SESSION["iv"]);
 
-                  $_SESSION["loginAttempt"] = array(
-                    'username' => $uid,
-                    'password' => $pwd,
-                    'sessionCode' => $sEmail
-                  );
+                $_SESSION["loginAttempt"] = array(
+                  'username' => $uid,
+                  'password' => $pwd,
+                  'sessionCode' => $sEmail
+                );
 
-                  $echoArray = array('salt' => $salt->generatSalt("returnLoginSalt"), 'status' => 'pass');
-                  unset($_SESSION["logincaptcha"]);
-                  echo json_encode($echoArray);
-                }else {
-                  $errors["error"] = "inactive user";
-                }
+                $echoArray = array('salt' => $salt->generatSalt("returnLoginSalt"), 'status' => 'pass');
+                unset($_SESSION["logincaptcha"]);
+                echo json_encode($echoArray);
               }else {
-                $errors["error"] = "password or username";
+                $errors["error"] = "inactive user";
               }
             }else {
               $errors["error"] = "password or username";
             }
           }else {
-            $errors["error"] = "salt error";
+            $errors["error"] = "password or username";
           }
         }else {
-          $errors["error"] = "captcha error";
+          $errors["error"] = "salt error";
         }
       }else {
-        $errors["error"] = "missing inputs";
+        $errors["error"] = "captcha error";
       }
     }else {
-      goToPage("?page=dashboard");
+      $errors["error"] = "missing inputs";
     }
+  }else {
+    goToPage("?page=dashboard");
   }
   if (isset($errors)) {
     $errors["salt"] = $salt->generatSalt("login");

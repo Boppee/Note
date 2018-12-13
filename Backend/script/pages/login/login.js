@@ -47,7 +47,7 @@ $(document).ready(function () {
             if (!isIE) {
               $("#email").css("display", "grid");
             }else {
-              $("#email").css("display", "inline");  
+              $("#email").css("display", "inline");
             }
 
 
@@ -76,6 +76,7 @@ $(document).ready(function () {
             });
           }else if (result.error){
             changeSalt(result.salt);
+            $("#login").show();
           }
 
         }

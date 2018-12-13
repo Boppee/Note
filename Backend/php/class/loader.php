@@ -20,7 +20,7 @@ class pageLoader {
       $this->goToPage("?page=login");
     }
 
-    $this->pageControll();
+    $this->newPageControll();
 
     //destroy attempts
     unset($_SESSION["loginAttempt"]);
@@ -32,27 +32,6 @@ class pageLoader {
     header('Location: '.$url);
     exit;
   }
-
-  public function pageControll(){
-    if (!isset($_SESSION["signedIn"])) {
-
-      $_SESSION["perms"]["pages"] = array("login", "cookies");
-      $_SESSION["perms"]["perms"] = array("login");
-
-      if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
-        $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
-      }
-
-    }else if (isset($_SESSION["signedIn"])){
-
-      if (!in_array($this->page, $_SESSION["perms"]["pages"])) {
-        $this->goToPage("?page=".$_SESSION["perms"]["pages"][0]);
-      }
-
-      updateLogon($this->enc->decode($_SESSION["cred"]["uid"],$_SESSION["iv"]));
-    }
-    $_SESSION["page"] = $this->page;
-  }
   public function controllSession(){
     if (isset($_SESSION["signedIn"])) {
       $session = new session();
@@ -60,6 +39,31 @@ class pageLoader {
         $this->goToPage("?page=logout");
       }
     }
+  }
+  function newPageControll() {
+    if (isset($_SESSION["signedIn"])) {
+
+      updateLogon($this->enc->decode($_SESSION["cred"]["uid"],$_SESSION["iv"]));
+
+      if (!isset($_SESSION["pages"])) {
+        $_SESSION["pages"] = array("dashboard","settings","logout","myaccount");
+        for ($i=4; $i < count($_SESSION["new_permsys"]); $i++) {
+          $temp = $_SESSION["new_permsys"][$i][0];
+          array_push($_SESSION["pages"], $temp);
+        }
+      }
+
+      if (!in_array($this->page, $_SESSION["pages"])) {
+        $this->goToPage("?page=".$_SESSION["pages"][0]);
+      }
+
+    }else {
+      $_SESSION["pages"] = array("login", "cookies");
+      if (!in_array($this->page, $_SESSION["pages"])) {
+        $this->goToPage("?page=".$_SESSION["pages"][0]);
+      }
+    }
+    $_SESSION["page"] = $this->page;
   }
 
 }

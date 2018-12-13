@@ -8,4 +8,5 @@ require_once 'class/email.php';
 require_once 'class/salt.php';
 require_once 'class/session.php';
 require 'functions.php';
+$session = new session();
 ?>

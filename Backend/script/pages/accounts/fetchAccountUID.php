@@ -8,7 +8,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
   $enc = new encoder("rev");
 
   $session = new session();
-  if ($session->checkPrem("manageAccounts")) {
+  if ($session->checkPrem("list", "accounts")) {
 
     $encPr = new encoder("private");
 
@@ -23,7 +23,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $echo["lastlogon"] = $account["lastlogon"];
 
     unset($account);
-    
+
     echo json_encode($echo);
 
   }

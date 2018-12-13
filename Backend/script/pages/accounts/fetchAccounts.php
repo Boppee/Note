@@ -9,7 +9,7 @@
     $limit = strip_tags($_POST["limit"]);
 
     $session = new session();
-    if ($session->checkPrem("manageAccounts")) {
+    if ($session->checkPrem("list", "accounts")) {
       echoAccount($limit);
     }
   }
