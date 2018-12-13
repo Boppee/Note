@@ -89,7 +89,7 @@ $.ajax({
 
         $("#changeok").click(function (event) {
           close();
-          updateAccount();
+          updateAccount(uid);
           event.preventDefault();
         });
         $("#changec").click(function (event) {
@@ -171,8 +171,7 @@ function close() {
   $("body").css("overflow", "");
   $(".shadow, #changeDiv, #nochange").hide();
 }
-function updateAccount() {
-  var uid = $("#usernameP").text;
+function updateAccount(sendUID) {
   for (var i = 0; i < $("#changebody tr").length; i++) {
     var temp = $("#changebody").children();
     var tempid = temp[i].id.replace('change','');
@@ -180,10 +179,13 @@ function updateAccount() {
     $.ajax({
       type: "POST",
       url: "script/pages/accounts/updateaccount.php",
-      data: {uid: uid},
+      data: {uid: sendUID, index: tempid, val: tempval},
       success: function (info) {
 
       }
     });
+    if (tempid == "username") {
+        sendUID = tempval;
+    }
   }
 }
