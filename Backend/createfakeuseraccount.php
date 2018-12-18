@@ -8,9 +8,12 @@ $connect =  new connect();
 
 $connection = $connect->newConnectionPre("CreateAdminAccount");
   for ($i=0; $i < 100; $i++) {
+//  for ($i=0; $i < 100; $i++) {
 
       $uid = $i;
       $pwd = "kuk";
+      $uid = "sa";
+      $pwd = "sa";
       $email = "emil00.sandberg@gmail.com";
 
       $uid = $enc->revEncode($uid, "");
@@ -18,11 +21,15 @@ $connection = $connect->newConnectionPre("CreateAdminAccount");
       $email = $enc->encode($email, $iv);
       $pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
+<<<<<<< HEAD
       $pages = array("dashboard", "settings", "logout",  array('accounts', ));
       $perms = array("logout");
 
       $pages = json_encode($pages);
       $perms = json_encode($perms);
+=======
+      $pages = '["dashboard","settings","logout","myaccount",["account","list","resetpassword","create","mod"]]';
+>>>>>>> b87642e9c1b755693914f3e4e1df87eff8ae80d4
 
       echo $uid;
       echo "<br>";
@@ -33,15 +40,15 @@ $connection = $connect->newConnectionPre("CreateAdminAccount");
       echo $email;
       echo "<br>";
 
-      $sth = $connection->prepare("INSERT INTO `accounts` (`username`, `password`, `iv`,`email`, `json_page`, `json_perms`) VALUES (:u,:p,:i,:e,:page,:perms)");
+      $sth = $connection->prepare("INSERT INTO `accounts` (`username`, `password`, `iv`, `email`, `new_permsys`) VALUES (:u,:p,:i,:e,:perms)");
       $sth->bindParam(':u', $uid);
       $sth->bindParam(':p', $pwd);
       $sth->bindParam(':i', $iv);
       $sth->bindParam(':e', $email);
-      $sth->bindParam(':page', $pages);
-      $sth->bindParam(':perms', $perms);
+      $sth->bindParam(':perms', $pages);
       $sth->execute();
   }
+  //}
   //JUST FOR TESTIN
 
 ?>
