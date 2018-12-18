@@ -1,5 +1,5 @@
 <?php
-$perms = array("dashboard","settings","logout","myaccount", array('account', 'list', 'resetpassword', 'create', 'mod'));
+$perms = array("dashboard","settings","logout","myaccount", array('accounts', 'list', 'resetpassword', 'create', 'mod'));
 
 echo json_encode($perms);
 echo "<br>";

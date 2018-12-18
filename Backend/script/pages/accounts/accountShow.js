@@ -161,6 +161,7 @@ function close() {
 }
 function updateAccount(sendUID) {
   var errors;
+  var ans;
   for (var i = 0; i < $("#changebody tr").length; i++) {
     var temp = $("#changebody").children();
     var tempid = temp[i].id.replace('change','');
@@ -170,10 +171,13 @@ function updateAccount(sendUID) {
       url: "script/pages/accounts/updateaccount.php",
       data: {uid: sendUID, index: tempid, val: tempval},
       success: function (info) {
-        console.log(info);
+        alert("eroors");
         if (info.status == "errors") {
           alert(info.errors);
           errors++;
+        }
+        if (ans == $("#changebody tr").length-1) {
+          redir(errors, sendUID);
         }
       }
     });
@@ -181,9 +185,11 @@ function updateAccount(sendUID) {
         sendUID = tempval;
     }
   }
-  if (errors > 0) {
-    location.reload();
-  }else {
-    window.location.href = "?page=accounts&id="+sendUID;
-  }
+}
+function redir(errors, sendUID){
+    if (errors > 0) {
+      location.reload();
+    }else {
+      window.location.href = "?page=accounts&id="+sendUID;
+    }
 }

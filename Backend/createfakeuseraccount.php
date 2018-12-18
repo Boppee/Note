@@ -18,7 +18,7 @@ $connection = $connect->newConnectionPre("CreateAdminAccount");
       $email = $enc->encode($email, $iv);
       $pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-      $pages = array("dashboard", "settings", "logout", "myaccount","accounts","products","statistics", "order");
+      $pages = array("dashboard", "settings", "logout",  array('accounts', ));
       $perms = array("logout");
 
       $pages = json_encode($pages);

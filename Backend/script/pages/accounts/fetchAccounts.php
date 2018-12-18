@@ -6,8 +6,7 @@
 
   if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
-    //$limit = strip_tags($_POST["limit"]);
-    $limit = 3;
+    $limit = strip_tags($_POST["limit"]);
 
     $session = new session();
     if ($session->checkPrem("list", "accounts")) {
