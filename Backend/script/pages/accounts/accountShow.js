@@ -15,6 +15,7 @@ $.ajax({
         window.location.href = "?page=accounts";
       }else {
         loaddefult(info);
+
         function loaddefult(info) {
 
           $("#gotouser").show();
@@ -31,14 +32,19 @@ $.ajax({
           $("#accountEmail .data").val(info.email);
           $("#lastlogon .data").val(logon);
 
-          if (info.img.length > 0) {
-            $("#accountimg").attr("src", info.img);
+          if (info.img != "def") {
+            if (UrlExists("img/accounts/"+info.img)) {
+              var url = "url(img/accounts/"+info.img+")";
+              $("#accountImg").css("background-image", url);
+            }
           }
+
           if (info.active == 1) {
             $("#accountActive .data").prop("checked", true);
           }
 
           $(".data").attr("disabled", "true");
+
         }
 
         var edit = 0;
@@ -86,10 +92,14 @@ $.ajax({
           close();
           event.preventDefault();
         });
+        $("#imginput").change(function () {
+          changeAccountImg(this, info.username);
+        });
       }
     });
   }
 });
+
 function username() {
   var length = $("#username").val().length;
   if (length < 1) {
@@ -102,10 +112,6 @@ function username() {
     });
   }
   $("#username").val(" ");
-}
-
-function redir() {
-  window.location.href = "?page=accounts&id="+$("#usernameP").text();
 }
 
 function changes(info, show) {
@@ -164,32 +170,58 @@ function updateAccount(sendUID) {
   var ans;
   for (var i = 0; i < $("#changebody tr").length; i++) {
     var temp = $("#changebody").children();
-    var tempid = temp[i].id.replace('change','');
-    var tempval = temp[i].children[1].attributes[0].value;
-    $.ajax({
-      type: "POST",
-      url: "script/pages/accounts/updateaccount.php",
-      data: {uid: sendUID, index: tempid, val: tempval},
-      success: function (info) {
-        alert("eroors");
-        if (info.status == "errors") {
-          alert(info.errors);
-          errors++;
-        }
-        if (ans == $("#changebody tr").length-1) {
-          redir(errors, sendUID);
-        }
-      }
-    });
-    if (tempid == "username") {
-        sendUID = tempval;
+
+    var formData = new FormData();
+    formData.append("uid", sendUID);
+    formData.append("index", temp[i].id.replace('change',''));
+    formData.append("val", temp[i].children[1].attributes[0].value);
+
+    updateAjax(formData, $("#changebody tr").length, sendUID);
+
+    if (temp[i].id.replace('change','') == "username") {
+        sendUID = temp[i].children[1].attributes[0].value;
     }
   }
 }
 function redir(errors, sendUID){
-    if (errors > 0) {
+    if (errors) {
       location.reload();
     }else {
       window.location.href = "?page=accounts&id="+sendUID;
     }
+}
+function changeAccountImg(input, uid) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $("#accountImg").css("background-image", "url("+e.target.result+")");
+    }
+
+    var formData = new FormData();
+    formData.append('file', $('#imginput')[0].files[0]);
+    formData.append("uid", uid);
+    formData.append("index", "img");
+    updateAjax(formData, 1,sendUID);
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+function updateAjax(formData, nr, sendUID) {
+  formData.append("nr", nr);
+  $.ajax({
+    type: "POST",
+    url: "script/pages/accounts/updateaccount.php",
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function (info) {
+      if (info == "done") {
+        redir(false, sendUID);
+      }
+      if (info.status == "errors") {
+        redir(true, sendUID);
+      }
+    }
+  });
 }

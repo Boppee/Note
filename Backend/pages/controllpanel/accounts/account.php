@@ -54,8 +54,15 @@
       </div>
     </div>
     <div id="accountInfo">
-      <div id="imgpadder">
-        <div id="accountImg">
+      <div id="img">
+        <div id="imgpadder">
+          <div id="accountImg">
+          </div>
+        </div>
+        <div id="changeimg">
+          <form class="" action="index.html" method="post">
+            <input type="file" id="imginput" value="">
+          </form>
         </div>
       </div>
       <div id="accountBasic">

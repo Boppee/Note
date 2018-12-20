@@ -10,7 +10,6 @@ $(document).ready(function () {
         var pages = ["dashboard", "accounts", "orders", "products", "statistics"];
         var navListLenght = (pages.length-dontShowArray.length);
         var navItems = 0;
-        console.log(pageArray);
 
         for (var i = 0; i < pageArray.length; i++) {
           if (pages.indexOf(pageArray[i]) != -1) {

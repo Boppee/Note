@@ -1,3 +1,4 @@
+<script src="script/functions.js" charset="utf-8"></script>
 <script src="jquery.js" charset="utf-8"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>

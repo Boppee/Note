@@ -52,7 +52,7 @@ section{
   width: 300px;
 }
 #imgpadder{
-
+  margin-bottom: 15px;
   padding: 10px;
   background: var(--white);
   border: 2px solid var(--orange);

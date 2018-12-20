@@ -7,9 +7,9 @@ $enc = new encoder("private");
 $connect =  new connect();
 
 $connection = $connect->newConnectionPre("CreateAdminAccount");
-//  for ($i=0; $i < 100; $i++) {
+for ($i=0; $i < 100; $i++) {
 
-      $uid = "sa";
+      $uid = $i;
       $pwd = "sa";
       $email = "emil00.sandberg@gmail.com";
 
@@ -18,12 +18,7 @@ $connection = $connect->newConnectionPre("CreateAdminAccount");
       $email = $enc->encode($email, $iv);
       $pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-      $pages = array("dashboard", "settings", "logout",  array('accounts', ));
-      $perms = array("logout");
-
-      $pages = json_encode($pages);
-      $perms = json_encode($perms);
-      $pages = '["dashboard","settings","logout","myaccount",["account","list","resetpassword","create","mod"]]';
+      $pages = '["dashboard","settings","logout","myaccount",["accounts","list","resetpassword","create","mod"]]';
 
       echo $uid;
       echo "<br>";
@@ -41,6 +36,6 @@ $connection = $connect->newConnectionPre("CreateAdminAccount");
       $sth->bindParam(':e', $email);
       $sth->bindParam(':perms', $pages);
       $sth->execute();
-  //}
+  }
 
 ?>
