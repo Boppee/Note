@@ -8,6 +8,10 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
   $session = new session();
   if ($session->checkPrem("mod", "accounts")) {
 
+    if (!isset($_SESSION["cur"])) {
+      $_SESSION["cur"] = 0;
+    }
+
     $imgErrors = array();
 
     $connect = new connect();

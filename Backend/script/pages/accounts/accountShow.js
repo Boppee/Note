@@ -17,6 +17,7 @@ $.ajax({
         loaddefult(info);
 
         function loaddefult(info) {
+          console.log(info.img);
 
           $("#gotouser").show();
           $("#save").hide();
@@ -202,7 +203,7 @@ function changeAccountImg(input, uid) {
     formData.append('file', $('#imginput')[0].files[0]);
     formData.append("uid", uid);
     formData.append("index", "img");
-    updateAjax(formData, 1,sendUID);
+    updateAjax(formData, 1, uid);
 
     reader.readAsDataURL(input.files[0]);
   }
