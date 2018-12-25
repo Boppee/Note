@@ -125,3 +125,6 @@ section{
   max-height: 60%;
   overflow-y: scroll;
 }
+#perms{
+  background: var(--lightgray);
+}
