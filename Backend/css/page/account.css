@@ -40,6 +40,7 @@ section{
 #usernameP{
   line-height: 31px;
   font-size: 1.5em;
+  padding-right: 10px;
 }
 #accountInfo{
   display: flex;
@@ -93,7 +94,7 @@ section{
   bottom: 0;
   right: 0;
 }
-#changediv, #nochange{
+#changediv, #nochange, #pwdrb{
   display: none;
   padding: 10px;
   z-index: 1;
@@ -101,18 +102,18 @@ section{
   height: 50%;
   background: var(--white);
 }
-#nochange, #changeDiv h1{
+#nochange h1, #changeDiv h1, #pwdrb h1{
   padding: 10px;
   text-align: center;
   color: var(--darkgray);
 }
-#changebuttons a{
+.changebuttons a{
   padding: 10px;
   margin: 0px 5px;
   background: var(--orange);
   color: var(--darkgray);
 }
-#changebuttons{
+.changebuttons{
   text-align: center;
   position: absolute;
   width: 100%;
@@ -127,4 +128,10 @@ section{
 }
 #perms{
   background: var(--lightgray);
+}
+.perms{
+  width: 20%;
+}
+#permdivs{
+  display: flex;
 }

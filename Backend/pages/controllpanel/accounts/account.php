@@ -19,6 +19,22 @@
     </div>
   </div>
 </div>
+<div class="center" id="pwdrb">
+  <div class="rel">
+    <div class="close">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="vtext">
+      <div class="vitext">
+        <h1>New password</h1>
+        <input type="password" name="npwd" value="">
+      </div>
+    </div>
+    <div class="changebuttons">
+      <a id="pwdc" >Change</a>
+    </div>
+  </div>
+</div>
 <div id="changeDiv" class="center">
   <div class="rel">
     <div class="close">
@@ -39,7 +55,7 @@
         </tbody>
       </table>
     </div>
-    <div id="changebuttons">
+    <div class="changebuttons">
       <a id="changec" >Cancel</a>
       <a id="changeok" >Change</a>
     </div>
@@ -49,8 +65,7 @@
   <div class="inner">
     <div id="accountHeader">
       <div id="accountName">
-        <p id="usernameP"></p>
-        <input type="text" id="username" onkeyup="username()">
+        <p id="usernameP" contenteditable="true"></p>
         <button type="button" id="gotouser" onclick="redir()"><i class="fas fa-arrow-circle-right"></i></button>
       </div>
     </div>

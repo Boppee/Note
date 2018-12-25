@@ -28,7 +28,6 @@ $.ajax({
           $(".accountpage").show();
           $("#usernameP").text(info.username);
           $("#username").val(" ");
-          username();
 
           $("#accountEmail .data").val(info.email);
           $("#lastlogon .data").val(logon);
@@ -100,20 +99,6 @@ $.ajax({
     });
   }
 });
-
-function username() {
-  var length = $("#username").val().length;
-  if (length < 1) {
-    $('#usernameP').text(function (_,txt) {
-        return txt.slice(0, -1);
-    });
-  }else {
-    $('#usernameP').text(function (_,txt) {
-        return txt+$("#username").val().substring(1);
-    });
-  }
-  $("#username").val(" ");
-}
 
 function changes(info, show) {
 

@@ -7,9 +7,9 @@ $enc = new encoder("private");
 $connect =  new connect();
 
 $connection = $connect->newConnectionPre("CreateAdminAccount");
-for ($i=0; $i < 100; $i++) {
+//for ($i=0; $i < 100; $i++) {
 
-      $uid = $i;
+      $uid = "sa";
       $pwd = "sa";
       $email = "emil00.sandberg@gmail.com";
 
@@ -36,6 +36,6 @@ for ($i=0; $i < 100; $i++) {
       $sth->bindParam(':e', $email);
       $sth->bindParam(':perms', $pages);
       $sth->execute();
-  }
+  //}
 
 ?>
