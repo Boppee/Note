@@ -233,12 +233,25 @@ function perms(perms) {
 }
 function updatePerm(event, uid) {
   var name = event.name;
+  var defF = $(event).parents('form').attr('id');
   var form = $(event).parents('form').attr('id').substring(0, $(event).parents('form').attr('id').length - 4);
   if (event.checked) {
     state = 1;
   }else {
     state = 0;
   }
+  if (name == "all") {
+    temp = $(event).parents('form');
+    for (var i = 1; i < temp[0].length; i++) {
+      tempId = temp[0][i]["name"];
+      $("#"+defF+" input[name='"+tempId+"']").prop("checked", state);
+      sendS(tempId, form, state, uid);
+    }
+  }else {
+    sendS(name, form, state, uid);
+  }
+}
+function sendS(name, form, state, uid) {
   $.ajax({
     type: "POST",
     url: "script/pages/accounts/permupdate.php",
@@ -246,5 +259,5 @@ function updatePerm(event, uid) {
     success: function (a) {
 
     }
-  })
+  });
 }
