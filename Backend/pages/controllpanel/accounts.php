@@ -9,7 +9,7 @@
         <a class="headerbutton" href="?page=accounts"><i class="fas fa-list-ol"></i> Account list</a>
       <?php endif; ?>
       <?php if (isset($_REQUEST["id"])): ?>
-        <?php if ($session->checkPrem("del", "accounts")): ?>
+        <?php if ($session->checkPrem("delete", "accounts")): ?>
           <a class="headerbutton" href="" id="deleteuser"><i class="fas fa-trash-alt"></i> Delete account</a>
         <?php endif; ?>
         <?php if ($session->checkPrem("mod", "accounts")): ?>

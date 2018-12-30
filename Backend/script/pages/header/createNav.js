@@ -7,7 +7,7 @@ $(document).ready(function () {
         var pageArray = result.pages;
         var page = result.page;
         var dontShowArray = ["settings","logout","myaccount"];
-        var pages = ["dashboard", "accounts", "orders", "products", "statistics"];
+        var pages = ["dashboard", "accounts", "orders", "products", "statistics", "categories"];
         var navListLenght = (pages.length-dontShowArray.length);
         var navItems = 0;
 

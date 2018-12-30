@@ -10,3 +10,15 @@ Ordning sen
 6: "statistics"
 7: "products"
 8: "categories"
+if ($_POST["name"] == "list") {
+  $tl = count($tempArray);
+  $c = array_search("create", $tempArray);
+  if (isset($c)) {
+    for ($i=1; $i < $tl; $i++) {
+      if ($i != $c) {
+        unset($tempArray[$i]);
+      }
+    }
+  }
+  $permArray[$pp] = $tempArray;
+}

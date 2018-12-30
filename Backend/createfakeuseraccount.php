@@ -9,8 +9,8 @@ $connect =  new connect();
 $connection = $connect->newConnectionPre("CreateAdminAccount");
 //for ($i=0; $i < 100; $i++) {
 
-      $uid = "sa";
-      $pwd = "sa";
+      $uid = "test";
+      $pwd = "test";
       $email = "emil00.sandberg@gmail.com";
 
       $uid = $enc->revEncode($uid, "");
