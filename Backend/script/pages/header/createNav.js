@@ -8,7 +8,7 @@ $(document).ready(function () {
         var page = result.page;
         var dontShowArray = ["settings","logout","myaccount"];
         var pages = ["dashboard", "accounts", "orders", "products", "statistics", "categories"];
-        var navListLenght = (pages.length-dontShowArray.length);
+        var navListLenght = (pageArray.length-dontShowArray.length);
         var navItems = 0;
 
         for (var i = 0; i < pageArray.length; i++) {
@@ -18,6 +18,7 @@ $(document).ready(function () {
         }
 
         navItems = (100/navListLenght);
+
 
         for (var i = 0; i < pageArray.length; i++) {
           if (pages.indexOf(pageArray[i]) != -1) {

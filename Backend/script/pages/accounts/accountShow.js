@@ -98,6 +98,11 @@ $.ajax({
         $(".permlist input").change(function (event) {
           updatePerm(this, info.username);
         });
+        $("#pwdr").click(function () {
+          $("body").css("overflow", "hidden");
+          window.scrollTo(0, 0);
+          $("#pwdrb").show();
+        });
       }
     });
   }
@@ -152,7 +157,7 @@ function changes(info, show) {
 }
 function close() {
   $("body").css("overflow", "");
-  $(".shadow, #changeDiv, #nochange").hide();
+  $(".shadow, #changeDiv, #nochange, #pwdrb").hide();
 }
 function updateAccount(sendUID) {
   var errors;
@@ -221,13 +226,8 @@ function perms(perms) {
     for (var i = 4; i < permslen; i++) {
       id = perms[i][0];
       var checked = 0;
-      var idAttr = $("#"+id+" .permlist ul li").length-1;
       for (var o = 1; o < perms[i].length; o++) {
         $("#"+id+" .permlist input[name='"+perms[i][o]+"']").prop("checked", true);
-        checked++;
-      }
-      if (idAttr == checked) {
-        $("#"+id+" .permlist input[name='all']").prop("checked", true);
       }
     }
   }
@@ -241,16 +241,7 @@ function updatePerm(event, uid) {
   }else {
     state = 0;
   }
-  if (name == "all") {
-    temp = $(event).parents('form');
-    for (var i = 1; i < temp[0].length; i++) {
-      tempId = temp[0][i]["name"];
-      $("#"+defF+" input[name='"+tempId+"']").prop("checked", state);
-      sendS(tempId, form, state, uid);
-    }
-  }else {
-    sendS(name, form, state, uid);
-  }
+  sendS(name, form, state, uid);
 }
 function sendS(name, form, state, uid) {
   $.ajax({

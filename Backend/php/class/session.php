@@ -20,6 +20,7 @@ class session {
     }
   }
   public function checkPrem($function, $page){
+    $this->updatePerms();
     for ($i=4; $i < count($_SESSION["new_permsys"]); $i++) {
       if ($_SESSION["new_permsys"][$i][0] == $page) {
         if (in_array($function, $_SESSION["new_permsys"][$i])) {
@@ -41,6 +42,19 @@ class session {
       }
     }else {
       return false;
+    }
+  }
+  public function updatePerms(){
+    unset($_SESSION["pages"]);
+    unset($_SESSION["new_permsys"]);
+
+    $uid = grabUserData($this->enc->decode($_SESSION["cred"]["uid"], $_SESSION["iv"]));
+    $_SESSION["new_permsys"] = json_decode($uid["new_permsys"], true);
+
+    $_SESSION["pages"] = array("dashboard","settings","logout","myaccount");
+    for ($i=4; $i < count($_SESSION["new_permsys"]); $i++) {
+      $temp = $_SESSION["new_permsys"][$i][0];
+      array_push($_SESSION["pages"], $temp);
     }
   }
 }

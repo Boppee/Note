@@ -20,11 +20,17 @@
     <section>
       <?php
         if (isset($_REQUEST["id"])) {
-          include 'pages/controllpanel/accounts/account.php';
+          if ($session->checkPrem("list", "accounts")) {
+              include 'pages/controllpanel/accounts/account.php';
+          }
         }else if(isset($_REQUEST["createuser"])){
-          include 'pages/controllpanel/accounts/create.php';
+          if ($session->checkPrem("create", "accounts")) {
+            include 'pages/controllpanel/accounts/create.php';
+          }
         }else {
-          include 'pages/controllpanel/accounts/accounts.php';
+          if ($session->checkPrem("list", "accounts")) {
+            include 'pages/controllpanel/accounts/accounts.php';
+          }  
         }
       ?>
     </section>

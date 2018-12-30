@@ -37,6 +37,8 @@ class pageLoader {
       $session = new session();
       if (!$session->verify()) {
         $this->goToPage("?page=logout");
+      }else {
+        $session->updatePerms();  
       }
     }
   }

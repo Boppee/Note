@@ -36,17 +36,19 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       array_push($permArray, $newArray);
     }elseif ($_POST["state"] == 0){
       $key = array_search($_POST["name"], $tempArray);
-      array_splice($tempArray, $key, 1);
-      $key = array_search($_POST["name"], $tempArray);
-      if ($_POST["name"] == "list") {
-        for ($i=count($tempArray)-1; $i > 0; $i--) {
-          if ($i != $key && $tempArray[$i] != "create") {
-            array_splice($tempArray, $i, 1);
+      if (isset($key)) {
+        array_splice($tempArray, $key, 1);
+        $key = array_search($_POST["name"], $tempArray);
+        if ($_POST["name"] == "list") {
+          for ($i=count($tempArray)-1; $i > 0; $i--) {
+            if ($i != $key && $tempArray[$i] != "create") {
+              array_splice($tempArray, $i, 1);
+            }
           }
         }
-      }
-      if (count($tempArray)-1 != 0) {
-        $permArray[$pp] = $tempArray;
+        if (count($tempArray)-1 != 0) {
+          $permArray[$pp] = $tempArray;
+        }
       }
     }elseif ($_POST["state"] == 1){
       if (!array_search($_POST["name"], $tempArray)) {

@@ -1,3 +1,10 @@
+<?php
+  $enc = new encoder("public");
+  if ($_REQUEST["id"] == $enc->decode($_SESSION["cred"]["uid"], $_SESSION["iv"])) {
+    //header("Location: ?page=myaccount");
+    //die();
+  }
+?>
 <title><?php echo $company->companyName." - ".ucfirst($loader->page)." - ".$_REQUEST["id"]; ?></title>
 <script type="text/javascript">
   var uid = "<?php echo $_REQUEST["id"]; ?>";
@@ -25,13 +32,13 @@
       <i class="fas fa-times"></i>
     </div>
     <div class="vtext">
-      <div class="vitext">
+      <div class="vitext tac">
         <h1>New password</h1>
         <input type="password" name="npwd" value="">
       </div>
     </div>
     <div class="changebuttons">
-      <a id="pwdc" >Change</a>
+      <a id="pwdc" class="curp">Change</a>
     </div>
   </div>
 </div>
@@ -56,8 +63,8 @@
       </table>
     </div>
     <div class="changebuttons">
-      <a id="changec" >Cancel</a>
-      <a id="changeok" >Change</a>
+      <a id="changec" class="curp">Cancel</a>
+      <a id="changeok" class="curp">Change</a>
     </div>
   </div>
 </div>
@@ -114,7 +121,7 @@
           <h1>Accounts</h1>
           <div class="permlist">
             <ul>
-              <li><input type="checkbox" name="all" value=""> All</li>
+
               <li><input type="checkbox" name="list" value=""> List</li>
               <li><input type="checkbox" name="respwd" value=""> Reset password</li>
               <li><input type="checkbox" name="create" value=""> Create</li>
@@ -130,7 +137,7 @@
           <h1>Orders</h1>
           <div class="permlist">
             <ul>
-              <li><input type="checkbox" name="all" value=""> All</li>
+
               <li><input type="checkbox" name="list" value=""> List</li>
               <li><input type="checkbox" name="create" value=""> Create</li>
               <li><input type="checkbox" name="mod" value=""> Modify</li>
@@ -145,7 +152,7 @@
           <h1>Products</h1>
           <div class="permlist">
             <ul>
-              <li><input type="checkbox" name="all" value=""> All</li>
+
               <li><input type="checkbox" name="list" value=""> List</li>
               <li><input type="checkbox" name="create" value=""> Create</li>
               <li><input type="checkbox" name="mod" value=""> Modify</li>
@@ -160,7 +167,7 @@
           <h1>Categories</h1>
           <div class="permlist">
             <ul>
-              <li><input type="checkbox" name="all" value=""> All</li>
+              
               <li><input type="checkbox" name="list" value=""> List</li>
               <li><input type="checkbox" name="create" value=""> Create</li>
               <li><input type="checkbox" name="mod" value=""> Modify</li>
