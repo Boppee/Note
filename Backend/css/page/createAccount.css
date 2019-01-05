@@ -1,0 +1,7 @@
+#accountImg{
+  background-image: url(../../img/account.png);
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  width: 300px;
+}

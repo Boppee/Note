@@ -16,8 +16,8 @@ $(document).ready(function () {
             navItems++;
           }
         }
-
-        navItems = (100/navListLenght);
+        
+        navItems = (100/navItems);
 
 
         for (var i = 0; i < pageArray.length; i++) {

@@ -103,6 +103,17 @@ $.ajax({
           window.scrollTo(0, 0);
           $("#pwdrb").show();
         });
+        $("#pwdc").click(function () {
+          $.ajax({
+            type: "POST",
+            url: "script/pages/accounts/pwdres.php",
+            data: {uid: info.username, newPwd: $("input[name=npwd]").val()},
+            success: function (a) {
+              alert("Your verification code: " + a +" \nValid for 5 minutes");
+            }
+          });
+
+        });
       }
     });
   }

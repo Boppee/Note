@@ -1,10 +1,3 @@
-<?php
-  $enc = new encoder("public");
-  if ($_REQUEST["id"] == $enc->decode($_SESSION["cred"]["uid"], $_SESSION["iv"])) {
-    //header("Location: ?page=myaccount");
-    //die();
-  }
-?>
 <title><?php echo $company->companyName." - ".ucfirst($loader->page)." - ".$_REQUEST["id"]; ?></title>
 <script type="text/javascript">
   var uid = "<?php echo $_REQUEST["id"]; ?>";
@@ -167,7 +160,7 @@
           <h1>Categories</h1>
           <div class="permlist">
             <ul>
-              
+
               <li><input type="checkbox" name="list" value=""> List</li>
               <li><input type="checkbox" name="create" value=""> Create</li>
               <li><input type="checkbox" name="mod" value=""> Modify</li>
