@@ -45,13 +45,13 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     if ($perm == "list") {
       if ($state == 0) {
-
+        $temp = $permArray[$indexKey];
         foreach ($items as $key => $value) {
           if (array_search($value, $permArray[$indexKey])) {
-            array_splice($permArray[$indexKey], $key-1, 1);
+            unset($permArray[$indexKey][array_search($value, $permArray[$indexKey])]);
           }
         }
-
+        $permArray[$indexKey] = array_values(array_filter($permArray[$indexKey]));
       }
     }else {
       if (!array_search("list", $permArray[$indexKey])) {
