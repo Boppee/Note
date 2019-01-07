@@ -1,9 +1,6 @@
 <?php
-$perms = array("dashboard","settings","logout","myaccount", array('accounts', 'list', 'resetpassword', 'create', 'mod'));
+if (password_verify("test", '$2y$10$tdI7NFYUj12ul4wgvKl4PexG40FWHHCi6adB8tyfo7LROpp7.xc8K')) {
+  echo "string";
+}
 
-echo json_encode($perms);
-echo "<br>";
-$e = json_decode('{"0":"dashboard","1":"settings","2":"logout","3":"myaccount","accounts":["list","resetpassword","create","mod"]}', true);
-print_r($e);
-echo $e[0];
 ?>

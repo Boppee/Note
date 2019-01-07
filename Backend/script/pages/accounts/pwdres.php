@@ -3,7 +3,7 @@
 session_start();
 require_once '../../../php/load.php';
 
-if (isset($_SESSION["signedIn"])) {
+if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
   $enc = new encoder("rev");
 
@@ -21,25 +21,29 @@ if (isset($_SESSION["signedIn"])) {
     $senderEmail = $encP->decode($senderData["email"], $senderData["iv"]);
 
     $sendCode = generateRandomString(24);
-    $retrunCode = generateRandomString(24);
+    $retrunCode = generateRandomString(5);
+    $id = generateRandomString(24);
 
-    $pwd = $enc->revEncode($newPwd, "");
+    $encR = new encoder("rev");
+
+    $pwd = $encR->revEncode($newPwd, "");
     $storeCode = password_hash($sendCode, PASSWORD_DEFAULT);
 
-    $link = "<a href='http://mrboppe.se/note/backend/verification.php?code=".$sendCode."&cr=".$sendUid."&uid=".$uid."'>Change Password</a>";
+    $link = "<a href='http://mrboppe.se/note/backend/verification.php?code=".$sendCode."&cr=".$sendUid."&uid=".$uid."&id=".$id."'>Change Password</a>";
 
     $changePwd = new changePwd($senderEmail, $link);
 
     $connect = new connect();
     $connection = $connect->newConnectionPre("pwdChange");
-    $sth = $connection->prepare("INSERT INTO `code`(`cr`, `uid`, `pwd`, `code`, `retruncode`) VALUES (:cr,:uid,:pwd,:code, :retrunCode)");
+    $sth = $connection->prepare("INSERT INTO `code`(`cr`, `uid`, `pwd`, `code`, `id`) VALUES (:cr,:uid,:pwd,:code, :id)");
     $sth->bindParam(':cr', $sendUid);
     $sth->bindParam(':uid', $uid);
     $sth->bindParam(':pwd', $pwd);
     $sth->bindParam(':code', $storeCode);
-    $storeReturnCode = password_hash($retrunCode, PASSWORD_DEFAULT);
-    $sth->bindParam(':retrunCode', $storeReturnCode);
+    $sth->bindParam(':id', $id);
     $sth->execute();
+
+    $_SESSION["returncode"] = $enc->encode($retrunCode, $_SESSION["iv"]);
 
     echo $retrunCode;
 
