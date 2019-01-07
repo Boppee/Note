@@ -24,7 +24,6 @@
     $sth->execute();
 
     $test = $sth->fetchAll(PDO::FETCH_ASSOC);
-    //print_r(json_decode($test["accounts"][0]["new_permsys"], true));
 
     foreach ($test as $key => $value) {
       $test[$key]["username"] = $enc->revDecode($value["username"]);

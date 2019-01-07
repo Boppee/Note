@@ -26,12 +26,14 @@
     </div>
     <div class="vtext">
       <div class="vitext tac">
-        <h1>New password</h1>
-        <input type="password" name="npwd" value="">
+        <h1 id="code"></h1>
+        <p id="codeinfo"></p>
+        <h1 class="codedone">New password</h1>
+        <input class="codedone" type="password" name="npwd" value="">
       </div>
     </div>
     <div class="changebuttons">
-      <a id="pwdc" class="curp">Change</a>
+      <a id="pwdc" class="curp codedone">Change</a>
     </div>
   </div>
 </div>

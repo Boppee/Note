@@ -135,3 +135,6 @@ section{
 #permdivs{
   display: flex;
 }
+#codeinfo{
+  color: var(--darkgray);
+}

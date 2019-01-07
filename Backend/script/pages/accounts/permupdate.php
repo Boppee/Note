@@ -45,7 +45,6 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     if ($perm == "list") {
       if ($state == 0) {
-        $temp = $permArray[$indexKey];
         foreach ($items as $key => $value) {
           if (array_search($value, $permArray[$indexKey])) {
             unset($permArray[$indexKey][array_search($value, $permArray[$indexKey])]);

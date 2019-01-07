@@ -61,7 +61,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       if ($_FILES["file"]["size"] > 5000000) {
         array_push($imgErrors, "file size");
       }
-      if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" ) {
+      if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" && $fileType != "bmp") {
         array_push($imgErrors, "file format");
       }
       if (getimagesize($_FILES["file"]["tmp_name"]) == false) {
@@ -70,11 +70,21 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       if (count($imgErrors) == 0) {
         $filePath = "../../../img/accounts/".$encRe->revDecode($uid).".".pathinfo($fileName, PATHINFO_EXTENSION);
         move_uploaded_file($_FILES["file"]["tmp_name"], $filePath);
-        $val = $encRe->revDecode($uid).".".pathinfo($fileName, PATHINFO_EXTENSION);
+        $imgtype = pathinfo($fileName, PATHINFO_EXTENSION);
+
+        $connection = $connect->newConnectionPre("UpdateAccount");
+
+        $sth = $connection->prepare("UPDATE `accounts` SET `imgtype`= :imgtype WHERE username = :uid");
+        $sth->bindParam(':imgtype', $imgtype);
+        $sth->bindParam(':uid', $uid);
+
+        $sth->execute();
+
+        $_SESSION["cur"] += 1;
       }
     }
 
-    if (count($imgErrors) == 0) {
+    if ($index != "img") {
       $connection = $connect->newConnectionPre("UpdateAccount");
 
       $sth = $connection->prepare("UPDATE `accounts` SET `".$index."`= :val WHERE username = :uid");
