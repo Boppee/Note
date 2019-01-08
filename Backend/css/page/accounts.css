@@ -104,9 +104,9 @@ table{
     color: var(--white);
     opacity: 0.5;
 }
-#deleteuser, #edituser{
+#deleteuser, #edituser, #coac{
   float: right;
-  margin-top: -10;
+  margin-top: -10px;
 }
 .buttonaccounts{
   display: none;

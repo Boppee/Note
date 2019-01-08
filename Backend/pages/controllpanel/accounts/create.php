@@ -25,16 +25,16 @@
         <table>
           <tr id="accountActive">
             <td class="text">Active:</td>
-            <td><input type="checkbox" id="activeinput" class="data text" value=""></td>
+            <td><input type="checkbox" id="activeinput" namne="active" class="data text" value=""></td>
           </tr>
           <tr id="accountEmail">
             <td class="text">Email:</td>
-            <td><input type="email" class="data text" value=""></td>
+            <td><input type="email" class="data text" name="email" value=""></td>
           </tr>
           <tr id="password">
             <td class="text">Password:</td>
             <td><input type="password" class="data text" name="pwd1" value=""></td>
-            <td><input type="password" class="data" name="pwd2" value=""></td>
+            <td><input type="password" class="data text" name="pwd2" value=""></td>
           </tr>
         </table>
         <div id="pwdErrorList">
@@ -78,7 +78,6 @@
           <h1>Orders</h1>
           <div class="permlist">
             <ul>
-
               <li><input type="checkbox" name="list" value=""> List</li>
               <li><input type="checkbox" name="create" value=""> Create</li>
               <li><input type="checkbox" name="mod" value=""> Modify</li>

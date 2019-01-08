@@ -21,3 +21,26 @@ function hasSpecial(str) {
     return false;
   }
 }
+function validateEmail(mail) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    return (true)
+  }else {
+    return (false)
+  }
+}
+function permsInputs(perms) {
+  $(document).ready(function () {
+
+    $("#permdivs input").prop("checked", false);
+    permslen = perms.length;
+    if (permslen > 4) {
+      for (var i = 4; i < permslen; i++) {
+        id = perms[i][0];
+        var checked = 0;
+        for (var o = 1; o < perms[i].length; o++) {
+          $("#"+id+" .permlist input[name='"+perms[i][o]+"']").prop("checked", true);
+        }
+      }
+    }
+  });
+}

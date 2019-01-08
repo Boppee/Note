@@ -44,7 +44,7 @@ $.ajax({
 
           $(".data").attr("disabled", "true");
 
-          perms(info.new_permsys);
+          permsInputs(info.new_permsys);
         }
 
         var edit = 0;
@@ -232,19 +232,6 @@ function updateAjax(formData, nr, sendUID) {
     }
   });
 }
-function perms(perms) {
-  $("#permdivs input").prop("checked", false);
-  permslen = perms.length;
-  if (permslen > 4) {
-    for (var i = 4; i < permslen; i++) {
-      id = perms[i][0];
-      var checked = 0;
-      for (var o = 1; o < perms[i].length; o++) {
-        $("#"+id+" .permlist input[name='"+perms[i][o]+"']").prop("checked", true);
-      }
-    }
-  }
-}
 function updatePerm(event, uid) {
   var name = event.name;
   var defF = $(event).parents('form').attr('id');
@@ -262,7 +249,7 @@ function sendS(name, form, state, uid) {
     url: "script/pages/accounts/permupdate.php",
     data: {name: name, index: form, state: state, uid: uid},
     success: function (a) {
-      perms(a);
+      permsInputs(a);
     }
   });
 }
