@@ -28,6 +28,11 @@
           <?php
         }
       }
+      if (isset($_REQUEST["createuser"])) {
+        ?>
+        <a class="headerbutton" href="" id="coac"><i class="fas fa-plus-circle"></i> Complete accounnt</a>
+        <?php
+      }
 
       ?>
     </div>

@@ -23,14 +23,6 @@ section{
 #accountName i, #accountName input{
   color: var(--white);
 }
-#accountName input, #accountName button{
-  font-size: 1.5em;
-}
-#accountName input{
-  width: 3ch;
-  background: transparent;
-  border: 0;
-}
 #accountName{
   display: flex;
 }
@@ -137,4 +129,10 @@ section{
 }
 #codeinfo{
   color: var(--darkgray);
+}
+#createAccount{
+  margin: 0;
+}
+.text{
+  font-size: 15px;
 }
