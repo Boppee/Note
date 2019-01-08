@@ -7,7 +7,7 @@ $(document).ready(function () {
       var reader = new FileReader();
 
       reader.onload = function(e) {
-        $('#accountImg').attr('src', e.target.result);
+        $("#accountImg").css("background-image", "url("+e.target.result+")");
       }
 
       reader.readAsDataURL(input.files[0]);
@@ -18,7 +18,7 @@ $(document).ready(function () {
   });
 
   //check password
-  $("#createAccount input:password").keyup(function () {
+  $("#password input:password").keyup(function () {
     var pwd1 = $("input[name=pwd1]").val();
     var pwd2 = $("input[name=pwd2]").val();
 

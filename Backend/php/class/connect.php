@@ -20,7 +20,7 @@
         $host = $this->defaultHost;
       }
       $uid = "root";
-      $pwd = "";
+      $pwd = "root";
       $databas = "admin";
       $host = "localhost";
       if (isset($uid) && isset($pwd) && isset($databas)) {
