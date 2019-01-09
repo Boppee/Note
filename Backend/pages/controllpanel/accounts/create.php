@@ -6,8 +6,10 @@
     <div id="accountHeader">
       <div id="accountName">
         <tr id="accountActive">
-          <td class="text">Username:</td>
-          <td><input type="text" name="uid" class="data text" value=""></td>
+          <div class="dataInputs" id="accountuid">
+            <h1 class="text">Username:</h1>
+            <input type="text" name="uid" class="data text" value="">
+          </div>
         </tr>
       </div>
     </div>
@@ -22,21 +24,19 @@
         </div>
       </div>
       <div id="accountBasic">
-        <table>
-          <tr id="accountActive">
-            <td class="text">Active:</td>
-            <td><input type="checkbox" id="activeinput" namne="active" class="data text" value=""></td>
-          </tr>
-          <tr id="accountEmail">
-            <td class="text">Email:</td>
-            <td><input type="email" class="data text" name="email" value=""></td>
-          </tr>
-          <tr id="password">
-            <td class="text">Password:</td>
-            <td><input type="password" class="data text" name="pwd1" value=""></td>
-            <td><input type="password" class="data text" name="pwd2" value=""></td>
-          </tr>
-        </table>
+        <div class="dataInputs" id="accountActive">
+          <h1 class="text">Active:</h1>
+          <input type="checkbox" id="activeinput" namne="active" class="data text" value="">
+        </div>
+        <div class="dataInputs" id="accountEmail">
+          <h1 class="text">Email:</h1>
+          <input type="email" class="data text" name="email" value="">
+        </div>
+        <div class="dataInputs" id="accountpwd">
+          <h1 class="text">Password:</h1>
+          <input type="password" class="data text" name="pwd1" id="dots" value="">
+          <input type="password" class="data text" name="pwd2" value="">
+        </div>
         <div id="pwdErrorList">
           <ul>
             <li id="pwdlength" class="text">The password must be between 10 and 20 characters</li>

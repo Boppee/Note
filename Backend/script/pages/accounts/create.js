@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $("#coac").hide();
+  //$("#coac").hide();
 
   var perm = ["dashboard","settings","logout","myaccount"];
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
   });
 
   //check password
-  $("#password input:password").keyup(function () {
+  $("#accountpwd input:password").keyup(function () {
     var pwd1 = $("input[name=pwd1]").val();
     var pwd2 = $("input[name=pwd2]").val();
 
@@ -177,16 +177,44 @@ $(document).ready(function () {
   }
 
 
-  $("#coac").click(function () {
-
-    var sendPassword = $("input[name=pwd1]").val();
-    var sendEmail = $("input[name=email]").val();
-    var sendUsername = $("input[name=uid]").val();
-    var sendActive = 0;
-
-    if ($("input[name=active]").checked == true) {
-      sendActive = 1;
-    }
-
+  $("#coac").click(function (event) {
+    event.preventDefault();
+    create();
   });
+
+  function create() {
+    $(document).ready(function () {
+      var sendPassword = $("input[name=pwd1]").val();
+      var sendEmail = $("input[name=email]").val();
+      var sendUsername = $("input[name=uid]").val();
+      var sendActive = 0;
+
+      if ($("input[name=active]").checked == true) {
+        sendActive = 1;
+      }
+
+      var sendPerms = perm;
+
+      var formData = new FormData();
+
+      formData.append('file', $('#imgInput')[0].files[0]);
+      formData.append("uid", sendUsername);
+      formData.append("pwd", sendPassword);
+      formData.append("email", sendEmail);
+      formData.append("active", sendActive);
+      formData.append("active", sendPerms);
+
+      $.ajax({
+        type: "POST",
+        url: "script/pages/accounts/createAccount.php",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (info) {
+          
+        }
+      });
+    });
+  }
+
 });
