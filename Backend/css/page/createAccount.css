@@ -1,7 +1,29 @@
-#accountImg{
-  background-image: url(../../img/account.png);
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  width: 300px;
+#createAccount{
+  margin: 0;
+}
+.text{
+  font-size: 15px;
+}
+.dataInputs{
+  display: flex;
+  padding: 10px 10px 10px 5px;
+  background: var(--white);
+  color: var(--darkgray);
+  border-radius: 10px;
+}
+.dataInputs input{
+  color: var(--darkgray) !important;
+  width: 100%;
+}
+#accountBasic .dataInputs{
+  margin: 10px 0px;
+}
+.dataInputs h1{
+  margin-right: 10px;
+}
+#activeinput{
+  width: auto;
+}
+#dots{
+  border-right: dotted;
 }

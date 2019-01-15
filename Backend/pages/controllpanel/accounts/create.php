@@ -1,5 +1,6 @@
 <script src="script/pages/accounts/create.js" charset="utf-8"></script>
 <link rel="stylesheet" href="css/page/account.css">
+<link rel="stylesheet" href="css/page/createAccount.css">
 
 <section class="Ypadding">
   <div class="inner">

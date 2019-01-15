@@ -28,6 +28,9 @@ function validateEmail(mail) {
     return (false)
   }
 }
+function removeSpace(str) {
+  return str.replace(/\s/g, '');
+}
 function permsInputs(perms) {
   $(document).ready(function () {
 

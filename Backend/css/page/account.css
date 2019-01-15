@@ -31,8 +31,9 @@ section{
 }
 #usernameP{
   line-height: 31px;
-  font-size: 1.5em;
   padding-right: 10px;
+  background: transparent;
+  border: 0;
 }
 #accountInfo{
   display: flex;
@@ -130,32 +131,9 @@ section{
 #codeinfo{
   color: var(--darkgray);
 }
-#createAccount{
-  margin: 0;
+#gotouser, #usernameP{
+  font-size: 1.5em;
 }
-.text{
-  font-size: 15px;
-}
-.dataInputs{
-  display: flex;
-  padding: 10px 10px 10px 5px;
-  background: var(--white);
-  color: var(--darkgray);
-  border-radius: 10px;
-}
-.dataInputs input{
-  color: var(--darkgray) !important;
-  width: 100%;
-}
-#accountBasic .dataInputs{
-  margin: 10px 0px;
-}
-.dataInputs h1{
-  margin-right: 10px;
-}
-#activeinput{
-  width: auto;
-}
-#dots{
-  border-right: dotted;
+#accountBasic td, #accountBasic input{
+  font-size: 1em;
 }

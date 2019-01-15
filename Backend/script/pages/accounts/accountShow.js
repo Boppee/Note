@@ -25,7 +25,7 @@ $.ajax({
           logon = info.lastlogon.split(' ').join('T').slice(0, -3);
 
           $(".accountpage").show();
-          $("#usernameP").text(info.username);
+          $("#usernameP").val(info.username);
           $("#username").val(" ");
 
           $("#accountEmail .data").val(info.email);
@@ -116,18 +116,54 @@ $.ajax({
           });
 
         });
+
+        $("#usernameP").keyup(function () {
+          $("#usernameP").val(removeSpace($("#usernameP").val()));
+          $.ajax({
+            type: "POST",
+            url: "script/pages/accounts/checkuid.php",
+            data: {uid: $("#usernameP").val()},
+            success: function (data) {
+              if (edit == 1) {
+                if (info.username != $("#usernameP").val()) {
+
+                  if (data == 0) {
+                    $("#usernameP").addClass("error");
+                    $("#save").hide();
+                  }else {
+                    $("#usernameP").removeClass("error");
+                    $("#save").show();
+                  }
+
+                  if ($("#usernameP").val().length == 0) {
+                    $("#usernameP").removeClass("error");
+                    $("#save").hide();
+                  }
+
+                }else {
+                  $("#save").show();
+                  $("#usernameP").removeClass("error");
+                }
+              }else {
+                $("#save").hide();
+                $("#usernameP").removeClass("error");
+              }
+            }
+          });
+          $("#email").focus();
+        });
+
       }
     });
   }
 });
-
 function changes(info, show) {
 
   $("#changebody tr").remove();
 
   var email = $("#accountEmail .data").val();
   var active = 0;
-  var uid = $("#usernameP").text();
+  var uid = $("#usernameP").val();
   var changes = 0;
 
   if (document.getElementById('activeinput').checked) {

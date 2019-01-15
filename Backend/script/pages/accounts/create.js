@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  //$("#coac").hide();
+  $("#coac").hide();
 
   var perm = ["dashboard","settings","logout","myaccount"];
 
@@ -99,9 +99,14 @@ $(document).ready(function () {
           $("input[name=uid]").removeClass("error");
           uid = 0;
         }
+        if (e.target.value.length == 0) {
+          uid = 1;
+          $("input[name=uid]").removeClass("error");
+        }
+        e.target.value = removeSpace(e.target.value);
+        update(uid, pwd, email);
       }
     });
-    update(uid, pwd, email);
   });
 
   function update(uid, pwd, email) {
@@ -189,11 +194,11 @@ $(document).ready(function () {
       var sendUsername = $("input[name=uid]").val();
       var sendActive = 0;
 
-      if ($("input[name=active]").checked == true) {
+      if (document.getElementById("activeinput").checked == true) {
         sendActive = 1;
       }
 
-      var sendPerms = perm;
+      var sendPerms = JSON.stringify(perm);
 
       var formData = new FormData();
 
@@ -202,7 +207,7 @@ $(document).ready(function () {
       formData.append("pwd", sendPassword);
       formData.append("email", sendEmail);
       formData.append("active", sendActive);
-      formData.append("active", sendPerms);
+      formData.append("perms", sendPerms);
 
       $.ajax({
         type: "POST",
@@ -211,7 +216,7 @@ $(document).ready(function () {
         processData: false,
         contentType: false,
         success: function (info) {
-          
+          window.location.href = "?page=accounts&id="+info;
         }
       });
     });

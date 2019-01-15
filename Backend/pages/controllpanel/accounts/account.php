@@ -67,7 +67,7 @@
   <div class="inner">
     <div id="accountHeader">
       <div id="accountName">
-        <p id="usernameP" contenteditable="true"></p>
+        <input type="text" id="usernameP" name="" value="">
         <button type="button" id="gotouser" onclick="redir()"><i class="fas fa-arrow-circle-right"></i></button>
       </div>
     </div>
@@ -91,7 +91,7 @@
           </tr>
           <tr id="accountEmail">
             <td>Email:</td>
-            <td><input type="email" class="data" value=""></td>
+            <td><input type="email" id="email" class="data" value=""></td>
           </tr>
           <tr id="lastlogon">
             <td>Last logon:</td>
