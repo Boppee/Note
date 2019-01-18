@@ -20,7 +20,15 @@ class pageLoader {
       $this->goToPage("?page=login");
     }
 
-    $this->newPageControll();
+    if ($this->page == "list") {
+      $this->page = $_REQUEST["underpage"];
+      $this->newPageControll();
+      $this->page = "list";
+    }else {
+      $this->newPageControll();
+    }
+
+
 
     //destroy attempts
     unset($_SESSION["loginAttempt"]);
@@ -38,7 +46,7 @@ class pageLoader {
       if (!$session->verify()) {
         $this->goToPage("?page=logout");
       }else {
-        $session->updatePerms();  
+        $session->updatePerms();
       }
     }
   }
