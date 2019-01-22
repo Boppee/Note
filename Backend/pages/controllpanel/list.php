@@ -13,7 +13,7 @@ $up = $_REQUEST["underpage"];
       <?php
 
         if ($session->checkPrem("create", $up)) {
-          ?><a class="headerbutton" href="?page=list&underpage=<?php echo $up; ?>&createuser"><i class="fas fa-plus"></i> Create <?php echo $up ?></a><?php
+          ?><a class="headerbutton" href="?page=list&underpage=<?php echo $up; ?>&create"><i class="fas fa-plus"></i> Create <?php echo $up ?></a><?php
         }
         if ($session->checkPrem("list", $up)) {
           ?><a class="headerbutton" href="?page=list&underpage=<?php echo $up ?>"><i class="fas fa-list-ul"></i> List <?php echo $up ?></a><?php
