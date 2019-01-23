@@ -57,3 +57,4 @@ $up = $_REQUEST["underpage"];
   </div>
 
 </main>
+<title><?php echo $company->companyName." - ".ucfirst($_REQUEST["underpage"]); ?></title>

@@ -14,7 +14,7 @@ class pageSystem {
 
   constructSelector(defult) {
     for (var i = 1; i <= 10; i++) {
-      var value = i;
+      var value = i*5;
       if (value != defult) {
         $("#numberOfItems").append("<option value="+value+">"+value+"</option>");
       }else {
@@ -77,10 +77,10 @@ class pageSystem {
   }
 
   rowColors() {
-    $("#listTab tr:visible:odd").css("background-color", "#ffa500");
-    $("#listTab tr:visible:odd td, #accountab tr:visible:odd a").css("color", "black");
-    $("#listTab tr:visible:even td, #accountab tr:visible:even a").css("color", "#f5f5f5");
-    $("#listTab tr:visible:even").css("background-color", "transparent");
+    $("#listTab tr:visible:even").css("background-color", "#ffa500").delay(0);
+    $("#listTab tr:visible:even td, #listTab tr:visible:even a").css("color", "black").delay(0);
+    $("#listTab tr:visible:odd td, #listTab tr:visible:odd a").css("color", "#f5f5f5").delay(0);
+    $("#listTab tr:visible:odd").css("background-color", "transparent").delay(0);
   }
 
   tableSearch() {

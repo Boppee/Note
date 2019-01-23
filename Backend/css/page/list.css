@@ -225,3 +225,6 @@ table{
 .buttonlists{
   display: none;
 }
+.itemsRow td{
+  padding: 10px 0px !important;
+}

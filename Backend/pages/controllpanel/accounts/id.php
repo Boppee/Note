@@ -1,4 +1,4 @@
-<title><?php echo $company->companyName." - ".ucfirst($loader->page)." - ".$_REQUEST["id"]; ?></title>
+<title><?php echo $company->companyName." - ".ucfirst($_REQUEST["underpage"])." - ".$_REQUEST["id"]; ?></title>
 <script type="text/javascript">
   var uid = "<?php echo $_REQUEST["id"]; ?>";
 </script>
