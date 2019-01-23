@@ -1,4 +1,13 @@
-
+<?php
+switch ($up) {
+  case 'accounts':
+    $sb = "username";
+    break;
+  case 'orders':
+    $sb = "order id";
+    break;
+}
+?>
 <div id="footerlist">
   <div id="spacer">
     <div id="leftbutton" class="buttonlists">
@@ -13,7 +22,7 @@
   </div>
 </div>
 <div class="search">
-  <input type="text" id="searchTable" placeholder="Serach by username">
+  <input type="text" id="searchTable" placeholder="Serach by <?php echo $sb ?>">
 </div>
 <div class="overflowscroll">
   <table id="listTable">

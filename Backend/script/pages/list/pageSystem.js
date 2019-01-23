@@ -88,11 +88,11 @@ class pageSystem {
       this.showPage();
       this.rowColors();
     }else {
-      var value = $(this).val().toLowerCase();
+      var value = $("#searchTable").val().toLowerCase();
       $("#listTable tbody tr").filter(function() {
         $(this).toggle($(this).find('.username').text().toLowerCase().indexOf(value) > -1);
-        this.rowColors();
       });
+      this.rowColors();
     }
   }
 
