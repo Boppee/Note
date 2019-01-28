@@ -228,3 +228,6 @@ table{
 .itemsRow td{
   padding: 10px 0px !important;
 }
+#searchTable{
+  width: 100%;
+}

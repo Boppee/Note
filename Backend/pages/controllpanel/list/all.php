@@ -6,6 +6,9 @@ switch ($up) {
   case 'orders':
     $sb = "order id";
     break;
+  case 'products':
+    $sb = "product name";
+    break;
 }
 ?>
 <div id="footerlist">
