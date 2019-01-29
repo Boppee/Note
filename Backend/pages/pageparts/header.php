@@ -11,11 +11,11 @@
 
       </ul>
     </nav>
-    <div id="setting">
+    <section id="setting">
       <a href="?page=settings" title="Settings"><i class="fas fa-cog"></i></a>
       <a href="?page=list&underpage=accounts&id=<?php $enc = new encoder("public"); echo $enc->decode($_SESSION["cred"]["uid"], $_SESSION["iv"]); ?>" title="Account"><i class="fas fa-user-alt"></i></a>
       <a href="?page=logout" title="Log out"><i class="fas fa-sign-out-alt"></i></a>
-    </div>
+    </section>
 
   </div>
 </header>

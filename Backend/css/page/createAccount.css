@@ -27,3 +27,6 @@
 #dots{
   border-right: dotted;
 }
+section .perms{
+  background: transparent;
+}

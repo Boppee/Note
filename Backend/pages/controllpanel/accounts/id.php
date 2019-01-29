@@ -4,9 +4,11 @@
 </script>
 <script src="script/pages/accounts/accountShow.js" charset="utf-8"></script>
 <link rel="stylesheet" href="css/page/account.css">
+
 <div class="shadow" id="saveshadow">
 
 </div>
+
 <div class="center" id="nochange">
   <div class="rel">
     <div class="close">
@@ -19,6 +21,7 @@
     </div>
   </div>
 </div>
+
 <div class="center" id="pwdrb">
   <div class="rel">
     <div class="close">
@@ -37,6 +40,7 @@
     </div>
   </div>
 </div>
+
 <div id="changeDiv" class="center">
   <div class="rel">
     <div class="close">
@@ -63,6 +67,7 @@
     </div>
   </div>
 </div>
+
 <section class="Ypadding accountpage">
   <div class="inner">
     <div id="accountHeader">
@@ -107,11 +112,12 @@
   </div>
   </div>
 </section>
+
 <section id="perms" class="Ypadding">
   <div class="inner">
     <div id="permdivs">
 
-      <div class="perms" id="accounts">
+      <section class="perms" id="accounts">
         <form class="permform" id="accountsform">
           <h1>Accounts</h1>
           <div class="permlist">
@@ -125,9 +131,9 @@
             </ul>
           </div>
         </form>
-      </div>
+      </section>
 
-      <div class="perms" id="orders">
+      <section class="perms" id="orders">
         <form class="permform" id="ordersform">
           <h1>Orders</h1>
           <div class="permlist">
@@ -140,9 +146,9 @@
             </ul>
           </div>
         </form>
-      </div>
+      </section>
 
-      <div class="perms" id="products">
+      <section class="perms" id="products">
         <form class="permform" id="productsform">
           <h1>Products</h1>
           <div class="permlist">
@@ -155,9 +161,9 @@
             </ul>
           </div>
         </form>
-      </div>
+      </section>
 
-      <div class="perms" id="categories">
+      <section class="perms" id="categories">
         <form class="permform" id="categoriesform">
           <h1>Categories</h1>
           <div class="permlist">
@@ -170,9 +176,9 @@
             </ul>
           </div>
         </form>
-      </div>
+      </section>
 
-      <div class="perms" id="statistics">
+      <section class="perms" id="statistics">
         <form class="permform" id="statisticsform">
           <h1>Statistics</h1>
           <div class="permlist">
@@ -181,7 +187,7 @@
             </ul>
           </div>
         </form>
-      </div>
+      </section>
 
     </div>
   </div>

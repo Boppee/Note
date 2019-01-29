@@ -6,6 +6,8 @@
 
     $uid = $enc->revEncode($uid, "");
 
+    //echo $uid;
+
     $connection = $connect->newConnectionPre("FetchFromAccounts");
 
     $sth = $connection->prepare("SELECT * FROM `accounts` WHERE `username` = :uid");

@@ -5,7 +5,7 @@
 <section class="Ypadding productpage">
   <div class="inner">
 
-    <div id="pbasics">
+    <section id="pbasics">
       <div id="named">
         <input type="checkbox" name="vis" value="">
         <input type="text" name="name" value="">
@@ -15,34 +15,34 @@
         <h1>Active orders: </h1><h1 id="ordersnr"></h1>
         <h1>Total sold: </h1><h1id="totalsell"></h1>
       </div>
-    </div>
+    </section>
 
-    <div class="imglib">
+    <section class="imglib">
       <div class="controlls">
         <input type="file" name="" value="">
       </div>
-    </div>
+    </section>
 
     <?php if ($session->checkPrem("list", "categories")): ?>
-      <div class="cats">
+      <section class="cats">
         <div class="cat" value="0">
           <?php if ($session->checkPrem("mod", "categories")): ?>
             <i class="fas fa-times"></i>
           <?php endif; ?>
           </i><h1 id="catname"></h1>
         </div>
-      </div>
+      </section>
     <?php endif; ?>
 
     <?php if ($session->checkPrem("list", "orders")): ?>
-      <div class="orders">
+      <section class="orders">
         <table>
 
         </table>
-      </div>
+      </section>
     <?php endif; ?>
 
-    <div class="stock">
+    <section class="stock">
       <table>
         <thead>
           <th>Stock location</th>
@@ -53,7 +53,7 @@
 
         </tbody>
       </table>
-    </div>
+    </section>
 
   </div>
 </section>
