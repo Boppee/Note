@@ -1,67 +1,3 @@
-.accountRow{
-  display: none;
-}
-.accountRow td{
-  padding: 5px;
-}
-#accountab tr:nth-child(even){
-  background-color: var(--orange);
-}
-#accountab tr:nth-child(even) td, #accountab tr:nth-child(even) a{
-  color: black;
-}
-#accountab tr:nth-child(odd){
-  background-color: var(--lightgray);
-}
-#accountab tr:nth-child(odd) td, #accountab tr:nth-child(odd) a{
-  color: var(--white);
-}
-#accounthead th{
-  padding: 10px;
-
-}
-table{
-  width: 100%;
-  text-align: center;
-  border-collapse: collapse;
-}
-#accountsInner{
-  padding-bottom: 15px;
-  background: var(--lightgray);
-  box-shadow: 0px 5px 10px var(--shadow)
-}
-#headerspace{
-  margin: 0;
-  padding: 20px 10px;
-}
-#footeraccount{
-  padding: 10px;
-  background: var(--darkgray);
-}
-#footeraccount, #spacer{
-  height: 40px;
-}
-#spacer{
-  position: relative;
-  z-index: 2;
-}
-#centertext{
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: -1;
-}
-#leftbutton{
-  float: left;
-}
-#rightbutton{
-  float: right;
-}
-#centertext p{
-  margin: 0;
-  line-height: 40px;
-}
 .buttonlists button{
   height: 100%;
   padding: 0px 15px;
@@ -69,70 +5,7 @@ table{
   box-shadow: 0px 0px 5px var(--shadow);
   border: 1px solid #f6a613;
   border-radius: 5px;
-}
-.buttonlists button, #accountab td, #accounthead th, #centertext p, #accountab a, #searchTable, .accpp{
-  color: var(--white);
-}
-#tablepadder{
-  padding: 10px 0;
-}
-.search{
-  margin-bottom: 10px;
-}
-.accpp{
-  margin-top: 10px;
-}
-.accpp, .search{
-  padding: 0 10px;
-}
-#searchTable{
-  padding: 5px;
-  font-size: 1.1em;
-  background: transparent;
-  border: none;
-}
-.headerbutton{
-  padding: 10px;
-  color: var(--orange);
-}
-.active{
-  background: var(--lightgray);
-  box-shadow: 0px -6px 5px !important;
-  padding-bottom: 2px !important;
-}
-#searchTable::placeholder {
-    color: var(--white);
-    opacity: 0.5;
-}
-#delete, #edit, #coac{
-  float: right;
-  margin-top: -10px;
-}
-.buttonaccounts{
-  display: none;
-}
-
-.listRow{
-  display: none;
-}
-.listRow td{
-  padding: 5px;
-}
-#listab tr:nth-child(even){
-  background-color: var(--orange);
-}
-#listab tr:nth-child(even) td, #listab tr:nth-child(even) a{
-  color: black;
-}
-#listab tr:nth-child(odd){
-  background-color: var(--lightgray);
-}
-#listab tr:nth-child(odd) td, #listab tr:nth-child(odd) a{
-  color: var(--white);
-}
-#listhead th{
-  padding: 10px;
-
+  background: #f6a613;
 }
 table{
   width: 100%;
@@ -148,11 +21,11 @@ table{
   margin: 0;
   padding: 20px 10px;
 }
-#footerlist{
+#pagecontroll{
   padding: 10px;
   background: var(--darkgray);
 }
-#footerlist, #spacer{
+#pagecontroll, #spacer{
   height: 40px;
 }
 #spacer{

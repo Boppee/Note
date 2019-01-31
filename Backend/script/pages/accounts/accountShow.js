@@ -12,7 +12,7 @@ $.ajax({
   success: function (info) {
     $(document).ready(function () {
       if (info.username == "") {
-        window.location.href = "?page=accounts";
+        window.location.href = "?page=list&underpage=accounts";
       }else {
         loaddefult(info);
 
@@ -49,7 +49,7 @@ $.ajax({
 
         var edit = 0;
 
-        $("#edituser").click(function (event) {
+        $("#editaccounts").click(function (event) {
           if (edit == 0) {
             loaddefult(info);
             $("#gotouser").hide();
@@ -67,6 +67,20 @@ $.ajax({
               edit = 0;
               loaddefult(info);
             }
+          }
+          event.preventDefault();
+        });
+
+        $("#delete").click(function (event) {
+          if (confirm("Are you sure?")) {
+            $.ajax({
+              type: "POST",
+              url: "script/pages/accounts/removeAccount.php",
+              data: {uid: uid},
+              success: function (a) {
+
+              }
+            });
           }
           event.preventDefault();
         });
@@ -230,7 +244,7 @@ function redir(errors, sendUID){
     if (errors) {
       location.reload();
     }else {
-      window.location.href = "?page=accounts&id="+sendUID;
+      window.location.href = "?page=list&underpage=accounts&id="+sendUID;
     }
 }
 function changeAccountImg(input, uid) {

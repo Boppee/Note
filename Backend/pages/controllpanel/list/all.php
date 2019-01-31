@@ -11,7 +11,7 @@ switch ($up) {
     break;
 }
 ?>
-<div id="footerlist">
+<section id="pagecontroll">
   <div id="spacer">
     <div id="leftbutton" class="buttonlists">
       <button id="prevpage"><i class="fas fa-angle-left"></i> Previous page</button>
@@ -23,10 +23,10 @@ switch ($up) {
       <button id="nextpage">Next Page <i class="fas fa-angle-right"></i></button>
     </div>
   </div>
-</div>
-<div class="search">
+</section>
+<section class="search">
   <input type="text" id="searchTable" placeholder="Serach by <?php echo $sb ?>">
-</div>
+</section>
 <div class="overflowscroll">
   <table id="listTable">
     <?php
