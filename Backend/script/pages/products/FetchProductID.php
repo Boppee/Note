@@ -21,10 +21,10 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $echo = $sth->fetchAll(PDO::FETCH_ASSOC);
 
     if (!$session->checkPrem("list", "categories")) {
-
+      unset($echo["categories"]);
     }
     if (!$session->checkPrem("list", "orders")) {
-      
+      unset($echo["orders"]);
     }
 
     echo json_encode($echo);

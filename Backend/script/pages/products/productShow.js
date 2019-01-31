@@ -4,7 +4,7 @@ $.ajax({
   data: {id: id},
   success: function (info) {
     $(document).ready(function () {
-      console.log(info);
+      
     });
   }
 });

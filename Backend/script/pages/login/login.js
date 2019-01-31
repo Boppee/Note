@@ -1,23 +1,14 @@
-function sendRecaptcha(recap) {
-  $(document).ready(function () {
-    $.ajax({
-        type: "POST",
-        url: "script/pages/login/confirmrecaptcha.php",
-        data: {
-          key: recap
-        },
-        success: function(result) {
-          $("#capatcha").toggle();
-          if (!isIE) {
-            $("#login").css("display", "grid");
-          }else {
-            $("#login").css("display", "inline");
-          }
-        }
-    });
-  });
-}
 $(document).ready(function () {
+
+  $("#navlist").hide();
+
+  $("#navarrow").click(function () {
+    $("#navlist").animate({
+      width: "toggle"
+    });
+    $("#navarrow").toggleClass("rotate");
+  });
+
   $("#login").submit(function (e) {
 
     var salt = $("#salt").val();
@@ -87,4 +78,23 @@ $(document).ready(function () {
 });
 function changeSalt(salt) {
   $("#salt").val(salt);
+}
+function sendRecaptcha(recap) {
+  $(document).ready(function () {
+    $.ajax({
+        type: "POST",
+        url: "script/pages/login/confirmrecaptcha.php",
+        data: {
+          key: recap
+        },
+        success: function(result) {
+          $("#capatcha").toggle();
+          if (!isIE) {
+            $("#login").css("display", "grid");
+          }else {
+            $("#login").css("display", "inline");
+          }
+        }
+    });
+  });
 }

@@ -1,82 +1,43 @@
-#outer{
+main{
   height: 100%;
-  width: 80%;
-  margin: auto;
-  position: relative;
 }
-#inner{
-  padding: 10px;
-  box-sizing: border-box;
-  height: 70%;
-  width: 100%;
-  position: absolute;
-  top:0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  background: #d8d8d8;
-  box-shadow: 10px 10px 20px #bdbdbd;
-}
-#formdiv{
-  float: right;
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  background: #f3f3f3;
-  box-shadow: 0px 0px 10px #c7c7c7;
-  display: table;
-  position: relative;
-}
-#imgdiv{
-  float: left;
-}
-#imgdiv h1{
-  margin-left: 10px;
-}
-#formdiv p {
+nav{
   font-size: 1.5em;
-  text-align: center;
   position: absolute;
-  right: 0;
-  left: 0;
+  display: flex;
+  padding: 0.5em;
+  top: 5%;
+  left: 5%;
 }
-#login,#email{
-  display: none;
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  text-overflow: ellipsis;
 }
-#centerlogin{
-  display: table-cell;
-  vertical-align: middle;
+li{
+  margin: 0px 10px;
+  text-overflow: ellipsis;
 }
-#login input, #email input {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    text-align: center;
-    max-width: 400px;
-    font-size: 1.5em;
-    padding: 10px 0px;
+#navarrow{
+  padding: 0px 10px;
 }
-
-#sumbitlogin, #sumbitcode{
-  font-size: 1.2em !important;
-  width: 40% !important;
-  margin: 10px auto !important;
-  border: 1px solid #777777 !important;
-  border-radius: 10px;
+#navarrow:hover{
+  cursor: pointer;
 }
-#loadImg{
-  display: none;
-  max-width: 250px;
-  max-height: 250px;
+section{
+  height: 100%;
+  position: absolute;
+  left: 70%;
+  display: flex;
+  align-items: center;
 }
-.loadImg{
-  display: none;
+#loginButton{
+  padding: 0.7em;
+  font-size: 1.5em;
 }
-body{
-  overflow-y: hidden !important;
-}
-footer{
-  position: absolute !important;
+nav, #loginButton{
+  background: var(--orange);
+  box-shadow: 0px 0px 10px var(--shadow);
 }
