@@ -8,6 +8,11 @@ $(document).ready(function () {
     });
     $("#navarrow").toggleClass("rotate");
   });
+  $("#loginbutton").click(function () {
+    $("#forms").toggle("slow");
+    $("#loginButton i").toggleClass("rotate");
+    $("#forms").css("min-width", "500px");
+  });
 
   $("#login").submit(function (e) {
 
@@ -35,11 +40,8 @@ $(document).ready(function () {
           if (result.status == "pass") {
 
             changeSalt(result.salt);
-            if (!isIE) {
-              $("#email").css("display", "grid");
-            }else {
-              $("#email").css("display", "inline");
-            }
+
+            $("#email").css("display", "inline");
 
 
             $("#email").submit(function (e) {
@@ -89,11 +91,7 @@ function sendRecaptcha(recap) {
         },
         success: function(result) {
           $("#capatcha").toggle();
-          if (!isIE) {
-            $("#login").css("display", "grid");
-          }else {
-            $("#login").css("display", "inline");
-          }
+          $("#login").css("display", "inline");
         }
     });
   });
