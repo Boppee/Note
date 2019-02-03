@@ -1,6 +1,6 @@
 <?php
 session_start();
-header('Content-type: application/json');
+header('Content-Type: application/json');
 require_once '../../../php/load.php';
 
 if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
@@ -26,8 +26,9 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     if (!$session->checkPrem("list", "orders")) {
       unset($echo["orders"]);
     }
+    $echo[0]["stock"] = json_decode($echo[0]["stock"]);
 
-    echo json_encode($echo);
+    echo json_encode($echo, true);
 
   }
 }

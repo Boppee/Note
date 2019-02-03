@@ -11,9 +11,8 @@
         <input type="text" name="name" value="">
       </div>
       <div id="statsp">
-        <h1>Current stock: </h1><h1 id="stocknr"></h1>
-        <h1>Active orders: </h1><h1 id="ordersnr"></h1>
-        <h1>Total sold: </h1><h1id="totalsell"></h1>
+        <h1>Current stock: </h1><h1 id="stocknr">0</h1>
+        <h1>Total sold: </h1><h1 id="totalsell">0</h1>
       </div>
     </section>
 
@@ -49,8 +48,11 @@
           <th>Amount</th>
           <th></th>
         </thead>
-        <tbody>
-
+        <tbody id="stocktb">
+          <tr>
+            <td class="loc"></td>
+            <td class="am"></td>
+          </tr>
         </tbody>
       </table>
     </section>

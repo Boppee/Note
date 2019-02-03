@@ -53,10 +53,10 @@ function addNewRow(data, number) {
     }
 
     $("#product"+data.name).append("<td class='"+data.name+" name'>"+data.name+"</td>");
-    $("#product"+data.name).append("<td class='"+data.name+" name'>"+data.stock+"</td>");
+    $("#product"+data.name).append("<td class='"+data.name+" name'>"+data.totalstock+"</td>");
     $("#product"+data.name).append("<td class='"+data.name+" name'>"+data.price+"</td>");
 
-    $("#product"+data.name).append("<td class='"+data.name+" gotoprofile'><a href='?page=list&underpage=products&id="+data.name+"'>Profile</a></td>");
+    $("#product"+data.name).append("<td class='"+data.name+" gotoprofile'><a href='?page=list&underpage=products&id="+data.id+"'>Profile</a></td>");
 
   });
 }
