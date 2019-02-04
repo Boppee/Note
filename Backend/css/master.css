@@ -33,7 +33,7 @@ p{
   margin: 0;
 }
 .overflowscroll{
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 .overflowscroll::-webkit-scrollbar {
 display: none;

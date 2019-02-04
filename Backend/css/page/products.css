@@ -1,0 +1,22 @@
+.img{
+  position: relative;
+  padding: 0em 1em;
+}
+.img i{
+  position: absolute;
+  top: 1em;
+  left: 2em;
+  background: white;
+  padding: 3px;
+  border-radius: 50%;
+}
+.img img{
+  max-height: 250px;
+}
+#imgs{
+  display: flex;
+  overflow-x: auto;
+}
+.img i:hover{
+  cursor: pointer;
+}

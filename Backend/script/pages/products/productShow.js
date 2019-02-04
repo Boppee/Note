@@ -25,6 +25,12 @@ $.ajax({
 
       }
 
+      imgArray = info.imgs;
+
+      for (var i = 0; i < imgArray.length; i++) {
+        $('#imgs').append([{pnr: info.id, imgname: imgArray[i].name, imgtype: imgArray[i].imgtype}].map(Item).join(''));
+      }
+
     });
   }
 });

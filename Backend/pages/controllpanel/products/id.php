@@ -2,6 +2,15 @@
 <script type="text/javascript">
   var id = "<?php echo $_REQUEST["id"]; ?>";
 </script>
+<script type="text/javascript">
+  const Item = ({pnr, imgname, imgtype }) => `
+  <div id="${imgname}img" class="img">
+    <i class="fas fa-times-circle"></i>
+    <img src="img/p/${pnr}/${imgname}.${imgtype}" alt="">
+  </div>
+`;
+</script>
+<link rel="stylesheet" href="css/page/products.css">
 <section class="Ypadding productpage">
   <div class="inner">
 
@@ -17,6 +26,9 @@
     </section>
 
     <section class="imglib">
+      <div id="imgs">
+
+      </div>
       <div class="controlls">
         <input type="file" name="" value="">
       </div>
@@ -49,10 +61,6 @@
           <th></th>
         </thead>
         <tbody id="stocktb">
-          <tr>
-            <td class="loc"></td>
-            <td class="am"></td>
-          </tr>
         </tbody>
       </table>
     </section>

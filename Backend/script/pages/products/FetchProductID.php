@@ -27,6 +27,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       unset($echo["orders"]);
     }
     $echo[0]["stock"] = json_decode($echo[0]["stock"]);
+    $echo[0]["imgs"] = json_decode($echo[0]["imgs"]);
 
     echo json_encode($echo, true);
 
