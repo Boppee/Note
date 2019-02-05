@@ -31,6 +31,44 @@ $.ajax({
         $('#imgs').append([{pnr: info.id, imgname: imgArray[i].name, imgtype: imgArray[i].imgtype}].map(Item).join(''));
       }
 
+      $(".img i").click(function functionName(event) {
+        var iid = event.target.parentElement.id;
+        var cid = iid.split("_")[0];
+        $.ajax({
+          type: "POST",
+          url: "script/pages/products/removeimg.php",
+          data: {id: cid, userid: info.id},
+          success: function (ans) {
+            $("#"+iid).remove();
+          }
+        });
+      });
+
+      $("#imgupload").change(function () {
+        uploadImg(this, info.id);
+      });
+
     });
   }
 });
+function uploadImg(input, id) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    var formData = new FormData();
+    formData.append('file', $('#imgupload')[0].files[0]);
+    formData.append("pid", id);
+
+    $.ajax({
+      type: "POST",
+      url: "script/pages/products/uploadimg.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (info) {
+
+      }
+    });
+
+  }
+}

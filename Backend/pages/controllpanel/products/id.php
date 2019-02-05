@@ -4,7 +4,7 @@
 </script>
 <script type="text/javascript">
   const Item = ({pnr, imgname, imgtype }) => `
-  <div id="${imgname}img" class="img">
+  <div id="${imgname}_img" class="img">
     <i class="fas fa-times-circle"></i>
     <img src="img/p/${pnr}/${imgname}.${imgtype}" alt="">
   </div>
@@ -30,7 +30,7 @@
 
       </div>
       <div class="controlls">
-        <input type="file" name="" value="">
+        <input type="file" name="" value="" id="imgupload">
       </div>
     </section>
 
