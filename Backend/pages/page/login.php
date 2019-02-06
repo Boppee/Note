@@ -12,7 +12,6 @@ $salt = new salt();
 <main>
 
   <nav>
-<<<<<<< HEAD
     <p class="text">Welcome to <?php echo $company->companyName; ?></p>
     <ul>
       <li>
@@ -54,7 +53,6 @@ $salt = new salt();
       <input type="hidden" id="salt" value="<?php $saltName = "login"; echo $salt->generatSalt($saltName);?>">
 
     </div>
-=======
     <span><?php echo $company->companyName; ?> <i id="navarrow" class="fas fa-caret-right"></i></span>
     <ul id="navlist">
       <li><a href="">Store</a></li>
@@ -111,7 +109,6 @@ $salt = new salt();
         </div>
       </div>
     </section>
->>>>>>> f77d303658eb19a44e2f5548db56fa9cd38ef215
   </aside>
 
 </main>

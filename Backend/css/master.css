@@ -96,9 +96,6 @@ h1{
 .error{
   box-shadow: 0px 0px 5px 2px red;
 }
-<<<<<<< HEAD
-
-/*loading*/
 #outer{
   height: 100%;
   width: 80%;
@@ -244,5 +241,4 @@ footer{
 }
 .rel{
   position: relative;
->>>>>>> f77d303658eb19a44e2f5548db56fa9cd38ef215
 }
