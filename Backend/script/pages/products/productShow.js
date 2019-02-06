@@ -27,9 +27,15 @@ $.ajax({
 
       imgArray = info.imgs;
 
-      for (var i = 0; i < imgArray.length; i++) {
-        $('#imgs').append([{pnr: info.id, imgname: imgArray[i].name, imgtype: imgArray[i].imgtype}].map(Item).join(''));
+      if (imgArray.length != 0) {
+        $("#noimg_img").hide();
+        for (var i = 0; i < imgArray.length; i++) {
+          $('#imgs').append([{pnr: info.id, imgname: imgArray[i].name, imgtype: imgArray[i].imgtype}].map(Item).join(''));
+        }
       }
+
+      showNoImg();
+
 
       $(".img i").click(function functionName(event) {
         var iid = event.target.parentElement.id;
@@ -38,15 +44,16 @@ $.ajax({
           type: "POST",
           url: "script/pages/products/removeimg.php",
           data: {id: cid, userid: info.id},
-          success: function (ans) {
-            $("#"+iid).remove();
-          }
         });
+        $("#"+iid).remove();
+        showNoImg();
       });
 
       $("#imgupload").change(function () {
         uploadImg(this, info.id);
       });
+
+      document.title = document.title+" "+info.name;
 
     });
   }
@@ -67,8 +74,31 @@ function uploadImg(input, id) {
       contentType: false,
       success: function (info) {
 
+        $('#imgs').append([{pnr: info.id, imgname: info.name, imgtype: info.imgtype}].map(Item).join(''));
+
+        $(".img i").click(function functionName(event) {
+          var iid = event.target.parentElement.id;
+          var cid = iid.split("_")[0];
+          $.ajax({
+            type: "POST",
+            url: "script/pages/products/removeimg.php",
+            data: {id: cid, userid: info.id},
+          });
+          $("#"+iid).remove();
+          showNoImg();
+        });
+
+        showNoImg();
+
       }
     });
 
+  }
+}
+function showNoImg() {
+  if ($("#imgs > div").length == 1) {
+    $("#noimg_img").show();
+  }else {
+    $("#noimg_img").hide();
   }
 }

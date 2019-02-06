@@ -45,18 +45,9 @@ $.ajax({
 
 function addNewRow(data, number) {
   $(document).ready(function () {
-    $("#listTable").append("<tr value='"+number+"' class='itemsRow' id='product"+data.name+"'>");
-    $("#product"+data.name).append("<td class='"+data.name+" visibleTd'><input id='test' class='"+data.name+" visibleInput' type='checkbox'></td>");
-
+    $('#listTab').append([{id: data.id, name: data.name, price: data.price, nr: number, stock: data.totalstock}].map(tr).join(''));
     if (data.visible == "1") {
-      $("."+data.name+" input").attr("checked", "true");
+      $(".vis"+data.id+" input").attr("checked", "true");
     }
-
-    $("#product"+data.name).append("<td class='"+data.name+" name'>"+data.name+"</td>");
-    $("#product"+data.name).append("<td class='"+data.name+" name'>"+data.totalstock+"</td>");
-    $("#product"+data.name).append("<td class='"+data.name+" name'>"+data.price+"</td>");
-
-    $("#product"+data.name).append("<td class='"+data.name+" gotoprofile'><a href='?page=list&underpage=products&id="+data.id+"'>Profile</a></td>");
-
   });
 }

@@ -140,3 +140,6 @@ section{
 section .perms{
   background: transparent;
 }
+#listInner{
+  padding: 0 !important;
+}

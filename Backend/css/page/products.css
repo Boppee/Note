@@ -1,6 +1,8 @@
 .img{
   position: relative;
   padding: 0em 1em;
+  margin: auto;
+  margin-bottom: 1em;
 }
 .img i{
   position: absolute;
@@ -19,4 +21,14 @@
 }
 .img i:hover{
   cursor: pointer;
+}
+.productpage section{
+  padding: 1em 0em;
+}
+#listInner{
+  padding: 0 !important;
+}
+.productpage{
+  padding-top: 1em;
+  background: var(--white);
 }

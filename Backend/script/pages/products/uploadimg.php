@@ -37,6 +37,9 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       array_push($imgErrors, "not a img");
     }
     if (count($imgErrors) == 0) {
+      if (!file_exists("../../../img/p/".$pid)) {
+        mkdir("../../../img/p/".$pid, 0700);
+      }
       $filePath = "../../../img/p/".$pid."/".$imgname.".".pathinfo($fileName, PATHINFO_EXTENSION);
       move_uploaded_file($_FILES["file"]["tmp_name"], $filePath);
       $imgtype = pathinfo($fileName, PATHINFO_EXTENSION);
@@ -51,7 +54,8 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $sth->bindParam(':id', $pid, PDO::PARAM_INT);
     $sth->bindParam(':array', $imgArray);
     if ($sth->execute()) {
-      echo "success";
+      $newArray["id"] = $pid;
+      echo json_encode($newArray);
     }
   }
 }

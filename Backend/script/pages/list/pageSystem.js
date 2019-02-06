@@ -57,22 +57,24 @@ class pageSystem {
     $("#pages").remove();
     $("#centertext").append("<p id='pages'>Page: "+this.page+" out of "+this.pages);
     $("#centertexttop").append("<p id='pages'>Page: "+this.page+" out of "+this.pages);
-    if (this.pages == 1) {
-      $(".buttonlists").hide();
-    }else {
-      $(".buttonlists").show();
-    }
+    if (this.pages != 0) {
+      if (this.pages == 1) {
+        $(".buttonlists").hide();
+      }else {
+        $(".buttonlists").show();
+      }
 
-    if (this.page == 1) {
-      $("#leftbutton").hide();
-    }else {
-      $("#leftbutton").show();
-    }
+      if (this.page == 1) {
+        $("#leftbutton").hide();
+      }else {
+        $("#leftbutton").show();
+      }
 
-    if (this.pages == this.page) {
-      $("#rightbutton").hide();
-    }else {
-      $("#rightbutton").show();
+      if (this.pages == this.page) {
+        $("#rightbutton").hide();
+      }else {
+        $("#rightbutton").show();
+      }
     }
   }
 
