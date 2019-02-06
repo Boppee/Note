@@ -2,6 +2,15 @@
 <script type="text/javascript">
   var id = "<?php echo $_REQUEST["id"]; ?>";
 </script>
+<script type="text/javascript">
+  const Item = ({pnr, imgname, imgtype }) => `
+  <div id="${imgname}_img" class="img">
+    <i class="fas fa-times-circle"></i>
+    <img src="img/p/${pnr}/${imgname}.${imgtype}" alt="">
+  </div>
+`;
+</script>
+<link rel="stylesheet" href="css/page/products.css">
 <section class="Ypadding productpage">
   <div class="inner">
 
@@ -11,15 +20,17 @@
         <input type="text" name="name" value="">
       </div>
       <div id="statsp">
-        <h1>Current stock: </h1><h1 id="stocknr"></h1>
-        <h1>Active orders: </h1><h1 id="ordersnr"></h1>
-        <h1>Total sold: </h1><h1id="totalsell"></h1>
+        <h1>Current stock: </h1><h1 id="stocknr">0</h1>
+        <h1>Total sold: </h1><h1 id="totalsell">0</h1>
       </div>
     </section>
 
     <section class="imglib">
+      <div id="imgs">
+
+      </div>
       <div class="controlls">
-        <input type="file" name="" value="">
+        <input type="file" name="" value="" id="imgupload">
       </div>
     </section>
 
@@ -49,8 +60,7 @@
           <th>Amount</th>
           <th></th>
         </thead>
-        <tbody>
-
+        <tbody id="stocktb">
         </tbody>
       </table>
     </section>

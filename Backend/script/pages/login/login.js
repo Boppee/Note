@@ -1,23 +1,19 @@
-function sendRecaptcha(recap) {
-  $(document).ready(function () {
-    $.ajax({
-        type: "POST",
-        url: "script/pages/login/confirmrecaptcha.php",
-        data: {
-          key: recap
-        },
-        success: function(result) {
-          $("#capatcha").toggle();
-          if (!isIE) {
-            $("#login").css("display", "grid");
-          }else {
-            $("#login").css("display", "inline");
-          }
-        }
-    });
-  });
-}
 $(document).ready(function () {
+
+  $("#navlist").hide();
+
+  $("#navarrow").click(function () {
+    $("#navlist").animate({
+      width: "toggle"
+    });
+    $("#navarrow").toggleClass("rotate");
+  });
+  $("#loginbutton").click(function () {
+    $("#forms").toggle("slow");
+    $("#loginButton i").toggleClass("rotate");
+    $("#forms").css("min-width", "500px");
+  });
+
   $("#login").submit(function (e) {
 
     var salt = $("#salt").val();
@@ -44,11 +40,8 @@ $(document).ready(function () {
           if (result.status == "pass") {
 
             changeSalt(result.salt);
-            if (!isIE) {
-              $("#email").css("display", "grid");
-            }else {
-              $("#email").css("display", "inline");
-            }
+
+            $("#email").css("display", "inline");
 
 
             $("#email").submit(function (e) {
@@ -87,4 +80,19 @@ $(document).ready(function () {
 });
 function changeSalt(salt) {
   $("#salt").val(salt);
+}
+function sendRecaptcha(recap) {
+  $(document).ready(function () {
+    $.ajax({
+        type: "POST",
+        url: "script/pages/login/confirmrecaptcha.php",
+        data: {
+          key: recap
+        },
+        success: function(result) {
+          $("#capatcha").toggle();
+          $("#login").css("display", "inline");
+        }
+    });
+  });
 }

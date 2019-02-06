@@ -19,7 +19,7 @@
     $connect = new connect();
     $connection = $connect->newConnectionPre("FetchFromProducts");
 
-    $sth = $connection->prepare("SELECT `id`, `visible`, `name`, `stock`, `imgs`, `price` FROM `products` LIMIT :itemlimit");
+    $sth = $connection->prepare("SELECT `id`, `visible`, `name`, `stock`, `imgs`, `price`, `totalstock` FROM `products` LIMIT :itemlimit");
     $sth->bindParam(':itemlimit', $limit, PDO::PARAM_INT);
     $sth->execute();
 
