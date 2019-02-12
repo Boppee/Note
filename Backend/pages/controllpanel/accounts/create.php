@@ -4,6 +4,7 @@
 
 <section class="Ypadding">
   <div class="inner">
+
     <div id="accountHeader">
       <div id="accountName">
         <tr id="accountActive">
@@ -14,6 +15,7 @@
         </tr>
       </div>
     </div>
+
     <div id="accountInfo">
       <div id="img">
         <div id="imgpadder">
@@ -50,7 +52,7 @@
         </div>
       </div>
     </div>
-  </div>
+    
   </div>
 </section>
 

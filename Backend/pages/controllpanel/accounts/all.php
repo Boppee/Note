@@ -3,7 +3,6 @@
     <th>Active</th>
     <th>Username</th>
     <th>Last Logon</th>
-
     <th>Accounts</th>
     <th>Orders</th>
     <th>Products</th>

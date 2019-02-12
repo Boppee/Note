@@ -164,7 +164,7 @@ $.ajax({
               }
             }
           });
-          $("#email").focus();
+          $("#usernameP").focus();
         });
 
       }

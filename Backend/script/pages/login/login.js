@@ -58,7 +58,7 @@ $(document).ready(function () {
                 },
                 success: function(result){
                   if (result.status == "pass") {
-                    window.location.href = "?page="+result.page;
+                    window.location.href = result.page;
                   }else if (result.error) {
                     changeSalt(result.salt);
                   }

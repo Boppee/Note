@@ -37,7 +37,8 @@
       $_SESSION["signedIn"] = true;
       $_SESSION["cred"] = $credArray;
 
-      $echoArray = array('status' => "pass", 'page' => "dashboard");
+      $echoArray = array('status' => "pass", 'page' => $_SESSION["afterlogin"]);
+      unset($_SESSION["afterlogin"]);
       echo json_encode($echoArray);
 
     }else {

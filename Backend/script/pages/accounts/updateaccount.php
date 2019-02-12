@@ -68,14 +68,15 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
         array_push($imgErrors, "not a img");
       }
       if (count($imgErrors) == 0) {
-        $filePath = "../../../img/accounts/".$encRe->revDecode($uid).".".pathinfo($fileName, PATHINFO_EXTENSION);
+        $fileP = checkIfFileName(pathinfo($fileName, PATHINFO_EXTENSION));
+        $filePath = "../../../img/accounts/".$fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
         move_uploaded_file($_FILES["file"]["tmp_name"], $filePath);
-        $imgtype = pathinfo($fileName, PATHINFO_EXTENSION);
+        $imgD = $fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
 
         $connection = $connect->newConnectionPre("UpdateAccount");
 
-        $sth = $connection->prepare("UPDATE `accounts` SET `imgtype`= :imgtype WHERE username = :uid");
-        $sth->bindParam(':imgtype', $imgtype);
+        $sth = $connection->prepare("UPDATE `accounts` SET `img`= :imgd WHERE username = :uid");
+        $sth->bindParam(':imgd', $imgD);
         $sth->bindParam(':uid', $uid);
 
         $sth->execute();
@@ -102,5 +103,18 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     }
   }
 }
-
+function checkIfFileName($fileType){
+  $a = 0;
+  $error = false;
+  while ($a < 1) {
+    $tempString = generateRandomString(10);
+    if (file_exists("../../../img/accounts/".$tempString.".".$fileType)) {
+      $error = true;
+    }
+    if (!$error) {
+      $a++;
+    }
+  }
+  return $tempString;
+}
 ?>

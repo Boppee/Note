@@ -8,11 +8,11 @@ class pageLoader {
 
   function __construct(){
 
-     $this->enc = new encoder("public");
-     //gets a session iv for encoding session vars
-     if (!isset($_SESSION["iv"])) {
-       $_SESSION["iv"] = $this->enc->generatIv();
-     }
+    $this->enc = new encoder("public");
+    //gets a session iv for encoding session vars
+    if (!isset($_SESSION["iv"])) {
+      $_SESSION["iv"] = $this->enc->generatIv();
+    }
 
     //check so you are on a page
     $this->page = strtolower($_REQUEST["page"]);
@@ -68,6 +68,9 @@ class pageLoader {
       }
 
     }else {
+      if ($this->page != "login") {
+        $_SESSION["afterlogin"] = $_SERVER["REQUEST_URI"];
+      }
       $_SESSION["pages"] = array("login", "cookies");
       if (!in_array($this->page, $_SESSION["pages"])) {
         $this->goToPage("?page=".$_SESSION["pages"][0]);

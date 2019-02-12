@@ -12,12 +12,11 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $encPr = new encoder("private");
 
-
     $account = grabUserData($_REQUEST["uid"]);
     $echo["username"] = $enc->revDecode($account["username"]);
     $echo["active"] = $account["active"];
     $echo["email"] = $encPr->decode($account["email"], $account["iv"]);
-    $echo["img"] = $enc->revDecode($account["username"], "").".".$account["imgtype"];
+    $echo["img"] = $account["img"];
     $echo["new_permsys"] = json_decode($account["new_permsys"]);
     $echo["lastlogon"] = $account["lastlogon"];
 
