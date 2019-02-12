@@ -6,7 +6,7 @@ require_once '../../../php/load.php';
 if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
   $session = new session();
-  if ($session->checkPrem("mod", "accounts")) {
+  if ($session->checkPrem("modify", "accounts")) {
 
     $index = $_POST["index"];
     $perm = $_POST["name"];
@@ -41,7 +41,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       }
     }
 
-    $items = array("mod", "delete", "respwd");
+    $items = array("modify", "delete", "reset password");
 
     if ($perm == "list") {
       if ($state == 0) {

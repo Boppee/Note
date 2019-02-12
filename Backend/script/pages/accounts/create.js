@@ -156,7 +156,7 @@ $(document).ready(function () {
       }
     }
 
-    var items = ["mod", "delete", "respwd"];
+    var items = ["modify", "delete", "reset password"];
 
     if (name == "list") {
       if (state == 0) {

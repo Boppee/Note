@@ -1,4 +1,5 @@
 <script src="script/pages/accounts/create.js" charset="utf-8"></script>
+<script src="script/pages/accounts/createperms.js" charset="utf-8"></script>
 <link rel="stylesheet" href="css/page/account.css">
 <link rel="stylesheet" href="css/page/createAccount.css">
 
@@ -52,84 +53,13 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </section>
 
 <section id="perms" class="Ypadding">
   <div class="inner">
     <div id="permdivs">
-
-      <section class="perms" id="accounts">
-        <form class="permform" id="accountsform">
-          <h1>Accounts</h1>
-          <div class="permlist">
-            <ul>
-
-              <li><input type="checkbox" name="list" value=""> List</li>
-              <li><input type="checkbox" name="respwd" value=""> Reset password</li>
-              <li><input type="checkbox" name="create" value=""> Create</li>
-              <li><input type="checkbox" name="mod" value=""> Modify</li>
-              <li><input type="checkbox" name="delete" value=""> Delete</li>
-            </ul>
-          </div>
-        </form>
-      </section>
-
-      <section class="perms" id="orders">
-        <form class="permform" id="ordersform">
-          <h1>Orders</h1>
-          <div class="permlist">
-            <ul>
-              <li><input type="checkbox" name="list" value=""> List</li>
-              <li><input type="checkbox" name="create" value=""> Create</li>
-              <li><input type="checkbox" name="mod" value=""> Modify</li>
-              <li><input type="checkbox" name="delete" value=""> Delete</li>
-            </ul>
-          </div>
-        </form>
-      </section>
-
-      <section class="perms" id="products">
-        <form class="permform" id="productsform">
-          <h1>Products</h1>
-          <div class="permlist">
-            <ul>
-
-              <li><input type="checkbox" name="list" value=""> List</li>
-              <li><input type="checkbox" name="create" value=""> Create</li>
-              <li><input type="checkbox" name="mod" value=""> Modify</li>
-              <li><input type="checkbox" name="delete" value=""> Delete</li>
-            </ul>
-          </div>
-        </form>
-      </section>
-
-      <section class="perms" id="categories">
-        <form class="permform" id="categoriesform">
-          <h1>Categories</h1>
-          <div class="permlist">
-            <ul>
-
-              <li><input type="checkbox" name="list" value=""> List</li>
-              <li><input type="checkbox" name="create" value=""> Create</li>
-              <li><input type="checkbox" name="mod" value=""> Modify</li>
-              <li><input type="checkbox" name="delete" value=""> Delete</li>
-            </ul>
-          </div>
-        </form>
-      </section>
-
-      <section class="perms" id="statistics">
-        <form class="permform" id="statisticsform">
-          <h1>Statistics</h1>
-          <div class="permlist">
-            <ul>
-              <li><input type="checkbox" name="list" value=""> List</li>
-            </ul>
-          </div>
-        </form>
-      </section>
 
     </div>
   </div>

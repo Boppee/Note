@@ -7,7 +7,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
 
   $session = new session();
-  if ($session->checkPrem("mod", "products")) {
+  if ($session->checkPrem("modify", "products")) {
 
     $userid = $_POST["userid"];
 

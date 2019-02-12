@@ -18,7 +18,7 @@ $connection = $connect->newConnectionPre("CreateAdminAccount");
       $email = $enc->encode($email, $iv);
       $pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-      $pages = '["dashboard","settings","logout","myaccount",["accounts","list","resetpassword","create","mod"]]';
+      $pages = '["dashboard","settings","logout","myaccount",["accounts","list","resetpassword","create","modify"]]';
 
       echo $uid;
       echo "<br>";

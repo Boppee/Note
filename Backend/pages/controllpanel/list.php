@@ -26,7 +26,7 @@ $up = $_REQUEST["underpage"];
               ?><a class="headerbutton" href="" id="delete"><i class="fas fa-trash-alt"></i> Delete <?php echo $up ?></a><?php
             }
           }
-          if ($session->checkPrem("mod", $up)) {
+          if ($session->checkPrem("modify", $up)) {
             ?><a class="headerbutton" href="" id="edit<?php echo $up ?>"><i class="fas fa-user-edit"></i> Edit <?php echo $up ?></a><?php
           }
         }

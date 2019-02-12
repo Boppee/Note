@@ -6,7 +6,7 @@ require_once '../../../php/load.php';
 if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
   $session = new session();
-  if ($session->checkPrem("mod", "accounts")) {
+  if ($session->checkPrem("modify", "accounts")) {
 
     if (!isset($_SESSION["cur"])) {
       $_SESSION["cur"] = 0;

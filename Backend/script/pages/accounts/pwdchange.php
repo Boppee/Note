@@ -8,7 +8,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
   $enc = new encoder("rev");
 
   $session = new session();
-  if ($session->checkPrem("respwd", "accounts")) {
+  if ($session->checkPrem("reset password", "accounts")) {
 
     $code = $_POST["code"];
     $uid = $_POST["uid"];
