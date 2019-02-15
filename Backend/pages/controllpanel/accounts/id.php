@@ -2,8 +2,8 @@
 <script type="text/javascript">
   var uid = "<?php echo $_REQUEST["id"]; ?>";
 </script>
-<script src="script/pages/accounts/accountShow.js" charset="utf-8"></script>
 <script src="script/pages/accounts/createperms.js" charset="utf-8"></script>
+<script src="script/pages/accounts/accountShow.js" charset="utf-8"></script>
 <link rel="stylesheet" href="css/page/account.css">
 
 <div class="shadow" id="saveshadow">

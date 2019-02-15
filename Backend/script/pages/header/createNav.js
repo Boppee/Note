@@ -7,7 +7,7 @@ $(document).ready(function () {
         var pageArray = result.pages;
         var page = result.page;
         var dontShowArray = ["settings","logout","myaccount"];
-        var pages = ["dashboard", "accounts", "orders", "products", "statistics", "categories"];
+        var pages = ["accounts", "orders", "products", "statistics", "categories", "manufacturer", "units"];
         var navListLenght = (pageArray.length-dontShowArray.length);
         var navItems = 0;
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         navItems = (100/navItems);
 
-        var listArray = ["accounts", "orders", "products"];
+        var listArray = ["accounts", "orders", "products", "manufacturer"];
 
         for (var i = 0; i < pageArray.length; i++) {
           if (pages.indexOf(pageArray[i]) != -1) {

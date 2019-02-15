@@ -47,4 +47,18 @@
     $sth->bindParam(':stime', $date);
     $sth->execute();
   }
+  function checkIfFileName($fileType){
+    $a = 0;
+    $error = false;
+    while ($a < 1) {
+      $tempString = generateRandomString(10);
+      if (file_exists("../../../img/accounts/".$tempString.".".$fileType)) {
+        $error = true;
+      }
+      if (!$error) {
+        $a++;
+      }
+    }
+    return $tempString;
+  }
 ?>

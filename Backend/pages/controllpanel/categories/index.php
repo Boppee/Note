@@ -5,7 +5,7 @@
       <select id="categorieSelector">
         <option id="1" selected>Start</option>
       </select>
-      
+
       <?php if ($session->checkPrem("create", "categories")): ?>
         <div id="createChild">
           <h1 id="ccn">Create child for Start</h1>
@@ -22,3 +22,4 @@
   </div>
 </main>
 <script src="script/pages/categories/createSeletor.js" charset="utf-8"></script>
+<script src="script/pages/categories/index.js" charset="utf-8"></script>

@@ -9,6 +9,14 @@ switch ($up) {
   case 'products':
     $sb = "product name";
     break;
+  case 'units':
+    if (isset($_REQUEST["units"])) {
+      $sb = "units name";
+    }
+    if (isset($_REQUEST["prefix"])) {
+      $sb = "prefix name";
+    }
+    break;
 }
 ?>
 <section id="pagecontroll">

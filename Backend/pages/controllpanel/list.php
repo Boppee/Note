@@ -12,26 +12,42 @@ $up = $_REQUEST["underpage"];
     <div id="headerspace">
       <?php
 
+        if ($up == "units") {
+          if (isset($_REQUEST["units"])) {
+            $add = "?page=list&underpage=".$up."&units&create";
+            $list = "?page=list&underpage=".$up."&units";
+            $temp = "units";
+          }elseif (isset($_REQUEST["prefix"])) {
+            $add = "?page=list&underpage=".$up."&prefix&create";
+            $list = "?page=list&underpage=".$up."&prefix";
+            $temp = "prefix";
+          }
+        }else {
+          $temp = $up;
+          $add = "?page=list&underpage=".$up."&create";
+          $list = "?page=list&underpage=".$up;
+        }
+
         if ($session->checkPrem("create", $up)) {
-          ?><a class="headerbutton" href="?page=list&underpage=<?php echo $up; ?>&create"><i class="fas fa-plus"></i> Create <?php echo $up ?></a><?php
+          ?><a class="headerbutton" href='<?php echo $add; ?>'><i class="fas fa-plus"></i> Create <?php echo $temp ?></a><?php
         }
         if ($session->checkPrem("list", $up)) {
-          ?><a class="headerbutton" href="?page=list&underpage=<?php echo $up ?>"><i class="fas fa-list-ul"></i> List <?php echo $up ?></a><?php
+          ?><a class="headerbutton" href='<?php echo $list ?>'><i class="fas fa-list-ul"></i> List <?php echo $temp ?></a><?php
         }
 
         if (isset($_REQUEST["id"])) {
           if ($session->checkPrem("delete", $up)) {
             $enc = new encoder("public");
             if ($_REQUEST["id"] != $enc->decode($_SESSION["cred"]["uid"], $_SESSION["iv"]) || $up != "accounts") {
-              ?><a class="headerbutton" href="" id="delete"><i class="fas fa-trash-alt"></i> Delete <?php echo $up ?></a><?php
+              ?><a class="headerbutton" href="" id="delete"><i class="fas fa-trash-alt"></i> Delete <?php echo $temp ?></a><?php
             }
           }
           if ($session->checkPrem("modify", $up)) {
-            ?><a class="headerbutton" href="" id="edit<?php echo $up ?>"><i class="fas fa-user-edit"></i> Edit <?php echo $up ?></a><?php
+            ?><a class="headerbutton" href="" id="edit<?php echo $up ?>"><i class="fas fa-user-edit"></i> Edit <?php echo $temp ?></a><?php
           }
         }
         if (isset($_REQUEST["create"])) {
-          ?><a class="headerbutton" href="" id="coac"><i class="fas fa-plus-circle"></i> Complete <?php echo $up ?></a><?php
+          ?><a class="headerbutton" href="" id="coac"><i class="fas fa-plus-circle"></i> Complete <?php echo $temp ?></a><?php
         }
 
       ?>

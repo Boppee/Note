@@ -36,8 +36,12 @@
 
       $_SESSION["signedIn"] = true;
       $_SESSION["cred"] = $credArray;
+      if (isset($_SESSION["afterlogin"])) {
+        $echoArray = array('status' => "pass", 'page' => $_SESSION["afterlogin"]);
+      }else {
+        $echoArray = array('status' => "pass", 'page' => "?page=".$_SESSION["new_permsys"][0]);
+      }
 
-      $echoArray = array('status' => "pass", 'page' => $_SESSION["afterlogin"]);
       unset($_SESSION["afterlogin"]);
       echo json_encode($echoArray);
 
