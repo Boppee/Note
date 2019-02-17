@@ -1,12 +1,15 @@
 <script type="text/javascript">
 
 const tr = ({id, name, short, base, exponent, nr}) => `
-<tr value="${nr}" class="itemsRow" id="Unit${id}">
+<tr value="${nr}" class="itemsRow" id="prefix${id}">
   <td class="name">${name}</td>
   <td class="short">${short}</td>
   <td class="base">${base}</td>
   <td class="exponent">${exponent}</td>
-  <td class="gotounit"><a href="?page=list&underpage=units&prefix&id=${id}">Unit</a></td>
+  <td class="gotoprefix"><a href="?page=list&underpage=units&prefix&id=${id}">prefix</a></td>
+  <?php if ($session->checkPrem("delete", $up)) {
+    ?><td class="remove"><a href="" class="removeclick" id="remove${id}" onclick='event.preventDefault();removeunit(event, page)'><i class="fas fa-trash-alt"></i></a></td><?php
+  } ?>
 </tr>
 `;
 

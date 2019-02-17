@@ -1,0 +1,25 @@
+#sic{
+  display: none;
+  padding-bottom: 1em;
+}
+#coac{
+  display: none;
+}
+#sic input{
+  text-align: center;
+  background: transparent;
+  border: none;
+  padding: 0.5em;
+  font-size: 1.1em;
+  border-bottom: 1px solid var(--orange);
+}
+#sic th {
+  color: var(--orange);
+}
+.itemsRow{
+  position: relative;
+}
+.remove{
+  position: absolute;
+  left: 1em;
+}

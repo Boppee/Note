@@ -9,7 +9,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
   if ($session->checkPrem("list", "accounts")) {
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("perms");
+    $connection = $connect->newConnectionPre("perms", "");
     $sth = $connection->prepare("SELECT * FROM `privileges`");
     $sth->execute();
     $fetch = $sth->fetchAll(PDO::FETCH_ASSOC);

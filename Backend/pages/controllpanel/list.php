@@ -29,7 +29,7 @@ $up = $_REQUEST["underpage"];
         }
 
         if ($session->checkPrem("create", $up)) {
-          ?><a class="headerbutton" href='<?php echo $add; ?>'><i class="fas fa-plus"></i> Create <?php echo $temp ?></a><?php
+          ?><a class="headerbutton" id="createB" href='<?php echo $add; ?>'><i class="fas fa-plus"></i> Create <?php echo $temp ?></a><?php
         }
         if ($session->checkPrem("list", $up)) {
           ?><a class="headerbutton" href='<?php echo $list ?>'><i class="fas fa-list-ul"></i> List <?php echo $temp ?></a><?php

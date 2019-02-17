@@ -40,5 +40,21 @@ function addNewRow(data, number) {
     if (data.can_be_per == "1") {
       $(".cbp"+data.id+" input").attr("checked", "true");
     }
+    $(document).ready(function () {
+      $(".remove").click(function (event) {
+        event.preventDefault();
+        var id = event.target.parentElement.id.replace("remove", "");
+        $.ajax({
+          type: "POST",
+          url: "script/pages/units/remove.php",
+          data: {id: id, table: page},
+          success: function (remove) {
+            $(document).ready(function () {
+              $("#"+remove).remove();
+            })
+          }
+        });
+      });
+    });
   });
 }

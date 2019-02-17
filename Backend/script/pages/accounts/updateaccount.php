@@ -12,8 +12,6 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       $_SESSION["cur"] = 0;
     }
 
-    $imgErrors = array();
-
     $connect = new connect();
 
     $encPr = new encoder("private");
@@ -48,6 +46,9 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       }
     }
     if ($index == "img") {
+
+      $imgErrors = array();
+
       if ($userdata["img"] != "def") {
         if (file_exists("../../../img/accounts/".$userdata["img"])) {
           unlink("../../../img/accounts/".$userdata["img"]);
@@ -61,7 +62,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       if ($_FILES["file"]["size"] > 5000000) {
         array_push($imgErrors, "file size");
       }
-      if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" && $fileType != "bmp") {
+      if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" && $fileType != "bmp" && $fileType != "jfif") {
         array_push($imgErrors, "file format");
       }
       if (getimagesize($_FILES["file"]["tmp_name"]) == false) {
@@ -73,7 +74,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
         move_uploaded_file($_FILES["file"]["tmp_name"], $filePath);
         $imgD = $fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
 
-        $connection = $connect->newConnectionPre("UpdateAccount");
+        $connection = $connect->newConnectionPre("UpdateAccount", "");
 
         $sth = $connection->prepare("UPDATE `accounts` SET `img`= :imgd WHERE username = :uid");
         $sth->bindParam(':imgd', $imgD);

@@ -24,3 +24,6 @@ header{
   position: fixed;
   width: 100%;
 }
+#sic{
+  display: none;
+}
