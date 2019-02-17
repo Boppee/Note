@@ -2,7 +2,7 @@
 
 const tr = ({id, name, short, base, exponent, nr}) => `
 <tr value="${nr}" class="itemsRow" id="prefix${id}">
-  <td class="name">${name}</td>
+  <td class="name search">${name}</td>
   <td class="short">${short}</td>
   <td class="base">${base}</td>
   <td class="exponent">${exponent}</td>

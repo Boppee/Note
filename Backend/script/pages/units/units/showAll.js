@@ -1,3 +1,4 @@
+var number = 0;
 $(document).ready(function () {
   $.ajax({
     type: "GET",
@@ -51,6 +52,7 @@ function addNewRow(data, number) {
           success: function (remove) {
             $(document).ready(function () {
               $("#"+remove).remove();
+              pageSys.items--;
             })
           }
         });

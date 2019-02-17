@@ -2,7 +2,7 @@
 
 const tr = ({id, name, short, description, nr}) => `
 <tr value="${nr}" class="itemsRow" id="units${id}">
-  <td class="name">${name}</td>
+  <td class="name search">${name}</td>
   <td class="short">${short}</td>
   <td class="description">${description}</td>
   <td class="cbp${id}"><input type="checkbox" name="" value=""></td>

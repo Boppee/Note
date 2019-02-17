@@ -52,7 +52,7 @@ function addNewRow(data, number) {
       $("."+data.username+" input").attr("checked", "true");
     }
 
-    $("#account"+data.username).append("<td class='"+data.username+" username'>"+data.username+"</td>");
+    $("#account"+data.username).append("<td class='"+data.username+" username search'>"+data.username+"</td>");
     $("#account"+data.username).append("<td class='"+data.username+" lastlogon'>"+data.lastlogon+"</td>");
 
     var orderArray = ["accounts", "orders", "products", "categories", "statistics"];

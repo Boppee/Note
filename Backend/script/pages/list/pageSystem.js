@@ -92,7 +92,7 @@ class pageSystem {
     }else {
       var value = $("#searchTable").val().toLowerCase();
       $("#listTable tbody tr").filter(function() {
-        $(this).toggle($(this).find('.username').text().toLowerCase().indexOf(value) > -1);
+        $(this).toggle($(this).find('.search').text().toLowerCase().indexOf(value) > -1);
       });
       this.rowColors();
     }

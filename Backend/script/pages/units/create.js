@@ -40,7 +40,7 @@ $(document).ready(function () {
           number++;
           newRow = [{id: data, name: name, short: short, description: description, can_be_per: cbp}];
           addNewRow(newRow[0], number);
-          pageSys.rowColors();
+          updatepages();
         }
       });
     }
@@ -57,9 +57,26 @@ $(document).ready(function () {
           number++;
           newRow = [{id: data, name: name, short: short, base: base, exponent: exponent}];
           addNewRow(newRow[0], number);
-          pageSys.rowColors();
+          updatepages();
         }
       });
+    }
+    function updatepages() {
+      pageSys.items++;
+
+      addPage = pageSys.itemsPerPage*pageSys.pages;
+
+      if (pageSys.pages >= 1) {
+        pageSys.page = pageSys.pages;
+      }
+
+      if (pageSys.items >= addPage) {
+        pageSys.pages++;
+        pageSys.page = pageSys.pages;
+      }
+
+      pageSys.showPage();
+      pageSys.rowColors();
     }
   });
 });
