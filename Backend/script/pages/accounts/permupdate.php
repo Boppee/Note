@@ -71,7 +71,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $uid = $enc->revEncode($uid, "");
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("UpdateAccount");
+    $connection = $connect->newConnectionPre("UpdateAccount", "");
 
     $sth = $connection->prepare("UPDATE `accounts` SET `new_permsys`= :array WHERE `username` = :uid");
     $sth->bindParam(':array', $post);

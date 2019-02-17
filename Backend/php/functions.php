@@ -8,7 +8,7 @@
 
     //echo $uid;
 
-    $connection = $connect->newConnectionPre("FetchFromAccounts");
+    $connection = $connect->newConnectionPre("FetchFromAccounts", "");
 
     $sth = $connection->prepare("SELECT * FROM `accounts` WHERE `username` = :uid");
     $sth->bindParam(':uid', $uid);

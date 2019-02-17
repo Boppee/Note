@@ -8,7 +8,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
   if ($session->checkPrem("list", "categories")) {
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("FetchFromcategories");
+    $connection = $connect->newConnectionPre("FetchFromcategories", "");
     $sth = $connection->prepare("SELECT * FROM `cats`");
     $sth->execute();
 

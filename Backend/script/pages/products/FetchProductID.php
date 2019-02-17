@@ -13,7 +13,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $id = $_POST["id"];
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("FetchFromProducts");
+    $connection = $connect->newConnectionPre("FetchFromProducts", "");
     $sth = $connection->prepare("SELECT * FROM `products` WHERE id = :id");
     $sth->bindParam(':id', $id, PDO::PARAM_INT);
     $sth->execute();

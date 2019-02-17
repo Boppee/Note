@@ -11,7 +11,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $name = $_POST["newCat"];
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("creatCats");
+    $connection = $connect->newConnectionPre("creatCats", "");
 
     $sth = $connection->prepare("SELECT * FROM `cats` WHERE id = :id");
     $sth->bindParam(':id', $parent, PDO::PARAM_INT);

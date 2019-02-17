@@ -17,8 +17,12 @@
 
     private $defaultHost = "localhost";
 
-    public function newConnectionPre($uid) {
-      return $this->newConnectionCred($this->users[$uid]["username"], $this->users[$uid]["password"], $this->users[$uid]["databas"], $this->users[$uid]["host"]);
+    public function newConnectionPre($uid, $db) {
+      if (strlen($db) == 0) {
+        return $this->newConnectionCred($this->users[$uid]["username"], $this->users[$uid]["password"], $this->users[$uid]["databas"], $this->users[$uid]["host"]);
+      }else {
+        return $this->newConnectionCred($this->users[$uid]["username"], $this->users[$uid]["password"], $db, $this->users[$uid]["host"]);
+      }
     }
 
     public function newConnectionCred($uid, $pwd, $databas, $host) {
@@ -26,7 +30,7 @@
         $host = $this->defaultHost;
       }
       $uid = "root";
-      $pwd = "root";
+      $pwd = "";
       $host = "localhost";
       if (isset($uid) && isset($pwd) && isset($databas)) {
         try {

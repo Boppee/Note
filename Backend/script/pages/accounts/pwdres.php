@@ -34,7 +34,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $changePwd = new changePwd($senderEmail, $link);
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("pwdChange");
+    $connection = $connect->newConnectionPre("pwdChange", "");
     $sth = $connection->prepare("INSERT INTO `code`(`cr`, `uid`, `pwd`, `code`, `id`) VALUES (:cr,:uid,:pwd,:code, :id)");
     $sth->bindParam(':cr', $sendUid);
     $sth->bindParam(':uid', $uid);

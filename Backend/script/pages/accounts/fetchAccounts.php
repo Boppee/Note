@@ -17,7 +17,7 @@
     $enc = new encoder("rev");
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("FetchFromAccounts");
+    $connection = $connect->newConnectionPre("FetchFromAccounts", "");
 
     $sth = $connection->prepare("SELECT `active`, `username`, `lastlogon`, `new_permsys` FROM `accounts` LIMIT :accountlimit");
     $sth->bindParam(':accountlimit', $limit, PDO::PARAM_INT);

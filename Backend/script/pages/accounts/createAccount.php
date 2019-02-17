@@ -10,7 +10,7 @@
     if ($session->checkPrem("create", "accounts")) {
 
       $connect =  new connect();
-      $connection = $connect->newConnectionPre("CreateAdminAccount");
+      $connection = $connect->newConnectionPre("CreateAdminAccount", "");
       $enc = new encoder("private");
 
       $fileName = $_FILES['file']['name'];

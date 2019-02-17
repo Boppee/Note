@@ -13,7 +13,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $uid = $enc->revEncode($_POST["uid"], "");
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("removeAccounts");
+    $connection = $connect->newConnectionPre("removeAccounts", "");
 
     $sth = $connection->prepare("DELETE FROM `accounts` WHERE username = :id");
     $sth->bindParam(':id', $uid);

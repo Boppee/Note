@@ -86,7 +86,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     }
 
     if ($index != "img") {
-      $connection = $connect->newConnectionPre("UpdateAccount");
+      $connection = $connect->newConnectionPre("UpdateAccount", "");
 
       $sth = $connection->prepare("UPDATE `accounts` SET `".$index."`= :val WHERE username = :uid");
 

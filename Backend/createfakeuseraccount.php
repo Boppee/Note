@@ -6,7 +6,7 @@ require 'php/load.php';
 $enc = new encoder("private");
 $connect =  new connect();
 
-$connection = $connect->newConnectionPre("CreateAdminAccount");
+$connection = $connect->newConnectionPre("CreateAdminAccount","");
 //for ($i=0; $i < 100; $i++) {
 
       $uid = "sa";

@@ -9,7 +9,7 @@
     $limit = strip_tags($_POST["limit"]);
 
     $session = new session();
-    if ($session->checkPrem("list", "accounts")) {
+    if ($session->checkPrem("list", "units")) {
       echoAccount($limit);
     }
   }
@@ -17,10 +17,9 @@
     $enc = new encoder("rev");
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("FetchFromProducts", "");
+    $connection = $connect->newConnectionPre("FetchPublic", "products");
 
-    $sth = $connection->prepare("SELECT `id`, `visible`, `name`, `stock`, `imgs`, `price`, `totalstock` FROM `products` LIMIT :itemlimit");
-    $sth->bindParam(':itemlimit', $limit, PDO::PARAM_INT);
+    $sth = $connection->prepare("SELECT * FROM `units`");
     $sth->execute();
 
     $test = $sth->fetchAll(PDO::FETCH_ASSOC);

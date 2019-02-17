@@ -12,7 +12,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $userid = $_POST["userid"];
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("FetchFromProducts");
+    $connection = $connect->newConnectionPre("FetchFromProducts", "");
     $sth = $connection->prepare("SELECT `imgs` FROM `products` WHERE id = :id");
     $sth->bindParam(':id', $userid, PDO::PARAM_INT);
     $sth->execute();
