@@ -24,4 +24,4 @@ const tr = ({id, name, short, base, exponent, nr}) => `
 
 </tbody>
 <script src="script/pages/list/pageSystem.js" charset="utf-8"></script>
-<script src="script/pages/units/showAllunits.js" charset="utf-8"></script>
+<script src="script/pages/units/prefix/showAll.js" charset="utf-8"></script>
