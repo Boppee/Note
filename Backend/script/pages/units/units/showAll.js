@@ -57,4 +57,5 @@ function addNewRow(data, number) {
       });
     });
   });
+  $("#listTable input").prop("disabled", true);
 }
