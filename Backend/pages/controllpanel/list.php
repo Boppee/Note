@@ -21,6 +21,9 @@ $up = $_REQUEST["underpage"];
             $add = "?page=list&underpage=".$up."&prefix&create";
             $list = "?page=list&underpage=".$up."&prefix";
             $temp = "prefix";
+          }else {
+            header('Location: ?page=units');
+            exit;
           }
         }else {
           $temp = $up;

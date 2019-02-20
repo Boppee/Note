@@ -154,3 +154,11 @@ h1{
 .rel{
   position: relative;
 }
+.smalltd{
+  max-width: 10%;
+  width: 10%;
+  min-width: 10%;
+}
+.highlighted{
+  background: green !important;
+}

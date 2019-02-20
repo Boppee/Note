@@ -50,3 +50,12 @@ function permsInputs(perms) {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+function len(arr) {
+  var count = 0;
+  for (var k in arr) {
+    if (arr.hasOwnProperty(k)) {
+      count++;
+    }
+  }
+  return count;
+}

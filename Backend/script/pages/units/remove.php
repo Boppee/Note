@@ -20,7 +20,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $sth = $connection->prepare($qu);
     $sth->bindParam(':id', $id, PDO::PARAM_INT);
     if ($sth->execute()) {
-          echo json_encode($table.$id);
+      echo json_encode($table.$id);
     }
 
 

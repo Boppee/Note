@@ -17,9 +17,9 @@ $(document).ready(function () {
 
   $("#coac").click(function (event) {
 
-    var cbp = "";
-
     event.preventDefault();
+
+    var cbp = "";
 
     var name = $("#"+page+"name").val();
     var short = $("#"+page+"short").val();
