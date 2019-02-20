@@ -34,3 +34,8 @@
 .saveclick{
   display: none;
 }
+.itemsRow input {
+  text-align: center;
+  background: 0;
+  border: 0;
+}

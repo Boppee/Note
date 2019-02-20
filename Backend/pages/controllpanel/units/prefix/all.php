@@ -5,10 +5,10 @@ const tr = ({id, name, short, base, exponent, nr}) => `
   <td></td>
   <td class="name search contenteditable">${name}</td>
   <td class="short contenteditable">${short}</td>
-  <td class="base contenteditable">${base}</td>
-  <td class="exponent contenteditable">${exponent}</td>
+  <td class="base contenteditable"><input type="number" id="baseinput${id}" value="${base}"></td>
+  <td class="exponent contenteditable"><input type="number" id="exponentinput${id}" value="${exponent}"></td>
   <?php if ($session->checkPrem("modify", $up)) {
-    ?><td class="edit"><a href="" class="editclick" id="edit${id}" onclick='event.preventDefault()'><i class="fas fa-edit"></i></td><?php
+    ?><td class=""><a href="" class="editclick toggle${id}" id="edit${id}" onclick='event.preventDefault()'><i class="fas fa-edit"></i><a href="" class="saveclick toggle${id}" id="edit${id}" onclick='event.preventDefault()'><i class="fas fa-check"></i></td><?php
   } ?>
   <?php if ($session->checkPrem("delete", $up)) {
     ?><td class="remove"><a href="" class="removeclick" id="remove${id}" onclick='event.preventDefault()'><i class="fas fa-trash-alt"></i></a></td><?php
