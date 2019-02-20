@@ -3,8 +3,8 @@
 const tr = ({id, name, short, base, exponent, nr}) => `
 <tr value="${nr}" class="itemsRow" id="prefix${id}">
   <td></td>
-  <td class="name search contenteditable">${name}</td>
-  <td class="short contenteditable">${short}</td>
+  <td class="name search contenteditable" id="name${id}">${name}</td>
+  <td class="short contenteditable" id="short${id}">${short}</td>
   <td class="base contenteditable"><input type="number" id="baseinput${id}" value="${base}"></td>
   <td class="exponent contenteditable"><input type="number" id="exponentinput${id}" value="${exponent}"></td>
   <?php if ($session->checkPrem("modify", $up)) {
