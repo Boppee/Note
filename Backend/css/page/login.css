@@ -1,8 +1,9 @@
 main{
   height: 100%;
   overflow-x: hidden;
-  background-image: url(https://images.pexels.com/photos/556416/pexels-photo-556416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url("https://www.dachser.com/fi/layout/warehousing-contract-logistics-outsourcing-supply-chain.jpg");
   background-position: center;
+  background-size: cover;
 }
 nav{
   font-size: 1.5em;

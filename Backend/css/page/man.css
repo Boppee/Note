@@ -17,22 +17,3 @@
 #sic th {
   color: var(--orange);
 }
-.itemsRow{
-  position: relative;
-}
-.remove{
-  position: absolute;
-  left: 2%;
-}
-.edit{
-  position: absolute;
-  right: 2%;
-}
-.saveclick{
-  display: none;
-}
-.itemsRow input {
-  text-align: center;
-  background: 0;
-  border: 0;
-}

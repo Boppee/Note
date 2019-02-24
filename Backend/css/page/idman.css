@@ -1,0 +1,25 @@
+#info{
+  padding: 2em 0;
+  background: var(--darkgray);
+  border: solid var(--orange);
+  border-width: 2px 0px;
+}
+#info th{
+  color: var(--white);
+}
+#info td{
+  padding: 1em;
+}
+#info td input, #info td select{
+  font-size: 1.1em;
+}
+#info input, #info select{
+  background: transparent;
+  border: 0;
+  color: var(--white);
+  text-align: center;
+}
+#info select option{
+  background: var(--darkgray);
+  box-shadow: 0px 0px 5px 2px var(--shadow);
+}

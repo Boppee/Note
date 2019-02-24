@@ -33,7 +33,6 @@ $.ajax({
       var table = "prefix";
 
       $(".editclick").click(function (event) {
-
         var id = event.target.parentElement.id.replace("edit", "");
 
         $(".toggle"+id).toggle();
@@ -69,7 +68,6 @@ $.ajax({
             delete updateArray[id].name;
           }
         });
-
       });
 
       $(".saveclick").click(function (event) {
@@ -92,7 +90,6 @@ $.ajax({
             }
           });
         }
-
       });
 
     });
@@ -115,7 +112,7 @@ function addNewRow(data, number) {
             $(document).ready(function () {
               $("#"+remove).remove();
               pageSys.items--;
-            })
+            });
           }
         });
       });

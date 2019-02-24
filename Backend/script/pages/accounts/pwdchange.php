@@ -18,7 +18,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
 
     $connect = new connect();
-    $connection = $connect->newConnectionPre("pwdChange");
+    $connection = $connect->newConnectionPre("pwdChange", "");
 
     $sth = $connection->prepare("SELECT `cr`, `uid`, `pwd`, `code` FROM `code` WHERE id = :id");
     $sth->bindParam(':id', $id);
@@ -36,7 +36,11 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       $sth = $connection->prepare("UPDATE `accounts` SET `password`= :newpwd WHERE `username` = :uid");
       $sth->bindParam(':uid', $uid);
       $sth->bindParam(':newpwd', $newPwd);
-      $sth->execute();
+      if ($sth->execute()) {
+        $sth = $connection->prepare("DELETE FROM `code` WHERE `id` = :id");
+        $sth->bindParam(':id', $id);
+        $sth->execute();
+      }
     }
 
   }

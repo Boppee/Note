@@ -162,3 +162,7 @@ h1{
 .highlighted{
   background: green !important;
 }
+.pc{
+  min-width: 10%;
+  width: 10%;
+}

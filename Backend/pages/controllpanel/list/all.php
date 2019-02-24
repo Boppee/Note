@@ -9,6 +9,12 @@ switch ($up) {
   case 'products':
     $sb = "product name";
     break;
+  case 'manufacturer':
+    $sb = "manufacturers name";
+    if ($up == "manufacturer" && isset($_REQUEST["id"])) {
+      $sb = "product name";
+    }
+    break;
   case 'units':
     if (isset($_REQUEST["units"])) {
       $sb = "units name";
@@ -38,7 +44,12 @@ switch ($up) {
 <div class="overflowscroll">
   <table id="listTable">
     <?php
-    require 'pages/controllpanel/'.$up.'/all.php';
+    if (!isset($_REQUEST["id"])) {
+      require 'pages/controllpanel/'.$up.'/all.php';
+    }
+    if ($up == "manufacturer" && isset($_REQUEST["id"])) {
+      require 'pages/controllpanel/manufacturer/idtable.php';
+    }
     ?>
   </table>
 </div>
