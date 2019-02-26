@@ -1,0 +1,15 @@
+.per{
+  display: none;
+}
+form{
+  display: inline-grid;
+  margin: 0;
+}
+.autoc{
+}
+.autocItem{
+  text-align: center;
+}
+.text:hover{
+  cursor: pointer;
+}
