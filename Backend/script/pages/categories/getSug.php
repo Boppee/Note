@@ -9,11 +9,11 @@
   $text = strip_tags($_POST["text"]);
 
   $sth = $connection->prepare("SELECT * FROM `units` WHERE `name` LIKE concat('%', :text, '%')");
-  $sth->bindParam(':text', $text, PDO::PARAM_STR);
+  $sth->bindParam(':text', $text);
   $sth->execute();
 
   $test = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-  echo json_encode($test);
+  echo json_encode(utf8_converter($test));
 
 ?>

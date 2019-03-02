@@ -13,6 +13,6 @@
 
   $test = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-  echo json_encode($test);
+  echo json_encode(utf8_converter($test));
 
 ?>
