@@ -1,15 +1,18 @@
-.per{
-  display: none;
+#structure, .outerUnit{
+  display: flex;
 }
-form{
-  display: inline-grid;
-  margin: 0;
+.autoC{
+  position: relative;
 }
-.autoc{
+.autoAppend{
+  position: absolute;
+  width: 100%;
 }
-.autocItem{
+.autoItem{
+  width: 100%;
   text-align: center;
+  padding: 0.5em 0;
 }
-.text:hover{
+.autoItem:hover{
   cursor: pointer;
 }

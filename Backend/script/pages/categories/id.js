@@ -1,43 +1,69 @@
-$("#strType").change(function () {
-  $("#length, #unit").show();
-  $("#psb").hide();
-  $(".per").hide();
-  switch ($("#strType").children(":selected").text()) {
-    case "Number":
-      $("#psb").show();
-      $("#length").val(11);
-      break;
-    case "Text":
-      $("#length").val(64);
-      $("#unit").hide();
-      break;
-    case "Date":
-      $("#length").val(0);
-      $("#length, #unit").hide();
-      break;
-    case "Year":
-      $("#length").val(4);
-      $("#length, #unit").hide();
-      break;
-  }
-});
-$("#strTypeP").change(function () {
-  $("#lengthP, #unitP").show();
-  switch ($("#strTypeP").children(":selected").text()) {
-    case "Number":
-      $("#lengthP").val(11);
-      break;
-    case "Text":
-      $("#lengthP").val(64);
-      $("#unitP").hide();
-      break;
-    case "Date":
-      $("#lengthP").val(0);
-      $("#lengthP, #unitP").hide();
-      break;
-    case "Year":
-      $("#lengthP").val(4);
-      $("#lengthP, #unitP").hide();
-      break;
-  }
+const tr = ({id, text}) => `
+<div class="autoItem" id="${id}">
+  <div class="autoInner">
+    <span>${text}</span>
+  </div>
+</div>
+`;
+$(document).ready(function () {
+
+  $(".strType").change(function () {
+    var parent = $(this).parent().attr('id');
+
+    if ($(this).val() != "N") {
+      $("#"+parent+" .prefixes").hide();
+      $("#"+parent+" .autoC").hide();
+      $("#"+parent+" .length").hide();
+      if (parent != "after") {
+        $("#prb").hide();
+      }
+    }else {
+      $("#"+parent+" .prefixes").show();
+      $("#"+parent+" .autoC").show();
+      $("#"+parent+" .length").show();
+      $("#prb").show();
+    }
+  });
+
+  $("#prb").click(function () {
+    $("#after, #per").toggleClass("hide", "");
+    if ($(this).val() == "Add per") {
+      $(this).val("Remove per")
+    }else {
+      $(this).val("Add per");
+    }
+  });
+
+  $(".autoC input").keyup(function () {
+    var parent = $(this).parent().parent().attr('id');
+    $("#"+parent+" .autoItem").remove();
+    if ($(this).val().length != 0) {
+      $.ajax({
+        type: "POST",
+        url: "script/pages/categories/getSug.php",
+        data: {text: $(this).val()},
+        success: function (data) {
+          for (var i = 0; i < data.length; i++) {
+            if (data[i].can_be_per == 1 && parent == "after") {
+              $("#"+parent+" .autoAppend").append([{id: data[i].id, text: data[i].name}].map(tr).join(''));
+            }else {
+              $("#"+parent+" .autoAppend").append([{id: data[i].id, text: data[i].name}].map(tr).join(''));
+            }
+          }
+        }
+      });
+    }
+  });
+
+  $(".autoC input").focusout(function () {
+    var parent = $(this).parent().parent().attr('id');
+    
+  });
+  /*$(".autoC input").focusin(function () {
+    var parent = $(this).parent().parent().attr('id');
+    $("#"+parent+" .autoItem").show();
+  });*/
+  $(".autoAppend").click(function () {
+
+  });
 });

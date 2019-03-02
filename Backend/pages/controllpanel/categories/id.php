@@ -2,7 +2,6 @@
   var id = <?php echo $_REQUEST["id"] ?>
 </script>
 <link rel="stylesheet" href="css/page/cats.css">
-<script src="script/pages/categories/tableStr.js" charset="utf-8"></script>
 <main>
   <div class="inner">
 
@@ -17,57 +16,57 @@
       </div>
     </section>
 
-    <section class="structure">
-      <div id="nostructure">
-        <h1>The category currently has no structure</h1>
-      </div>
-      <div id="createstructure">
-        <form>
-          <span>Create a </span>
-          <input type="text" id="strName" placeholder="name">
-          <select id="strType" name="" class="sele f">
-            <option value="N">Number</option>
-            <option value="T">Text</option>
-            <option value="D">Date</option>
-            <option value="Y">Year</option>
-          </select>
-          <select class="prefixes" name="">
+    <section id="structure">
+      <span>Create a </span>
+      <input type="text" id="strName" value="">
 
-          </select>
-          <div class="autoc">
-            <input type="text" id="unit" placeholder="Unit" class="unit first">
-            <div id="acap">
+      <div class="outerUnit" id="first">
+        <select class="strType">
+          <option value="N">Number</option>
+          <option value="T">Text</option>
+          <option value="D">Date</option>
+          <option value="Y">Year</option>
+        </select>
+        <select id="prefix" class="prefixes">
 
-            </div>
+        </select>
+        <div class="autoC">
+          <input type="text" id="unit" placeholder="Units">
+          <div class="autoAppend">
+
           </div>
-          <input type="number" id="length" placeholder="Length" value="64">
-          <input type="button" id="psb" value="Add per">
-          <span class="per">/</span>
-          <select class="prefixes per" name="">
+        </div>
+        <input type="number" placeholder="Length" class="length">
+      </div>
 
-          </select>
-          <select id="strTypeP" class="per sele" name="">
-            <option value="">Number</option>
-            <option value="">Text</option>
-            <option value="">Date</option>
-            <option value="">Year</option>
-          </select>
-          <div class="autoc per">
-            <input type="text" id="unitP" placeholder="Unit" class="unit">
-            <div id="acapP">
+      <span id="per" class="hide">/</span>
 
-            </div>
+      <div class="outerUnit hide" id="after">
+        <select class="strType">
+          <option value="N">Number</option>
+          <option value="T">Text</option>
+          <option value="D">Date</option>
+          <option value="Y">Year</option>
+        </select>
+        <select id="prefix" class="prefixes">
+
+        </select>
+        <div class="autoC">
+          <input type="text" id="unit" placeholder="Units">
+          <div class="autoAppend">
+            
           </div>
-          <input type="number" id="lengthP" placeholder="Length" value="64" class="per">
-          <input type="submit" value="Create">
-        </form>
+        </div>
+        <input type="number" placeholder="Length" class="length">
       </div>
-      <div id= wstructure>
 
-      </div>
-    </div>
+      <input type="button" id="prb" value="Add per">
+      <input type="submit" value="create">
+
+    </section>
 
   </div>
 </main>
 <script src="script/pages/categories/createSeletor.js" charset="utf-8"></script>
 <script src="script/pages/categories/id.js" charset="utf-8"></script>
+<script src="script/pages/categories/tableStr.js" charset="utf-8"></script>

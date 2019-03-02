@@ -166,3 +166,6 @@ h1{
   min-width: 10%;
   width: 10%;
 }
+.hide{
+  display: none !important;
+}
