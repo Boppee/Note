@@ -45,7 +45,7 @@
             }
           }else {
             print_r($userData);
-            //$errors["error"] = "password or username";
+            $errors["error"] = "password or username";
           }
         }else {
           $errors["error"] = "salt error";

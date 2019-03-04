@@ -1,3 +1,6 @@
+.active{
+  padding-bottom: 2px !important;
+}
 #structure, .outerUnit{
   display: flex;
 }
@@ -15,4 +18,45 @@
 }
 .autoItem:hover{
   cursor: pointer;
+}
+#manually, #noStru, #exStru{
+  display: none;
+}
+.stable input{
+  background: 0;
+  border: 0;
+}
+.stable input, .stable span{
+  font-size: 1em;
+}
+.stable i:hover{
+  cursor: pointer;
+}
+.stable i{
+  padding: 0px 1em;
+}
+.stable, .stable tr{
+  width: 100%;
+}
+#exStru, #prev{
+  padding: 2em 1em;
+  background: var(--orange);
+}
+#prev{
+  border-bottom: var(--darkgray) solid;
+}
+h1{
+  margin-bottom: 1em;
+}
+#removeS:hover{
+  cursor: pointer;
+}
+#categorieinfo, #stsec{
+  background-color: var(--lightgray);
+}
+#noStru, #categorieinfo, #stsec{
+  padding: 1em;
+}
+#stsec{
+  border-top: solid var(--orange);
 }

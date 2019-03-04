@@ -81,3 +81,7 @@ nav, #loginbutton{
   text-align: center;
   width: 100%;
 }
+#icred, #iemail{
+  display: none;
+  color: red;
+}

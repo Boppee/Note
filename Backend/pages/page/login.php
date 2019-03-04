@@ -52,6 +52,7 @@ $salt = new salt();
           <form id="login">
             <input type="text" id="uid" class="borderinput" placeholder="Username">
             <input type="password" id="pwd" class="borderinput" placeholder="Password">
+            <span id="icred">Invalid credentials</span>
             <input type="submit" id="sumbitlogin" value="Sign in">
           </form>
           <div class="loadImg">
@@ -59,6 +60,7 @@ $salt = new salt();
           </div>
           <form id="email">
             <input type="password" id="code" value="" placeholder="Email verification">
+            <span id="iemail">Invalid verification</span>
             <input type="submit" name="" value="Sign in" id="sumbitcode">
           </form>
           <input type="hidden" id="salt" value="<?php $saltName = "login"; echo $salt->generatSalt($saltName);?>">

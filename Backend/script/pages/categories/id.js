@@ -1,3 +1,4 @@
+//suggestions
 const tr = ({id, text, nr, max, min}) => `
 <div class="autoItem" id="${id}" value="${text}" max="${max}" min=${min}>
   <div class="autoInner ${nr}">
@@ -5,6 +6,7 @@ const tr = ({id, text, nr, max, min}) => `
   </div>
 </div>
 `;
+//prefixes
 const prefix = ({id, name, short}) => `
   <option id="${id}" short="${short}" value="${name}">${name} (${short})</option>
 `;
@@ -129,39 +131,69 @@ $(document).ready(function () {
   $("#structure select").on('change',function(){
     preview();
   });
+  $("#removeS").click(function () {
+    if (confirm("Are you sure? \nAll under categories will also be removed and products moved to 'Start'")) {
+      $.ajax({
+        type: "POST",
+        url: "script/pages/categories/removeCat.php",
+        data: {id: id},
+        success: function () {
+          window.location.href = "?page=categories&id=1";
+        }
+      });
+    }
+  });
+
+  $("#gotoselector").click(function () {
+    window.location.href = "?page=categories&id="+$("#categorieSelector option:selected")[0].id;
+  });
+  $("#changenameSubmit").click(function () {
+    $.ajax({
+      type: "POST",
+      url: "script/pages/categories/updateCatName.php",
+      data: {id: id, name: $("#name").val()},
+      success: function (data) {
+
+      }
+    });
+  });
+  $("#switch").click(function () {
+    $("#manually, #structure").toggle();
+    if ($(this).val() == "Enter manually") {
+      $(this).val("Enter automatic")
+    }else {
+      $(this).val("Enter manually");
+    }
+  });
 
 });
 
 function preview() {
-  var temp = "10 ";
-
-  if ($(".strType").val() == "N") {
-    temp += $("#first #prefix option:selected").val();
-    temp += $("#first #unit").val();
-    if ($("#prb").val() == "Remove per") {
-      temp += "/";
-      if ($("#after .strType").val() == "Y") {
-        temp += "Year"
-      }else {
-        temp += $("#after #prefix option:selected").val();
-        temp += $("#after #unit").val();
+  var temp = "";
+  if ($("#switch").val() == "Enter manually") {
+    if ($(".strType").val() == "N") {
+      temp += $("#first #prefix option:selected").val();
+      temp += $("#first #unit").val();
+      if ($("#prb").val() == "Remove per") {
+        temp += "/";
+        if ($("#after .strType").val() == "Y") {
+          temp += "Year"
+        }else {
+          temp += $("#after #prefix option:selected").val();
+          temp += $("#after #unit").val();
+        }
       }
+
+      $("#pname").val($("#strName").val());
+      $("#pval").val(temp);
+    }else {
+      $("#preview").text("")
     }
-
-    $("#pname").text($("#strName").val());
-    $("#pval").text(temp);
   }else {
-    $("#preview").text("")
+    $("#pname").text($("#strName").val());
+    $("#pval").text("10 "+$("#maninput").val());
   }
-
 }
 function create() {
 
-  var json = [{first: {prefix: $("#first #prefix").val(), unit: $("#first #unit").val()}}]
-
-  if ($("#prb").val() != "Add per") {
-    json.push({after: {prefix: $("#after #prefix").val(), unit: $("#after #unit").val()}})
-  }
-
-  console.log(json);
 }

@@ -7,6 +7,7 @@ var manufacturer = "<?php echo $_REQUEST["id"]?>";
     require 'pages/controllpanel/manufacturer/create.html';
   ?>
 </section>
+<h1 id="protext">Products</h1>
 <?php
 require 'pages/controllpanel/list/all.php';
 ?>

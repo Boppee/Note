@@ -7,7 +7,7 @@
   $connection = $connect->newConnectionPre("FetchPublic", "units");
 
   $text = strip_tags($_POST["text"]);
-
+  //fetch suggestions from units when creating a table structure
   $sth = $connection->prepare("SELECT * FROM `units` WHERE `name` LIKE concat('%', :text, '%')");
   $sth->bindParam(':text', $text);
   $sth->execute();

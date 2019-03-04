@@ -23,3 +23,9 @@
   background: var(--darkgray);
   box-shadow: 0px 0px 5px 2px var(--shadow);
 }
+#protext{
+  background: var(--darkgray);
+  text-align: center;
+  padding: 1em 1em 0em 1em;
+  color: orange;
+}

@@ -61,6 +61,7 @@ $(document).ready(function () {
                     window.location.href = result.page;
                   }else if (result.error) {
                     changeSalt(result.salt);
+                    $("#iemail").show();
                   }
                 }
               });
@@ -69,7 +70,7 @@ $(document).ready(function () {
             });
           }else if (result.error){
             changeSalt(result.salt);
-            $("#login").show();
+            $("#login, #icred").show();
           }
 
         }

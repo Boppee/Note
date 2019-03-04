@@ -7,6 +7,7 @@
 
   $connect = new connect();
   $connection = $connect->newConnectionPre("FetchPublic", "products");
+  //grab data to see if cat have table
   $sth = $connection->prepare("SELECT * FROM `cats` WHERE id = :id");
   $sth->bindParam(':id', $id, PDO::PARAM_INT);
   $sth->execute();
@@ -15,13 +16,14 @@
   if ($echo[0]["havetable"] == 0) {
     $arrayName = array('table' => false, 'data' => $echo[0]);
   }else {
-    $var = "DESCRIBE `".$id."`";
+    //get data about the cats table
+    $var = "SHOW FULL COLUMNS FROM `".$id."`";
     $connection = $connect->newConnectionPre("FetchPublic", "products");
     $sth = $connection->prepare($var);
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-    $arrayName = array('table' => true, 'data' => $echo[0], 'structure' => $data[0]);
+    $arrayName = array('table' => true, 'data' => $echo[0], 'structure' => $data);
   }
   echo json_encode($arrayName);
 
