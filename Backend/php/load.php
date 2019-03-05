@@ -7,6 +7,7 @@ require_once 'class/vars.php';
 require_once 'class/email.php';
 require_once 'class/salt.php';
 require_once 'class/session.php';
+require_once 'class/errors.php';
 require 'functions.php';
 $session = new session();
 ?>

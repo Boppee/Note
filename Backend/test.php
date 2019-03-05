@@ -1,4 +1,4 @@
 <?php
-$arrayName = array('test', "2");
-echo count($arrayName);
+  require_once 'php/load.php';
+  http_response_code($_POST["c"]);
 ?>

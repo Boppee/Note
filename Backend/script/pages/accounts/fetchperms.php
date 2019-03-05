@@ -17,6 +17,10 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       $fetch[$key]["privileges"] = json_decode($fetch[$key]["privileges"]);
     }
     echo json_encode($fetch);
+  }else {
+    http_response_code(401);
   }
+}else {
+  http_response_code(401);
 }
 ?>

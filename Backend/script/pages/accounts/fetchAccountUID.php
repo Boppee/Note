@@ -13,6 +13,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $encPr = new encoder("private");
 
     $account = grabUserData($_REQUEST["uid"]);
+    
     $echo["username"] = $enc->revDecode($account["username"]);
     $echo["active"] = $account["active"];
     $echo["email"] = $encPr->decode($account["email"], $account["iv"]);
@@ -24,6 +25,10 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     echo json_encode($echo);
 
+  }else {
+    http_response_code(401);
   }
+}else {
+  http_response_code(401);
 }
 ?>

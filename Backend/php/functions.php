@@ -6,14 +6,17 @@
 
     $uid = $enc->revEncode($uid, "");
 
-    //echo $uid;
-
     $connection = $connect->newConnectionPre("FetchFromAccounts", "");
 
     $sth = $connection->prepare("SELECT * FROM `accounts` WHERE `username` = :uid");
     $sth->bindParam(':uid', $uid);
     $sth->execute();
-    return $sth->fetch(PDO::FETCH_ASSOC);
+    $a = $sth->fetch(PDO::FETCH_ASSOC);
+    if (isset($a)) {
+      return $a;
+    }else {
+      http_response_code(404);
+    }
   }
 
   function goToPage($url){

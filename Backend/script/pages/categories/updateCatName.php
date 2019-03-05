@@ -11,13 +11,21 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $connect = new connect();
     $connection = $connect->newConnectionPre("modifyCats", "");
-    
+
     $sth = $connection->prepare("UPDATE `cats` SET `name` = :name WHERE `id` = :id");
     $sth->bindParam(':name', $name);
     $sth->bindParam(':id', $id, PDO::PARAM_INT);
-    $sth->execute();
+    if ($sth->execute()) {
+      http_response_code(200);
+    }else {
+      http_response_code(304);
+    }
 
+  }else {
+    http_response_code(401);
   }
+}else {
+  http_response_code(401);
 }
 
 ?>

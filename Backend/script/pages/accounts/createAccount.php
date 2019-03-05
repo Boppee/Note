@@ -33,6 +33,8 @@
         $filePath = "../../../img/accounts/".$fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
         move_uploaded_file($_FILES["file"]["tmp_name"], $filePath);
         $imgtype = $fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
+      }else {
+        http_response_code(406);
       }
 
       $uid = strip_tags($_POST["uid"]);
@@ -47,19 +49,28 @@
 
       $perms = $_POST["perms"];
 
-      $sth = $connection->prepare("INSERT INTO `accounts` (`active`, `username`, `password`, `iv`, `email`, `new_permsys`, `img`) VALUES (:active, :u, :p, :i, :e, :perms, :imgtype)");
-      $sth->bindParam(':active', $active);
-      $sth->bindParam(':u', $uid);
-      $sth->bindParam(':p', $pwd);
-      $sth->bindParam(':i', $iv);
-      $sth->bindParam(':e', $email);
-      $sth->bindParam(':perms', $perms);
-      $sth->bindParam(':imgtype', $imgtype);
-      $sth->execute();
+      if (isset($uid) && isset($pwd) && isset($email) && isset($active)) {
 
-      echo $_POST["uid"];
+        $sth = $connection->prepare("INSERT INTO `accounts` (`active`, `username`, `password`, `iv`, `email`, `new_permsys`, `img`) VALUES (:active, :u, :p, :i, :e, :perms, :imgtype)");
+        $sth->bindParam(':active', $active);
+        $sth->bindParam(':u', $uid);
+        $sth->bindParam(':p', $pwd);
+        $sth->bindParam(':i', $iv);
+        $sth->bindParam(':e', $email);
+        $sth->bindParam(':perms', $perms);
+        $sth->bindParam(':imgtype', $imgtype);
+        $sth->execute();
 
+        echo $_POST["uid"];
+      }else {
+        http_response_code(406);
+      }
+
+    }else {
+      http_response_code(401);
     }
+  }else {
+    http_response_code(401);
   }
 
 ?>

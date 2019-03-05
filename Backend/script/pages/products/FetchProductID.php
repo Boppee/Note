@@ -31,6 +31,10 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     echo json_encode($echo, true);
 
+  }else {
+    http_response_code(401);
   }
+}else {
+  http_response_code(401);
 }
 ?>

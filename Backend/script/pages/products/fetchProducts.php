@@ -11,7 +11,11 @@
     $session = new session();
     if ($session->checkPrem("list", "accounts")) {
       echoAccount($limit);
+    }else {
+      http_response_code(401);
     }
+  }else {
+    http_response_code(401);
   }
   function echoAccount($limit){
     $enc = new encoder("rev");

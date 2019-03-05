@@ -22,7 +22,11 @@
       $test = $sth->fetchAll(PDO::FETCH_ASSOC);
 
       echo json_encode($test);
+    }else {
+      http_response_code(401);
     }
+  }else {
+    http_response_code(401);
   }
 
 ?>

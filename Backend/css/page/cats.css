@@ -21,7 +21,7 @@
 .autoItem:hover{
   cursor: pointer;
 }
-#manually, #noStru, #exStru{
+#manually, #noStru, #exStru, #errorChangeName{
   display: none;
 }
 .stable input{
@@ -79,12 +79,19 @@ h1{
 #changename{
   color: var(--white);
 }
-#switch{
-  margin: 1em 0;
-}
 #stsec{
   color: var(--white);
 }
 #exStru input, #prev input{
-  color: var(--darkgray); 
+  color: var(--darkgray);
+}
+#errorChangeName{
+  color: red;
+}
+.struTr td{
+  padding: 0.5em 0;
+  border-bottom: solid 1px var(--darkgray);
+}
+#structure, #manually, #switch{
+  margin-top: 1em;
 }

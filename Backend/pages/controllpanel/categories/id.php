@@ -18,6 +18,8 @@ var id = <?php echo $_REQUEST["id"] ?>
       <span>New name:</span>
       <input type="text" id="name" value="">
       <input type="submit" id="changenameSubmit" value="Change">
+      <br>
+      <span id="errorChangeName">Internal server error</span>
     </div>
   </section>
 
@@ -25,7 +27,7 @@ var id = <?php echo $_REQUEST["id"] ?>
     <span>Structure name: </span>
     <input type="text" id="strName" class="update" value="">
     <br>
-    <input type="button" id="switch" value="Enter manually">
+    <input type="button" id="switch" value="Enter manually (Only for Numbers)">
 
     <div id="structure">
       <div class="outerUnit" id="first">
@@ -83,7 +85,7 @@ var id = <?php echo $_REQUEST["id"] ?>
     <table class="stable">
       <tr class="struTr">
         <td class="nameStru"><input type="text" id="pname" value="" disabled></td>
-        <td class="valueStru"><span>50 </span><input type="text" id="pval" value="" disabled></td>
+        <td class="valueStru"><span id="ptext">50 </span><input type="text" id="pval" value="" disabled></td>
         <td class=""><i class="fas fa-edit"></i></td>
         <td class=""><i class="fas fa-trash-alt"></i></td>
       </tr>

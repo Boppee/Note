@@ -1,14 +1,14 @@
 //suggestions
 const tr = ({id, text, nr, max, min}) => `
 <div class="autoItem" id="${id}" value="${text}" max="${max}" min=${min}>
-  <div class="autoInner ${nr}">
-    <span class="autoInner ${nr}">${text}</span>
-  </div>
+<div class="autoInner ${nr}">
+<span class="autoInner ${nr}">${text}</span>
+</div>
 </div>
 `;
 //prefixes
 const prefix = ({id, name, short}) => `
-  <option id="${id}" short="${short}" value="${name}">${name} (${short})</option>
+<option id="${id}" short="${short}" value="${name}">${name} (${short})</option>
 `;
 $(document).ready(function () {
   $(".strType").change(function () {
@@ -21,16 +21,12 @@ $(document).ready(function () {
         $("#prb").val("Add per");
       }
 
-      $("#"+parent+" .prefixes").hide();
-      $("#"+parent+" .autoC").hide();
-      $("#"+parent+" .length").hide();
+      $("#"+parent+" .length, #switch, #"+parent+" .autoC, #"+parent+" .prefixes").hide();
       if (parent != "after") {
         $("#prb").hide();
       }
     }else {
-      $("#"+parent+" .autoC").show();
-      $("#"+parent+" .length").show();
-      $("#prb").show();
+      $("#prb, #switch, #"+parent+" .length, #"+parent+" .autoC").show();
     }
 
     preview();
@@ -156,17 +152,41 @@ $(document).ready(function () {
       type: "POST",
       url: "script/pages/categories/updateCatName.php",
       data: {id: id, name: $("#name").val()},
-      success: function (data) {
+      complete: function(xhr) {
 
+        switch (xhr.status) {
+          case 200:
+          tempText = "";
+          for (var i = 0; i < $("#categorieSelector option:selected").text().match(/•/g).length; i++) {
+            tempText += "•";
+          }
+          tempText += $("#name").val();
+          $("#categorieSelector option:selected").text(tempText);
+          break;
+          case 304:
+          $("#errorChangeName").show();
+          default:
+
+        }
       }
     });
   });
+  $("#categorieSelector").change(function () {
+    $("#changename, #removeS").hide();
+    $("#gotoselector").show();
+    $("#categorieSelector").css("margin-left", 0);
+    if ($("#categorieSelector option:selected").attr('id') == id) {
+      $("#changename, #removeS").show();
+      $("#categorieSelector").css("margin", "0em 2em");
+      $("#gotoselector").hide();
+    }
+  });
   $("#switch").click(function () {
     $("#manually, #structure").toggle();
-    if ($(this).val() == "Enter manually") {
+    if ($(this).val() == "Enter manually (Only for Numbers)") {
       $(this).val("Enter automatic")
     }else {
-      $(this).val("Enter manually");
+      $(this).val("Enter manually (Only for Numbers)");
     }
   });
 
@@ -174,28 +194,44 @@ $(document).ready(function () {
 
 function preview() {
   var temp = "";
-  if ($("#switch").val() == "Enter manually") {
-    if ($(".strType").val() == "N") {
-      temp += $("#first #prefix option:selected").val();
-      temp += $("#first #unit").val();
-      if ($("#prb").val() == "Remove per") {
-        temp += "/";
-        if ($("#after .strType").val() == "Y") {
-          temp += "Year"
-        }else {
-          temp += $("#after #prefix option:selected").val();
-          temp += $("#after #unit").val();
+  switch ($(".strType").val()) {
+    case "N":
+    $("#ptext").text("50");
+      if ($("#switch").val() == "Enter manually (Only for Numbers)") {
+        temp += $("#first #prefix option:selected").val();
+        temp += $("#first #unit").val();
+        if ($("#prb").val() == "Remove per") {
+          temp += "/";
+          if ($("#after .strType").val() == "Y") {
+            temp += "Year"
+          }else {
+            temp += $("#after #prefix option:selected").val();
+            temp += $("#after #unit").val();
+          }
         }
-      }
 
+        $("#pname").val($("#strName").val());
+        $("#pval").val(temp);
+      }else {
+        $("#pname").val($("#strName").val());
+        $("#pval").val($("#maninput").val());
+      }
+      break;
+    case "Y":
       $("#pname").val($("#strName").val());
-      $("#pval").val(temp);
-    }else {
-      $("#preview").text("")
-    }
-  }else {
-    $("#pname").text($("#strName").val());
-    $("#pval").text("10 "+$("#maninput").val());
+      $("#ptext").text("");
+      $("#pval").val(2019);
+      break;
+    case "D":
+      $("#pname").val($("#strName").val());
+      $("#ptext").text("");
+      $("#pval").val("2019-04-06");
+      break;
+    case "T":
+      $("#pname").val($("#strName").val());
+      $("#ptext").text("");
+      $("#pval").val("Just some random text");
+      break;
   }
 }
 function create() {
