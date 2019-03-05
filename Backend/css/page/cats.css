@@ -12,6 +12,8 @@
   width: 100%;
 }
 .autoItem{
+  background: var(--darkgray);
+  box-shadow: 0px 2px 5px 0px var(--lightgray);
   width: 100%;
   text-align: center;
   padding: 0.5em 0;
@@ -48,7 +50,7 @@
 h1{
   margin-bottom: 1em;
 }
-#removeS:hover{
+#removeS:hover, #gotoselector:hover{
   cursor: pointer;
 }
 #categorieinfo, #stsec{
@@ -59,4 +61,30 @@ h1{
 }
 #stsec{
   border-top: solid var(--orange);
+}
+#changeparent{
+  height: 2em;
+  display: flex;
+  padding: 1em 0em;
+}
+#changeparent i{
+  color: var(--white);
+  font-size: 2em;
+}
+#changeparent select{
+  height: 100%;
+  margin: 0px 2em;
+  padding: 0px 1em;
+}
+#changename{
+  color: var(--white);
+}
+#switch{
+  margin: 1em 0;
+}
+#stsec{
+  color: var(--white);
+}
+#exStru input, #prev input{
+  color: var(--darkgray); 
 }

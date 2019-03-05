@@ -6,11 +6,13 @@ var id = <?php echo $_REQUEST["id"] ?>
 
   <section id="categorieinfo">
     <div id="changeparent">
+      <?php if ($_REQUEST["id"] != 1): ?>
+        <i id="removeS" class="fas fa-trash-alt"></i>
+      <?php endif; ?>
       <select id="categorieSelector">
         <option id="1" selected>Start</option>
       </select>
-      <input type="submit" id="gotoselector" value="->">
-      <i id="removeS" class="fas fa-trash-alt"></i>
+      <i id="gotoselector" class="fas fa-caret-right"></i>
     </div>
     <div id="changename">
       <span>New name:</span>

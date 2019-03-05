@@ -37,6 +37,10 @@ $(document).ready(function () {
 
   });
 
+  if (id == 1) {
+    $("#changeparent select").css("margin-left", 0)
+  }
+
   $.ajax({
     type: "GET",
     url: "script/pages/categories/fetchPrefix.php",
