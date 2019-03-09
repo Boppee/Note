@@ -69,14 +69,21 @@ var id = <?php echo $_REQUEST["id"] ?>
       </div>
 
       <input type="button" id="prb" value="Add per" onclick="preview()">
-      <input type="submit" value="create" onclick="create()">
+      <input type="submit" value="create" class="create auto">
     </div>
     <div id="manually">
       <span>Enter manually</span>
       <input type="text" id="maninput" onkeyup="preview()">
       <input type="number" placeholder="Length" class="length update" min="0">
-      <input type="submit" value="create" onclick="create()">
+      <input type="submit" value="create" class="create man">
       <br>
+    </div>
+    <div id="after">
+      Insert after:
+      <select id="where">
+        <option value="FIRST">First</option>
+
+      </select>
     </div>
 
   </section>

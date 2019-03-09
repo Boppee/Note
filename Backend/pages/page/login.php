@@ -55,6 +55,9 @@ $salt = new salt();
             <span id="icred">Invalid credentials</span>
             <input type="submit" id="sumbitlogin" value="Sign in">
           </form>
+          <div id="servererror">
+            <h1>Sorry, internal server error!</h1>
+          </div>
           <div class="loadImg">
             <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
           </div>

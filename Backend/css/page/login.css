@@ -85,3 +85,6 @@ nav, #loginbutton{
   display: none;
   color: red;
 }
+#servererror{
+  display: none;
+}

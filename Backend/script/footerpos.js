@@ -1,9 +1,4 @@
 $(document).ready(function () {
-  getFooterPos();
-
-  window.addEventListener('resize', function(){
-    getFooterPos();
-  });
 
   var element = $(".totalhight");
   var lastHeight = $(".totalhight").css('height');
@@ -13,17 +8,17 @@ $(document).ready(function () {
   function checkForChanges() {
       if (element.css('height') != lastHeight)
       {
-          getFooterPos();
           lastHeight = element.css('height');
+          lastHeight = parseInt(lastHeight.substring(0, lastHeight.length - 2));
+          lastHeight += 50;
+          //console.log("Window: "+window.innerHeight);
+          //console.log("lastHeight: "+lastHeight);
+          if (lastHeight > window.innerHeight) {
+            $("footer").css("position", "");
+          }else {
+            $("footer").css("position", "fixed");
+          }
       }
       setTimeout(checkForChanges, 100);
-  }
-
-  function getFooterPos() {
-    if (document.body.scrollHeight > document.body.clientHeight) {
-      $("footer").css("position", "");
-    }else {
-      $("footer").css("position", "fixed");
-    }
   }
 });

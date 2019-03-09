@@ -92,6 +92,9 @@ h1{
   padding: 0.5em 0;
   border-bottom: solid 1px var(--darkgray);
 }
-#structure, #manually, #switch{
+#structure, #manually, #switch, #after{
   margin-top: 1em;
+}
+.create{
+  display: none;
 }

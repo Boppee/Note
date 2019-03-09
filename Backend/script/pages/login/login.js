@@ -32,8 +32,11 @@ $(document).ready(function () {
         beforeSend: function(){
             $('#loadImg, #login, .loadImg').toggle();
         },
-        complete: function(){
-            $('#loadImg, .loadImg').hide();
+        complete: function(xhr){
+          if (xhr.status == 401) {
+            $("#servererror").show();
+          }
+          $('#loadImg, .loadImg').hide();
         },
         success: function(result) {
 

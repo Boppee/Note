@@ -38,15 +38,18 @@
         $host = $this->defaultHost;
       }
       $uid = "root";
-      $pwd = "root";
+      $pwd = "";
       $host = "localhost";
       if (isset($uid) && isset($pwd) && isset($databas)) {
         try {
           $dbh = new PDO('mysql:host='.$host.';dbname='.$databas,$uid,$pwd);
         } catch(PDOException $e){
           http_response_code(401);
+          die();
         }
-        return $dbh;
+        if (isset($dbh)) {
+          return $dbh;
+        }
       }
     }
   }
