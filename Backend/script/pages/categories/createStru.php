@@ -89,7 +89,6 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     }
 
     if($new) {
-      echo "string";
       $sth = $connection->prepare("ALTER TABLE `:id` DROP `def`");
       $sth->bindParam(':id', $table, PDO::PARAM_INT);
       $sth->execute();

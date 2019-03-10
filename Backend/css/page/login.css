@@ -88,3 +88,6 @@ nav, #loginbutton{
 #servererror{
   display: none;
 }
+footer{
+  position: absolute !important;
+}

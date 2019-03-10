@@ -42,6 +42,10 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $sth->bindParam(':id', $echo[0]["id"], PDO::PARAM_INT);
     $sth->bindParam(':child', $newchildArray);
     $sth->execute();
+
+    $echo = array('id' => $id, 'layer' => $layer);
+
+    echo json_encode($echo);
   }else {
     http_response_code(401);
   }

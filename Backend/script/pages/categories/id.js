@@ -137,8 +137,10 @@ $(document).ready(function () {
         type: "POST",
         url: "script/pages/categories/removeCat.php",
         data: {id: id},
-        success: function () {
-          window.location.href = "?page=categories&id=1";
+        complete: function (xhr, data) {
+          if (xhr.status == 200) {
+            window.location.href = "?page=categories&id=1";
+          }
         }
       });
     }
