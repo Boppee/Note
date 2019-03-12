@@ -11,6 +11,10 @@ $.ajax({
       $("#stocknr").text(info.totalstock);
       $("#totalsell").text(info.totalsold);
 
+      $("#catap").text(info.cat_name);
+      link = "?page=categories&id="+info.cat_id;
+      $("#catap").attr("href", link);
+
       if (info.visible) {
         $("input[name='vis']").prop("checked", true);
       }
@@ -34,15 +38,46 @@ $.ajax({
         }
       }
 
-      showNoImg();
+      $(".img img").click(function (event) {
+        $("#fullimg").show();
+        $("#fullimg img").attr("src", $(this).attr("src"));
+        $("#fullimg").css("top", window.scrollY+'px')
+        $("body").css("overflow", "hidden");
+        $(document).keyup(function(e) {
+          if (e.keyCode === 27) {
+            hideImg();
+          }
+        });
+      });
 
+      $("#imgClose").click(function () {
+        hideImg()
+      });
+
+      function hideImg() {
+        $("#fullimg").hide();
+        $("body").css("overflow", "auto");
+      }
+
+      $("#changeCat").click(function () {
+        $.ajax({
+          type: "POST",
+          url: "script/pages/products/update/changeCat.php",
+          data: {cat:  $("#categorieSelector option:selected").attr("id"), product: id},
+          success: function (data) {
+
+          }
+        });
+      });
+
+      showNoImg();
 
       $(".img i").click(function functionName(event) {
         var iid = event.target.parentElement.id;
         var cid = iid.split("_")[0];
         $.ajax({
           type: "POST",
-          url: "script/pages/products/removeimg.php",
+          url: "script/pages/products/update/removeimg.php",
           data: {id: cid, userid: info.id},
         });
         $("#"+iid).remove();
@@ -68,7 +103,7 @@ function uploadImg(input, id) {
 
     $.ajax({
       type: "POST",
-      url: "script/pages/products/uploadimg.php",
+      url: "script/pages/products/update/uploadimg.php",
       data: formData,
       processData: false,
       contentType: false,

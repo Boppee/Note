@@ -42,9 +42,21 @@
     <?php if ($session->checkPrem("list", "categories")): ?>
       <section class="cats">
         <div class="inner">
-
+          <div id="wcat">
+            <span>Current categorie: </span><a href="?page=categories&id=" id="catap"></a>
+          </div>
+          <div id="ccat">
+            <span>Move product to: </span>
+            <select id="categorieSelector">
+              <option id="1">Start</option>
+            </select>
+            <input type="button" id="changeCat" value="Change">
+          </div>
         </div>
       </section>
+
+      <script src="script/pages/categories/createSeletor.js" charset="utf-8"></script>
+
     <?php endif; ?>
 
     <?php if ($session->checkPrem("list", "orders")): ?>
@@ -71,5 +83,9 @@
       </div>
     </section>
 
+</section>
+<section id="fullimg">
+  <i class="fas fa-times-circle" id="imgClose"></i>
+  <img src="">
 </section>
 <script src="script/pages/products/productShow.js" charset="utf-8"></script>

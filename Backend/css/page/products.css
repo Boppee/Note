@@ -32,3 +32,35 @@
   padding-top: 1em;
   background: var(--white);
 }
+.img img:hover{
+  cursor: zoom-in;
+}
+#fullimg{
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #0009;
+}
+#imgClose{
+  padding: 0.25em;
+  border-radius: 50%;
+  background: black;
+  z-index: 2;
+  font-size: 1.5em;
+  color: var(--white);
+  position: absolute;
+  left: 2em;
+  top: 2em;
+}
+#imgClose:hover{
+  cursor: pointer;
+}
+#fullimg img{
+  position: absolute;
+  left:0; right:0;
+  top:0; bottom:0;
+  margin:auto;
+}

@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-require_once '../../../php/load.php';
+require_once '../../../../php/load.php';
 
 if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
@@ -22,12 +22,12 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     foreach ($imgarray as $key => $value) {
       if ($value["name"] == $imgname) {
-        if (unlink("../../../img/p/".$userid."/".$imgname.".".$value["imgtype"])) {
+      if (unlink("../../../img/p/".$userid."/".$imgname.".".$value["imgtype"])) {
           array_splice($imgarray, $key, 1);
 
           $updateArray = json_encode($imgarray);
 
-          $connect->newConnectionPre("UpdateProducts");
+          $connect->newConnectionPre("UpdateProducts", "");
           $sth = $connection->prepare("UPDATE `products` SET `imgs`= :array WHERE id = :id");
           $sth->bindParam(':id', $userid, PDO::PARAM_INT);
           $sth->bindParam(':array', $updateArray);

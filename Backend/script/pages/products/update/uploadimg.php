@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-require_once '../../../php/load.php';
+require_once '../../../../php/load.php';
 
 if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
@@ -49,7 +49,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $imgArray = json_encode($imgArray);
 
-    $connect->newConnectionPre("UpdateProducts");
+    $connect->newConnectionPre("UpdateProducts", "");
     $sth = $connection->prepare("UPDATE `products` SET `imgs`= :array WHERE id = :id");
     $sth->bindParam(':id', $pid, PDO::PARAM_INT);
     $sth->bindParam(':array', $imgArray);

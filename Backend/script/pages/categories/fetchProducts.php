@@ -23,7 +23,7 @@
     $connect = new connect();
     $connection = $connect->newConnectionPre("FetchFromProducts", "");
 
-    $sth = $connection->prepare("SELECT * FROM `products` WHERE `cats` LIKE :id");
+    $sth = $connection->prepare("SELECT * FROM `products` WHERE `cat_id` LIKE :id");
     $sth->bindParam(':id', $id, PDO::PARAM_INT);
     $sth->execute();
 

@@ -20,9 +20,13 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $echo = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-    if (!$session->checkPrem("list", "categories")) {
-      unset($echo["categories"]);
-    }
+    $connection = $connect->newConnectionPre("FetchPublic", "products");
+    $sth = $connection->prepare("SELECT `name` FROM `cats` WHERE `id` = :id");
+    $sth->bindParam(':id', $echo[0]["cat_id"], PDO::PARAM_INT);
+    $sth->execute();
+
+    $echo[0]["cat_name"] = $sth->fetchAll(PDO::FETCH_ASSOC)[0]["name"];
+
     if (!$session->checkPrem("list", "orders")) {
       unset($echo["orders"]);
     }
