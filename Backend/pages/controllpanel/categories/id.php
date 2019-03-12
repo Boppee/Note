@@ -107,6 +107,56 @@ var id = <?php echo $_REQUEST["id"] ?>
 
     </table>
   </section>
+  <?php if ($session->checkPrem("list", "products")): ?>
+    <section id="productsTable">
+      <div id="listInner">
+        <section>
+          <section id="pagecontroll">
+            <div id="spacer">
+              <div id="leftbutton" class="buttonlists">
+                <button id="prevpage"><i class="fas fa-angle-left"></i> Previous page</button>
+              </div>
+              <div id="centertext">
+
+              </div>
+              <div id="rightbutton" class="buttonlists">
+                <button id="nextpage">Next Page <i class="fas fa-angle-right"></i></button>
+              </div>
+            </div>
+          </section>
+          <section class="search">
+            <input type="text" id="searchTable" placeholder="Serach by product name">
+          </section>
+          <div class="overflowscroll">
+            <table id="listTable">
+              <thead id="listhead">
+                <tr>
+                  <th>Visible</th>
+                  <th>Product name</th>
+                  <th>Stock</th>
+                  <th>Price</th>
+                  <th>Go to product</th>
+                </tr>
+              </thead>
+              <tbody id="listTab">
+
+              </tbody>
+            </table>
+          </div>
+          <div class="accpp">
+            <p>products per page <select id="numberOfItems"></select></p>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <script src="script/pages/list/pageSystem.js" charset="utf-8"></script>
+    <script src="script/pages/categories/showProducts.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="css/page/list.css">
+  <?php endif; ?>
+
 </main>
 <script src="script/pages/categories/createSeletor.js" charset="utf-8"></script>
 <script src="script/pages/categories/id.js" charset="utf-8"></script>

@@ -1,7 +1,9 @@
 <?php
-
-$up = $_REQUEST["underpage"];
-
+if ($_REQUEST["page"] == "categories") {
+  $up = "products";
+}else {
+  $up = $_REQUEST["underpage"];
+}
 ?>
 
 <link rel="stylesheet" href="css/page/list.css">
@@ -57,7 +59,7 @@ $up = $_REQUEST["underpage"];
     </div>
     <section>
       <?php
-        if (isset($_REQUEST["id"])) {
+        if (isset($_REQUEST["id"]) && $_REQUEST["page"] != "categories") {
           if ($session->checkPrem("list", $up)) {
               include 'pages/controllpanel/'.$up.'/id.php';
           }

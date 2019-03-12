@@ -236,6 +236,3 @@ function preview() {
       break;
   }
 }
-function create() {
-
-}
