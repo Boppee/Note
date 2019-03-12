@@ -39,25 +39,46 @@
       </div>
     </section>
 
-    <?php if ($session->checkPrem("list", "categories")): ?>
-      <section class="cats">
-        <div class="inner">
-          <div id="wcat">
-            <span>Current categorie: </span><a href="?page=categories&id=" id="catap"></a>
-          </div>
-          <div id="ccat">
-            <span>Move product to: </span>
-            <select id="categorieSelector">
-              <option id="1">Start</option>
-            </select>
-            <input type="button" id="changeCat" value="Change">
-          </div>
-        </div>
-      </section>
+    <section>
+      <div class="inner" id="mancats">
+        <section class="cats">
+          <div class="mauto">
+            <div id="wcat">
+              <span>Current categorie: </span><a href="?page=categories&id=" id="catap"></a>
+            </div>
+            <?php if ($session->checkPrem("modify", "products")): ?>
+              <div id="ccat">
+                <span>Move product to: </span>
+                <select id="categorieSelector">
+                  <option id="1">Start</option>
+                </select>
+                <input type="button" id="changeCat" value="Change">
 
-      <script src="script/pages/categories/createSeletor.js" charset="utf-8"></script>
+                <script src="script/pages/categories/createSeletor.js" charset="utf-8"></script>
+              </div>
+            <?php endif; ?>
+          </div>
+        </section>
 
-    <?php endif; ?>
+        <section class="man">
+          <div class="mauto">
+            <span>Current manufacturer: </span><a href="" id="manap"></a>
+            <?php if ($session->checkPrem("modify", "products")): ?>
+              <div id="manflex">
+                <span>Change manufacturer: </span>
+                <div id="mansug">
+                  <input type="text" id="manuinput" value="">
+                  <div id="appendSug">
+                  </div>
+                </div>
+                <input type="button" name="" value="Change">
+              </div>
+              <link rel="stylesheet" href="css/page/manpro.css">
+            <?php endif; ?>
+          </div>
+        </section>
+      </div>
+    </section>
 
     <?php if ($session->checkPrem("list", "orders")): ?>
       <section class="orders">

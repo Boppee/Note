@@ -15,6 +15,10 @@ $.ajax({
       link = "?page=categories&id="+info.cat_id;
       $("#catap").attr("href", link);
 
+      $("#manap").text(info.man_name);
+      link = "?page=list&underpage=manufacturer&id="+info.manufacturer;
+      $("#manap").attr("href", link);
+
       if (info.visible) {
         $("input[name='vis']").prop("checked", true);
       }
@@ -59,6 +63,8 @@ $.ajax({
         $("body").css("overflow", "auto");
       }
 
+
+
       $("#changeCat").click(function () {
         $.ajax({
           type: "POST",
@@ -68,6 +74,27 @@ $.ajax({
 
           }
         });
+      });
+
+      const sugItems = ({name, id}) => `
+        <div class="sugitem">
+          <button type="button" name="button">${name}</button>
+        </div>
+      `;
+
+      $("#manuinput").keyup(function () {
+        if ($(this).val().length != 0) {
+          $.ajax({
+            type: "POST",
+            url: "script/pages/products/getSug.php",
+            data: {text: $(this).val()},
+            success: function (data) {
+              for (var i = 0; i < data.length; i++) {
+                $("#appendSug").append([{id: data[i].id, name: data[i].name}].map(sugItems).join(''));
+              }
+            }
+          });
+        }
       });
 
       showNoImg();

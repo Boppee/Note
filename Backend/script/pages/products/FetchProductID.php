@@ -24,8 +24,13 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $sth = $connection->prepare("SELECT `name` FROM `cats` WHERE `id` = :id");
     $sth->bindParam(':id', $echo[0]["cat_id"], PDO::PARAM_INT);
     $sth->execute();
-
     $echo[0]["cat_name"] = $sth->fetchAll(PDO::FETCH_ASSOC)[0]["name"];
+
+    $connection = $connect->newConnectionPre("FetchPublic", "products");
+    $sth = $connection->prepare("SELECT `name` FROM `manufacturer` WHERE `id` = :id");
+    $sth->bindParam(':id', $echo[0]["manufacturer"], PDO::PARAM_INT);
+    $sth->execute();
+    $echo[0]["man_name"] = $sth->fetchAll(PDO::FETCH_ASSOC)[0]["name"];
 
     if (!$session->checkPrem("list", "orders")) {
       unset($echo["orders"]);

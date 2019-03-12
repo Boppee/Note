@@ -14,6 +14,8 @@ $.ajax({
   data: {id: id},
   success: function (accountData) {
 
+    number = 0;
+
     for (var i = 0; i < accountData.length; i++) {
       number = i;
       addNewRow(accountData[i], number);

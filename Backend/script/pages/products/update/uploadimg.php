@@ -38,9 +38,9 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     }
     if (count($imgErrors) == 0) {
       if (!file_exists("../../../img/p/".$pid)) {
-        mkdir("../../../img/p/".$pid, 0700);
+        mkdir("../../../../img/p/".$pid, 0700);
       }
-      $filePath = "../../../img/p/".$pid."/".$imgname.".".pathinfo($fileName, PATHINFO_EXTENSION);
+      $filePath = "../../../../img/p/".$pid."/".$imgname.".".pathinfo($fileName, PATHINFO_EXTENSION);
       move_uploaded_file($_FILES["file"]["tmp_name"], $filePath);
       $imgtype = pathinfo($fileName, PATHINFO_EXTENSION);
       $newArray = array('imgtype' => $imgtype, 'name' => $imgname);

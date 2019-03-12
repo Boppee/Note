@@ -1,9 +1,9 @@
 //suggestions
 const tr = ({id, text, nr, max, min}) => `
 <div class="autoItem" id="${id}" value="${text}" max="${max}" min=${min}>
-<div class="autoInner ${nr}">
-<span class="autoInner ${nr}">${text}</span>
-</div>
+  <div class="autoInner ${nr}">
+    <span class="autoInner ${nr}">${text}</span>
+  </div>
 </div>
 `;
 //prefixes

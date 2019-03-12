@@ -22,7 +22,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     foreach ($imgarray as $key => $value) {
       if ($value["name"] == $imgname) {
-      if (unlink("../../../img/p/".$userid."/".$imgname.".".$value["imgtype"])) {
+      if (unlink("../../../../img/p/".$userid."/".$imgname.".".$value["imgtype"])) {
           array_splice($imgarray, $key, 1);
 
           $updateArray = json_encode($imgarray);

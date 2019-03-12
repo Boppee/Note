@@ -64,3 +64,16 @@
   top:0; bottom:0;
   margin:auto;
 }
+#ccat{
+  display: flex;
+}
+#mancats{
+  display: flex;
+}
+.cats, .man{
+  width: 50%;
+}
+.mauto{
+  margin: auto;
+  display: table;
+}
