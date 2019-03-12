@@ -1,6 +1,10 @@
 <title><?php echo $company->companyName." - ".ucfirst($_REQUEST["underpage"])." -" ?></title>
 <script type="text/javascript">
-  var id = "<?php echo $_REQUEST["id"]; ?>";
+  if ("<?php echo $_REQUEST["id"]; ?>" == "") {
+    id = 1;
+  }else {
+    var id = "<?php echo $_REQUEST["id"]; ?>";
+  }
 </script>
 <script type="text/javascript">
   const Item = ({pnr, imgname, imgtype }) => `
@@ -71,7 +75,7 @@
                   <div id="appendSug">
                   </div>
                 </div>
-                <input type="button" name="" value="Change">
+                <input type="button" id="changeMan" value="Change">
               </div>
               <link rel="stylesheet" href="css/page/manpro.css">
             <?php endif; ?>

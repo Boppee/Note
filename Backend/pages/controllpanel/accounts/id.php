@@ -1,6 +1,10 @@
 <title><?php echo $company->companyName." - ".ucfirst($_REQUEST["underpage"])." - ".$_REQUEST["id"]; ?></title>
 <script type="text/javascript">
-  var uid = "<?php echo $_REQUEST["id"]; ?>";
+  if ("<?php echo $_REQUEST["id"]; ?>" == "") {
+    uid = 1;
+  }else {
+    var uid = "<?php echo $_REQUEST["id"]; ?>";
+  }
 </script>
 <script src="script/pages/accounts/createperms.js" charset="utf-8"></script>
 <script src="script/pages/accounts/accountShow.js" charset="utf-8"></script>

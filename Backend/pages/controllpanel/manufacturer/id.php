@@ -1,5 +1,9 @@
 <script type="text/javascript">
-var id = "<?php echo $_REQUEST["id"]; ?>"
+  if ("<?php echo $_REQUEST["id"]; ?>" == "") {
+    id = 1;
+  }else {
+    var id = "<?php echo $_REQUEST["id"]; ?>";
+  }
 var manufacturer = "<?php echo $_REQUEST["id"]?>";
 </script>
 <section id="info">

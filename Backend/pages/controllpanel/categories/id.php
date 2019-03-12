@@ -1,5 +1,9 @@
 <script type="text/javascript">
-var id = <?php echo $_REQUEST["id"] ?>
+  if ("<?php echo $_REQUEST["id"]; ?>" == "") {
+    history.go(-1);
+  }else {
+    var id = "<?php echo $_REQUEST["id"]; ?>";
+  }
 </script>
 <link rel="stylesheet" href="css/page/cats.css">
 <main>

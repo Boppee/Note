@@ -13,11 +13,21 @@ $.ajax({
 
       $("#catap").text(info.cat_name);
       link = "?page=categories&id="+info.cat_id;
-      $("#catap").attr("href", link);
+      if (info.cat_id != 0) {
+        $("#catap").attr("href", link);
+      }else {
+        $("#catap").text("No categorie!");
+      }
+
 
       $("#manap").text(info.man_name);
       link = "?page=list&underpage=manufacturer&id="+info.manufacturer;
-      $("#manap").attr("href", link);
+      if (info.manufacturer != 0) {
+        $("#manap").attr("href", link);
+      }else {
+        $("#manap").text("No manufacturer!");
+      }
+
 
       if (info.visible) {
         $("input[name='vis']").prop("checked", true);
@@ -78,7 +88,7 @@ $.ajax({
 
       const sugItems = ({name, id}) => `
         <div class="sugitem">
-          <button type="button" name="button">${name}</button>
+          <button type="button" name="button" value="${id}">${name}</button>
         </div>
       `;
 
@@ -89,9 +99,32 @@ $.ajax({
             url: "script/pages/products/getSug.php",
             data: {text: $(this).val()},
             success: function (data) {
+              $(".sugitem").remove();
               for (var i = 0; i < data.length; i++) {
                 $("#appendSug").append([{id: data[i].id, name: data[i].name}].map(sugItems).join(''));
               }
+
+              $("#changeMan").hide();
+
+              $(".sugitem button").click(function (event) {
+                newManId = $(this).val();
+                $("#manuinput").val($(this).text());
+                $(".sugitem").remove();
+                $("#changeMan").show();
+                $("#changeMan").click(function () {
+                  if (confirm("Do you want change manufacturer to\nManufacturer name: "+$("#manuinput").val()+"\nManufacturer id: "+newManId)) {
+                    $.ajax({
+                      type: "POST",
+                      url: "script/pages/products/update/updateManufacturer.php",
+                      data: {product: id, manufacturer: newManId},
+                      success: function (data) {
+
+                      }
+                    });
+                  }
+                });
+              });
+
             }
           });
         }
