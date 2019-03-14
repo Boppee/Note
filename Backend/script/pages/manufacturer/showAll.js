@@ -35,6 +35,6 @@ $.ajax({
 
 function addNewRow(data, number) {
   $(document).ready(function () {
-    $('#listTab').append([{id: data.id, name: data.name, country: data.country, website: data.website, nr: number}].map(tr).join(''));
+    $('#listTab').append([{id: data.product_id, name: data.name, country: data.country, website: data.website, nr: number}].map(tr).join(''));
   });
 }

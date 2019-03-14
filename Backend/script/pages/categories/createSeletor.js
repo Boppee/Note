@@ -27,7 +27,6 @@ $.ajax({
         }
       });
     });
-
   }
 });
 function createTable(info, select) {

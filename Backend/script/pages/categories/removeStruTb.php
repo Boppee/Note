@@ -10,18 +10,22 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     //posted Data
     $id = strip_tags($_POST["id"]);
 
-    $connect = new connect();
-    $connection = $connect->newConnectionPre("modifyCats", "products");
+    if ($id != 1) {
+      $connect = new connect();
+      $connection = $connect->newConnectionPre("modifyCats", "products");
 
-    $sth = $connection->prepare("DROP TABLE `".$id."`");
-    if ($sth->execute()) {
-      $sth = $connection->prepare("UPDATE `cats` SET `havetable` = '0' WHERE `id` = :id");
-      $sth->bindParam(':id', $id, PDO::PARAM_INT);
+      $sth = $connection->prepare("DROP TABLE `".$id."`");
       if ($sth->execute()) {
-        http_response_code(200);
-      }else {
-        http_response_code(304);
+        $sth = $connection->prepare("UPDATE `cats` SET `havetable` = '0' WHERE `id` = :id");
+        $sth->bindParam(':id', $id, PDO::PARAM_INT);
+        if ($sth->execute()) {
+          http_response_code(200);
+        }else {
+          http_response_code(304);
+        }
       }
+    }else {
+      http_response_code(304);
     }
 
   }else {

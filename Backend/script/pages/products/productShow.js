@@ -19,6 +19,8 @@ $.ajax({
         $("#catap").text("No categorie!");
       }
 
+      $("#price").text(info.price+" "+valuta);
+
 
       $("#manap").text(info.man_name);
       link = "?page=list&underpage=manufacturer&id="+info.manufacturer;
@@ -33,7 +35,7 @@ $.ajax({
         $("input[name='vis']").prop("checked", true);
       }
 
-      stockTb = info.stock;
+      stockTb = info.stocks;
 
       for (var i = 0; i < stockTb.length; i++) {
 
@@ -149,6 +151,8 @@ $.ajax({
       });
 
       document.title = document.title+" "+info.name;
+
+      console.log(info);
 
     });
   }

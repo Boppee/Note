@@ -15,7 +15,7 @@
       $connect = new connect();
       $connection = $connect->newConnectionPre("FetchFromProducts", "");
 
-      $sth = $connection->prepare("SELECT `id`, `visible`, `name`, `stock`, `imgs`, `price`, `totalstock` FROM `products` WHERE `manufacturer` = :id");
+      $sth = $connection->prepare("SELECT `product_id`, `visible`, `name`, `imgs`, `price`, `totalstock` FROM `1` WHERE `manufacturer` = :id");
       $sth->bindParam(':id', $id, PDO::PARAM_INT);
       $sth->execute();
 

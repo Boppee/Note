@@ -14,7 +14,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $connect = new connect();
     $connection = $connect->newConnectionPre("FetchFromProducts", "");
-    $sth = $connection->prepare("SELECT * FROM `products` WHERE id = :id");
+    $sth = $connection->prepare("SELECT * FROM `1` WHERE product_id = :id");
     $sth->bindParam(':id', $id, PDO::PARAM_INT);
     $sth->execute();
 
@@ -22,11 +22,11 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $connection = $connect->newConnectionPre("FetchPublic", "products");
     $sth = $connection->prepare("SELECT `name` FROM `cats` WHERE `id` = :id");
-    $sth->bindParam(':id', $echo[0]["cat_id"], PDO::PARAM_INT);
+    $sth->bindParam(':id', $echo[0]["categori_id"], PDO::PARAM_INT);
     $sth->execute();
 
     $cat = $sth->fetchAll(PDO::FETCH_ASSOC);
-    
+
     if (isset($cat[0])) {
       $echo[0]["cat_name"] = $cat[0]["name"];
     }
@@ -46,7 +46,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     if (!$session->checkPrem("list", "orders")) {
       unset($echo["orders"]);
     }
-    $echo[0]["stock"] = json_decode($echo[0]["stock"]);
+    $echo[0]["stocks"] = json_decode($echo[0]["stocks"]);
     $echo[0]["imgs"] = json_decode($echo[0]["imgs"]);
 
     echo json_encode($echo, true);

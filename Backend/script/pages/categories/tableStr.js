@@ -31,37 +31,55 @@ function removeStru(event) {
     });
   });
 }
+//pos
+const pos = ({name, id}) => `<span id="remove${id}"><i class="fas fa-angle-right"></i></span><a href="?page=categories&id=${id}"> ${name} </a>`;
 
 //structure constants
-const struTrN = ({name, unit}) => `
-<tr class="struTr" value="N" id="${name}">
+const struTrN = ({name, unit, id}) => `
+<tr class="struTr ${id}" value="N" id="${name}">
   <td class="nameStru"><input type="text" value="${name}"></td>
   <td class="valueStru"><span>50</span><input type="text" value="${unit}"></td>
-  <td class=""><i class="fas fa-edit"></i></td>
+  <td class="edit"><i class="fas fa-edit"></i></td>
   <td class="remove"><i class="fas fa-trash-alt" onclick="removeStru(event)"></i></td>
 </tr>
 `;
-const struTrY = ({name}) => `
-<tr class="struTr" value="Y" id="${name}">
+const struTrY = ({name, id}) => `
+<tr class="struTr ${id}" value="Y" id="${name}">
   <td class="nameStru"><input type="text" value="${name}"></td>
   <td class="valueStru"><input type="text" value="2019"></td>
-  <td class=""><i class="fas fa-edit"></i></td>
+  <td class="edit"><i class="fas fa-edit"></i></td>
   <td class="remove"><i class="fas fa-trash-alt" onclick="removeStru(event)"></i></td>
 </tr>
 `;
-const struTrT = ({name}) => `
-<tr class="struTr" value="T" id="${name}">
+const struTrT = ({name, id}) => `
+<tr class="struTr ${id}" value="T" id="${name}">
   <td class="nameStru"><input type="text" value="${name}"></td>
   <td class="valueStru"><input type="text" value="Just Some random test :)"></td>
-  <td class=""><i class="fas fa-edit"></i></td>
+  <td class="edit"><i class="fas fa-edit"></i></td>
   <td class="remove"><i class="fas fa-trash-alt" onclick="removeStru(event)"></i></td>
 </tr>
 `;
-const struTrD = ({name}) => `
-<tr class="struTr" value="D" id="${name}">
+const struTrD = ({name, id}) => `
+<tr class="struTr ${id}" value="D" id="${name}">
   <td class="nameStru"><input type="text" value="${name}"></td>
   <td class="valueStru"><input type="text" value="2019-06-16"></td>
-  <td class=""><i class="fas fa-edit"></i></td>
+  <td class="edit"><i class="fas fa-edit"></i></td>
+  <td class="remove"><i class="fas fa-trash-alt" onclick="removeStru(event)"></i></td>
+</tr>
+`;
+const struTrB = ({name, id}) => `
+<tr class="struTr ${id}" value="D" id="${name}">
+  <td class="nameStru"><input type="text" value="${name}"></td>
+  <td class="valueStru"><input type="checkbox"></td>
+  <td class="edit"><i class="fas fa-edit"></i></td>
+  <td class="remove"><i class="fas fa-trash-alt" onclick="removeStru(event)"></i></td>
+</tr>
+`;
+const struTrJSON = ({name, id}) => `
+<tr class="struTr ${id}" value="D" id="${name}">
+  <td class="nameStru"><input type="text" value="${name}"></td>
+  <td class="valueStru"><input type="text" value="JSON OBJECT"></td>
+  <td class="edit"><i class="fas fa-edit"></i></td>
   <td class="remove"><i class="fas fa-trash-alt" onclick="removeStru(event)"></i></td>
 </tr>
 `;
@@ -78,24 +96,72 @@ $(document).ready(function () {
       if (data.table) {
         $("#exStru").show();
         for (var i = 0; i < data.structure.length; i++) {
-          temp = data.structure[i];
-          var tempC = temp.Field.charAt(0)
-          temp.Field = temp.Field.substr(1);
-          switch (tempC) {
-            case "N":
-              $('#exStru table').append([{name: temp.Field, unit: temp.Comment}].map(struTrN).join(''));
+          if (id != 1) {
+            temp = data.structure[i];
+            var tempC = temp.Field.charAt(0)
+            temp.Field = temp.Field.substr(1);
+            switch (tempC) {
+              case "N":
+                $('#exStru table').append([{name: temp.Field, unit: temp.Comment, id: i}].map(struTrN).join(''));
+                break;
+              case "D":
+                $('#exStru table').append([{name: temp.Field, id: i}].map(struTrD).join(''));
+                break;
+              case "Y":
+                $('#exStru table').append([{name: temp.Field, id: i}].map(struTrY).join(''));
+                break;
+              case "T":
+                $('#exStru table').append([{name: temp.Field, id: i}].map(struTrT).join(''));
+                break;
+            }
+            $('#where').append([{name: temp.Field, type: tempC}].map(after).join(''));
+          }else {
+
+            temp = data.structure[i];
+
+            protect = false;
+
+            switch (temp.Field) {
+              case "product_id": tempC = "N"; temp.Comment = "id"; protect = true; break; //product id
+              case "categori_id": tempC = "N"; temp.Comment = "id"; protect = true; break; //categorie id
+              case "name": tempC = "T"; protect = true; break; //name
+              case "visible": tempC = "B"; temp.Comment = ""; protect = true; break; //visible
+              case "price": tempC = "N"; protect = true; break; //price
+              case "manufacturer": tempC = "N"; temp.Comment = "id"; protect = true; break; //manufacturer
+              case "imgs": tempC = "J"; protect = true; break; //img
+              case "totalstock": tempC = "N"; protect = true; break; //totalstock
+              case "stocks": tempC = "J"; protect = true; break; //stocks
+              case "sp": tempC = "J"; temp.Field = "similar products"; protect = true; break; //sister products
+              default: tempC = temp.Field.charAt(0); temp.Field = temp.Field.substr(1);
+            }
+
+            switch (tempC) {
+              case "N":
+              $('#exStru table').append([{name: temp.Field, unit: temp.Comment, id: i}].map(struTrN).join(''));
               break;
-            case "D":
-              $('#exStru table').append([{name: temp.Field}].map(struTrD).join(''));
+              case "D":
+              $('#exStru table').append([{name: temp.Field, id: i}].map(struTrD).join(''));
               break;
-            case "Y":
-              $('#exStru table').append([{name: temp.Field}].map(struTrY).join(''));
+              case "Y":
+              $('#exStru table').append([{name: temp.Field, id: i}].map(struTrY).join(''));
               break;
-            case "T":
-              $('#exStru table').append([{name: temp.Field}].map(struTrT).join(''));
+              case "T":
+              $('#exStru table').append([{name: temp.Field, id: i}].map(struTrT).join(''));
               break;
+              case "B":
+              $('#exStru table').append([{name: temp.Field, id: i}].map(struTrB).join(''));
+              break;
+              case "J":
+              $('#exStru table').append([{name: temp.Field, id: i}].map(struTrJSON).join(''));
+              break;
+            }
+
+            if (protect) {
+              $("."+i+" .remove i").toggleClass("fa-trash-alt fa-ban");
+              $("."+i+" .edit i").toggleClass("fa-edit fa-ban");
+              $("."+i+" .remove i").removeAttr("onclick");
+            }
           }
-          $('#where').append([{name: temp.Field, type: tempC}].map(after).join(''));
         }
         $('#exStru table input').prop("disabled", true);
       }else {
@@ -197,4 +263,20 @@ $(document).ready(function () {
       });
     }
   });
+
+  $.ajax({
+    type: "POST",
+    url: "script/pages/categories/posTree.php",
+    data: {id: id},
+    success: function (data) {
+      $(document).ready(function () {
+        console.log(data);
+        for (var i = data.length-1; i >= 0; i--) {
+
+          $('#parents').append([{name: data[i].name, id: data[i].id}].map(pos).join(''));
+        }
+        $("#remove"+1).remove();
+      });
+    }
+  })
 });

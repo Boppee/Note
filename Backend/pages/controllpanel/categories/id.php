@@ -9,6 +9,9 @@
 <main>
 
   <section id="categorieinfo">
+    <div id="parents">
+      
+    </div>
     <div id="changeparent">
       <?php if ($_REQUEST["id"] != 1): ?>
         <i id="removeS" class="fas fa-trash-alt"></i>

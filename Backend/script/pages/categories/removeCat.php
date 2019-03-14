@@ -50,7 +50,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       $products = $sth->fetchAll(PDO::FETCH_ASSOC);
 
       foreach ($products as $key => $value) {
-        $sth = $connection->prepare("UPDATE `products` SET `cats` = '0' WHERE `id` = :id");
+        $sth = $connection->prepare("UPDATE `products` SET `categorie_id` = '1' WHERE `id` = :id");
         $sth->bindParam(':id', $value["id"], PDO::PARAM_INT);
         $sth->execute();
       }

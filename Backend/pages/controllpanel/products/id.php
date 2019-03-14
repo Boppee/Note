@@ -26,6 +26,7 @@
         <div id="statsp">
           <h1>Current stock: </h1><h1 id="stocknr">0</h1>
           <h1>Total sold: </h1><h1 id="totalsell">0</h1>
+          <h1>Price: </h1><h1 id="price">0</h1>
         </div>
       </div>
     </section>

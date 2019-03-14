@@ -98,3 +98,6 @@ h1{
 .create{
   display: none;
 }
+#parents a, #parents i{
+  color: white;
+}

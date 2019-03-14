@@ -130,7 +130,7 @@ $(document).ready(function () {
 
 function addNewRow(data, number) {
   $(document).ready(function () {
-    $('#listTab').append([{id: data.id, name: data.name, short: data.short, description: data.description, nr: number}].map(tr).join(''));
+    $('#listTab').append([{id: data.product_id, name: data.name, short: data.short, description: data.description, nr: number}].map(tr).join(''));
     if (data.can_be_per == "1") {
       $(".cbp"+data.id+" input").attr("checked", "true");
     }

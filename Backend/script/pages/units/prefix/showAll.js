@@ -99,7 +99,7 @@ $.ajax({
 
 function addNewRow(data, number) {
   $(document).ready(function () {
-    $('#listTab').append([{id: data.id, name: data.name, short: data.short, base: data.base, exponent: data.exponent, nr: number}].map(tr).join(''));
+    $('#listTab').append([{id: data.product_id, name: data.name, short: data.short, base: data.base, exponent: data.exponent, nr: number}].map(tr).join(''));
     $(document).ready(function () {
 
       $(".remove").click(function (event) {

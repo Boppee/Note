@@ -45,8 +45,8 @@ $.ajax({
 
 function addNewRow(data, number) {
   $(document).ready(function () {
-    $('#listTab').append([{id: data.id, name: data.name, price: data.price, nr: number, stock: data.totalstock}].map(tr).join(''));
-    if (data.visible == "1") {
+    $('#listTab').append([{id: data.product_id, name: data.name, price: data.price, nr: number, stock: data.totalstock}].map(tr).join(''));
+    if (data.visible == 1) {
       $(".vis"+data.id+" input").attr("checked", "true");
     }
   });
