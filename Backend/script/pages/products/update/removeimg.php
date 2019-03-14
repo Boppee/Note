@@ -13,7 +13,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $connect = new connect();
     $connection = $connect->newConnectionPre("FetchFromProducts", "");
-    $sth = $connection->prepare("SELECT `imgs` FROM `products` WHERE id = :id");
+    $sth = $connection->prepare("SELECT `imgs` FROM `1` WHERE product_id = :id");
     $sth->bindParam(':id', $userid, PDO::PARAM_INT);
     $sth->execute();
     $imgarray = json_decode($sth->fetchAll(PDO::FETCH_ASSOC)[0]["imgs"], true);
@@ -28,7 +28,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
           $updateArray = json_encode($imgarray);
 
           $connect->newConnectionPre("UpdateProducts", "");
-          $sth = $connection->prepare("UPDATE `products` SET `imgs`= :array WHERE id = :id");
+          $sth = $connection->prepare("UPDATE `1` SET `imgs`= :array WHERE product_id = :id");
           $sth->bindParam(':id', $userid, PDO::PARAM_INT);
           $sth->bindParam(':array', $updateArray);
           if ($sth->execute()) {

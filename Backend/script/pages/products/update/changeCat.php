@@ -16,7 +16,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $connect = new connect();
     $connection = $connect->newConnectionPre("UpdateProducts", "");
 
-    $sth = $connection->prepare("UPDATE `products` SET `cat_id` = :cat WHERE `id` = :id");
+    $sth = $connection->prepare("UPDATE `1` SET `categorie_id` = :cat WHERE `product_id` = :id");
     $sth->bindParam(':id', $id, PDO::PARAM_INT);
     $sth->bindParam(':cat', $cat);
 

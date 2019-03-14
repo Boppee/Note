@@ -132,13 +132,6 @@ $.ajax({
         }
       });
 
-      $("#manuinput").focusout(function () {
-        $(".sugitem").hide()
-      });
-      $("#manuinput").focusin(function () {
-        $(".sugitem").show()
-      });
-
       showNoImg();
 
       $(".img i").click(function functionName(event) {
@@ -147,7 +140,7 @@ $.ajax({
         $.ajax({
           type: "POST",
           url: "script/pages/products/update/removeimg.php",
-          data: {id: cid, userid: info.id},
+          data: {id: cid, userid: info.product_id},
         });
         $("#"+iid).remove();
         showNoImg();
@@ -178,7 +171,7 @@ function uploadImg(input, id) {
       contentType: false,
       success: function (info) {
 
-        $('#imgs').append([{pnr: info.id, imgname: info.name, imgtype: info.imgtype}].map(Item).join(''));
+        $('#imgs').append([{pnr: id, imgname: info.name, imgtype: info.imgtype}].map(Item).join(''));
 
         $(".img i").click(function functionName(event) {
           var iid = event.target.parentElement.id;
@@ -186,7 +179,7 @@ function uploadImg(input, id) {
           $.ajax({
             type: "POST",
             url: "script/pages/products/removeimg.php",
-            data: {id: cid, userid: info.id},
+            data: {id: cid, userid: info.product_id},
           });
           $("#"+iid).remove();
           showNoImg();
