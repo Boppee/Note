@@ -13,9 +13,10 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $connect = new connect();
     $connection = $connect->newConnectionPre("FetchFromProducts", "");
-    $sth = $connection->prepare("SELECT `imgs` FROM `products` WHERE id = :id");
+    $sth = $connection->prepare("SELECT `imgs` FROM `1` WHERE product_id = :id");
     $sth->bindParam(':id', $pid, PDO::PARAM_INT);
     $sth->execute();
+
     $imgArray = json_decode($sth->fetchAll(PDO::FETCH_ASSOC)[0]["imgs"], true);
 
     $fileName = $_FILES['file']['name'];
@@ -37,7 +38,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       array_push($imgErrors, "not a img");
     }
     if (count($imgErrors) == 0) {
-      if (!file_exists("../../../img/p/".$pid)) {
+      if (!file_exists("../../../../img/p/".$pid)) {
         mkdir("../../../../img/p/".$pid, 0700);
       }
       $filePath = "../../../../img/p/".$pid."/".$imgname.".".pathinfo($fileName, PATHINFO_EXTENSION);
@@ -50,7 +51,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $imgArray = json_encode($imgArray);
 
     $connect->newConnectionPre("UpdateProducts", "");
-    $sth = $connection->prepare("UPDATE `products` SET `imgs`= :array WHERE id = :id");
+    $sth = $connection->prepare("UPDATE `1` SET `imgs`= :array WHERE product_id = :id");
     $sth->bindParam(':id', $pid, PDO::PARAM_INT);
     $sth->bindParam(':array', $imgArray);
     if ($sth->execute()) {

@@ -22,7 +22,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
     $connection = $connect->newConnectionPre("FetchPublic", "products");
     $sth = $connection->prepare("SELECT `name` FROM `cats` WHERE `id` = :id");
-    $sth->bindParam(':id', $echo[0]["categori_id"], PDO::PARAM_INT);
+    $sth->bindParam(':id', $echo[0]["categorie_id"], PDO::PARAM_INT);
     $sth->execute();
 
     $cat = $sth->fetchAll(PDO::FETCH_ASSOC);

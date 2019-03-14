@@ -123,7 +123,7 @@ $(document).ready(function () {
 
             switch (temp.Field) {
               case "product_id": tempC = "N"; temp.Comment = "id"; protect = true; break; //product id
-              case "categori_id": tempC = "N"; temp.Comment = "id"; protect = true; break; //categorie id
+              case "categorie_id": tempC = "N"; temp.Comment = "id"; protect = true; break; //categorie id
               case "name": tempC = "T"; protect = true; break; //name
               case "visible": tempC = "B"; temp.Comment = ""; protect = true; break; //visible
               case "price": tempC = "N"; protect = true; break; //price

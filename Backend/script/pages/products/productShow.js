@@ -40,8 +40,8 @@ $.ajax({
       for (var i = 0; i < stockTb.length; i++) {
 
         $("#stocktb").append("<tr id='tr"+i+"'></tr>");
-        $("#tr"+i).append("<td class='loc'>"+stockTb[i].loc+"</td>");
-        $("#tr"+i).append("<td class='am'>"+stockTb[i].am+"</td>");
+        $("#tr"+i).append("<td class='loc'>"+stockTb[i].l+"</td>");
+        $("#tr"+i).append("<td class='am'>"+stockTb[i].a+"</td>");
 
       }
 
@@ -50,7 +50,7 @@ $.ajax({
       if (imgArray.length != 0) {
         $("#noimg_img").hide();
         for (var i = 0; i < imgArray.length; i++) {
-          $('#imgs').append([{pnr: info.id, imgname: imgArray[i].name, imgtype: imgArray[i].imgtype}].map(Item).join(''));
+          $('#imgs').append([{pnr: id, imgname: imgArray[i].name, imgtype: imgArray[i].imgtype}].map(Item).join(''));
         }
       }
 
@@ -132,6 +132,13 @@ $.ajax({
         }
       });
 
+      $("#manuinput").focusout(function () {
+        $(".sugitem").hide()
+      });
+      $("#manuinput").focusin(function () {
+        $(".sugitem").show()
+      });
+
       showNoImg();
 
       $(".img i").click(function functionName(event) {
@@ -147,12 +154,10 @@ $.ajax({
       });
 
       $("#imgupload").change(function () {
-        uploadImg(this, info.id);
+        uploadImg(this, id);
       });
 
       document.title = document.title+" "+info.name;
-
-      console.log(info);
 
     });
   }
