@@ -1,0 +1,46 @@
+#socialfot{
+  text-align: center;
+  background: #222222
+}
+#socialfot a img{
+  height: 1em;
+  padding: 0.5em 0.25em;;
+  height: 2em;
+  margin: 0 0.25em;
+}
+#cc{
+  padding: 0.5em 0;
+  background: #eee;
+}
+#topfot{
+  display: flex;
+  padding: 1em;
+  margin: auto;
+}
+#fotflex{
+  display: flex;
+}
+.fotsec{
+  margin: 0px 2em;
+}
+.fotsec ul{
+  list-style-type: none;
+  margin-top: 0.5em;
+}
+.sectext{
+  padding-bottom: 0.25em;
+  font-size: 1.25em;
+  border-bottom: 1px solid;
+}
+.sectext, .fotsec ul{
+  text-align: center;
+}
+.fotsec ul li{
+  padding: 0.25em 0px;
+  color: #222222;
+}
+footer{
+  height: 1000000px;
+  background: #fbfbfb;
+  border-top: 2px solid #222222;
+}
