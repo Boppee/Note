@@ -1,0 +1,65 @@
+aside{
+  position: absolute;
+  min-width: 10em;
+  max-width: 10em;
+  font-size: 1.1em;
+  border: 2px solid #999;
+  border-radius: 2px;
+  box-shadow: 0px 0px 10px -5px #ccc;
+}
+.textNav{
+  position: relative;
+  margin-left: 1.5em;
+  padding: 0.35em 1em 0.35em 0.25em;
+}
+.textNav button{
+  font-size: 1em;
+  position: absolute;
+  left: -1.65em;
+  top: 0;
+  bottom: 0;
+  padding: 0 0.5em;
+}
+#drop1 a{
+  color: #222222;
+  display: block !important;
+}
+.dropList{
+  display: none;
+}
+.dropList[layer="1"]{
+  border: solid;
+  border-width: 1px 0;
+}
+.fulltext[layer="1"]{
+  background: #f3f3f3;
+}
+#mobileNav{
+  display: none;
+  text-align: center;
+  padding: 1em;
+}
+#mobileNav i{
+  margin: 0px 0.5em;
+}
+@media only screen and (max-width: 700px) {
+  main{
+    margin-top: 0px;
+  }
+  aside{
+    border-width: 0px;
+    width: 100%;
+    border-bottom-width: 2px;
+    max-width: none;
+    position: unset;
+  }
+  #startpage{
+    display: block !important;
+  }
+  #mobileNav{
+    display: block;
+  }
+  #drop1{
+    display: none;
+  }
+}

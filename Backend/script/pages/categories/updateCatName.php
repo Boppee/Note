@@ -7,7 +7,15 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
 
   if ($session->checkPrem("modify", "categories")) {
     $id = strip_tags($_POST["id"]);
-    $name = strip_tags($_POST["name"]);
+    $name = $_POST["name"];
+
+    if (strpos($name, '<') === 0) {
+      preg_match('/<i class="fas .*.*"><\/i>/i', $name, $output_array);
+      if (count($output_array) == 0) {
+        http_response_code(400);
+        die();
+      }
+    }
 
     $connect = new connect();
     $connection = $connect->newConnectionPre("modifyCats", "");

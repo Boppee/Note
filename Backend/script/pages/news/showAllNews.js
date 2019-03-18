@@ -1,7 +1,7 @@
 var number = 0;
 $.ajax({
   type: "GET",
-  url: "script/pages/manufacturer/fetchAll.php",
+  url: "script/pages/news/fetchAll.php",
   success: function (data) {
 
     for (var i = 0; i < data.length; i++) {
@@ -33,6 +33,9 @@ $.ajax({
 
 function addNewRow(data, number) {
   $(document).ready(function () {
-    $('#listTab').append([{id: data.product_id, name: data.name, country: data.country, website: data.website, nr: number}].map(tr).join(''));
+    $('#listTab').append([{id: data.id, name: data.name, desc: data.description, nr: number}].map(tr).join(''));
+    if (data.visible == 1) {
+      $(".vis"+data.id+" input").attr("checked", "true");
+    }
   });
 }

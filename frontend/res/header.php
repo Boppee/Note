@@ -1,14 +1,19 @@
 <link rel="stylesheet" href="css/header.css">
 <div id="colorhead">
+  <div id="showTop">
+    Show
+  </div>
   <div class="inner" id="fixposDiv">
     <section id="topheader">
+      <i class="fas fa-times" id="removeTop"></i>
         <ul id="topul" >
-          <li class="topli"><a href="#"><i class="fas fa-check topfontA"></i>Fri frakt & retur!</a></li>
-          <li class="topli"><a href="#"><i class="fas fa-check topfontA"></i>30 dagars öppet köp!</a></li>
+          <li class="topli"><a href="#" name="frakretur"><i class="fas fa-check topfontA"></i>Fri frakt & retur!</a></li>
+          <li class="topli"><a href="#" name="oppetkop"><i class="fas fa-check topfontA"></i>30 dagars öppet köp!</a></li>
         </ul>
         <ul id="topulcon">
-          <li class="topli"><a href="#"><i class="fas fa-headset topfontA"></i>Support</a></li>
-          <li class="topli"><a href="#"><i class="fas fa-user topfontA"></i></i>Mina sidor</a></li>
+          <li class="topli"><a href="#" name="support"><i class="fas fa-headset topfontA"></i>Support</a></li>
+          <li class="topli"><a href="#" name="mypages"><i class="fas fa-user topfontA"></i></i>Mina sidor</a></li>
+          <li class="topli"><a href="#" name="cart"><i class="fas fa-shopping-cart topfontA"></i></i>Kundvagn</a></li>
         </ul>
     </section>
   </div>
@@ -26,18 +31,15 @@
             <button type="button" id="searchButton"><i class="fas fa-search"></i>Sök</button>
           </form>
         </div>
-        <nav>
-          <ul class="navul left" id="menu">
-            <li><a href="#"><i class="fas fa-bars" id="listico"></i>Start</a></li>
-            <li class="spacer"><a href="#">Veckans erbjudande</a></li>
-            <li><a href="#">Utgånde</a></li>
-            <div id="menulist">
-
-            </div>
+        <nav id="headnav">
+          <ul class="navul left">
+            <li><a href="#" name="home"><i class="fas fa-home"></i>Start</a></li>
+            <li class="spacer"><a href="#" name="deals">Veckans erbjudande</a></li>
+            <li><a href="#" name="utgande">Utgånde</a></li>
           </ul>
           <ul class="navul right">
-            <li class="spacer"><a href="#">Tävlingar</a></li>
-            <li><a href="#">Guider</a></li>
+            <li class="spacer"><a href="#" name="comps">Tävlingar</a></li>
+            <li><a href="#" name="guider">Guider</a></li>
           </ul>
         </nav>
       </div>

@@ -1,0 +1,19 @@
+#controll{
+  text-align: center;
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+}
+#innercontroll{
+  display: inline-flex;
+}
+.controllB i{
+  margin: 0px 0.25em;
+}
+#news{
+  position: relative;
+}
+.imgsGal img{
+  width: 100%;
+  height: auto;
+}

@@ -10,6 +10,14 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $parent = $_POST["parent"];
     $name = $_POST["newCat"];
 
+    if (strpos($name, '<') === 0) {
+      preg_match('/<i class="fas .*.*"><\/i>/i', $name, $output_array);
+      if (count($output_array) == 0) {
+        http_response_code(400);
+        die();
+      }
+    }
+
     $connect = new connect();
     $connection = $connect->newConnectionPre("creatCats", "");
 

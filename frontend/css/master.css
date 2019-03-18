@@ -9,6 +9,7 @@ body{
   padding: 0;
   margin: 0;
   position: relative;
+  overflow-x: hidden;
 }
 
 a{
@@ -37,6 +38,9 @@ textarea, select, input, button {
 button:hover{
   cursor: pointer;
 }
+*:focus {
+    outline: none;
+}
 
 /*classes*/
 .inner{
@@ -51,4 +55,16 @@ button:hover{
 }
 .spacer{
   margin: 0px 1em;
+}
+.rotate{
+  transform: rotate(180deg);
+}
+main{
+  margin: 1em 0;
+}
+#fixposDiv, #topheader, .dropButton, .controllB i{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }

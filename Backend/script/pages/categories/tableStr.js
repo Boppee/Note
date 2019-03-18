@@ -270,7 +270,6 @@ $(document).ready(function () {
     data: {id: id},
     success: function (data) {
       $(document).ready(function () {
-        console.log(data);
         for (var i = data.length-1; i >= 0; i--) {
 
           $('#parents').append([{name: data[i].name, id: data[i].id}].map(pos).join(''));

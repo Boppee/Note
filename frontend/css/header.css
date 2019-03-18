@@ -1,12 +1,24 @@
-#topheader, nav{
+#topheader, #headnav{
   display: inline-block;
   margin: 1em 0;
   padding: 0.25em;
 }
 #topheader{
   background: #222222;
+  position: relative;
 }
-#mainheader,#topheader, #searchInput, nav{
+#removeTop{
+  display: none;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+#showTop{
+  display: none;
+  text-align: center;
+  padding: 1em 0px;
+}
+#mainheader,#topheader, #searchInput, #headnav{
   width: 100%;
 }
 #topheader, #topheader a{
@@ -75,12 +87,7 @@ header{
 #menu{
   position: relative;
 }
-#menulist{
-  position: absolute;
-  top: 100%;
-  left: 0;
-}
-nav{
+#headnav{
   padding: 0.25em 0px !important;
 }
 header, #colorhead{
@@ -94,9 +101,53 @@ header, #colorhead{
 #fixposDiv{
   z-index: 1;
 }
-#fixposDiv, #topheader{
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+.navul i{
+  margin-right: 0.25em;
+}
+@media only screen and (max-width: 1000px) {
+  #fixposDiv {
+    width: 100%;
+  }
+  .inner{
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  #topheader li{
+    margin: auto;
+  }
+  #topul, #topulcon{
+    text-align: center;
+    display: block;
+    float: none;
+  }
+  .inner{
+    width: 100%;
+  }
+  #removeTop{
+    display: block;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .navul{
+    display: block;
+  }
+  #headnav ul{
+    float: none;
+  }
+  #headnav .spacer{
+    margin: 0;
+  }
+  .navul li{
+    border-radius: 0;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #topheader ul{
+    display: block;
+  }
+  #topheader li{
+    text-align: center;
+    padding: 0.25em 0em;
+  }
 }

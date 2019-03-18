@@ -4,7 +4,7 @@
     <section id="topfot">
       <div id="kontakt" class="fotsec">
         <div class="sectext">
-          <span>Kontakta oss!</span>
+          <span><i class="fas fa-headset"></i>Kontakta oss!</span>
         </div>
         <ul>
           <li><a href="#">FAQ</a></li>
@@ -14,7 +14,7 @@
       </div>
       <div id="info" class="fotsec">
         <div class="sectext">
-          <span>Information</span>
+          <span><i class="fas fa-info-circle"></i>Information</span>
         </div>
         <ul>
           <li><a href="#">Om oss</a></li>

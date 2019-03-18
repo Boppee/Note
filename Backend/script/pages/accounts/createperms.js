@@ -3,6 +3,7 @@ $.ajax({
   url: "script/pages/accounts/fetchperms.php",
   success: function (data) {
 
+
     const perm = ({name, capName}) => `
     <section class="perms" id="${name}">
       <form class="permform" id="${name}form">
