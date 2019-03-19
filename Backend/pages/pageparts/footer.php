@@ -11,5 +11,5 @@
 </footer>
 <script type="text/javascript">
   var d = new Date();
-  $("#copyright").append('Copyright © 2018-'+d.getFullYear()+' <a href="http://mrboppe.se/cart">Emil Sandberg</a> All Rights Reserved.')
+  $("#copyright").append('Copyright © 2018-'+d.getFullYear()+' <a href="http://mrboppe...se/cart">Emil Sandberg</a> All Rights Reserved.')
 </script>

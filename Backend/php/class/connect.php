@@ -1,30 +1,30 @@
 <?php
   class connect {
     //users that are used often
-    //template => 'User1' => array('username' => 'test', 'password' => 'test', 'databas ' => 'test', 'host' => 'localhost')// This is a test user for (databas)->(table)
+    //template => 'User1' => array('username' => 'test', 'password' => 'test', 'databas ' => 'test', 'host' => 'https://mrboppe.se')// This is a test user for (databas)->(table)
     private $users = array(
-      'CreateAdminAccount' => array('username' => 'CreateAdminAccount', 'password' => 'bJKgBYXF5UUzKFIf', 'host' => 'localhost', 'databas' => 'admin'), //can only insert to admin->accounts
-      'FetchFromAccounts' => array('username' => 'FetchFromAccounts', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'admin'),
-      'UpdateAccount' => array('username' => 'UpdateAccount', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'admin'),
-      'UpdateProducts' => array('username' => 'UpdateProducts', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'products'),
-      'FetchFromProducts' => array('username' => 'FetchFromProducts', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'products'),
-      'pwdChange' => array('username' => 'pwdChange', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'admin'),
-      'removeAccounts' => array('username' => 'removeAccounts', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'admin'),
-      'FetchFromcategories' => array('username' => 'FetchFromcategories', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'cats'),
-      'creatCats' => array('username' => 'creatCats', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'products'),
-      'deleteCats' => array('username' => 'creatCats', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'products'),
-      'modifyCats' => array('username' => 'modifyCats', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'products'),
-      'perms' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'admin'),
-      'FetchPublic' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'admin'),
-      'createUnits' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'units'),
-      'removeUnits' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'units'),
-      'modifyUnits' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'units'),
-      'createManufacturer' => array('username' => 'createManufacturer', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'products'),
-      'modifyManufacturer' => array('username' => 'modifyManufacturer', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'products'),
-      'removeManufacturer' => array('username' => 'removeManufacturer', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'localhost', 'databas' => 'products'),
+      'CreateAdminAccount' => array('username' => 'CreateAdminAccount', 'password' => 'bJKgBYXF5UUzKFIf', 'host' => 'https://mrboppe.se', 'databas' => 'admin'), //can only insert to admin->accounts
+      'FetchFromAccounts' => array('username' => 'FetchFromAccounts', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'admin'),
+      'UpdateAccount' => array('username' => 'UpdateAccount', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'admin'),
+      'UpdateProducts' => array('username' => 'UpdateProducts', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'products'),
+      'FetchFromProducts' => array('username' => 'FetchFromProducts', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'products'),
+      'pwdChange' => array('username' => 'pwdChange', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'admin'),
+      'removeAccounts' => array('username' => 'removeAccounts', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'admin'),
+      'FetchFromcategories' => array('username' => 'FetchFromcategories', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'cats'),
+      'creatCats' => array('username' => 'creatCats', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'products'),
+      'deleteCats' => array('username' => 'creatCats', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'products'),
+      'modifyCats' => array('username' => 'modifyCats', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'products'),
+      'perms' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'admin'),
+      'FetchPublic' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'admin'),
+      'createUnits' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'units'),
+      'removeUnits' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'units'),
+      'modifyUnits' => array('username' => 'perms', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'units'),
+      'createManufacturer' => array('username' => 'createManufacturer', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'products'),
+      'modifyManufacturer' => array('username' => 'modifyManufacturer', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'products'),
+      'removeManufacturer' => array('username' => 'removeManufacturer', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => 'https://mrboppe.se', 'databas' => 'products'),
     );
 
-    private $defaultHost = "localhost";
+    private $defaultHost = "https://mrboppe.se";
 
     public function newConnectionPre($uid, $db) {
       if (strlen($db) == 0) {
@@ -40,7 +40,7 @@
       }
       $uid = "root";
       $pwd = "";
-      $host = "localhost";
+      $host = "https://mrboppe.se";
       if (isset($uid) && isset($pwd) && isset($databas)) {
         try {
           $dbh = new PDO('mysql:host='.$host.';dbname='.$databas,$uid,$pwd);

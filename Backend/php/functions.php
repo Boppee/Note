@@ -38,7 +38,7 @@
     date_default_timezone_set('Europe/Stockholm');
 
     $connect = new connect();
-    $connection = $connect->newConnectionCred("root", "", "admin", "localhost");
+    $connection = $connect->newConnectionCred("root", "", "admin", "https://mrboppe.se");
 
     $enc = new encoder("rev");
 

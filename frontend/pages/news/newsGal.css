@@ -13,7 +13,13 @@
 #news{
   position: relative;
 }
+.imgsGal{
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+}
 .imgsGal img{
+  display: block;
   width: 100%;
   height: auto;
 }

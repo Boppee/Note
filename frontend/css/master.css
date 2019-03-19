@@ -62,7 +62,7 @@ button:hover{
 main{
   margin: 1em 0;
 }
-#fixposDiv, #topheader, .dropButton, .controllB i{
+#fixposDiv, #topheader, .dropButton, .controllB{
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;

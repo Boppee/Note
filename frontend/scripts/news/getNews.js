@@ -4,8 +4,7 @@ const controll = ({id}) => `
 </div>
 `;
 const imgs = ({id, imgtype}) => `
-<div class="imgsGal" id="i${id}">
-  <a href="?page=news&id=${id}"><img src="pages/news/imgs/${id}/start.${imgtype}" alt=""></a>
+<div class="imgsGal" id="i${id}" style="background-image: url(pages/news/imgs/${id}/start.${imgtype});">
 </div>
 `;
 
@@ -23,16 +22,26 @@ $.ajax({
         $("#i"+news[i].id).hide();
       }else {
         $("#c1 i").toggleClass("fa-dot-circle fa-circle");
+        $("#i1").attr("visible", "true");
         curImg = 1;
       }
     }
+
+    $("#imgGal").css("height", $("#imgGal").css("width").slice(0, -2)*0.55+"px");
+
+    window.onresize = function() {
+      $("#imgGal").css("height", $("#imgGal").css("width").slice(0, -2)*0.55+"px");
+    };
 
     pause = false;
 
     $(".controllB").click(function () {
 
       if ($(this).attr("id") != "c"+curImg) {
-        $("#i"+curImg+", #i"+$(this).attr("id").substr(1)).slideToggle();
+
+        $(".imgsGal[visible='true']").hide().attr("visible", "false");
+
+        $("#i"+$(this).attr("id").substr(1)).slideDown().attr("visible", "true").show();
 
         $(".controllB i").addClass("fa-dot-circle");
         $(".controllB i").removeClass("fa-circle");
@@ -64,13 +73,13 @@ $.ajax({
           curImg++;
         }
 
+        $(".imgsGal[visible='true']").slideToggle().attr("visible", "false");
+
+        $("#i"+curImg).prependTo("#imgGal").slideToggle().attr("visible", "true").show();
+
         $(".controllB i").addClass("fa-dot-circle");
         $(".controllB i").removeClass("fa-circle");
         $("#c"+curImg+" i").toggleClass("fa-dot-circle fa-circle");
-
-        $(".imgsGal").slideUp();
-
-        $("#i"+curImg).slideDown("");
 
       }else {
         temp++;
@@ -79,6 +88,6 @@ $.ajax({
           temp = 0;
         }
       }
-    }, 5000);
+    }, 7500);
   }
 });

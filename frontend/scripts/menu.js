@@ -27,65 +27,75 @@ $(document).ready(function () {
     url: "scripts/header/fetchMenu.php",
     success: function (data) {
 
-      dumbArray = [];
+      $(document).ready(function () {
+        dumbArray = [];
 
-      data.sort((a, b) => parseFloat(a.layer) - parseFloat(b.layer));
+        data.sort((a, b) => parseFloat(a.layer) - parseFloat(b.layer));
 
-      maxLayer = 0;
+        maxLayer = 0;
 
-      for (var i = 1; i < data.length; i++) {
+        for (var i = 1; i < data.length; i++) {
 
-        if (maxLayer < data[i].layer) {
-          maxLayer = data[i].layer;
+          if (maxLayer < data[i].layer) {
+            maxLayer = data[i].layer;
+          }
+
+          var par = data[i].par;
+          var id = data[i].id;
+          var name = data[i].name;
+          var layer = data[i].layer;
+
+          if (data[i].child.length == 0) {
+            var tempDrop = false;
+          }else {
+            var tempDrop = true;
+          }
+
+          if (tempDrop) {
+            $("#drop"+par).append([{id, name, layer, ob: i}].map(drop).join(''));
+          }else {
+            $("#drop"+par).append([{id, name, layer}].map(noDrop).join(''));
+          }
+
+          dumbArray[data[i].id] = data[i];
+
         }
 
-        var par = data[i].par;
-        var id = data[i].id;
-        var name = data[i].name;
-        var layer = data[i].layer;
+        maxLayer = parseInt(maxLayer);
 
-        if (data[i].child.length == 0) {
-          var tempDrop = false;
-        }else {
-          var tempDrop = true;
+        var colorArray = ["f", "e", "d", "c", "b", "a", 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+
+        for (var i = maxLayer+1; i >= 2; i--) {
+
+          $(".fulltext[layer="+i+"]").css("background", "#fefefe");
         }
 
-        if (tempDrop) {
-          $("#drop"+par).append([{id, name, layer, ob: i}].map(drop).join(''));
-        }else {
-          $("#drop"+par).append([{id, name, layer}].map(noDrop).join(''));
-        }
+        $(".dropButton").click(function (e) {
 
-        dumbArray[data[i].id] = data[i];
+          tempId = $(this).parent().parent().parent().attr("id");
+          tempId = tempId.slice(4);
 
-      }
+          if ($(this).hasClass("rotate")) {
+            $("#menu"+tempId+" .dropList").slideUp();
+            $("#menu"+tempId+" button").removeClass("rotate");
+          }else {
+            $(this).toggleClass("rotate");
+            $("#drop"+tempId).slideDown();
+          }
+        });
 
-      maxLayer = parseInt(maxLayer);
+        $("#mobileNav").click(function () {
+          $("#drop1").slideToggle();
+          $("#mobileNav i").toggleClass("rotate");
+        });
 
-      var colorArray = ["f", "e", "d", "c", "b", "a", 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
-
-      for (var i = maxLayer+1; i >= 2; i--) {
-
-        $(".fulltext[layer="+i+"]").css("background", "#fefefe");
-      }
-
-      $(".dropButton").click(function (e) {
-
-        tempId = $(this).parent().parent().parent().attr("id");
-        tempId = tempId.slice(4);
-
-        if ($(this).hasClass("rotate")) {
-          $("#menu"+tempId+" .dropList").slideUp();
-          $("#menu"+tempId+" button").removeClass("rotate");
-        }else {
-          $(this).toggleClass("rotate");
-          $("#drop"+tempId).slideDown();
-        }
-      });
-
-      $("#mobileNav").click(function () {
-        $("#drop1").slideToggle();
-        $("#mobileNav i").toggleClass("rotate");
+        window.onresize = function() {
+          if (window.innerWidth > 700) {
+            $("#drop1").show();
+          }else {
+            $("#drop1").hide();
+          }
+        };
       });
 
     }

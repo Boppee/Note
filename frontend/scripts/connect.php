@@ -2,11 +2,11 @@
 
 function connect($db, $host){
 
-  $uid = "root";
+  $uid = "per90";
   $pwd = "";
 
   if ($host == "") {
-    $host = "localhost";
+    $host = "155.4.124.14";
   }
   if ($db != "") {
     try {
