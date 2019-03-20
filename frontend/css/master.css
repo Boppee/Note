@@ -68,3 +68,13 @@ main{
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+#lennart{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+main, body{
+  background: white;
+}

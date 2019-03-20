@@ -1,11 +1,1 @@
-#startpage{
-  position: relative;
-}
-#marginLeftStart{
-  margin-left: 12em;
-}
-@media only screen and (max-width: 700px) {
-  #marginLeftStart{
-    margin: 0;
-  }
-}
+

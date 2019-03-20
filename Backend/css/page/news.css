@@ -1,0 +1,9 @@
+#prev{
+  display: none;
+  padding: 3em;
+  box-sizing: border-box;
+}
+#prev, #prev object{
+  width: 100%;
+  height: 100%;
+}

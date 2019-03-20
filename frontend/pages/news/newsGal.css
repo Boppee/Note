@@ -1,3 +1,6 @@
+#news{
+  position: relative;
+}
 #controll{
   text-align: center;
   position: absolute;
@@ -10,16 +13,8 @@
 .controllB i{
   margin: 0px 0.25em;
 }
-#news{
-  position: relative;
-}
 .imgsGal{
   height: 100%;
   background-position: center center;
   background-size: cover;
-}
-.imgsGal img{
-  display: block;
-  width: 100%;
-  height: auto;
 }

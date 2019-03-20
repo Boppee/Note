@@ -12,6 +12,9 @@ switch ($up) {
   case 'news':
     $sb = "name";
     break;
+  case 'promotions':
+    $sb = "promotions name";
+    break;
   case 'manufacturer':
     $sb = "manufacturers name";
     if ($up == "manufacturer" && isset($_REQUEST["id"])) {

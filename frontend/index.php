@@ -26,5 +26,6 @@ require_once 'scripts/load.php';
       require_once $pageUrl.'.php';
       require_once 'res/footer.php';
     ?>
+    <img src="https://media.giphy.com/media/3ohhwsniHZGAYw8tu8/giphy.gif" id="lennart">
   </body>
 </html>

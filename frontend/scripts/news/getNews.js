@@ -3,8 +3,8 @@ const controll = ({id}) => `
   <i class="fas fa-dot-circle"></i>
 </div>
 `;
-const imgs = ({id, imgtype}) => `
-<div class="imgsGal" id="i${id}" style="background-image: url(pages/news/imgs/${id}/start.${imgtype});">
+const imgs = ({id, imgtype, imgid}) => `
+<div class="imgsGal" id="i${id}" value="${imgid}" style="background-image: url(pages/news/imgs/${imgid}/start.${imgtype});">
 </div>
 `;
 
@@ -16,21 +16,21 @@ $.ajax({
     maxImg = news.length;
 
     for (var i = 0; i < news.length; i++) {
-      $("#innercontroll").append([{id: news[i].id}].map(controll).join(''));
-      $("#imgGal").append([{id: news[i].id, imgtype: news[i].imgs[0].t}].map(imgs).join(''));
+      $("#innercontroll").append([{id: i}].map(controll).join(''));
+      $("#imgGal").append([{id: i, imgid: news[i].id, imgtype: news[i].imgs[0].t}].map(imgs).join(''));
       if (i >= 1) {
-        $("#i"+news[i].id).hide();
+        $("#i"+i).hide();
       }else {
-        $("#c1 i").toggleClass("fa-dot-circle fa-circle");
-        $("#i1").attr("visible", "true");
-        curImg = 1;
+        $("#c0 i").toggleClass("fa-dot-circle fa-circle");
+        $("#i0").attr("visible", "true");
+        curImg = 0;
       }
     }
 
-    $("#imgGal").css("height", $("#imgGal").css("width").slice(0, -2)*0.55+"px");
+    $("#imgGal").css("height", ($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
 
     window.onresize = function() {
-      $("#imgGal").css("height", $("#imgGal").css("width").slice(0, -2)*0.55+"px");
+      $("#imgGal").css("height", ($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
     };
 
     pause = false;
@@ -52,6 +52,10 @@ $.ajax({
         pause = true;
       }
 
+    });
+
+    $(".imgsGal").click(function () {
+      window.location.href = "?page=news&id="+$(this).attr("value");
     });
 
     temp = 0;
