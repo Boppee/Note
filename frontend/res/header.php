@@ -13,7 +13,7 @@
         <ul id="topulcon">
           <li class="topli"><a href="#" name="support"><i class="fas fa-headset topfontA"></i>Support</a></li>
           <li class="topli"><a href="#" name="mypages"><i class="fas fa-user topfontA"></i></i>Mina sidor</a></li>
-          <li class="topli"><a href="#" name="cart"><i class="fas fa-shopping-cart topfontA"></i></i>Kundvagn</a></li>
+          <li class="topli" id="cartIcon"><div id="cartADiv"><span id="cartA"></span></div><a href="#" name="cart"><i class="fas fa-shopping-cart topfontA"></i></i>Kundvagn</a></li>
         </ul>
     </section>
   </div>
@@ -22,18 +22,38 @@
   <div class="inner">
     <section id="mainheader">
       <div id="logo">
-        <a href="#"><img src="https://www.komplett.se/logo/312/logo_b2c.svg" alt=""></a>
+        <a href="?page=start"><img src="https://www.komplett.se/logo/312/logo_b2c.svg" alt=""></a>
       </div>
       <div id="lowerheader">
         <div id="search">
-          <form>
+          <form id="serachdiv">
             <input type="text" id="searchInput" value="">
             <button type="button" id="searchButton"><i class="fas fa-search"></i>Sök</button>
+            <div id="searchres">
+              <div class="productsSearch">
+                <h1>Products</h1>
+                <ul id="productList">
+
+                </ul>
+                <div id="pnores">
+
+                </div>
+              </div>
+              <div class="cats">
+                <h1>Categories</h1>
+                <ul id="catList">
+
+                </ul>
+                <div id="cnores">
+
+                </div>
+              </div>
+            </div>
           </form>
         </div>
         <nav id="headnav">
           <ul class="navul left">
-            <li><a href="#" name="home"><i class="fas fa-home"></i>Start</a></li>
+            <li><a href="?page=start" name="home"><i class="fas fa-home"></i>Start</a></li>
             <li class="spacer"><a href="#" name="deals">Veckans erbjudande</a></li>
             <li><a href="#" name="utgande">Utgånde</a></li>
           </ul>

@@ -18,19 +18,21 @@ $(document).ready(function () {
 
           margin = 10;
 
-          $("#imgGal").css("height", ((margin*2)*data[0].imgs.length)+(($("#imgGal").css("width").slice(0, -2)/21)*9)*data[0].imgs.length+"px");
-          $(".imgsGal").css("height", margin+($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
-          $(".imgsGal").css("margin", margin+"px 0px");
+          resize();
 
-          window.onresize = function() {
-            $("#imgGal").css("height", (($("#imgGal").css("width").slice(0, -2)/21)*9)*data[0].imgs.length+"px");
-            $(".imgsGal").css("height", ($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
-          };
+          window.addEventListener('resize', resize, false);
+
+          function resize() {
+            margin = 10;
+            $("#imgGal").css("height", (margin*2)+($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
+            $(".imgsGal").css("height", margin+($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
+            $(".imgsGal").css("margin", margin+"px 0px");
+          }
 
           $("#newsName span").text(data[0].name);
           $("#newsDesc span").text(data[0].description);
           if (data[0].link) {
-            
+
           }
         }else {
 

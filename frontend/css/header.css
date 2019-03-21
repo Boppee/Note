@@ -49,8 +49,69 @@
 #lowerheader{
   padding: 1em;
 }
-#search form{
+#serachdiv{
   position: relative;
+}
+#searchres{
+  position: absolute;
+  top: 100%;
+  z-index: 2;
+  width: 100%;
+}
+.productsSearch, .cats{
+  width: 100%;
+  background: #f7b912;
+}
+#productList li{
+  height: 4em;
+  padding: 0.5em;
+  background: blue;
+}
+.innerSearchP{
+  display: flex;
+  line-height: 4em;
+  height: 100%;
+  position: relative;
+}
+.innerSearchP .addtocart{
+  position: absolute;
+  font-size: 2em;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0px 2em;
+}
+.productsSearch h1, .cats h1{
+  margin: 0;
+  padding: 1em 0;
+  margin-left: 1em;
+}
+#catList li{
+  padding: 0.25em;
+  padding-left: 1.5em;
+}
+#productList li:nth-child(odd){
+  border: 1px solid #f7b912;
+  border-bottom: 0;
+  background: #f3f3f3;
+}
+#productList li:nth-child(even){
+  background: #c7c7c7;
+  border: 1px solid #f7bd1f;
+}
+#productList li:first-child{
+  border: 1px solid #f7b912;
+  border-top: 0;
+  border-bottom: 0;
+}
+.searchImg{
+  height: 100%;
+}
+#searchres{
+  display: none;
+}
+.pinfo{
+  line-height: 2.5em;
 }
 #searchInput,.navul li{
   text-align: center;
@@ -103,6 +164,12 @@ header, #colorhead{
 }
 .navul i{
   margin-right: 0.25em;
+}
+#cartIcon{
+  position: relative;
+}
+#cartADiv{
+  position: absolute;
 }
 @media only screen and (max-width: 1000px) {
   #fixposDiv {
