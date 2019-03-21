@@ -1,5 +1,18 @@
 numberInCart();
 
+function elementAnimateToCart(selector) {
+
+  cartPos = $("#cartIcon").position();
+  cartWidth = $("#cartIcon").outerWidth();
+  cartHeight = $("#cartIcon").outerHeight();
+
+  element = $("#"+selector);
+  elementPos = $("#"+selector).position();
+
+  $("body").append("<div id='animateElement"+selector+"'>"+element[0].innerHTML+"</div>");
+
+}
+
 function addToCart(id) {
   cartArray = getCookie("cart");
   if (cartArray == null) {

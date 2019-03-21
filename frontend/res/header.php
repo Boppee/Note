@@ -13,7 +13,7 @@
         <ul id="topulcon">
           <li class="topli"><a href="#" name="support"><i class="fas fa-headset topfontA"></i>Support</a></li>
           <li class="topli"><a href="#" name="mypages"><i class="fas fa-user topfontA"></i></i>Mina sidor</a></li>
-          <li class="topli" id="cartIcon"><button id="cartA"></button><a href="#" name="cart"><i class="fas fa-shopping-cart topfontA"></i></i>Kundvagn</a></li>
+          <li class="topli" id="cartIcon"><span id="cartA"></span><a href="#" name="cart"><i class="fas fa-shopping-cart topfontA"></i></i>Kundvagn</a></li>
         </ul>
     </section>
   </div>

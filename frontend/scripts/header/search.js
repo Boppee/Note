@@ -13,14 +13,14 @@ $(document).ready(function () {
         </li>
       `;
       const products = ({id, name, imgtype, price}) => `
-        <li id="ps${id}">
+        <li id="ps${id}" class="searchLi">
           <div class="innerSearchP">
             <img src="pages/products/imgs/${id}/1.${imgtype}" class="searchImg">
             <div class="pinfo">
               <p class="psname">${name}</p>
               <p class="psprice">${price} Kr</p>
             </div>
-            <a class="addtocart" onclick="addToCart(${id})" value="${id}"><i class="fas fa-cart-plus"></i></a>
+            <a class="addtocart" onclick="addToCart(${id})" value="${id}" data="ps${id}"><i class="fas fa-cart-plus"></i></a>
           </div>
         </li>
       `;
@@ -62,6 +62,9 @@ $(document).ready(function () {
               }
             }
           }
+          $(".addtocart").click(function () {
+            elementAnimateToCart($(this).attr("data"));
+          });
         }
       });
     }else {
