@@ -168,7 +168,7 @@ header, #colorhead{
 #cartIcon{
   position: relative;
 }
-#cartADiv{
+#cartA{
   position: absolute;
 }
 @media only screen and (max-width: 1000px) {

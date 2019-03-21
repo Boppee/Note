@@ -49,13 +49,13 @@ function removeFromCart(id, amount) {
 
 }
 function numberInCart() {
-  var json_str = getCookie('cart');
-  var arr = JSON.parse(json_str);
-  if (arr == null) {
-    alert()
-    $("#cartA").text(0);
-  }else {
-    alert(arr[0].total)
-    $("#cartA").text(arr[0].total);
-  }
+  $(document).ready(function () {
+    var json_str = getCookie('cart');
+    var arr = JSON.parse(json_str);
+    if (arr == null) {
+      $("#cartA").text(0);
+    }else {
+      $("#cartA").text(arr[0].total);
+    }
+  });
 }
