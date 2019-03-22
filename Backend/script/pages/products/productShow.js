@@ -48,9 +48,10 @@ $.ajax({
       imgArray = info.imgs;
 
       if (imgArray.length != 0) {
+        console.log(imgArray);
         $("#noimg_img").hide();
         for (var i = 0; i < imgArray.length; i++) {
-          $('#imgs').append([{pnr: id, imgname: imgArray[i].name, imgtype: imgArray[i].imgtype}].map(Item).join(''));
+          $('#imgs').append([{pnr: id, imgname: imgArray[i].n, imgtype: imgArray[i].t}].map(Item).join(''));
         }
       }
 

@@ -1,4 +1,4 @@
-aside{
+#navaside{
   position: absolute;
   background: #f3f3f3;
   min-width: 10em;
@@ -49,17 +49,12 @@ aside{
 #startpage{
   position: relative;
 }
-#marginLeftStart{
-  margin-left: 12em;
-}
+
 @media only screen and (max-width: 700px) {
-  #marginLeftStart{
-    margin: 0;
-  }
   main{
     margin-top: 0px;
   }
-  aside{
+  #navaside{
     border-width: 0px;
     width: 100%;
     border-bottom-width: 2px;

@@ -10,7 +10,7 @@
   const Item = ({pnr, imgname, imgtype }) => `
   <div id="${imgname}_img" class="img">
     <i class="fas fa-times-circle"></i>
-    <img src="img/p/${pnr}/${imgname}.${imgtype}" alt="">
+    <img src="../frontend/pages/products/imgs/${pnr}/${imgname}.${imgtype}" alt="">
   </div>
 `;
 </script>

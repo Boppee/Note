@@ -26,9 +26,9 @@ if (isset($_REQUEST["id"])) {
     <?php
     require_once 'res/menu.php';
     ?>
-    <div id="marginLeftStart">
+    <div class="marginLeftStart">
       <div id="imgGal">
-        
+
       </div>
       <div id="newsName">
         <span></span>

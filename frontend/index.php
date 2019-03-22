@@ -17,6 +17,7 @@ require_once 'scripts/load.php';
     <script src="scripts/functions.js" charset="utf-8"></script>
     <script src="scripts/cart.js" charset="utf-8"></script>
     <script src="scripts/html2canvas.js" charset="utf-8"></script>
+    <script src="scripts/loadRe/loadRe.js" charset="utf-8"></script>
 
     <meta name="Description" content="My webshop! / Gymnasiearbete!">
 
@@ -28,6 +29,5 @@ require_once 'scripts/load.php';
       require_once $pageUrl.'.php';
       require_once 'res/footer.php';
     ?>
-    <img src="https://media.giphy.com/media/3ohhwsniHZGAYw8tu8/giphy.gif" id="lennart">
   </body>
 </html>

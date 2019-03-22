@@ -7,7 +7,7 @@ require_once 'res/header.php';
     <?php
     require_once 'res/menu.php';
     ?>
-    <div id="marginLeftStart">
+    <div class="marginLeftStart">
       <section id="news">
         <?php
           require_once 'res/news.php';

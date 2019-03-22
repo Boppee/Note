@@ -13,7 +13,7 @@ $(document).ready(function () {
         </li>
       `;
       const products = ({id, name, imgtype, price}) => `
-        <li id="ps${id}" class="searchLi">
+        <li id="ps${id}" class="searchLi" data="${id}">
           <div class="innerSearchP">
             <img src="pages/products/imgs/${id}/1.${imgtype}" class="searchImg">
             <div class="pinfo">
@@ -64,6 +64,12 @@ $(document).ready(function () {
           }
           $(".addtocart").click(function () {
             elementAnimateToCart($(this).attr("data"));
+          });
+
+          $(".searchLi").click(function (e) {
+            if(e.target.attributes.class.nodeValue != "fas fa-cart-plus"){
+              window.location.href = "?page=products&id="+$(this).attr("data");
+            }
           });
         }
       });

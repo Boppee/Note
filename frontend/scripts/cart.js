@@ -10,12 +10,13 @@ function elementAnimateToCart(selector) {
       $("body").append(canvas).css("position", "relative");
   }).then(function () {
     element = document.getElementById(selector).getBoundingClientRect();
-    console.log(element.left);
-    $("#animateToCart"+selector+randomId).css("position", "absolute");
-    $("#animateToCart"+selector+randomId).css("top", element.top);
-    $("#animateToCart"+selector+randomId).css("left", element.left);
-    $("#animateToCart"+selector+randomId).css("width", element.width);
-    $("#animateToCart"+selector+randomId).css("z-index", 100);
+    $("#animateToCart"+selector+randomId).css({
+      "position": "absolute",
+      "top": element.top,
+      "left": element.left,
+      "width": element.width,
+      "z-index": 100
+    });
   }).then(function () {
     cart = document.getElementById("cartIcon").getBoundingClientRect();
     $("#animateToCart"+selector+randomId).animate({

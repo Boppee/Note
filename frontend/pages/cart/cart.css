@@ -1,0 +1,17 @@
+#cartRe{
+  position: absolute;
+  background: #f3f3f3;
+  min-width: 10em;
+  max-width: 10em;
+  font-size: 1.1em;
+  border: 1px solid #444;
+  border-radius: 2px;
+  box-shadow: 0px 0px 10px -5px #ccc;
+  right: 0;
+}
+#mrc{
+  margin-right: 12em;
+  margin-left: 0;
+  height: 10em;
+  background: black;
+}

@@ -1,4 +1,4 @@
-<aside>
+<aside id="navaside">
   <div id="mobileNav">
     <i class="fas fa-caret-down"></i>Navigation<i class="fas fa-caret-down"></i>
   </div>
