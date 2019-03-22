@@ -11,9 +11,9 @@ function elementAnimateToCart(selector) {
   }).then(function () {
     element = document.getElementById(selector).getBoundingClientRect();
     $("#animateToCart"+selector+randomId).css({
-      "position": "absolute",
-      "top": element.top,
-      "left": element.left,
+      "position": "fixed",
+      "top": element.y,
+      "left": element.x,
       "width": element.width,
       "z-index": 100
     });
@@ -21,7 +21,7 @@ function elementAnimateToCart(selector) {
     cart = document.getElementById("cartIcon").getBoundingClientRect();
     $("#animateToCart"+selector+randomId).animate({
       top: cart.top,
-      left: cart.left,
+      left: cart.x,
       height: cart.height,
       width: cart.width,
       opacity: 0,
