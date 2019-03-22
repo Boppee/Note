@@ -62,8 +62,10 @@ $(document).ready(function () {
               }
             }
           }
+
           $(".addtocart").click(function () {
-            elementAnimateToCart($(this).attr("data"));
+            selector = $(this).attr("data");
+            elementAnimateToCart(selector);
           });
 
           $(".searchLi").click(function (e) {

@@ -1,0 +1,12 @@
+.re{
+  padding: 0.8em;
+}
+.reHead,.innerRec{
+  text-align: center;
+}
+.reHead{
+  margin-bottom: 1em;
+}
+.innerRec img{
+  margin: 0.5em 0;
+}

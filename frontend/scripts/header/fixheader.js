@@ -1,32 +1,45 @@
-pos = parseInt($("#topheader").css("margin-top"));
+$(document).ready(function () {
 
-if (getCookie("hidden") == "") {
-  document.cookie = "hidden=false";
-  var hide = getCookie("hidden");
-}else {
-  var hide = getCookie("hidden");
-}
-headpos(window.scrollY, pos, hide);
+  pos = parseInt($("#topheader").css("margin-top"));
 
-$(window).scroll(function() {
+  if (getCookie("hidden") == "") {
+    document.cookie = "hidden=false";
+    var hide = getCookie("hidden");
+  }else {
+    var hide = getCookie("hidden");
+  }
   headpos(window.scrollY, pos, hide);
-});
-window.onresize = function(event) {
-  headpos(window.scrollY, pos, hide);
-};
 
-$("#removeTop").click(function () {
-  hide = "true";
-  document.cookie = "hidden=true";
-  headpos(window.scrollY, pos, hide);
-})
-$("#showTop").click(function () {
-  hide = "false";
-  document.cookie = "hidden=false";
-  headpos(window.scrollY, pos, hide);
+  window.onscroll = function (e) {
+    headpos(window.scrollY, pos, hide);
+  }
+  window.onresize = function(event) {
+    headpos(window.scrollY, pos, hide);
+  };
+
+  $("#removeTop").click(function () {
+    hide = "true";
+    document.cookie = "hidden=true";
+    headpos(window.scrollY, pos, hide);
+  })
+  $("#showTop").click(function () {
+    hide = "false";
+    document.cookie = "hidden=false";
+    headpos(window.scrollY, pos, hide);
+  });
 });
 function headpos(y, pos, hide) {
-  if (window.innerWidth <= 700) {
+
+  innerW = window.innerWidth;
+  var limit = Math.max(
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.clientHeight,
+    document.documentElement.scrollHeight,
+    document.documentElement.offsetHeight
+  );
+
+  if (innerW <= 700) {
     if (hide == "true") {
       $("#showTop").show();
       $("#fixposDiv").hide();
@@ -34,24 +47,25 @@ function headpos(y, pos, hide) {
       $("#showTop").hide();
       $("#fixposDiv").show();
     }
-  }else {
-    $("#showTop").hide();
-    $("#fixposDiv").show();
   }
-  if (y != 0) {
-    if (window.innerWidth < 600) {
-      $("#topul").hide();
-    }else {
-      $("#topul").show();
-    }
-    if (y < pos) {
+
+  if (y != 0 && (limit-pos) >= window.outerHeight) {
+    if (y > pos) {
+
       $("#fixposDiv").css("width", "100%");
       $("#fixposDiv").addClass("fixedPos");
       $("#topheader").css("margin", 0);
+
+      if (innerW < 600) {
+        $("#topul").hide();
+      }else {
+        $("#topul").show();
+      }
+
     }
   }else {
     $("#topul").show();
-    if (window.innerWidth < 1000) {
+    if (innerW <= 1000) {
       $("#fixposDiv").css("width", "100%");
     }else {
       $("#fixposDiv").css("width", "70%");

@@ -1,14 +1,11 @@
 numberInCart();
 
 function elementAnimateToCart(selector) {
-
-  randomId = makeid(10);
-
   html2canvas(document.querySelector("#"+selector),{logging: false}).then(canvas => {
-      canvas.class='animateToCart';
-      canvas.id='animateToCart'+selector+randomId;
-      $("body").append(canvas).css("position", "relative");
-  }).then(function () {
+    randomId = makeid(10);
+    canvas.class='animateToCart';
+    canvas.id='animateToCart'+selector+randomId;
+    $("body").append(canvas).css("position", "relative");
     element = document.getElementById(selector).getBoundingClientRect();
     $("#animateToCart"+selector+randomId).css({
       "position": "fixed",
@@ -17,7 +14,6 @@ function elementAnimateToCart(selector) {
       "width": element.width,
       "z-index": 100
     });
-  }).then(function () {
     cart = document.getElementById("cartIcon").getBoundingClientRect();
     $("#animateToCart"+selector+randomId).animate({
       top: cart.top,
@@ -25,11 +21,10 @@ function elementAnimateToCart(selector) {
       height: cart.height,
       width: cart.width,
       opacity: 0,
-    }, 500, function () {
-        $("#animateToCart"+selector+randomId).remove();
+    }, "slow", function () {
+      $("#animateToCart"+selector+randomId).remove();
     });
   });
-
 }
 
 function addToCart(id) {
