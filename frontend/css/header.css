@@ -105,6 +105,9 @@
   border-top: 0;
   border-bottom: 0;
 }
+#productList{
+  position: relative;
+}
 .searchImg{
   height: 100%;
 }
@@ -178,6 +181,9 @@ header, #colorhead{
   }
 }
 @media only screen and (max-width: 700px) {
+  #searchres{
+    position: unset;
+  }
   #topheader li{
     margin: auto;
   }

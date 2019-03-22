@@ -41,6 +41,9 @@ button:hover{
 *:focus {
     outline: none;
 }
+h3{
+  margin: 0;
+}
 
 /*classes*/
 .inner{
@@ -80,4 +83,7 @@ main{
 }
 main, body{
   background: white;
+}
+.animateToCart{
+  position: absolute;
 }

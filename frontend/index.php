@@ -16,6 +16,7 @@ require_once 'scripts/load.php';
     <script src="scripts/r.js" charset="utf-8"></script>
     <script src="scripts/functions.js" charset="utf-8"></script>
     <script src="scripts/cart.js" charset="utf-8"></script>
+    <script src="scripts/html2canvas.js" charset="utf-8"></script>
 
     <meta name="Description" content="My webshop! / Gymnasiearbete!">
 

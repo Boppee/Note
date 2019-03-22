@@ -2,14 +2,32 @@ numberInCart();
 
 function elementAnimateToCart(selector) {
 
-  cartPos = $("#cartIcon").position();
-  cartWidth = $("#cartIcon").outerWidth();
-  cartHeight = $("#cartIcon").outerHeight();
+  randomId = makeid(10);
 
-  element = $("#"+selector);
-  elementPos = $("#"+selector).position();
-
-  $("body").append("<div id='animateElement"+selector+"'>"+element[0].innerHTML+"</div>");
+  html2canvas(document.querySelector("#"+selector),{logging: false}).then(canvas => {
+      canvas.class='animateToCart';
+      canvas.id='animateToCart'+selector+randomId;
+      $("body").append(canvas).css("position", "relative");
+  }).then(function () {
+    element = document.getElementById(selector).getBoundingClientRect();
+    console.log(element.left);
+    $("#animateToCart"+selector+randomId).css("position", "absolute");
+    $("#animateToCart"+selector+randomId).css("top", element.top);
+    $("#animateToCart"+selector+randomId).css("left", element.left);
+    $("#animateToCart"+selector+randomId).css("width", element.width);
+    $("#animateToCart"+selector+randomId).css("z-index", 100);
+  }).then(function () {
+    cart = document.getElementById("cartIcon").getBoundingClientRect();
+    $("#animateToCart"+selector+randomId).animate({
+      top: cart.top,
+      left: cart.left,
+      height: cart.height,
+      width: cart.width,
+      opacity: 0,
+    }, 500, function () {
+        $("#animateToCart"+selector+randomId).remove();
+    });
+  });
 
 }
 
