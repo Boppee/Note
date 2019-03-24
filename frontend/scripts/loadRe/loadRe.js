@@ -12,7 +12,7 @@ $(document).ready(function () {
           <div class="recInfo">
             <span>${price} kr</span>
             <br>
-            <a class="addtocart" value="re${id}" data="re${id}"><i class="fas fa-cart-plus"></i></a>
+            <a class="addtocart" onclick="addToCart(${id})" value="re${id}" data="re${id}"><i class="fas fa-cart-plus"></i></a>
           </div>
         </div>
       </div>

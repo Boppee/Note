@@ -12,6 +12,94 @@
 #mrc{
   margin-right: 14em;
   margin-left: 0;
-  height: 10em;
-  background: black;
+  min-height: 30em;
+}
+#noitems{
+  display: none;
+  text-align: center;
+}
+.cartTop{
+  display: flex;
+}
+.productCart{
+  width: 70%;
+}
+.amountCart, .priceCart{
+  width: 15%;
+  text-align: center;
+}
+.cartItem{
+  height: 5em;
+  display: flex;
+}
+.productCart{
+  position: relative;
+}
+.pimg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5em;
+  width: 5em;
+  background-position: center;
+  background-size: cover;
+}
+.productInfo{
+  padding-left: 5em;
+  display: flex;
+  height: 100%;
+}
+.nameAprice{
+  height: 100%;
+  line-height: 2.5em;
+  width: 70%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.lager{
+  text-align: center;
+  line-height: 2.5em;
+  width: 30%;
+}
+.cartItem .amountCart{
+  line-height: 5em;
+}
+.amountInput{
+  width: 2em;
+}
+.amountInput::-webkit-outer-spin-button,
+.amountInput::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.amountInput[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.cartItem .priceCart{
+  line-height: 5em;
+}
+.priceAfter::after{
+  content: "kr";
+}
+.cartItem{
+  padding: 0.5em 0;
+  border-bottom: 1px solid #4444;
+}
+.lagerBefore::before{
+  content: "Finns i lager!"
+}
+.cartItem .amountCart i:hover, .productCart:hover{
+  cursor: pointer;
+}
+.
+.cartTop{
+  padding: 1em 0;
+}
+@media only screen and (max-width: 1125px) {
+  .lagerBefore::before{
+    content: "I lager!"
+  }
 }

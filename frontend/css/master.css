@@ -89,6 +89,12 @@ main, body{
 .w{
   width: 100%
 }
+.ilager{
+  color: #319400;
+}
+.slutilager{
+  color: #d10000;
+}
 @media only screen and (max-width: 700px) {
   .marginLeftStart{
     margin: 0;

@@ -12,6 +12,8 @@
   $echo = $products->fetchAll(PDO::FETCH_ASSOC);
 
   $echo[0]["imgs"]= json_decode($echo[0]["imgs"]);
+  unset($echo[0]["visible"]);
+  unset($echo[0]["stocks"]);
 
   echo json_encode($echo[0]);
 

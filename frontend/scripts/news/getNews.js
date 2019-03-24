@@ -33,10 +33,8 @@ $.ajax({
       window.addEventListener('resize', resize, false);
 
       function resize() {
-        margin = 10;
-        $("#imgGal").css("height", (margin*2)+($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
-        $(".imgsGal").css("height", margin+($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
-        $(".imgsGal").css("margin", margin+"px 0px");
+        $("#imgGal").css("height", $("#imgGal").css("width").slice(0, -2)/21*9+"px");
+        $(".imgsGal").css("height", $("#imgGal").css("width").slice(0, -2)/21*9+"px");
       }
 
       pause = false;

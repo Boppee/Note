@@ -14,6 +14,8 @@
 
   foreach ($echo["products"] as $key => $value) {
     $echo["products"][$key]["imgs"] = json_decode($echo["products"][$key]["imgs"]);
+    unset($echo["products"][$key]["visible"]);
+    unset($echo["products"][$key]["stocks"]);
   }
 
   $text = "%".strip_tags($_POST["text"])."%";

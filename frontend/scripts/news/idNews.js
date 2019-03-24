@@ -16,9 +16,17 @@ $(document).ready(function () {
             $("#imgGal").append([{id: id, imgtype: data[0].imgs[i].t, name: data[0].imgs[i].n}].map(imgs).join(''));
           }
 
-          resize();
+          resizeID();
 
-          window.addEventListener('resize', resize, false);
+          window.addEventListener('resizeID', resize, false);
+
+          function resizeID() {
+            margin = 10;
+            $("#imgGal").css("height", (margin*2)+($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
+            $(".imgsGal").css("height", margin+($("#imgGal").css("width").slice(0, -2)/21)*9+"px");
+            $(".imgsGal").css("margin", margin+"px 0px");
+
+          }
 
           function resize() {
             margin = 10;

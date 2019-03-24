@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  pos = parseInt($("#topheader").css("margin-top"));
+  head = $("#colorhead").height();
 
   if (getCookie("hidden") == "") {
     document.cookie = "hidden=false";
@@ -8,36 +8,34 @@ $(document).ready(function () {
   }else {
     var hide = getCookie("hidden");
   }
-  headpos(window.scrollY, pos, hide);
+  headpos(window.scrollY, hide, head);
 
   window.onscroll = function (e) {
-    headpos(window.scrollY, pos, hide);
+    headpos(window.scrollY, hide, head);
   }
   window.onresize = function(event) {
-    headpos(window.scrollY, pos, hide);
+    headpos(window.scrollY, hide, head);
   };
 
   $("#removeTop").click(function () {
     hide = "true";
     document.cookie = "hidden=true";
-    headpos(window.scrollY, pos, hide);
+    headpos(window.scrollY, hide, head);
   })
   $("#showTop").click(function () {
     hide = "false";
     document.cookie = "hidden=false";
-    headpos(window.scrollY, pos, hide);
+    headpos(window.scrollY, hide, head);
   });
 });
-function headpos(y, pos, hide) {
+function headpos(y, hide, head) {
+
+  pos = parseInt($("#topheader").css("margin-top"));
+
+  windowSize = $(window).height();
+  bodysize = $(document).height();
 
   innerW = window.innerWidth;
-  var limit = Math.max(
-    document.body.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.clientHeight,
-    document.documentElement.scrollHeight,
-    document.documentElement.offsetHeight
-  );
 
   if (innerW <= 700) {
     if (hide == "true") {
@@ -49,7 +47,7 @@ function headpos(y, pos, hide) {
     }
   }
 
-  if (y != 0 && (limit-pos) >= window.outerHeight) {
+  if (y != 0 && bodysize-head > windowSize) {
     if (y > pos) {
 
       $("#fixposDiv").css("width", "100%");
