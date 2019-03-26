@@ -5,10 +5,11 @@ $(document).ready(function () {
       <div class="reHead">
         <span>Vi rekommenderar</span>
       </div>
-      <div id="recItem" id="${id}">
+      <div class="recItem" id="${id}">
         <div class="innerRec">
           <span class="recName">${name}</span>
           <img class="w" src="pages/products/imgs/${id}/${img.n}.${img.t}">
+          <span class="recNameMobile">${name}</span>
           <div class="recInfo">
             <span>${price} kr</span>
             <br>

@@ -10,3 +10,6 @@
 .innerRec img{
   margin: 0.5em 0;
 }
+.recNameMobile{
+  display: none;
+}
