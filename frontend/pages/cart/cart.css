@@ -145,20 +145,35 @@
 #paymenthead{
   margin-top: 2em;
 }
-.giftcard{
+.giftcard, .promo{
   margin: 1em 0;
 }
-.codeGC{
+.codeGC, .codePC{
   width: 50%;
 }
-.giftcard input{
+.giftcard input, .promo input{
   padding: 0.5em;
 }
-.removeGC{
+.removeGC, .removePC{
   margin-right: 1em;
 }
-.removeGC:hover{
+.removeGC:hover, .removePC:hover{
   cursor: pointer;
+}
+#paymentSum{
+  margin: 2em 0;
+}
+#lpay{
+  text-align: center;
+  width: 100%;
+}
+#loadpayment{
+  font-size: 1.3em;
+  margin: auto;
+  left: 0;
+  right: 0;
+  border: 0px solid black;
+  border-bottom-width: 1px;
 }
 #uppgifter input{
   margin: 0.5em 0;

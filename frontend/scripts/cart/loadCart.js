@@ -17,9 +17,9 @@
           </div>
         </div>
       </div>
-      <div class="amountCart">
+      <div class="amountCart disable-select">
         <i class="fas fa-minus" value="${id}" data="minus" price="${price}"></i>
-        <input type="number" class="amountInput" min="1" value="">
+        <input type="number" class="amountInput disable-select" min="1" max="100" value="" disabled>
         <i class="fas fa-plus" value="${id}" data="plus" price="${price}"></i>
       </div>
       <div class="priceCart">
@@ -33,6 +33,13 @@
     <i class="fas fa-times removeGC"></i>
     <input type="text" placeholder="Kod" class="codeGC" apl="false">
     <input type="submit" class="apGC" value="Använd" ids="${id}">
+  </div>
+  `;
+  const promoCode = ({id}) => `
+  <div class="promo" id="promo${id}">
+    <i class="fas fa-times removePC"></i>
+    <input type="text" placeholder="Kod" class="codePC" apl="false">
+    <input type="submit" class="apPC" value="Använd" ids="${id}">
   </div>
   `;
 
@@ -92,6 +99,36 @@
             idcards = 0;
             cards = [];
 
+            idpromoCode = 0;
+            promoCodes = [];
+
+
+            $("#promoadd").click(function () {
+              if (idpromoCode == 0) {
+                $("#promo").append([{id: idpromoCode}].map(promoCode).join(''));
+                idpromoCode++;
+              }
+
+              $(".removePC").click(function () {
+                promoCodes.splice(promoCodes.indexOf($(this).parent().find(".codePC").val()),1);
+                idpromoCode = 0;
+                $(this).parent().remove();
+              });
+
+              $(".apPC").click(function () {
+                $.ajax({
+                  type: "POST",
+                  data: {cookie: cookie, code: $(this).parent().find(".codePC").val()},
+                  url: "scripts/cart/promocodes.php",
+                  success: function (data) {
+
+                  }
+                });
+              });
+
+            });
+
+
             $("#addgiftcard").click(function () {
               if (idcards == 0) {
                 $("#giftcards").append([{id: idcards}].map(giftCard).join(''));
@@ -102,6 +139,7 @@
                   idcards++;
                 }
               }
+
 
 
               $(".removeGC").click(function () {
@@ -133,6 +171,8 @@
                       }
                     }
                   });
+                }else {
+                  $(this).parent().find(".codeGC").addClass("error")
                 }
               });
 

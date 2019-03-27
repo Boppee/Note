@@ -57,6 +57,8 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       $i = 0;
 
       for ($i=0; $i < count($_FILES['newsimg']['name']); $i++) {
+        echo $i;
+        echo "<br>";
         $sth = $connection->prepare("SELECT `imgs` FROM `previewnews` WHERE `id` = :id");
         $sth->bindParam(':id', $id);
         $sth->execute();
@@ -73,10 +75,7 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
         $imgErrors = array();
 
         $imgname = "temp".$i;
-
-        if ($_FILES["newsimg"]["size"][$i] > 5000000) {
-          array_push($imgErrors, "file size");
-        }
+        
         if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" && $fileType != "bmp") {
           array_push($imgErrors, "file format");
         }

@@ -75,6 +75,11 @@ require_once 'res/header.php';
               <input type="button" id="promoadd" value="Lägg till rabattkod (max en per köp!)">
 
             </section>
+            <section id="paymentSum">
+              <div id="lpay">
+                <button type="button" id="loadpayment">Ladda betalning</button>
+              </div>
+            </section>
           </section>
         </section>
       </div>
