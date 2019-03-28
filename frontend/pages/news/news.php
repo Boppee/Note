@@ -1,15 +1,18 @@
 <?php
 require_once 'res/header.php';
+session_start();
 
 if (isset($_REQUEST["id"])) {
   $id = $_REQUEST["id"];
   if ($id == "preview") {
-    ?>
-      <script type="text/javascript">
-        id = "<?php echo $_REQUEST["pid"] ?>";
-      </script>
-      <script src="scripts/news/previewidNews.js" charset="utf-8"></script>
-    <?php
+    if ($_SESSION["signedIn"]) {
+      ?>
+        <script type="text/javascript">
+          id = "<?php echo $_REQUEST["pid"] ?>";
+        </script>
+        <script src="scripts/news/previewidNews.js" charset="utf-8"></script>
+      <?php
+    }
   }else {
     ?>
     <script type="text/javascript">

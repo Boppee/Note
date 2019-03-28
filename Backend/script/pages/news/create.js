@@ -1,6 +1,7 @@
 $(document).ready(function () {
-  tempId = random();
   $("#buttonpreview").click(function () {
+
+    tempId = random();
 
       var reader = new FileReader();
 
@@ -21,22 +22,15 @@ $(document).ready(function () {
         formData.append("newsvisible", 1);
       }
 
-
-
-
       $.ajax({
         type: "POST",
         url: "script/pages/news/updatePreview.php",
         data: formData,
         processData: false,
         contentType: false,
-        beforeSend : function() {
-          $("#prev").show();
-        },
         success: function (data) {
-          $(document).ready(function () {
-            $("#prev").html('<object data="http://localhost:8888/Note/frontend/?page=news&id=preview&pid='+tempId+'" id="previewDOM">');
-          });
+          $("#prev").show();
+          $("#prev").html('<object data="http://localhost:8888/Note/frontend/?page=news&id=preview&pid='+data+'" id="previewDOM">');
         }
       });
 
