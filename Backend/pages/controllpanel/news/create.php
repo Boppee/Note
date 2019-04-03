@@ -2,20 +2,20 @@
 <section id="createnews">
   <div class="inner">
     <form>
+      <span>Name: </span>
       <input type="name" placeholder="Name" id="newsname">
+      <br>
+      <span>Description</span>
       <input type="name" placeholder="Description" id="newsdesciption">
+      <br>
+      <span>Visible</span>
       <input type="checkbox" placeholder="Visible" id="newsvisible">
+      <br>
+      <span>Images</span>
       <input type="file" multiple placeholder="Img" id="newsimg">
-      <input type="checkbox" placeholder="unique page" id="newsunique">
-      <input type="file" placeholder="HTML DOC" id="newsdoc">
-      <input type="file" placeholder="CSS FILE" id="newscss">
     </form>
 
     <button type="button" id="buttonpreview">Load preview</button>
-
-  </div>
-
-  <div id="prev">
 
   </div>
 </section>

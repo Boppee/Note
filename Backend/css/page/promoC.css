@@ -1,0 +1,59 @@
+#product{
+  background: var(--white);
+}
+#search{
+  height: 4em;
+  position: relative;
+}
+#productInput{
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background: 0;
+  border: 0;
+  z-index: 0;
+  position: absolute;
+  text-align: center;
+}
+#selT{
+  height: 100%;
+  background: 0;
+  border: 0;
+  position: absolute;
+  z-index: 3;
+}
+#productList {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.searchLi{
+  height: 5em;
+  padding: 0.5em;
+}
+.innerSearchP {
+    display: flex;
+    line-height: 5em;
+    height: 100%;
+    position: relative;
+}
+.searchImg {
+    height: 100%;
+}
+.pinfo {
+    line-height: 2.5em;
+}
+.searchLi:hover{
+  cursor: pointer;
+}
+#listp li i{
+  margin-left: 0.5em;
+}
+#listp li i:hover{
+  cursor: pointer;
+}
+#terms{
+  margin-top: 2em;
+}

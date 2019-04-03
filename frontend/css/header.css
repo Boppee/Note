@@ -1,6 +1,9 @@
 #cartIcon{
   z-index: 200;
 }
+#logo img{
+  max-height: 10em;
+}
 #topheader, #headnav{
   display: inline-block;
   margin: 1em 0;

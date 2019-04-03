@@ -3,8 +3,8 @@ const controll = ({id}) => `
   <i class="fas fa-dot-circle"></i>
 </div>
 `;
-const imgs = ({id, imgtype, imgid}) => `
-<div class="imgsGal" id="i${id}" value="${imgid}" style="background-image: url(pages/news/imgs/${imgid}/start.${imgtype});">
+const imgs = ({id, imgtype, imgid, imgname}) => `
+<div class="imgsGal" id="i${id}" value="${imgid}" style="background-image: url(pages/news/imgs/${imgid}/${imgname}.${imgtype});">
 </div>
 `;
 
@@ -18,7 +18,7 @@ $.ajax({
 
       for (var i = 0; i < news.length; i++) {
         $("#innercontroll").append([{id: i}].map(controll).join(''));
-        $("#imgGal").append([{id: i, imgid: news[i].id, imgtype: news[i].imgs[0].t}].map(imgs).join(''));
+        $("#imgGal").append([{id: i, imgid: news[i].id, imgtype: news[i].imgs[0].t, imgname: news[i].imgs[0].n}].map(imgs).join(''));
         if (i >= 1) {
           $("#i"+i).hide();
         }else {

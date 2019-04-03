@@ -22,7 +22,7 @@
   <div class="inner">
     <section id="mainheader">
       <div id="logo">
-        <a href="?page=start"><img src="https://www.komplett.se/logo/312/logo_b2c.svg" alt=""></a>
+        <a href="?page=start"><img src="https://discordapp.com/assets/94db9c3c1eba8a38a1fcf4f223294185.png" alt=""></a>
       </div>
       <div id="lowerheader">
         <div id="search">

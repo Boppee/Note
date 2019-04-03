@@ -169,3 +169,6 @@ h1{
 .hide{
   display: none !important;
 }
+textarea:focus, input:focus, select:focus{
+    outline: none;
+}

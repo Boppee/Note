@@ -38,13 +38,6 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       $sth->bindParam(':id', $id);
       $sth->execute();
     }
-    if (isset($_POST["newsunique"])) {
-      $newsunique = strip_tags($_POST["newsunique"]);
-      $sth = $connection->prepare("UPDATE `previewnews` SET `uniquepage` = :newsunique WHERE `id` = :id");
-      $sth->bindParam(':newsunique', $newsunique);
-      $sth->bindParam(':id', $id);
-      $sth->execute();
-    }
     if (isset($_POST["newsvisible"])) {
       $newsvisible = strip_tags($_POST["newsvisible"]);
       $sth = $connection->prepare("UPDATE `previewnews` SET `visible` = :newsvisible WHERE `id` = :id");
