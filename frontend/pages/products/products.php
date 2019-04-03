@@ -19,7 +19,7 @@ require_once 'res/header.php';
         </div>
         <div id="pinfo">
           <h1 id="pname"></h1>
-          <a id="manlink" href="?page=manufacture&id"><img id="manuImg" src=""></a>
+          <a id="manlink" class="flex-center" href="?page=manufacture&id"><img id="manuImg" src=""></a>
         </div>
 
       </div>
@@ -36,7 +36,16 @@ require_once 'res/header.php';
           </div>
         </section>
         <section id="ppi">
-          
+          <div id="activepic" class="flex-center" value="0">
+            <i class="fas fa-chevron-right pright"></i>
+            <i class="fas fa-chevron-left pleft"></i>
+            <div id="innerPic">
+
+            </div>
+          </div>
+          <div id="imgGal">
+
+          </div>
         </section>
       </section>
 
@@ -44,3 +53,4 @@ require_once 'res/header.php';
   </div>
 </main>
 <script src="scripts/products/id.js" charset="utf-8"></script>
+<script src="scripts/products/idGal.js" charset="utf-8"></script>

@@ -40,6 +40,8 @@ $(document).ready(function () {
         }
       });
 
+      imgs(data.productData.imgs, id);
+
     }
   });
 

@@ -3,3 +3,6 @@
   background-position: center center;
   background-size: cover;
 }
+#newsName span{
+  font-size: 2em;
+}

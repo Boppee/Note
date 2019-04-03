@@ -56,6 +56,12 @@ h3{
 .left{
   float: left;
 }
+.pright{
+  right: 0;
+}
+.pleft{
+  left: 0;
+}
 .spacer{
   margin: 0px 1em;
 }
@@ -98,6 +104,12 @@ main, body{
 .error{
   border: 1px solid red;
   box-shadow: 0px 0px 5px -2px red;
+}
+.flex-center{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 .disable-select {
   -webkit-user-select: none;

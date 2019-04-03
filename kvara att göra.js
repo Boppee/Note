@@ -35,7 +35,11 @@ frontend
     visa deals*
     några cats*
   products:
-    skapa sida för producter*
+    skapa infoblad
+    specs
+    lägg till i kundvagn
+    recs
+    liknande
 
 100% klart
   units
