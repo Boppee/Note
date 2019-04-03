@@ -11,6 +11,9 @@ $(document).ready(function () {
       data: {id: id},
       success: function (data) {
 
+        $("#newsName span").text(data[0].name);
+        $("#newsDesc span").text(data[0].description);
+
           for (var i = 0; i < data[0].imgs.length; i++) {
             $("#imgGal").append([{id: id, imgtype: data[0].imgs[i].t, name: data[0].imgs[i].n}].map(imgs).join(''));
           }
@@ -26,11 +29,6 @@ $(document).ready(function () {
             $(".imgsGal").css("margin", margin+"px 0px");
           }
 
-          $("#newsName span").text(data[0].name);
-          $("#newsDesc span").text(data[0].description);
-          if (data[0].link) {
-
-          }
       }
     });
 

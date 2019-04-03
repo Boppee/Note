@@ -14,11 +14,23 @@ $(document).ready(function () {
 
   const plist = ({id, name}) => `<li data="${id}">${name}<i class="fas fa-times"></i></li>`;
 
+  if (isFirefox) {
+    $("#Firefox").show();
+    $(".time").attr("placeholder", "2019-01-01T00:00");
+  }
+
   $("#selT").change(getProducts);
 
   $("#productInput").keyup(getProducts);
 
+  $("#cneeded").change(function () {
+    $("#cneed").toggle();
+  });
+
   function getProducts() {
+
+    productsSelected = 0;
+
     $.ajax({
       type: "POST",
       url: "script/pages/promotions/fetchP.php",
@@ -35,10 +47,24 @@ $(document).ready(function () {
 
           $("#listp i").click(function () {
             $(this).parent().remove();
+            productsSelected--;
+            detectzp(productsSelected);
           });
 
           $(this).remove();
+
+          productsSelected++;
+          detectzp(productsSelected);
+
         });
+
+        function detectzp(productsSelected) {
+          if (productsSelected == 0) {
+            $("#nop").show();
+          }else {
+            $("#nop").hide();
+          }
+        }
 
       }
     });

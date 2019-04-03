@@ -277,5 +277,5 @@ $(document).ready(function () {
         $("#remove"+1).remove();
       });
     }
-  })
+  });
 });

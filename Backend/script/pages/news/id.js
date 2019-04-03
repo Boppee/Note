@@ -99,7 +99,42 @@ $(document).ready(function () {
           }
         });
 
-      })
+      });
+
+      $("#newsname").keyup(function () {
+        $.ajax({
+          type: "POST",
+          data: {val: $(this).val(), id: id},
+          url: "script/pages/news/edit/Name.php",
+          success: function (data) {
+
+          }
+        });
+      });
+
+      $("#newsdesciption").keyup(function () {
+        $.ajax({
+          type: "POST",
+          data: {val: $(this).val(), id: id},
+          url: "script/pages/news/edit/Desc.php",
+          success: function (data) {
+
+          }
+        });
+      });
+
+      $("#delete").click(function (e) {
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          data: {id: id},
+          url: "script/pages/news/edit/del.php",
+          success: function (data) {
+
+          }
+        });
+      });
+
 
     }
   });

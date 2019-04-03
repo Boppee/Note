@@ -13,28 +13,28 @@
       $connection = $connect->newConnectionPre("CreateAdminAccount", "");
       $enc = new encoder("private");
 
-      $fileName = $_FILES['file']['name'];
-      $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
-      $fileError = $_FILES['file']['error'];
-      $fileContent = file_get_contents($_FILES['file']['tmp_name']);
-      $imgErrors = array();
+      if (isset($_FILES)) {
+        $fileName = $_FILES['file']['name'];
+        $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+        $fileError = $_FILES['file']['error'];
+        $fileContent = file_get_contents($_FILES['file']['tmp_name']);
+        $imgErrors = array();
 
-      if ($_FILES["file"]["size"] > 5000000) {
-        array_push($imgErrors, "file size");
-      }
-      if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" && $fileType != "bmp") {
-        array_push($imgErrors, "file format");
-      }
-      if (getimagesize($_FILES["file"]["tmp_name"]) == false) {
-        array_push($imgErrors, "not a img");
-      }
-      if (count($imgErrors) == 0) {
-        $fileP = checkIfFileName(pathinfo($fileName, PATHINFO_EXTENSION));
-        $filePath = "../../../img/accounts/".$fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
-        move_uploaded_file($_FILES["file"]["tmp_name"], $filePath);
-        $imgtype = $fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
-      }else {
-        http_response_code(406);
+        if ($_FILES["file"]["size"] > 5000000) {
+          array_push($imgErrors, "file size");
+        }
+        if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" && $fileType != "bmp") {
+          array_push($imgErrors, "file format");
+        }
+        if (getimagesize($_FILES["file"]["tmp_name"]) == false) {
+          array_push($imgErrors, "not a img");
+        }
+        if (count($imgErrors) == 0) {
+          $fileP = checkIfFileName(pathinfo($fileName, PATHINFO_EXTENSION));
+          $filePath = "../../../img/accounts/".$fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
+          move_uploaded_file($_FILES["file"]["tmp_name"], $filePath);
+          $imgtype = $fileP.".".pathinfo($fileName, PATHINFO_EXTENSION);
+        }
       }
 
       $uid = strip_tags($_POST["uid"]);

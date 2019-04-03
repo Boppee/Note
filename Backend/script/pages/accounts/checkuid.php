@@ -13,9 +13,9 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $account = grabUserData(strip_tags($_REQUEST["uid"]));
 
     if (!$account) {
-      http_response_code(200);
+      echo "1";
     }else {
-      http_response_code(404);
+      echo "0";
     }
 
   }else {

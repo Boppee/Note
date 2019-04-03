@@ -26,6 +26,7 @@
       'fetchNews' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'promnews'),
       'modifyNews' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'promnews'),
       'createNews' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'promnews'),
+      'removeNews' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'promnews'),
     );
 
     private $defaultHost = "155.4.124.14";

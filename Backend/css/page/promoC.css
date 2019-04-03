@@ -57,3 +57,36 @@
 #terms{
   margin-top: 2em;
 }
+#cneed{
+  display: none;
+  margin: 1em 0;
+}
+#preterms ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#preterms ul li{
+  padding: 0.25em 0;
+}
+#codeorall{
+  margin: 1em 0;
+}
+#terms{
+  color: var(--orange);
+}
+#terms input[type="number"]{
+  color: var(--orange);
+  background: 0;
+  border: 0;
+  text-align: center;
+}
+#Firefox{
+  display: none;
+}
+#active{
+  margin: 1em 0;
+}
+#dates{
+  margin: 0.5em 0;
+}
