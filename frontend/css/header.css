@@ -2,7 +2,8 @@
   z-index: 200;
 }
 #logo img{
-  max-height: 10em;
+  height: auto;
+  width: 80%;
 }
 #topheader, #headnav{
   display: inline-block;
