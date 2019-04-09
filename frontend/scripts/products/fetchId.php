@@ -12,6 +12,25 @@
   $products->execute();
   $echo = $products->fetchAll(PDO::FETCH_ASSOC);
 
+  if ($echo[0]["categorie_id"] != 1) {
+    $cats = $connection->prepare("SELECT * FROM `cats` WHERE `id` = :id");
+    $cats->bindParam(':id', $echo[0]["categorie_id"]);
+    $cats->execute();
+    $cat = $cats->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($cat[0]["havetable"] == 1) {
+      $echo["struc"]["status"] = 1;
+      $var = "SHOW FULL COLUMNS FROM `".$id."`";
+      $sth = $connection->prepare($var);
+      $sth->execute();
+      $echo["struc"]["data"] = $sth->fetchAll(PDO::FETCH_ASSOC);
+    }else {
+      $echo["struc"]["status"] = 0;
+    }
+  }else {
+    $echo["struc"]["status"] = 0;
+  }
+
   if (isset($echo[0])) {
     $echo[0]["imgs"] = json_decode($echo[0]["imgs"]);
 
