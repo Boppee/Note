@@ -88,16 +88,21 @@ $(document).ready(function () {
           $("#drop1").slideToggle();
           $("#mobileNav i").toggleClass("rotate");
         });
-
-        window.onresize = function() {
-          if (window.innerWidth > 700) {
-            $("#drop1").show();
-          }else {
-            $("#drop1").hide();
-          }
-        };
       });
 
     }
   });
+
+  stopNav = false;
+
+  window.onresize = function() {
+    if (stopNav == false) {
+      if (window.innerWidth > 700) {
+        $("#drop1").show();
+      }else {
+        $("#drop1").hide();
+      }
+    }
+  };
+
 });

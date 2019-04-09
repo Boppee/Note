@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+  stopNav = true;
+
   //pos
   const pos = ({name, id}) => `<span id="remove${id}"><i class="fas fa-angle-right"></i></span><a href="?page=categories&id=${id}"> ${name} </a>`;
   const stock = ({name, amount}) => `
@@ -16,6 +18,7 @@ $(document).ready(function () {
     url: "scripts/products/fetchId.php",
     data: {id: id},
     success: function (data, xhr) {
+
       $("#pname").text(data.productData.name);
       $("#manlink").attr("href", "?page=manufacture&id="+data.productData.manufacturer);
 
@@ -35,12 +38,34 @@ $(document).ready(function () {
             for (var i = data.length-1; i >= 0; i--) {
               $('#parents').append([{name: data[i].name, id: data[i].id}].map(pos).join(''));
             }
-            $("#remove1").remove()
+            $("#remove1").remove();
           });
         }
       });
 
+      $("#add .addtocart").click(function () {
+        elementAnimateToCart($(this).parent().attr("id"));
+        addToCart(id);
+      });
+
+      window.onresize = function() {
+        if (window.innerWidth > 900) {
+          $("#drop1").show();
+        }else {
+          $("#drop1").hide();
+        }
+      };
+
       imgs(data.productData.imgs, id);
+
+      $("#spec").show();
+
+      $(".selectitem").click(function () {
+        $("#seletedMenu div").hide();
+        $("#menuselect div").removeClass("sel");
+        $("#"+$(this).attr("id").replace(/select/g,'')).show();
+        $(this).addClass("sel");
+      });
 
     }
   });
