@@ -22,7 +22,7 @@
   <div class="inner">
     <section id="mainheader">
       <div id="logo">
-        <a href="?page=start"><img src="https://discordapp.com/assets/94db9c3c1eba8a38a1fcf4f223294185.png" alt=""></a>
+        <a href="?page=start"><img src="https://i.ytimg.com/vi/szro1S8Y8rg/maxresdefault.jpg" alt=""></a>
       </div>
       <div id="lowerheader">
         <div id="search">

@@ -25,16 +25,6 @@ require_once 'res/header.php';
       </div>
 
       <section id="ppage">
-        <section id="stockadd">
-          <div id="stocks">
-            <div id="stockh">
-              <span>Lagerstatus</span>
-            </div>
-            <ul id="stocklist">
-
-            </ul>
-          </div>
-        </section>
         <section id="ppi">
           <div id="activepic" class="flex-center" value="0">
             <i class="fas fa-chevron-right pright"></i>
@@ -45,6 +35,41 @@ require_once 'res/header.php';
           </div>
           <div id="imgGal">
 
+          </div>
+          <div id="menuselect">
+            <div class="selectitem dis" id="infoselect">
+              <i class="fas fa-info-circle"></i><span> Info</span>
+            </div>
+            <div class="selectitem hoveritems" id="specselect">
+              <i class="fas fa-clipboard-list"></i><span> Specifikationer</span>
+            </div>
+            <div class="selectitem hoveritems" id="recselect">
+              <i class="fas fa-comments"></i><span> Recensioner</span>
+            </div>
+          </div>
+          <section id="seletedMenu">
+            <div id="info">
+
+            </div>
+            <div id="spec">
+
+            </div>
+            <div id="rec">
+              
+            </div>
+          </section>
+        </section>
+        <section id="stockadd">
+          <div id="stocks">
+            <div id="stockh">
+              <span>Lagerstatus</span>
+            </div>
+            <ul id="stocklist">
+
+            </ul>
+          </div>
+          <div id="add">
+            <button type="button" id="addbutton" class="addtocart">Lägg till i kundvagnen</button>
           </div>
         </section>
       </section>
