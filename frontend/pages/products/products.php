@@ -40,7 +40,7 @@ require_once 'res/header.php';
             <div class="selectitem dis" id="infoselect">
               <i class="fas fa-info-circle"></i><span> Info</span>
             </div>
-            <div class="selectitem hoveritems" id="specselect">
+            <div class="selectitem hoveritems sel" id="specselect">
               <i class="fas fa-clipboard-list"></i><span> Specifikationer</span>
             </div>
             <div class="selectitem hoveritems" id="recselect">
@@ -55,7 +55,7 @@ require_once 'res/header.php';
 
             </div>
             <div id="rec">
-              
+
             </div>
           </section>
         </section>
