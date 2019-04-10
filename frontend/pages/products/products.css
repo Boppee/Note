@@ -238,3 +238,13 @@
     display: none;
   }
 }
+@media only screen and (max-width: 700px) {
+  #manlink{
+    display: none;
+  }
+}
+@media only screen and (max-width: 540px) {
+  #menuselect span{
+    display: none;
+  }
+}
