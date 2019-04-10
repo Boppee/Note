@@ -52,12 +52,25 @@ require_once 'res/header.php';
 
             </div>
             <div id="spec">
-
+              <table id="spectable">
+                <tr>
+                  <td>Tillverkare</td>
+                  <td><a href="" id="manu"></a></td>
+                </tr>
+              </table>
             </div>
             <div id="rec">
 
             </div>
           </section>
+        </section>
+        <section id="sisP">
+          <div id="sishead">
+            <span>Liknade produkter</span>
+          </div>
+          <div id="sisprod">
+
+          </div>
         </section>
         <section id="stockadd">
           <div id="stocks">

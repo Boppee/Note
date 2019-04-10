@@ -54,6 +54,8 @@ $(document).ready(function () {
         }else {
           $("#drop1").hide();
         }
+        w = $("#sisprod").width()/4;
+        $(".sisImg").css("height", w+"px");
       };
 
       imgs(data.productData.imgs, id);
@@ -67,9 +69,48 @@ $(document).ready(function () {
         $(this).addClass("sel");
       });
 
+      $("#manu").text(data.productData.manData.name);
+
+      const strucTable = ({strucname, data, unit}) => `
+        <tr>
+          <td>${strucname}</td>
+          <td>${data} ${unit}</td>
+        </tr>
+      `;
+
+      for (var i = 0; i < data.struc.data.length; i++) {
+        tempData = data.struc.data[i];
+        if (tempData.Field != "product_id") {
+          $("#spectable").append([{strucname: tempData.Field.substr(1), data: data.struc.ProductData[tempData.Field], unit: tempData.Comment}].map(strucTable).join(''));
+        }
+      }
+
+      const simProd = ({name, price, id}) => `
+        <div class="sisItem">
+          <div class="sisImg">
+            <div class="sisImgBack" id="imgSim${id}">
+
+            </div>
+          </div>
+          <div class="sisInfo">
+            <a href="?page=products&id=${id}">${name}</a>
+            <div class="sisPrice">
+              <i class="fas fa-cart-plus"></i> <span class="afterPrice">${price} </span>
+            </div>
+          </div>
+        </div>
+      `;
+
+      for (var i = 0; i < data.sim.length; i++) {
+        tempSim = data.sim[i];
+        if (i < 4) {
+          $("#sisprod").append([{name: tempSim.name, id: tempSim.product_id, price: tempSim.price}].map(simProd).join(''));
+          $("#imgSim"+tempSim.product_id).css("background-image", 'url("pages/products/imgs/'+tempSim.product_id+'/1.png")')
+        }
+      }
+      w = $("#sisprod").width()/4;
+      $(".sisImg").css("height", w+"px");
+
     }
   });
-
-
-
 });

@@ -1,4 +1,4 @@
-#parents, #stockadd, #ppi{
+#parents, #stockadd, #ppi, #sisP{
   background: #f3f3f3;
   border: 1px solid #999;
   border-radius: 2px;
@@ -32,7 +32,7 @@
 #stockh{
   text-align: center;
 }
-#ppi{
+#ppi, #sisP{
   margin-right: 13em;
 }
 .stockInner{
@@ -45,7 +45,7 @@
   margin-left: 0.5em;
   color: #319400;
 }
-#ppi{
+#ppi, #sisP{
   padding: 1em;
   background: #f4f4f4;
 }
@@ -125,6 +125,66 @@
 #seletedMenu div{
   display: none;
 }
+#spectable tr td:first-child{
+  width: 30%;
+}
+#spectable tr td:nth-child(2){
+  width: 70%;
+  text-align: center;
+}
+#spectable tr td{
+  border-bottom: 1px solid #319400;
+  padding: 0.5em 0;
+}
+#spectable{
+  margin-top: 1em;
+  width: 100%;
+}
+#sisP{
+  margin-top: 2em;
+}
+#sisprod{
+  display: flex;
+}
+#sishead{
+  margin-bottom: 1em;
+}
+.sisItem{
+  width: 25%;
+  margin: auto;
+}
+.sisItem{
+  color: black;
+}
+.sisItem:hover{
+  box-shadow: 0px 0px 4px 0px #2b8300;
+  background: #319400;
+  color: white;
+}
+.sisItem:hover a{
+  color: white;
+}
+.sisInfo{
+  padding: 0.25em;
+}
+.sisPrice{
+  padding-top: 0.25em;
+}
+.sisImg{
+  padding: 1em;
+  box-sizing: border-box;
+}
+.sisImgBack{
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.sisPrice i:hover{
+  cursor: pointer;
+}
+.afterPrice::after{
+  content: "kr";
+}
 @media only screen and (max-width: 1480px) {
   #startpage{
     width: 80%;
@@ -143,7 +203,7 @@
     position: inherit;
     margin-top: 2em;
   }
-  #ppi{
+  #ppi, #sisP{
     margin-right: 0;
   }
 }

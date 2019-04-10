@@ -25,23 +25,20 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $sth->execute();
     $cats = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-    $new = false;
-
     if ($cats[0]["havetable"] == 0) {
       $sth = $connection->prepare("UPDATE `cats` SET `havetable` = '1' WHERE `id` = :id");
       $sth->bindParam(':id', $table, PDO::PARAM_INT);
       $sth->execute();
-      $sth = $connection->prepare("CREATE TABLE `:id` ( `def` INT(11) NOT NULL ) ENGINE = InnoDB");
+      $sth = $connection->prepare("CREATE TABLE `:id` ( `product_id` INT NOT NULL , PRIMARY KEY (`product_id`)) ENGINE = InnoDB;");
       $sth->bindParam(':id', $table, PDO::PARAM_INT);
       $sth->execute();
-      $new = true;
     }
 
     if ($type == "N") {
       if ($where == "FIRST") {
-        $sth = $connection->prepare("ALTER TABLE `:table` ADD `".$dbName."` INT(:length) NOT NULL COMMENT :unit FIRST");
+        $sth = $connection->prepare("ALTER TABLE `:table` ADD `".$dbName."` FLOAT(:length) NOT NULL COMMENT :unit FIRST");
       }else {
-        $sth = $connection->prepare("ALTER TABLE `:table` ADD `".$dbName."` INT(:length) NOT NULL COMMENT :unit AFTER `".$where."`");
+        $sth = $connection->prepare("ALTER TABLE `:table` ADD `".$dbName."` FLOAT(:length) NOT NULL COMMENT :unit AFTER `".$where."`");
       }
       $sth->bindParam(':table', $table, PDO::PARAM_INT);
       $sth->bindParam(':unit', $unit);
@@ -86,12 +83,6 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       echo json_encode($echo);
     }else {
       http_response_code(304);
-    }
-
-    if($new) {
-      $sth = $connection->prepare("ALTER TABLE `:id` DROP `def`");
-      $sth->bindParam(':id', $table, PDO::PARAM_INT);
-      $sth->execute();
     }
 
   }else {

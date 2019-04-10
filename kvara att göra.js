@@ -35,9 +35,6 @@ frontend
     visa deals*
     några cats*
   products:
-    skapa infoblad
-    specs
-    lägg till i kundvagn
     recs
     liknande
 
@@ -45,17 +42,15 @@ frontend
   units
 
 PRIO:
-  1: produkter (produktsida, create, edit, remove) produkt sida påbörjad!
+  1: produkter (create, edit, remove) produkt sida påbörjad!
   2: categories (skapa categories på frontend)
   3: lägg in categories på start
   4: fixa promo create
   5: visa promo på frontend
   6: promo (remove, edit)
-  //KLAR 7: news (edit, remove)
   8: länka frontedn med backend orders
   9: backend orders
   10: giftcards
-  //KLAR 11: manufacuter remove
   12: filters
   13: css cats
   14: news visa producter som är med i promo
