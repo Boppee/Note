@@ -165,7 +165,8 @@
   color: white;
 }
 .sisInfo{
-  padding: 0.25em;
+  padding: 0.5em;
+  padding-top: 0;
 }
 .sisPrice{
   padding-top: 0.25em;
