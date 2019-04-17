@@ -20,7 +20,7 @@ function elementAnimateToCart(selector) {
       height: cart.height,
       width: cart.width,
       opacity: 0
-    }, 400, function () {
+    }, 600, function () {
       $("#animateToCart"+selector+randomId).remove();
     })
   });

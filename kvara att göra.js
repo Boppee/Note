@@ -7,10 +7,7 @@ backend:
     create*
     remove*
     edit*
-  products:
-    create*
-    remove*
-    edit*
+  products: Klart (Bug-test)
   orders:
     list*
     edit*
@@ -42,7 +39,6 @@ frontend
   units
 
 PRIO:
-  1: produkter (create, edit, remove) produkt sida påbörjad!
   2: categories (skapa categories på frontend)
   3: lägg in categories på start
   4: fixa promo create

@@ -49,6 +49,15 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $echo[0]["stocks"] = json_decode($echo[0]["stocks"]);
     $echo[0]["imgs"] = json_decode($echo[0]["imgs"]);
 
+    $catId = $echo[0]["categorie_id"];
+
+    if ($catId != 1) {
+      $sth = $connection->prepare("SELECT * FROM `".$catId."` WHERE `product_id` = :id");
+      $sth->bindParam(':id', $echo[0]["product_id"]);
+      $sth->execute();
+      $echo["catSpecs"] = $sth->fetchAll(PDO::FETCH_ASSOC)[0];
+    }
+
     echo json_encode($echo, true);
 
   }else {

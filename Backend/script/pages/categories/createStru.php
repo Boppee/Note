@@ -29,9 +29,22 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
       $sth = $connection->prepare("UPDATE `cats` SET `havetable` = '1' WHERE `id` = :id");
       $sth->bindParam(':id', $table, PDO::PARAM_INT);
       $sth->execute();
+
       $sth = $connection->prepare("CREATE TABLE `:id` ( `product_id` INT NOT NULL , PRIMARY KEY (`product_id`)) ENGINE = InnoDB;");
       $sth->bindParam(':id', $table, PDO::PARAM_INT);
       $sth->execute();
+
+      $sth = $connection->prepare("SELECT * FROM `1` WHERE `categorie_id` = :id");
+      $sth->bindParam(':id', $table, PDO::PARAM_INT);
+      $sth->execute();
+
+      while ($temp = $sth->fetch(PDO::FETCH_ASSOC)) {
+        $sth = $connection->prepare("INSERT INTO `:table` (`product_id`) VALUES (:id)");
+        $sth->bindParam(':table', $table, PDO::PARAM_INT);
+        $sth->bindParam(':id', $temp["product_id"], PDO::PARAM_INT);
+        $sth->execute();
+      }
+      
     }
 
     if ($type == "N") {

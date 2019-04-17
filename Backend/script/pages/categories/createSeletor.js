@@ -38,7 +38,7 @@ function createTable(info, select) {
       for (var a = 0; a < info[i].layer; a++) {
         tempLayer += "•";
       }
-      if (id == info[i].id || select == info[i].id) {
+      if (select == info[i].id) {
         $("#"+info[i].par).after("<option id='"+info[i].id+"' selected class='remove'>"+tempLayer+info[i].name+"</option>");
       }else {
         $("#"+info[i].par).after("<option id='"+info[i].id+"' class='remove'>"+tempLayer+info[i].name+"</option>");

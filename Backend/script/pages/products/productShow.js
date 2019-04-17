@@ -1,202 +1,276 @@
-$.ajax({
-  type: "POST",
-  url: "script/pages/products/FetchProductID.php",
-  data: {id: id},
-  success: function (info) {
-    $(document).ready(function () {
+$(document).ready(function () {
+  $.ajax({
+    type: "POST",
+    data: {id: id},
+    url: "script/pages/products/FetchProductID.php",
+    success: function (data) {
 
-      info = info[0];
+      const manu = ({name, land, id}) => `<option value="${id}">${name} (${land})</option>`;
+      const manuSel = ({name, land, id}) => `<option value="${id}" selected>${name} (${land})</option>`;
 
-      $("input[name='name']").val(info.name);
-      $("#stocknr").text(info.totalstock);
-      $("#totalsell").text(info.totalsold);
+      $.ajax({
+        type: "GET",
+        url: "script/pages/manufacturer/fetchAll.php",
+        success: function (data) {
+          for (var i = 0; i < data.length; i++) {
+            tempData = data[i];
+            if (p.manufacturer == tempData.id) {
+              $('#manufacuter').append([{name: tempData.name, land: tempData.country, id: tempData.id}].map(manuSel).join(''));
+            }else {
+              $('#manufacuter').append([{name: tempData.name, land: tempData.country, id: tempData.id}].map(manu).join(''));
+            }
+          }
+        }
+      });
 
-      $("#catap").text(info.cat_name);
-      link = "?page=categories&id="+info.cat_id;
-      if (info.cat_id != 0) {
-        $("#catap").attr("href", link);
-      }else {
-        $("#catap").text("No categorie!");
+      p = data[0];
+
+      $("#name").val(p.name);
+      $("#price").val(p.price);
+      $("#sim").val(p.sim);
+
+      if (p.visible == 1) {
+        $("#visible").attr("checked", true);
       }
 
-      $("#price").text(info.price+" "+valuta);
+      $("#categorieSelector #"+p.categorie_id).attr("selected", true);
 
+      catSpec(p.categorie_id, data.catSpecs, id);
 
-      $("#manap").text(info.man_name);
-      link = "?page=list&underpage=manufacturer&id="+info.manufacturer;
-      if (info.manufacturer != 0) {
-        $("#manap").attr("href", link);
-      }else {
-        $("#manap").text("No manufacturer!");
-      }
+      $("#categorieSelector").change(function () {
+        catSpec($(this).children("option:selected").attr("id"), false, id);
+      });
 
+      const img = ({nr, id, imgname, imgtype}) => `
+        <div class="imglist" id="img${nr}" value="${imgname}">
+          <div class="controllimg">
+            <i class="fas fa-chevron-up up"></i>
+            <i class="fas fa-chevron-down down"></i>
+            <i class="fas fa-times remove"></i>
+          </div>
+          <div class="img">
+            <img src="../frontend/pages/products/imgs/${id}/${imgname}.${imgtype}" alt="">
+          </div>
+        </div>
+      `;
 
-      if (info.visible) {
-        $("input[name='vis']").prop("checked", true);
-      }
-
-      stockTb = info.stocks;
-
-      for (var i = 0; i < stockTb.length; i++) {
-
-        $("#stocktb").append("<tr id='tr"+i+"'></tr>");
-        $("#tr"+i).append("<td class='loc'>"+stockTb[i].l+"</td>");
-        $("#tr"+i).append("<td class='am'>"+stockTb[i].a+"</td>");
-
-      }
-
-      imgArray = info.imgs;
-
-      if (imgArray.length != 0) {
-        console.log(imgArray);
-        $("#noimg_img").hide();
-        for (var i = 0; i < imgArray.length; i++) {
-          $('#imgs').append([{pnr: id, imgname: imgArray[i].n, imgtype: imgArray[i].t}].map(Item).join(''));
+      for (var i = 0; i < p.imgs.length; i++) {
+        imgs = 0;
+        for (var i = 0; i < p.imgs.length; i++) {
+          imgs++;
+          temp = p.imgs[i];
+          $("#imgList").append([{nr: i, id: id, imgtype: temp.t, imgname: temp.n}].map(img).join(''));
+          if (i == p.imgs.length-1) {
+            $("#img"+i+" .down").attr("s", true);
+          }else {
+            $("#img"+i+" .down").attr("s", false);
+          }
+          if (i == 0) {
+            $("#img"+i+" .up").attr("s", true);
+          }else {
+            $("#img"+i+" .up").attr("s", false);
+          }
+        }
+        if (imgs == 1) {
+          $("#img"+0+" .remove").attr("s", true);
         }
       }
 
-      $(".img img").click(function (event) {
-        $("#fullimg").show();
-        $("#fullimg img").attr("src", $(this).attr("src"));
-        $("#fullimg").css("top", window.scrollY+'px')
-        $("body").css("overflow", "hidden");
-        $(document).keyup(function(e) {
-          if (e.keyCode === 27) {
-            hideImg();
+      $("#imginput").change(function () {
+        var formData = new FormData();
+
+        formData.append("img", $('#imginput')[0].files[0]);
+        formData.append("id", id);
+
+        $.ajax({
+          type: "POST",
+          data: formData,
+          processData: false,
+          contentType: false,
+          url: "script/pages/products/update/uploadimg.php",
+          complete: function () {
+            //location.reload();
           }
         });
       });
 
-      $("#imgClose").click(function () {
-        hideImg()
+      $(".up").click(function () {
+        if ($(this).attr("s") != true) {
+          $.ajax({
+            type: "POST",
+            url: "script/pages/products/update/updateImg.php",
+            data: {img: $(this).parent().parent().attr("value"), action: "up", id: id},
+            complete: function () {
+              location.reload();
+            }
+          });
+        }
+      });
+      $(".down").click(function () {
+        if ($(this).attr("s") != true) {
+          $.ajax({
+            type: "POST",
+            url: "script/pages/products/update/updateImg.php",
+            data: {img: $(this).parent().parent().attr("value"), action: "down", id: id},
+            complete: function () {
+              location.reload();
+            }
+          });
+        }
+      });
+      $(".remove").click(function () {
+        if ($(this).attr("s") != true) {
+          $.ajax({
+            type: "POST",
+            url: "script/pages/products/update/updateImg.php",
+            data: {img: $(this).parent().parent().attr("value"), action: "remove", id: id},
+            complete: function () {
+              location.reload();
+            }
+          });
+        }
       });
 
-      function hideImg() {
-        $("#fullimg").hide();
-        $("body").css("overflow", "auto");
-      }
-
-
-
-      $("#changeCat").click(function () {
+      $("#basics input").keyup(function () {
+        val = $(this).val();
+        index = $(this).attr("id");
         $.ajax({
           type: "POST",
-          url: "script/pages/products/update/changeCat.php",
-          data: {cat:  $("#categorieSelector option:selected").attr("id"), product: id},
+          data: {id: id, value: val, index: index},
+          url: "script/pages/products/update/updateBasics.php",
+          success: function (data) {
+
+          }
+        });
+      });
+      $("#basics select, #categorieSelector").change(function () {
+        index = $(this).attr("id");
+        if (index == "categorieSelector") {
+          val = $("#categorieSelector option:selected").attr("id");
+        }else {
+          val = $(this).val();
+        }
+        $.ajax({
+          type: "POST",
+          data: {id: id, value: val, index: index},
+          url: "script/pages/products/update/updateBasics.php",
           success: function (data) {
 
           }
         });
       });
 
-      const sugItems = ({name, id}) => `
-        <div class="sugitem">
-          <button type="button" name="button" value="${id}">${name}</button>
-        </div>
-      `;
-
-      $("#manuinput").keyup(function () {
-        if ($(this).val().length != 0) {
-          $.ajax({
-            type: "POST",
-            url: "script/pages/products/getSug.php",
-            data: {text: $(this).val()},
-            success: function (data) {
-              $(".sugitem").remove();
-              for (var i = 0; i < data.length; i++) {
-                $("#appendSug").append([{id: data[i].id, name: data[i].name}].map(sugItems).join(''));
-              }
-
-              $("#changeMan").hide();
-
-              $(".sugitem button").click(function (event) {
-                newManId = $(this).val();
-                $("#manuinput").val($(this).text());
-                $(".sugitem").remove();
-                $("#changeMan").show();
-                $("#changeMan").click(function () {
-                  if (confirm("Do you want change manufacturer to\nManufacturer name: "+$("#manuinput").val()+"\nManufacturer id: "+newManId)) {
-                    $.ajax({
-                      type: "POST",
-                      url: "script/pages/products/update/updateManufacturer.php",
-                      data: {product: id, manufacturer: newManId},
-                      success: function (data) {
-
-                      }
-                    });
-                  }
-                });
-              });
-
-            }
-          });
-        }
-      });
-
-      showNoImg();
-
-      $(".img i").click(function functionName(event) {
-        var iid = event.target.parentElement.id;
-        var cid = iid.split("_")[0];
+      $("#delete").click(function (e) {
+        e.preventDefault();
         $.ajax({
           type: "POST",
-          url: "script/pages/products/update/removeimg.php",
-          data: {id: cid, userid: info.product_id},
-        });
-        $("#"+iid).remove();
-        showNoImg();
+          url: "script/pages/products/removeProduct.php",
+          data: {id: id},
+          success: function () {
+
+          }
+        })
       });
 
-      $("#imgupload").change(function () {
-        uploadImg(this, id);
-      });
+    }
+  });
 
-      document.title = document.title+" "+info.name;
-
-    });
-  }
 });
-function uploadImg(input, id) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
+function catSpec(id, specs, pid) {
 
-    var formData = new FormData();
-    formData.append('file', $('#imgupload')[0].files[0]);
-    formData.append("pid", id);
+  const struTrN = ({name, unit, id}) => `
+    <tr id="N${name}">
+      <td>${name}</td>
+      <td>
+        <input type="nummer" step="0.1" value="0"><span>${unit}</span>
+      </td>
+    </tr>
+  `;
+  const struTrY = ({name, id}) => `
+    <tr id="Y${name}">
+      <td>${name}</td>
+      <td>
+        <input type="nummer" step="1" value="0"><span>${unit}</span>
+      </td>
+    </tr>
+  `;
+  const struTrT = ({name, id}) => `
+    <tr id="T${name}">
+      <td>${name}</td>
+      <td>
+        <input type="text"><span>${unit}</span>
+      </td>
+    </tr>
+  `;
+  const struTrD = ({name, id}) => `
+    <tr id="D${name}">
+      <td>${name}</td>
+      <td>
+        <input type="date-time">
+      </td>
+    </tr>
+  `;
+  const struTrB = ({name, id}) => `
+  <tr id="b${name}">
+    <td>${name}</td>
+    <td>
+      <input type="checkbox"><span>${unit}</span>
+    </td>
+  </tr>
+  `;
 
-    $.ajax({
-      type: "POST",
-      url: "script/pages/products/update/uploadimg.php",
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function (info) {
+  $('#spec').children().remove();
 
-        $('#imgs').append([{pnr: id, imgname: info.name, imgtype: info.imgtype}].map(Item).join(''));
-
-        $(".img i").click(function functionName(event) {
-          var iid = event.target.parentElement.id;
-          var cid = iid.split("_")[0];
-          $.ajax({
-            type: "POST",
-            url: "script/pages/products/removeimg.php",
-            data: {id: cid, userid: info.product_id},
-          });
-          $("#"+iid).remove();
-          showNoImg();
-        });
-
-        showNoImg();
-
+  $.ajax({
+    type: "POST",
+    url: "script/pages/categories/fetchtablestr.php",
+    data: {id: id},
+    success: function (data) {
+      id = data.data.id;
+      if (data.data.havetable == 1) {
+        for (var i = 0; i < data.structure.length; i++) {
+          if (id != 1) {
+            temp = data.structure[i];
+            var tempC = temp.Field.charAt(0)
+            temp.Field = temp.Field.substr(1);
+            switch (tempC) {
+              case "N":
+                $('#spec').append([{name: temp.Field, unit: temp.Comment, id: i}].map(struTrN).join(''));
+                break;
+              case "D":
+                $('#spec').append([{name: temp.Field, id: i}].map(struTrD).join(''));
+                break;
+              case "Y":
+                $('#spec').append([{name: temp.Field, id: i}].map(struTrY).join(''));
+                break;
+              case "T":
+                $('#spec').append([{name: temp.Field, id: i}].map(struTrT).join(''));
+                break;
+            }
+          }
+        }
       }
-    });
+      if (specs !== false) {
+        for (var property in specs) {
+          if (property != "product_id") {
+            $("#"+property+" input").val(specs[property]);
+          }
+        }
+      }
 
-  }
-}
-function showNoImg() {
-  if ($("#imgs > div").length == 1) {
-    $("#noimg_img").show();
-  }else {
-    $("#noimg_img").hide();
-  }
+      $("#spec input").keyup(function () {
+        index = $(this).parent().parent().attr("id");
+        value = $(this).val();
+        $.ajax({
+          type: "POST",
+          data: {id: pid, value: value, index: index, cat: id},
+          url: "script/pages/products/update/catSpecUpdate.php",
+          success: function () {
+
+          }
+        })
+      });
+
+    }
+  });
 }

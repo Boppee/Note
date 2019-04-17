@@ -27,6 +27,9 @@
       'modifyNews' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'promnews'),
       'createNews' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'promnews'),
       'removeNews' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'promnews'),
+      'createProducts' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'products'),
+      'modifyProducts' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'products'),
+      'removeProduct' => array('username' => 'previewNews', 'password' => 'M3P3e2MGmDpMTl3S', 'host' => '155.4.124.14', 'databas' => 'products'),
     );
 
     private $defaultHost = "155.4.124.14";

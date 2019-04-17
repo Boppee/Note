@@ -15,7 +15,15 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $connection = $connect->newConnectionPre("modifyCats", "products");
 
     $sth = $connection->prepare("ALTER TABLE `".$id."` DROP `".$name."`");
-    if ($sth->execute()) {
+    $sth->execute();
+
+    $var = "SHOW FULL COLUMNS FROM `".$id."`";
+    $connection = $connect->newConnectionPre("FetchPublic", "products");
+    $sth = $connection->prepare($var);
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+    if (count($data) != 1) {
       http_response_code(200);
     }else {
       http_response_code(304);
