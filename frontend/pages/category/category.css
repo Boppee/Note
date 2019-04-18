@@ -1,53 +1,24 @@
 #childs{
   width: 100%;
 }
-.child{
-  width: 100%;
-  padding: 0.5em;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 5px #ddd;
-  border-radius: 0.5em;
-  background: #f3f3f3;
-  margin: 1em 0px;
+#filter{
+  width: 95%;
+  margin: auto;
+  padding-top: 1em;
 }
-.cinner{
-  height: 100%;
-  width: 100%;
+.outerSlider {
+    margin-bottom: 3em;
 }
-.cheader{
-  line-height: 2em;
-  height: 2em;
-  width: 100%;
+.sliderHead {
+  margin-bottom: 0.5em;
+    text-align: center;
 }
-.cheader a{
-  margin-left: 1em;
+#startpage{
+  min-height: 35em;
 }
-.cbody{
-  height: 14em;
-  display: flex;
-}
-.cproduct{
-  padding: 0.5em;
-  box-sizing: border-box;
-  width: 25%;
-  height: 100%;
-}
-.cinfo{
-  line-height: 1.75em;
-  height: 3.5em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.cimg{
-  height: 9.5em;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.cproduct:hover{
-  cursor: pointer;
-  background: #ddd;
-  box-shadow: 0px 0px 5px #bbb;
-  border-radius: 0.25em;
+@media only screen and (max-width: 700px) {
+  #filter{
+    width: 85%;
+    padding-top: 2em;
+  }
 }

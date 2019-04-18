@@ -3,7 +3,7 @@ $(document).ready(function () {
   stopNav = true;
 
   //pos
-  const pos = ({name, id}) => `<span id="remove${id}"><i class="fas fa-angle-right"></i></span><a href="?page=categories&id=${id}"> ${name} </a>`;
+  const pos = ({name, id}) => `<span id="remove${id}"><i class="fas fa-angle-right"></i></span><a href="?page=category&id=${id}"> ${name} </a>`;
   const stock = ({name, amount}) => `
     <li class="stock">
       <div class="stockInner">

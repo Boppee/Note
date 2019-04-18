@@ -52,10 +52,18 @@ if (isset($_SESSION["signedIn"]) && $_SESSION["signedIn"]) {
     $catId = $echo[0]["categorie_id"];
 
     if ($catId != 1) {
-      $sth = $connection->prepare("SELECT * FROM `".$catId."` WHERE `product_id` = :id");
-      $sth->bindParam(':id', $echo[0]["product_id"]);
+
+      $sth = $connection->prepare("SELECT * FROM `cats` WHERE `id` = :id");
+      $sth->bindParam(':id', $echo[0]["categorie_id"]);
       $sth->execute();
-      $echo["catSpecs"] = $sth->fetchAll(PDO::FETCH_ASSOC)[0];
+      $cat = $sth->fetch(PDO::FETCH_ASSOC);
+
+      if ($cat["havetable"] == 1) {
+        $sth = $connection->prepare("SELECT * FROM `".$catId."` WHERE `product_id` = :id");
+        $sth->bindParam(':id', $echo[0]["product_id"]);
+        $sth->execute();
+        $echo["catSpecs"] = $sth->fetchAll(PDO::FETCH_ASSOC)[0];
+      }
     }
 
     echo json_encode($echo, true);

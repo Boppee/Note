@@ -27,7 +27,7 @@ frontend
   kundvagn:
     nästan klar bara skapa order kvar*
   cats:
-    gör så alla producter kommer upp* (skapa filter om tid finns)*
+    (skapa filter om tid finns)*
   start:
     visa deals*
     några cats*
@@ -39,8 +39,6 @@ frontend
   units
 
 PRIO:
-  2: categories (skapa categories på frontend)
-  3: lägg in categories på start
   4: fixa promo create
   5: visa promo på frontend
   6: promo (remove, edit)

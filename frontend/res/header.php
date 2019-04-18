@@ -22,7 +22,7 @@
   <div class="inner">
     <section id="mainheader">
       <div id="logo">
-        <a href="?page=start"><img src="https://i.ytimg.com/vi/szro1S8Y8rg/maxresdefault.jpg" alt=""></a>
+        <a href="?page=start"><img src="https://www.komplett.se/logo/312/logo_b2c.svg" alt=""></a>
       </div>
       <div id="lowerheader">
         <div id="search">
