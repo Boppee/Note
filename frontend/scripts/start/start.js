@@ -21,7 +21,6 @@ $(document).ready(function () {
 
       for (var i = 0; i < data.length; i++) {
         tempProducts = data[i];
-        console.log(tempProducts);
         $("#products").append([{name: tempProducts.name, id: tempProducts.product_id, price: tempProducts.price}].map(childproduct).join(''));
         tempUrl = "url(pages/products/imgs/"+tempProducts.product_id+"/"+tempProducts.imgs[0].n+"."+tempProducts.imgs[0].t+")";
         $("#ca"+tempProducts.product_id).find(".cimg").css("background-image", tempUrl);

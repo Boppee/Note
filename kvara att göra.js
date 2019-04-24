@@ -45,7 +45,6 @@ PRIO:
   8: länka frontedn med backend orders
   9: backend orders
   10: giftcards
-  12: filters
   13: css cats
   14: news visa producter som är med i promo
 BUGGAR

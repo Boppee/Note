@@ -98,7 +98,7 @@ $(document).ready(function () {
       <div class="sliderHead">
       <span>${name} (${unit})</span>
       </div>
-      <div id="slider${name}" class="sliderElements" value="${n}">
+      <div id="slider${name}" class="sliderElements" value="${n}" nr="${nr}">
       </div>
       </div>
       `;
@@ -119,42 +119,48 @@ $(document).ready(function () {
         }
       }
 
-      var slidersEle = document.getElementsByClassName('sliderElements');
+      slidersEle = document.getElementsByClassName('sliderElements');
 
       for ( var i = 0; i < slidersEle.length; i++ ) {
         noUiSlider.create(slidersEle[i], {
           start: [Number(sliders[$(slidersEle[i]).attr("value")]["min"]), Number(sliders[$(slidersEle[i]).attr("value")]["max"])],
           connect: true,
           tooltips: [true, true],
+          behaviour: 'unconstrained-tap',
           range: {
             'min': Number(sliders[$(slidersEle[i]).attr("value")]["min"]),
             'max': Number(sliders[$(slidersEle[i]).attr("value")]["max"])
           },
         });
-        slidersEle[i].noUiSlider.on("set", function (e) {
-          addValues(filters);
+      }
+
+      for (var i = 0; i < slidersEle.length; i++) {
+        slidersEle[i].noUiSlider.on("set", function () {
+          addValues($(this)[0].target, filters);
         });
       }
-      function addValues(filters){
+
+      function addValues(target,filters){
         var allValues = [];
 
         for (var i = 0; i < slidersEle.length; i++) {
           allValues.push(slidersEle[i].noUiSlider.get());
         };
 
-        values = [];
+        arrayIndex = $(target).attr("nr");
 
-        a = 0;
+        maxValue = Number(allValues[arrayIndex][1]);
+        minValue = Number(allValues[arrayIndex][0]);
 
+        $("#products").children(".cproduct").hide();
+
+        valueIndex = $(target).attr("value").substr(1);
 
         $("#products").children(".cproduct").each(function () {
-          $(this).hide();
-          values[a] = []
-          for (var i = 0; i < Object.keys(filters).length; i++) {
-            index = filters[i];
-            values[a][index] = $(this).attr(index);
+          value = $(this).attr(valueIndex);
+          if (value >= minValue && value <= maxValue) {
+            $(this).show();
           }
-          a++;
         });
 
       }
